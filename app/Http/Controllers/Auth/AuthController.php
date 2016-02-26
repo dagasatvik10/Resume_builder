@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Socialite;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -68,5 +69,36 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+     
+     public function redirectToLinkedin()
+    {
+        return Socialite::with('linkedin')->redirect();
+    }
+
+    public function handleLinkedinCallback()
+    {
+        $user = Socialite::with('linkedin')->user();
+
+        return dd($user);
+
+
+        // $user->token;
+    }
+
+    public function redirectToFacebook()
+    {
+        return Socialite::with('facebook')->redirect();
+    }
+
+    public function handleFacebookCallback()
+    {
+        $user = Socialite::with('facebook')->user();
+
+        return dd($user);
+
+
+        // $user->token;
     }
 }
