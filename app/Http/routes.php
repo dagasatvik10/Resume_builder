@@ -16,3 +16,10 @@ Route::group(['middleware' => ['web']], function()
 	Route::get('auth/fb','Auth\AuthController@redirectFb');
 	Route::get('auth/fb/callback','Auth\AuthController@fbCallback');
 });
+
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+});

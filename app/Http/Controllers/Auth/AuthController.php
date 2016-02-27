@@ -98,4 +98,19 @@ class AuthController extends Controller
 
         // $user->token;
     }
+
+    public function redirectToGithub()
+    {
+        return Socialite::with('github')->redirect();
+    }
+
+    public function handleGithubCallback()
+    {
+        $user = Socialite::with('github')->user();
+
+        return dd($user);
+
+
+        // $user->token;
+    }
 }
