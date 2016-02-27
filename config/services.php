@@ -36,7 +36,7 @@ return [
     ],
 
     'facebook' => [
-    'client_id' => 1112974282069735,
+    'client_id' => '1112974282069735',
     'client_secret' => '0db26983e6e8f3377c7dd5c95f457172',
     'redirect' => 'http://localhost:8000/auth/fb/callback',
     ],
@@ -45,6 +45,12 @@ return [
     'client_id' => '75zsorr4lbhxs2',
     'client_secret' => 'pe77syYTPcKUjcKk',
     'redirect' => 'http://localhost:8000/auth/ln/callback',
+    ],
+
+    'github' => [
+    'client_id' => '2a70ddf1ac1915832b3b',
+    'client_secret' => '3be38076d1239bbbf078cf5f0a6ae777eb62dce2',
+    'redirect' => 'http://localhost:8000/auth/git/callback',
     ],
 
 ];
