@@ -1,9 +1,14 @@
 <?php
 
-// Route::get('/',function(){
+Route::get('users/basic_info','UserController@index');
+Route::get('users/education','EducationController@index');
+Route::get('users/work_experience','WorkExperienceController@index');
+Route::get('users/personal_details','PersonalDetailsController@index');
+Route::get('users/skill','SkillsController@index');
+Route::get('users/objective','ObjectiveController@index');
+Route::get('users/project','ProjectController@index');
 
-// 	return Form::text('usr');
-// });
+
 Route::group(['middleware' => ['web']], function()
 {
 	Route::get('auth/ln', 'Auth\AuthController@redirectToLinkedin');
@@ -13,4 +18,5 @@ Route::group(['middleware' => ['web']], function()
 	Route::get('auth/git', 'Auth\AuthController@redirectToGithub');
 	Route::get('auth/git/callback', 'Auth\AuthController@handleGithubCallback');
 });
+
 
