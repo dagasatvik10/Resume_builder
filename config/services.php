@@ -35,4 +35,17 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => env('CLIENT_ID_FB'),
+        'client_secret' => env('CLIENT_SECRET_FB'),
+        'redirect' => 'http://localhost:8000/auth/fb/callback',
+
+    ],
+
+    'github' => [
+        'client_id' => env('CLIENT_ID_GITHUB'),
+        'client_secret' => env('CLIENT_SECRET_GITHUB'),
+        'redirect' => 'http://localhost:8000/auth/github/callback',
+    ],
+
 ];

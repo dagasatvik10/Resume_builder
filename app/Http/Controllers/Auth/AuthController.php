@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Laravel\Socialite\Facades\Socialite;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -68,5 +69,33 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function redirectGithub()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    public function githubCallback()
+    {
+        $user = Socialite::driver('github')->user();
+
+        return dd($user);
+
+        // $user->token;
+    }
+
+    public function redirectFb()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function FbCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        return dd($user);
+
+        // $user->token;
     }
 }
