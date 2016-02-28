@@ -13,4 +13,11 @@ class Website extends Model
     {
         return $this->belongsTo('App\Resume');
     }
+
+    public function update_website($input)
+    {
+    	$user = new User;
+    	$user->website_name = $this->input->website_name;
+    	$user->save();
+    }
 }

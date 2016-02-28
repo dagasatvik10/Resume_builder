@@ -63,4 +63,18 @@ class Resume extends Model
         return $this->hasMany('App\WorkExperience');
     }
 
+    public function update_resume($input)
+    {
+        $resume = new Resume;
+        $user = new User;
+        $user->fullname = $this->input->fullname;
+        $resume->father_name = $this->input->father_name;
+        $resume->country = $this->input->country;
+        $resume->address = $this->input->address;
+        $resume->objective = $this->input->objective;
+        $resume->profile_pic = $this->input->profile_pic;
+        
+        $resume->save();
+    }
+
 }

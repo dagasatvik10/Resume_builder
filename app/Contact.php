@@ -13,4 +13,12 @@ class Contact extends Model
     {
         return $this->belongsTo('App\Resume');
     }
+
+    public function update_contact($input)
+    {
+    	$contact = new Contact;
+    	$contact->phone_number = $this->input->phone_number;
+
+    	$contact->save();
+    }
 }

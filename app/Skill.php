@@ -13,4 +13,11 @@ class Skill extends Model
     {
         return $this->belongsTo('App\Resume');
     }
+
+    public function update_skill($input)
+    {
+    	$skill = new Skill;
+    	$skill->skill_name = $this->input->skill_name;
+    	$skill->save();
+    }
 }

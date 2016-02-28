@@ -31,4 +31,13 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Resume');
     }
+
+    public function update_user($input)
+    {
+        $user = new User;
+        $user->email = $this->input->email;
+        $user->password = $this->input->password;
+        $user->remember_token = $this->input->remember_token;
+        $user->save();
+    }
 }
