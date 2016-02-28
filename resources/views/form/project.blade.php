@@ -1,4 +1,4 @@
-@extends('users.master')
+@extends('layouts.master')
 
 @section('header')
     <h2>Project</h2>

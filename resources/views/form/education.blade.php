@@ -1,27 +1,58 @@
-@extends('users.master')
+@extends('layouts.master')
 
-@section('Header')
-    <h2>Education</h2>
+@section('header')
+    <div class="container">
+        <h3>Education</h3>
+    </div>
+    
 @stop
 
 @section('form')
-    <div id="course_name">
-        <label>Course Name:</label>
-        {!! Form::text('course_name') !!}
+    <div class="row container">
+        <div class="input-field col s4">
+           {!! Form::text('course_name',null,array(
+                'class' => 'validate',
+                'id' => 'course_name'
+           )); !!}
+            <label for="course_name">Course Name:</label>
+        </div>
+        <div class="input-field col s4">
+            {!! Form::text('institution_name',null,array(
+                'class' => 'validate',
+                'id' => 'institution_name'
+            )); !!}
+            <label for="institution_name">Institution Name:</label>
+        </div>
     </div>
-    <div id="institution_name">
-        <label>Institution Name:</label>
-        {!! Form::text('institution_name') !!}
+    <div class="row container">
+        <div class="input-field col s4">
+            {!! Form::text('passing_year',null,array(
+                'class' => 'validate',
+                'id' => 'passing_year'
+            )); !!}
+            <label for="passing_year">Passing Year:</label>
+        </div>
+        <div class="input-field col s4">
+            {!! Form::text('marks',null,array(
+                'class' => 'validate',
+                'id' => 'marks'
+            )); !!}
+            <label for="marks">Marks:</label>
+        </div>
     </div>
-    <div id="passing_year">
-        <label>Passing Year:</label>
-        {!! Form::date('passing_year') !!}
+    <div class="container"> 
+    {!! Form::button('Add+',array(
+        'class' => 'waves-effect waves-light btn-large'
+    )); !!}
+    
+    {!! Form::button('Delete',array(
+        'class' => 'waves-effect waves-light btn-large'
+    )); !!}
     </div>
-    <div id="marks">
-        <label>Marks:</label>
-        {!! Form::number('marks') !!}.{!! Form::number('marks') !!}
-    </div>
-    {!! Form::button('Add+')!!}
-    <br><br>
-    {!! Form::button('Delete') !!}
+    <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
 @stop

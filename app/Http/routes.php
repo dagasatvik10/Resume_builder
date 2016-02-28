@@ -2,17 +2,16 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('users/basicinfo','UserController@');
-Route::get('users/education','EducationController@index');
-Route::get('users/work_experience','WorkExperienceController@index');
-Route::get('users/personal_details','PersonalDetailsController@index');
-Route::get('users/skill','SkillsController@index');
-Route::get('users/objective','ObjectiveController@index');
-Route::get('users/project','ProjectController@index');
-
-
-
-
+Route::get('form/basic_info','FormController@basic_info');
+Route::get('form/education','FormController@education');
+Route::get('form/work_experience','FormController@work_experience');
+Route::get('form/personal_details','FormController@personal_details');
+Route::get('form/skill','FormController@skill');
+Route::get('form/objective','FormController@objective');
+Route::get('form/project','FormController@project');
+/*Route::get('form/dashboard',function(){
+	return view('form.dashboard');
+});*/
 Route::group(['middleware' => ['web']], function()
 {
 	Route::get('auth/github','Auth\AuthController@redirectGithub');
@@ -25,7 +24,7 @@ Route::group(['middleware' => ['web']], function()
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-    Route::get('/user', 'UserController@index');
+    Route::get('/dashboard', 'UserController@index');
     Route::get('/resume','UserController@createResume');
 });
 

@@ -1,28 +1,48 @@
-@extends('users.master')
+@extends('layouts.master')
 
 @section('header')
-    <h1>Login</h1>
+    <div class="container">
+        <h3>Login</h3>   
+    </div>
 @stop
 
 @section('form')
-    <div id="name">
-        <label>Name:</label>
-        {!! Form::text('name') !!}
+    <div class="container">
+    <div class="input-field col s6">
+        {!! Form::text('name',null,array(
+            'class'=> 'validate',
+            'id' => 'name'
+        )); !!}
+        <label for="name">Name:</label>
     </div>
-    <div id="email">
-        <label>Email</label>
-        {!! Form::text('email') !!}
+    <div class="input-field col s6">
+        {!! Form::text('email',null,array(
+            'class' => 'validate',
+            'id' => 'email'
+        )); !!}
+        <label for="email">Email</label>
     </div>
     <br>
-    {!! Form::checkbox('password') !!}
-    <label>Password (only if you want to register)</label>
-    <div id="password">
-        <label>Password:</label>
-        {!! Form::password('password') !!}
+    {!! Form::checkbox('password',null,array(
+        'id' => 'pw'
+    )); !!}
+    <label for="pw">Password (only if you want to register)</label>
+    <div class="input-field col s6">
+        {!! Form::password('password',null,array(
+            'class' => 'validate',
+            'id' => 'password'
+        )); !!}
+        <label for="password">Password:</label>
     </div>
-    <div id="websites">
-        <label>Websites:</label>
-        {!! Form::text('websites') !!}
-        {!! Form::button('Add+') !!}
+    <div class="input-field col s6">
+        {!! Form::text('websites',null,array(
+            'class' => 'validate',
+            'id' => 'websites'
+        )); !!}
+        <label for="websites">Websites:</label>
+        {!! Form::button('Add+',array(
+            'class' => 'waves-effect waves-light btn-large'
+        )); !!}
     </div>
+    </div>       
 @stop
