@@ -25,7 +25,8 @@ Route::group(['middleware' => ['web']], function()
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-    Route::get('/user', 'UserController@index');
-    Route::get('/resume','UserController@createResume');
+
+    Route::get('/user', ['as' => 'user.index','uses' => 'UserController@index']);
+    Route::get('/user/resume/{id?}',['as' => 'user.resume','uses' => 'UserController@createResume']);
 });
 
