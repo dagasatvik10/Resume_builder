@@ -1,6 +1,8 @@
 <?php
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('users/basic_info','UserController@index');
+Route::get('users/basicinfo','UserController@');
 Route::get('users/education','EducationController@index');
 Route::get('users/work_experience','WorkExperienceController@index');
 Route::get('users/personal_details','PersonalDetailsController@index');
@@ -9,11 +11,21 @@ Route::get('users/objective','ObjectiveController@index');
 Route::get('users/project','ProjectController@index');
 
 
+
+
 Route::group(['middleware' => ['web']], function()
 {
 	Route::get('auth/github','Auth\AuthController@redirectGithub');
 	Route::get('auth/github/callback','Auth\AuthController@githubCallback');
 	Route::get('auth/fb','Auth\AuthController@redirectFb');
 	Route::get('auth/fb/callback','Auth\AuthController@fbCallback');
+
+});
+
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/user', 'UserController@index');
+    Route::get('/resume','UserController@createResume');
 });
 
