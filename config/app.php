@@ -188,10 +188,10 @@ return [
         'Event'     => Illuminate\Support\Facades\Event::class,
         'File'      => Illuminate\Support\Facades\File::class,
 
-	    'Form'	    => Collective\Html\FormFacade::class,        
-	    'Gate'      => Illuminate\Support\Facades\Gate::class,
+	      'Form'	    => Collective\Html\FormFacade::class,
+	      'Gate'      => Illuminate\Support\Facades\Gate::class,
         'Hash'      => Illuminate\Support\Facades\Hash::class,
-	    'Html'      => Collective\Html\HtmlFacade::class,
+	      'Html'      => Collective\Html\HtmlFacade::class,
 
         'Lang'      => Illuminate\Support\Facades\Lang::class,
         'Log'       => Illuminate\Support\Facades\Log::class,

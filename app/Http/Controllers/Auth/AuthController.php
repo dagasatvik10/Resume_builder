@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use Socialite;
+use Laravel\Socialite\Facades\Socialite;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -65,39 +65,35 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
     }
 
-     
-     public function redirectToLinkedin()
+    public function redirectGithub()
     {
-        return Socialite::with('linkedin')->redirect();
+        return Socialite::driver('github')->redirect();
     }
 
-    public function handleLinkedinCallback()
+    public function githubCallback()
     {
-        $user = Socialite::with('linkedin')->user();
+        $user = Socialite::driver('github')->user();
 
         return dd($user);
-
 
         // $user->token;
     }
 
-    public function redirectToFacebook()
+    public function redirectFb()
     {
-        return Socialite::with('facebook')->redirect();
+        return Socialite::driver('facebook')->redirect();
     }
 
-    public function handleFacebookCallback()
+    public function FbCallback()
     {
-        $user = Socialite::with('facebook')->user();
+        $user = Socialite::driver('facebook')->user();
 
         return dd($user);
-
 
         // $user->token;
     }
