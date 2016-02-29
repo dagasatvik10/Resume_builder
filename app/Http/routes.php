@@ -9,9 +9,12 @@ Route::get('form/personal_details','FormController@personal_details');
 Route::get('form/skill','FormController@skill');
 Route::get('form/objective','FormController@objective');
 Route::get('form/project','FormController@project');
-/*Route::get('form/dashboard',function(){
-	return view('form.dashboard');
-});*/
+Route::get('design/dashboard',function(){
+	return view('design.dashboard');
+});
+Route::get('design/resume',function(){
+	return view('design.resume');
+});
 Route::group(['middleware' => ['web']], function()
 {
 	Route::get('auth/github','Auth\AuthController@redirectGithub');
@@ -24,7 +27,7 @@ Route::group(['middleware' => ['web']], function()
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-    Route::get('/dashboard', 'UserController@index');
+    Route::get('/user', 'UserController@index');
     Route::get('/resume','UserController@createResume');
 });
 

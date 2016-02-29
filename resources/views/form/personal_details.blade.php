@@ -1,25 +1,39 @@
 @extends('layouts.master')
 
 @section('header')
-    <h2>Personal Details</h2>
+    <div class="container">
+        <h3>Personal Details</h3>
+    </div>
 @stop
 
 @section('form')
-    <div id="address">
-        <label>Address:</label>
-        {!! Form::text('address') !!}
+    <div class="container input-field col s6">
+        {!! Form::text('address',null,array(
+            'id' => 'address',
+            'class' => 'validate'
+        )); !!}
+        <label for="address">Address:</label>
     </div>
-    <div id="phone_num">
-        <label>Phone Number:</label>
-        {!! Form::text('phone_num') !!}
+    <div class="container input-field col s6">
+        {!! Form::text('phone_num',null,array(
+            'id' => 'phone_num',
+            'class' => 'validate'
+        )); !!}
+        <label for="phone_num">Phone Number:</label>
     </div>
-    <div id="father_name">
-        <label>Father's Name:</label>
-        {!! Form::text('father_name') !!}
+    <div class="container input-field col s6">
+        {!! Form::text('father_name',null,array(
+            'id' => 'father_name',
+            'class' => 'validate'
+        )); !!}
+        <label for="father_name">Father's Name:</label>
     </div>
-    <div id="country">
-        <label>Country:</label>
-        {!! Form::text('country') !!}
+    <div class="container input-field col s6">
+        {!! Form::text('country',null,array(
+            'id'=>'country',
+            'class' => 'validate'
+        )); !!}
+        <label for="country">Country:</label>
     </div>
     
 @stop
