@@ -17,7 +17,7 @@ class Achievement extends Model
     public function update_achievements($input)
     {
     	$achievements = new Achievement;
-    	$achievements->achievement_name = $this->input->achievement_name;
+    	$achievements->achievement_name = $input['achievement_name'];
     	$achievements->save();
     }
 }

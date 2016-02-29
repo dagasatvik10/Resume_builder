@@ -17,7 +17,7 @@ class Skill extends Model
     public function update_skill($input)
     {
     	$skill = new Skill;
-    	$skill->skill_name = $this->input->skill_name;
+    	$skill->skill_name = $input['skill_name'];
     	$skill->save();
     }
 }

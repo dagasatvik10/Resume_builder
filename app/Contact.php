@@ -17,7 +17,7 @@ class Contact extends Model
     public function update_contact($input)
     {
     	$contact = new Contact;
-    	$contact->phone_number = $this->input->phone_number;
+    	$contact->phone_number = $input['phone_number'];
 
     	$contact->save();
     }

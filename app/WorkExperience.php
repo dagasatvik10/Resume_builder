@@ -17,10 +17,10 @@ class WorkExperience extends Model
     public function update_work_experience($input)
     {
     	$work_experience = new WorkExperience;
-    	$work_experience->achievement_job_title = $this->input->achievement_job_title;
-    	$work_experience->achievement_company_name = $this->input->achievement_company_name;
-    	$work_experience->achievement_start_date = $this->input->achievement_start_date;
-    	$work_experience->achievement_end_date = $this->input->achievement_end_date;
+    	$work_experience->job_title = $input['job_title'];
+    	$work_experience->company_name = $input['company_name'];
+    	$work_experience->start_date = $input['start_date'];
+    	$work_experience->end_date = $input['end_date'];
     	$work_experience->save();
     }
 }

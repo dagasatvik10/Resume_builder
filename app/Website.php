@@ -16,8 +16,8 @@ class Website extends Model
 
     public function update_website($input)
     {
-    	$user = new User;
-    	$user->website_name = $this->input->website_name;
-    	$user->save();
+    	$website = new Website;
+    	$website->website_name = $input['website_name'];
+    	$website->save();
     }
 }
