@@ -15,10 +15,15 @@
         <label for="project_name">Project Name:</label>
     </div>
     <div class="input-field col s4">
-        {!! Form::select('project_status', array(
+        <!--{!! Form::select('project_status', array(
         'd' => 'Deployed', 
         'u' => 'Undeployed',
-         )); !!}
+         )); !!}-->
+        <select>
+          
+          <option value="D">Deployed</option>
+          <option value="U">Underdeployment</option>
+        </select>
         <label>Project Status:</label>
         
     </div>

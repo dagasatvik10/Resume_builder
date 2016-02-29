@@ -1,6 +1,14 @@
 @extends('layouts.master')
 
 @section('header')
+	<script>
+	    $(document).ready(function(){
+	        $("#basic_info").click(function(){
+	            $("p").hide();
+	            alert('hello');
+	    });
+	        
+    </script> 
 	<nav>
 		  <div class="nav-wrapper teal lighten-2">
 		    <a href="#" class="" style="margin-left: 80px;">Create, Maintain and publish your CV's for free</a>
@@ -15,12 +23,13 @@
 				<i class="medium material-icons">library_books</i>Resume Builder
 			</div>
 			<div class="col s2">
-				Downloaded
+				
 			</div>
 			<div class="col s2">
-				Saved
+				
 			</div>
 		</div>
+
 @stop
 
 @section('section')
@@ -37,20 +46,26 @@
 		<div class="row">
 			<div class="col s4">
 				<ul class="">
-					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;">Basic Information</li>
-					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;">Work Experience</li>
-					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;">Qualification</li>
-					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;">Education</li>
-					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;">Objective</li>
-					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;">Personal Details</li>
-					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;">Projects</li>
+					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;" id="basic_info">Basic Information</li>
+					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;" id="work_experience">Work Experience</li>
+					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;" id="qualification">Qualification</li>
+					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;" id="education">Education</li>
+					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;" id="objective">Objective</li>
+					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;" id="personal_details">Personal Details</li>
+					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;" id="projects">Projects</li>
 				</ul>
 				<div class="waves-effect waves-light btn" style="border-radius: 20px;"><i class="medium material-icons">playlist_add</i>
 					Add New Section
 				</div>
 			</div>
 		<div class="col s8">
-			
+			<?php
+				//include 'dashboard.blade.php';
+				//include(app_path().'\includes\dashboard.blade.php');
+			?>
+			<p id="b">basic_info</p>
+			<p id="w" style="display: none;">Work_experience</p>
+			<p id="p" style="display: none;">Project</p>
 		</div>
 	</div>
 @stop
