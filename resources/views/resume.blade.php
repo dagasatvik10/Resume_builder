@@ -2,25 +2,25 @@
 
 @section('header')
 	<nav>
-		  <div class="nav-wrapper teal lighten-2">
-		    <a href="#" class="" style="margin-left: 80px;">Create, Maintain and publish your CV's for free</a>
+		<div class="nav-wrapper teal lighten-2">
+			<a href="#" class="" style="margin-left: 80px;">Create, Maintain and publish your CV's for free</a>
 		    <ul id="nav-mobile" class="right hide-on-med-and-down">
 		      <li><a href="">Login_id</a></li>
 		      <li><a href="">Logout</a></li>
-		     </ul>
-		  </div>
-		</nav>
-		<div class="row card-panel" style="margin-top: 0px; height: 100px;">
-			<div class="col s8 brand-logo">
-				<i class="medium material-icons">library_books</i>Resume Builder
-			</div>
-			<div class="col s2">
-				Downloaded
-			</div>
-			<div class="col s2">
-				Saved
-			</div>
+			</ul>
 		</div>
+	</nav>
+	<div class="row card-panel" style="margin-top: 0px; height: 100px;">
+		<div class="col s8 brand-logo">
+			<i class="medium material-icons">library_books</i>Resume Builder
+		</div>
+		<div class="col s2">
+			Downloaded
+		</div>
+		<div class="col s2">
+			Saved
+		</div>
+	</div>
 @stop
 
 @section('section')
@@ -49,8 +49,9 @@
 					Add New Section
 				</div>
 			</div>
-		<div class="col s8">
-			
+			<div class="col s8">
+			@include('_resumeForms')
+			</div>
 		</div>
 	</div>
 @stop

@@ -73,33 +73,26 @@ class AuthController extends Controller
 
     public function redirectGithub()
     {
-        return Socialite::with('github')->redirect();
+        return Socialite::driver('github')->redirect();
     }
 
-    /**
-     *
-     */
     public function githubCallback()
     {
-        $user = Socialite::with('github')->user();
+        $user = Socialite::driver('github')->user();
 
         dd($user);
-
-        // $user->token;
     }
 
     public function redirectFb()
     {
-        return Socialite::with('facebook')->redirect();
+        return Socialite::driver('facebook')->redirect();
     }
 
     public function fbCallback(Request $request)
     {
-        $user = Socialite::with('facebook')->user();
+        $user = Socialite::driver('facebook')->user();
 
-        print_r($user);
-
-        // $user->token;
+        dd($user);
     }
 
 }
