@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -72,44 +73,33 @@ class AuthController extends Controller
 
     public function redirectGithub()
     {
-        return Socialite::driver('github')->redirect();
+        return Socialite::with('github')->redirect();
     }
 
+    /**
+     *
+     */
     public function githubCallback()
     {
-        $user = Socialite::driver('github')->user();
+        $user = Socialite::with('github')->user();
 
-        return dd($user);
+        dd($user);
 
         // $user->token;
     }
 
     public function redirectFb()
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::with('facebook')->redirect();
     }
 
-    public function FbCallback()
+    public function fbCallback(Request $request)
     {
-        $user = Socialite::driver('facebook')->user();
+        $user = Socialite::with('facebook')->user();
 
-        return dd($user);
+        print_r($user);
 
         // $user->token;
     }
 
-    public function redirectToGithub()
-    {
-        return Socialite::with('github')->redirect();
-    }
-
-    public function handleGithubCallback()
-    {
-        $user = Socialite::with('github')->user();
-
-        return dd($user);
-
-
-        // $user->token;
-    }
 }

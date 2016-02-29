@@ -49,10 +49,5 @@ return [
 
     ],
 
-    'github' => [
-    'client_id' => '2a70ddf1ac1915832b3b',
-    'client_secret' => '3be38076d1239bbbf078cf5f0a6ae777eb62dce2',
-    'redirect' => 'http://localhost:8000/auth/git/callback',
-    ],
 
 ];
