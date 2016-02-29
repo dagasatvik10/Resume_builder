@@ -1,36 +1,61 @@
-@extends('users.master')
+@extends('layouts.master')
 
 @section('header')
-    <?php // dd('Work Experience'); ?>
+    <div class="container">
+        <h3>Work Experience</h3>
+    </div>
 @stop
 
 @section('form')
-    <div id="job_title">
-        <label>Job Title:</label>
-        {!! Form::text('job_title') !!}
+    <div class="container row col s8">
+        <div class="input-field col s4">
+            <label for="job_title">Job Title:</label>
+            {!! Form::text('job_title',null,array(
+                'class' => 'validate',
+                'id' => 'job_title'
+            )); !!}
+        </div>
+        <div class="input-field col s4">
+            <label for="company_name">Company Name:</label>
+            {!! Form::text('company_name',null,array(
+                'class' => 'validate',
+                'id' => 'company_name'
+            )); !!}
+        </div>
     </div>
-    <div id="company_name">
-        <label>Company Name:</label>
-        {!! Form::text('company_name') !!}
+    <div class=" container row col s8">
+        <div class="input-field col s4">
+            <label for="start_date">Start Date:</label>
+            {!! Form::text('start_date',null,array(
+                'class' => 'validate',
+                'id' => 'start_date'
+            )); !!}
+        </div>
+        <div class="input-field col s4">
+            <label for="end_date">End Date:</label>
+            {!! Form::text('end_date',null,array(
+                'class' => 'validate',
+                'id' => 'end_date'
+            )); !!}
+        </div>
     </div>
-    <div id="start_date">
-        <label>Start Date:</label>
-        {!! Form::date('start_date') !!}
-    </div>
-    <div id="end_date">
-        <label>End Date:</label>
-        {!! Form::date('end_date') !!}
-    </div>
-    <div id="other_info">
-        <label>Other Information:</label>
-        {!! Form::textarea('other_info') !!}
-    </div>
-    <div id="delete">
-        {!! Form::button('delete') !!}
-    </div>
-    <div id="save">
-        {!! Form::button('save') !!}
-    </div>
-
-    
+        <div class="container input-field">
+            <label for="other_info">Other Information:</label>
+            {!! Form::textarea('other_info',null,array(
+                'class' => 'validate',
+                'id' => 'other_info'
+            )); !!}
+        </div><br>
+        <div class="row col s8 container">
+            <div class="col s4">
+                {!! Form::button('delete',array(
+                    'class' => 'waves-effect waves-light btn-large'
+                )); !!}
+            </div>
+            <div class=" col s4">
+                {!! Form::button('Add+',array(
+                    'class' => 'waves-effect waves-light btn-large'
+                )) !!}
+            </div>
+        </div>    
 @stop
