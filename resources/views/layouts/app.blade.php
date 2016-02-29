@@ -40,7 +40,11 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
+<<<<<<< HEAD
+                    Resume Builder
+=======
                     Laravel
+>>>>>>> master
                 </a>
             </div>
 
