@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+
+use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -65,7 +67,6 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
@@ -79,10 +80,7 @@ class AuthController extends Controller
     public function githubCallback()
     {
         $user = Socialite::driver('github')->user();
-
         return dd($user);
-
-        // $user->token;
     }
 
     public function redirectFb()
@@ -90,12 +88,11 @@ class AuthController extends Controller
         return Socialite::driver('facebook')->redirect();
     }
 
-    public function FbCallback()
+    public function fbCallback(Request $request)
     {
         $user = Socialite::driver('facebook')->user();
-
         return dd($user);
 
-        // $user->token;
     }
+
 }
