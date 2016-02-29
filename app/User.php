@@ -36,8 +36,7 @@ class User extends Authenticatable
     {
         $user = new User;
         $user->email = $this->input->email;
-        $user->password = $this->input->password;
-        $user->remember_token = $this->input->remember_token;
+        $user->password = $input['password'];
         $user->save();
     }
 }
