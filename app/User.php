@@ -23,4 +23,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function resumes()
+    {
+        return $this->hasMany('App\Resume');
+    }
+
+    public function update_user($input)
+    {
+        $user = new User;
+        $user->email = $this->input->email;
+        $user->password = $input['password'];
+        $user->save();
+    }
 }

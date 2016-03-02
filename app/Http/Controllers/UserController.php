@@ -14,15 +14,25 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+       // $this->middleware('auth');
     }
 
-    public function index()
+    public function showDashboard()
     {
-        $user = Auth::user();
-        $resumes = Resume::where('user_id','=',$user->id)->get();
-        return view('dashboard',compact(['user' => $user,'resume' => $resumes]));
+//        $user = Auth::user();
+//        $resumes = Resume::where('user_id','=',$user->id)->get();
+        return view('dashboard');//compact(['user' => $user,'resume' => $resumes]));
 
+    }
+
+    public function createResume($id=null)
+    {
+
+        return view('resume');
+    }
+    public function homepage()
+    {
+        return view('homepage');
     }
 
 

@@ -1,0 +1,19 @@
+body
+{
+	background:url(img-centre.jpg) no-repeat;
+	background-position: fixed;
+	background-size: 1366px;
+	padding:0px;
+	margin:0px;
+
+}
+#head
+{
+	color: #fff;
+	font-size: 25px;
+}
+#login
+{
+	color: #fff;
+	font-size: 20px;
+}
