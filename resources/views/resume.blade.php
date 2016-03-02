@@ -7,10 +7,9 @@
 		    <ul id="nav-mobile" class="right hide-on-med-and-down">
 		      <li><a href="">Login_id</a></li>
 		      <li><a href="">Logout</a></li>
-
-		     </ul>
-		  </div>
-		</nav>
+			</ul>
+		</div>
+	</nav>
 		<div class="row card-panel" style="margin-top: 0px; height: 100px;">
 			<div class="col s8 brand-logo">
 				<i class="medium material-icons">library_books</i>Resume Builder
@@ -22,10 +21,7 @@
 				
 			</div>
 		</div>
-			</ul>
-		</div>
-	</nav>
-	@stop
+@stop
 
 @section('section')
 	<div class="container col s12">

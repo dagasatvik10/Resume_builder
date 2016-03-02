@@ -23,5 +23,3 @@
             @include('form._work_experience')
         </div>
     {!! Form::close() !!}
-
-@stop
