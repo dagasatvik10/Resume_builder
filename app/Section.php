@@ -4,21 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends Model
+class Section extends Model
 {
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function resume()
+    public function getResume()
     {
         return $this->belongsTo('App\Resume');
     }
 
-    public function update_contact($input)
+    public function getDetail()
     {
-    	$contact = new Contact;
-    	$contact->phone_number = $input['phone_number'];
-
-    	$contact->save();
+        return $this->hasMany('App\Detail');
     }
+
 }

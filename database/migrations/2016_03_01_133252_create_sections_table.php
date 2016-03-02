@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWebsitesTable extends Migration
+class CreateSectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class CreateWebsitesTable extends Migration
      */
     public function up()
     {
-        Schema::create('websites', function (Blueprint $table) {
+        Schema::create('sections', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('resume_id')->unsigned();
             $table->foreign('resume_id')->references('id')->on('resumes');
-            $table->string('website_name');
+            $table->string('section_name');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateWebsitesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('websites');
+        Schema::drop('sections');
     }
 }
