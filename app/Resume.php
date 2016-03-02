@@ -10,7 +10,7 @@ class Resume extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function getUser()
     {
         return $this->belongsTo('App\User');
     }
@@ -18,62 +18,8 @@ class Resume extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function skills()
-    {
-        return $this->hasMany('App\Skill');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function achievements()
-    {
-        return $this->hasMany('App\Achievements');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function contacts()
-    {
-        return $this->hasMany('App\Contact');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function educations()
-    {
-        return $this->hasMany('App\Education');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function websites()
-    {
-        return $this->hasMany('App\Website');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function work_experiences()
-    {
-        return $this->hasMany('App\WorkExperience');
-    }
-
-    public function update_resume($input)
-    {
-        $resume = new Resume;
-        $resume->fullname = $input['fullname'];
-        $resume->father_name = $input['father_name'];
-        $resume->country = $input['country'];
-        $resume->address = $input['address'];
-        $resume->objective = $input['objective'];
-        $resume->profile_pic = $input['profile_pic'];
-        
-        $resume->save();
+    public function getSection(){
+        return $this->hasMany('App\Section');
     }
 
 }
