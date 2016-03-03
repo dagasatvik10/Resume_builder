@@ -6,12 +6,12 @@
               $('#password').toggle();
               $this.prop("checked");
             });
-        $("#add").click(function(){
+        $("#add_basic_info").click(function(){
             $('#web').append("<input type='text' id='w'>");
-            $('#delete').show();
+            $('#delete_basic_info').show();
       
         });
-        $('#delete').click(function(){
+        $('#delete_basic_info').click(function(){
             $('#w').detach();
         });
     });
@@ -51,13 +51,13 @@
             <div class="input-field col s4">
                 {!! Form::button('Add+',array(
                     'class' => 'waves-effect waves-light btn-large',
-                    'id' => 'add'
+                    'id' => 'add_basic_info'
                 )); !!} 
             </div>
             <div class="input-field col s4">
                 {!! Form::button('Delete',array(
                     'class' => 'waves-effect waves-light btn-large',
-                    'id' => 'delete',
+                    'id' => 'delete_basic_info',
                     'style' => 'display:none;'
                 )); !!}
             </div>      

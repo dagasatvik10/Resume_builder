@@ -2,29 +2,31 @@
     
     $(document).ready(function ()
     {
-        $(".add_new").click(function (){
-            //$('.delete_new').show();
-            $('#education').append("<input type='text'>");
-            //alert('hello');
+        $("#add_education").click(function (){
+            $('#delete_education').show();
+            //$('#new_education').append($("#education"));
         });        
     });
+
 </script>
 <div id="education">
     <div class="row col s8">
-            <div class="input-field col s4">
-               {!! Form::text('course_name',null,array(
-                    'class' => 'validate',
-                    'id' => 'course_name'
-               )) !!}
-                <label for="course_name">Course Name:</label>
-            </div>
-            <div class="input-field col s4">
-                {!! Form::text('institution_name',null,array(
-                    'class' => 'validate',
-                    'id' => 'institution_name'
-                )) !!}
-                <label for="institution_name">Institution Name:</label>
-            </div>
+        <div class="input-field col s4">
+            {!! Form::text('course_name',null,array(
+                'class' => 'validate',
+                'id' => 'course_name'
+               )) 
+            !!}
+            <label for="course_name">Course Name:</label>
+        </div>
+        <div class="input-field col s4">
+            {!! Form::text('institution_name',null,array(
+                'class' => 'validate',
+                'id' => 'institution_name'
+                )) 
+            !!}
+            <label for="institution_name">Institution Name:</label>
+        </div>
     </div>
     <div class="row col s8">
         <div class="input-field col s4">
@@ -46,20 +48,19 @@
         <div class="col s4">
             {!! Form::button('Add+',array(
             'class' => 'waves-effect waves-light btn-large add_new',
-            'id' => 'add'
+            'id' => 'add_education'
         )) !!}
         </div>
         <div class="col s4">
            {!! Form::button('Delete',array(
             'class' => 'waves-effect waves-light btn-large delete_new',
-            'id' => 'delete',
+            'id' => 'delete_education',
             'style' => 'display:none'
         )) !!} 
         </div>
     </div>
 </div>
-    
-<div class ="container">
+<div id ="new_education">
        
 </div>
 
