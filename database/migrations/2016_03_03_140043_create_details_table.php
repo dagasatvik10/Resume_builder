@@ -16,9 +16,9 @@ class CreateDetailsTable extends Migration
             $table->increments('id');
             $table->integer('resume_id')->unsigned();
             $table->foreign('resume_id')->references('id')->on('resumes');
-            $table->integer('subcategory_id')->unsigned();
-            $table->foreign('subcategory_id')->references('id')->on('subcategories');
-            $table->string('detail');
+            $table->integer('subsection_id')->unsigned();
+            $table->foreign('subsection_id')->references('id')->on('subsections');
+            $table->string('content');
             $table->timestamps();
         });
     }

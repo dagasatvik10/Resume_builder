@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreateSectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories',function (Blueprint $table)
-        {
+        Schema::create('sections', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('default');
+            $table->string('section_name');
+            $table->integer('flag');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('categories');
+        Schema::drop('sections');
     }
 }
