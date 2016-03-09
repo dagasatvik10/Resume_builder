@@ -10,16 +10,25 @@ class Resume extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function getUser()
+    public function user()
     {
         return $this->belongsTo('App\User');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function getSection(){
-        return $this->hasMany('App\Section');
+    public function section()
+    {
+        return $this->belongsToMany('App\Section','mappings')->withPivot('flag');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function subsection()
+    {
+        return $this->belongsToMany('App\Subsection','details')->withPivot('content');
     }
 
 }
