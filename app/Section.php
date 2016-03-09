@@ -6,17 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
+    public $timestamps = false;
+
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function getResume()
+    public function resume()
     {
-        return $this->belongsTo('App\Resume');
+        return $this->belongsToMany('App\Resume','mappings')->withPivot('flag');
     }
 
-    public function getDetail()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function subsections()
     {
-        return $this->hasMany('App\Detail');
+        return $this->hasMany('App\Subsection');
     }
 
 }
