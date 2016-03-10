@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDetailsTable extends Migration
+class CreateMappingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,12 @@ class CreateDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('details', function (Blueprint $table) {
+        Schema::create('mappings', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('resume_id')->unsigned();
+            $table->foreign('resume_id')->references('id')->on('resumes');
             $table->integer('section_id')->unsigned();
             $table->foreign('section_id')->references('id')->on('sections');
-            $table->string('detail');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('details');
+        Schema::drop('mappings');
     }
 }

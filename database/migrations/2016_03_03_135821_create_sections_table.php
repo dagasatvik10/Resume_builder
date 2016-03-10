@@ -14,10 +14,8 @@ class CreateSectionsTable extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('resume_id')->unsigned();
-            $table->foreign('resume_id')->references('id')->on('resumes');
             $table->string('section_name');
-            $table->timestamps();
+            $table->integer('flag');
         });
     }
 

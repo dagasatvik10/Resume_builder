@@ -1,9 +1,12 @@
 <?php
+
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('dashboard','UserController@showDashboard');
 Route::get('resume','UserController@createResume');
+Route::get('homepage','UserController@homepage');
+
 
 Route::group(['middleware' => ['web']], function()
 {
@@ -11,7 +14,6 @@ Route::group(['middleware' => ['web']], function()
 	Route::get('auth/github/callback','Auth\AuthController@githubCallback');
 	Route::get('auth/fb','Auth\AuthController@redirectFb');
 	Route::get('auth/fb/callback','Auth\AuthController@fbCallback');
-
 });
 
 
@@ -22,3 +24,4 @@ Route::group(['middleware' => 'web'], function () {
 });
 
 Route::post('/resume','FormController@update');
+
