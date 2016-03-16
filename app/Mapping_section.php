@@ -4,24 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Section extends Model
+class Mapping_section extends Model
 {
-    public $timestamps = false;
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function resumes()
+    public function subsections()
     {
-        return $this->belongsToMany('App\Resume','mapping_sections');
+        return $this->belongsToMany('App\Subsection','mapping_subsections');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function subsections()
+    public function mapping_subsections()
     {
-        return $this->hasMany('App\Subsection');
+        return $this->hasMany('App\Mapping_subsection');
     }
-
 }

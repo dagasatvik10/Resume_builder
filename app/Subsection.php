@@ -23,4 +23,12 @@ class Subsection extends Model
     {
         return $this->belongsTo('App\Section');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function mappings()
+    {
+        return $this->belongsToMany('App\Mapping_section','mapping_subsections');
+    }
 }
