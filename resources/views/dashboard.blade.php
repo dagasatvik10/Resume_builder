@@ -1,6 +1,5 @@
 @extends('layouts.master')
 
-
 @section('header')
 	<nav>
 		  <div class="nav-wrapper teal lighten-2">

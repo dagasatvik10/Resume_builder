@@ -2,13 +2,18 @@
     
     $(document).ready(function ()
     {
+        var new_education =$('#education').children();
         $("#add_education").click(function (){
-            $('#delete_education').show();
-            //$('#new_education').append($("#education"));
-        });        
+            $('#delete_education').show();            
+            $(new_education).clone().appendTo('#1');
+        }); 
+        $('#delete_education').click(function(){
+            $('#new_education').detach();
+        });     
     });
 
 </script>
+
 <div id="education">
     <div class="row col s8">
         <div class="input-field col s4">
@@ -44,23 +49,13 @@
             <label for="marks">Marks:</label>
         </div>
     </div>
-    <div class="row col s8">
-        <div class="col s4">
-            {!! Form::button('Add+',array(
-            'class' => 'waves-effect waves-light btn-large add_new',
-            'id' => 'add_education'
-        )) !!}
-        </div>
-        <div class="col s4">
-           {!! Form::button('Delete',array(
-            'class' => 'waves-effect waves-light btn-large delete_new',
-            'id' => 'delete_education',
-            'style' => 'display:none'
-        )) !!} 
-        </div>
+    <div class="col s4">
+           <div class="btn col s4" id="delete_education" style="display: none;">Delete</div>
     </div>
 </div>
-<div id ="new_education">
-       
-</div>
+
+<div id ="1"></div>
+
+<div class="btn col s4" id="add_education">Add+</div>
+
 
