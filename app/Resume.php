@@ -32,4 +32,12 @@ class Resume extends Model
         return $this->hasManyThrough('App\Detail','App\Mapping_subsection','App\Mapping_section');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function mapping_sections()
+    {
+        return $this->hasMany('App\Mapping_section');
+    }
+
 }

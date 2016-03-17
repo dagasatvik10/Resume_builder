@@ -24,4 +24,12 @@ class Section extends Model
         return $this->hasMany('App\Subsection');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function mapping_sections()
+    {
+        return $this->hasMany('App\Mapping_section');
+    }
+
 }

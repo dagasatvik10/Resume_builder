@@ -14,7 +14,7 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
         $(document).ready(function(){
-            $("#basicinfo").click(function(){
+           /* $("#basicinfo").click(function(){
                 $("#project").hide();
                 $('#basic_info').show();
                 $('#education').hide();
@@ -76,6 +76,10 @@
                 $('#personal_details').hide();
                 $('#skill').hide();
                 $('#work_experience').hide();
+            });*/
+            $(document).ready(function(){
+                // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+                $('.modal-trigger').leanModal();
             });
         });
      </script>   

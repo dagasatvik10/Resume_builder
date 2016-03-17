@@ -12,13 +12,15 @@ use App\Http\Controllers\UserController;
 	Route::get('auth/fb/callback','Auth\AuthController@fbCallback');
 
 });*/
-Route::get('home','HomeController@home');
+Route::get('/','HomeController@home');
 
 Route::group(['middleware' => 'web'], function ()
 {
     Route::auth();
-	//Route::get('/user', ['as' => 'user.index','uses' => 'UserController@index']);
-    Route::get('dashboard',['uses' => 'UserController@showDashboard']);
-    Route::get('resume','UserController@createResume');
-    //Route::get('/user/resume/{id?}',['as' => 'user.resume','uses' => 'UserController@createResume']);
+    Route::get('dashboard',['as' => 'user.dashboard','uses' => 'UserController@showDashboard']);
+    Route::get('resume',['as' => 'resume.create','uses' => 'ResumeController@create']);
+	Route::post('/storeName',['as' => 'resume.name','uses' => 'ResumeController@store_resume_name']);
 });
+
+
+

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Resume;
+use App\Section;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -24,9 +25,9 @@ class UserController extends Controller
 
     public function showDashboard()
     {
-//        $user = Auth::user();
-//        $resumes = Resume::where('user_id','=',$user->id)->get();
-        return view('dashboard');//compact(['user' => $user,'resume' => $resumes]));
+        $user = Auth::user();
+        $resumes = $user->resumes;
+        return view('dashboard',compact(['user','resumes']));
 
     }
 
@@ -35,12 +36,6 @@ class UserController extends Controller
 
         return view('resume');
     }
-
-    public function homepage()
-    {
-        return view('vendor.homepage');
-    }
-
 
 
 }
