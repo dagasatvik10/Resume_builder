@@ -12,7 +12,7 @@ use App\Http\Controllers\UserController;
 	Route::get('auth/fb/callback','Auth\AuthController@fbCallback');
 
 });*/
-
+Route::get('home','HomeController@home');
 
 Route::group(['middleware' => 'web'], function ()
 {
