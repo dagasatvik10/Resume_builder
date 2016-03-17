@@ -30,9 +30,10 @@ class UserController extends Controller
 
         return view('resume');
     }
+
     public function homepage()
     {
-        return view('homepage');
+        return view('vendor.homepage');
     }
 
 
