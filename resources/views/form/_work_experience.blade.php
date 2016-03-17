@@ -4,14 +4,12 @@
     $(document).ready(function ()
     {
         var new_experience = $("#work_experience_form").children();
-        console.log(new_experience);
         $("#add_work_experience").click(function (){
             $("#delete_work_experience").show();
-            $(new_experience).clone().appendTo('#check');
-            //$("#new_otherinfo").append('<textarea id="textarea"></textarea>');
+            $(new_experience).clone().appendTo('#new_work_experience');
         });
         $('#delete_work_experience').click(function(){
-            $('#textarea').detach();
+            $('#new_work_experience').detach();
         });        
     });
 </script>
@@ -50,20 +48,19 @@
     </div>
     <div class="col s4 input-field" id="other_info">
         {!! Form::textarea('other_info',null,array(
-                'class' => 'validate',
+                'class' => 'validate'
             )) 
         !!}
         <label for="other_info">Other Information:</label>
     </div>
-    <div id="new_otherinfo"></div>
     <br>
     <div class="row col s8 ">
-        <div class="btn col s4" id="add_work_experience">Add+</div>
         <div class="btn col s4" id="delete_work_experience" style="display: none;">Delete</div>
     </div>
 </div>
-<div id='check'>
+<div id='new_work_experience'>
 </div> 
+<div class="btn col s4" id="add_work_experience">Add+</div>
         
           
 

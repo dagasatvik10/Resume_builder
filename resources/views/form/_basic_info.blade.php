@@ -46,6 +46,13 @@
                 'id' => 'websites'
             )); !!}
             <label for="websites">Websites:</label>
+            <div class="input-field col s4">
+                {!! Form::button('Delete',array(
+                    'class' => 'waves-effect waves-light btn-large',
+                    'id' => 'delete_basic_info',
+                    'style' => 'display:none;'
+                )); !!}
+            </div>      
         </div>
         <div class="input-field col s8">
             <div class="input-field col s4">
@@ -54,13 +61,6 @@
                     'id' => 'add_basic_info'
                 )); !!} 
             </div>
-            <div class="input-field col s4">
-                {!! Form::button('Delete',array(
-                    'class' => 'waves-effect waves-light btn-large',
-                    'id' => 'delete_basic_info',
-                    'style' => 'display:none;'
-                )); !!}
-            </div>      
         </div>
         
     </div>       
