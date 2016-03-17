@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 16, 2016 at 06:40 PM
+-- Generation Time: Mar 17, 2016 at 05:51 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `details` (
   `id` int(10) UNSIGNED NOT NULL,
-  `resume_id` int(10) UNSIGNED NOT NULL,
   `mapping_subsection_id` int(10) UNSIGNED NOT NULL,
   `content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -57,7 +56,7 @@ CREATE TABLE `mapping_sections` (
 
 CREATE TABLE `mapping_subsections` (
   `id` int(10) UNSIGNED NOT NULL,
-  `mapping_id` int(10) UNSIGNED NOT NULL,
+  `mapping_section_id` int(10) UNSIGNED NOT NULL,
   `subsection_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -129,12 +128,12 @@ CREATE TABLE `sections` (
 
 INSERT INTO `sections` (`id`, `section_name`, `flag`) VALUES
 (1, 'Basic Information', 0),
-(2, 'Education', 0),
-(3, 'Projects', 0),
-(4, 'Skills', 0),
+(2, 'Education', 1),
+(3, 'Projects', 1),
+(4, 'Skills', 1),
 (5, 'Objective', 0),
 (6, 'Personal Details', 0),
-(7, 'Work Experience', 0);
+(7, 'Work Experience', 1);
 
 -- --------------------------------------------------------
 
@@ -145,35 +144,36 @@ INSERT INTO `sections` (`id`, `section_name`, `flag`) VALUES
 CREATE TABLE `subsections` (
   `id` int(10) UNSIGNED NOT NULL,
   `section_id` int(10) UNSIGNED NOT NULL,
-  `subsection_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `subsection_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `flag` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `subsections`
 --
 
-INSERT INTO `subsections` (`id`, `section_id`, `subsection_name`) VALUES
-(1, 1, 'Name'),
-(2, 1, 'Email'),
-(3, 1, 'Websites'),
-(4, 2, 'Course Name'),
-(5, 2, 'Institution'),
-(6, 2, 'Passing Year'),
-(7, 2, 'Marks'),
-(8, 3, 'Project Name'),
-(9, 3, 'Project Status'),
-(10, 4, 'Skill'),
-(11, 5, 'Objective'),
-(12, 6, 'Father''s Name'),
-(13, 6, 'Contact No.'),
-(14, 6, 'Address'),
-(15, 6, 'Country'),
-(16, 7, 'Job Title'),
-(17, 7, 'Company'),
-(18, 7, 'Start Date'),
-(19, 7, 'End Date'),
-(20, 7, 'Other Information'),
-(21, 6, 'Profile Picture');
+INSERT INTO `subsections` (`id`, `section_id`, `subsection_name`, `flag`) VALUES
+(1, 1, 'Name', 0),
+(2, 1, 'Email', 1),
+(3, 1, 'Websites', 1),
+(4, 2, 'Course Name', 0),
+(5, 2, 'Institution', 0),
+(6, 2, 'Passing Year', 0),
+(7, 2, 'Marks', 0),
+(8, 3, 'Project Name', 0),
+(9, 3, 'Project Status', 0),
+(10, 4, 'Skill', 0),
+(11, 5, 'Objective', 0),
+(12, 6, 'Father''s Name', 0),
+(13, 6, 'Contact No.', 1),
+(14, 6, 'Address', 0),
+(15, 6, 'Country', 0),
+(16, 7, 'Job Title', 0),
+(17, 7, 'Company', 0),
+(18, 7, 'Start Date', 0),
+(19, 7, 'End Date', 0),
+(20, 7, 'Other Information', 0),
+(21, 6, 'Profile Picture', 0);
 
 -- --------------------------------------------------------
 
@@ -183,12 +183,20 @@ INSERT INTO `subsections` (`id`, `section_id`, `subsection_name`) VALUES
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, '', 'dagasatvik@gmail.com', '$2y$10$SiJJQBWc4IWAfT81LK6sCu6cO0ngTplA7C1WpeGGP0Z8/I/eG5rSy', NULL, '2016-03-17 11:05:35', '2016-03-17 11:05:35');
 
 --
 -- Indexes for dumped tables
@@ -199,7 +207,6 @@ CREATE TABLE `users` (
 --
 ALTER TABLE `details`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `details_resume_id_foreign` (`resume_id`),
   ADD KEY `details_mappings_subsection_id_foreign` (`mapping_subsection_id`);
 
 --
@@ -215,8 +222,8 @@ ALTER TABLE `mapping_sections`
 --
 ALTER TABLE `mapping_subsections`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `mappings_subsections_mapping_id_foreign` (`mapping_id`) USING BTREE,
-  ADD KEY `mappings_subsections_subsection_id_foreign` (`subsection_id`) USING BTREE;
+  ADD KEY `mapping_subsections_mapping_subsection_id_foreign` (`mapping_section_id`) USING BTREE,
+  ADD KEY `mapping_subsections_subsection_id_foreign` (`subsection_id`) USING BTREE;
 
 --
 -- Indexes for table `password_resets`
@@ -289,7 +296,7 @@ ALTER TABLE `subsections`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
@@ -311,8 +318,8 @@ ALTER TABLE `mapping_sections`
 -- Constraints for table `mapping_subsections`
 --
 ALTER TABLE `mapping_subsections`
-  ADD CONSTRAINT `mappings_subsections_mapping_id_foreign` FOREIGN KEY (`mapping_id`) REFERENCES `mapping_sections` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `mappings_subsections_subsection_id_foreign` FOREIGN KEY (`subsection_id`) REFERENCES `subsections` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `mapping_subsections_mapping_subsection_id_foreign` FOREIGN KEY (`mapping_section_id`) REFERENCES `mapping_sections` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `mapping_subsections_subsection_id_foreign` FOREIGN KEY (`subsection_id`) REFERENCES `subsections` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `resumes`
