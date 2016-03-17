@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
@@ -80,8 +81,7 @@ class AuthController extends Controller
     public function githubCallback()
     {
         $user = Socialite::driver('github')->user();
-
-        dd($user);
+        return dd($user);
     }
 
     public function redirectFb()
@@ -92,8 +92,8 @@ class AuthController extends Controller
     public function fbCallback(Request $request)
     {
         $user = Socialite::driver('facebook')->user();
+        return dd($user);
 
-        dd($user);
     }
 
 }

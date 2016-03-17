@@ -10,17 +10,17 @@
 			</ul>
 		</div>
 	</nav>
-	<div class="row card-panel" style="margin-top: 0px; height: 100px;">
-		<div class="col s8 brand-logo">
-			<i class="medium material-icons">library_books</i>Resume Builder
+		<div class="row card-panel" style="margin-top: 0px; height: 100px;">
+			<div class="col s8 brand-logo">
+				<i class="medium material-icons">library_books</i>Resume Builder
+			</div>
+			<div class="col s2">
+				
+			</div>
+			<div class="col s2">
+				
+			</div>
 		</div>
-		<div class="col s2">
-			Downloaded
-		</div>
-		<div class="col s2">
-			Saved
-		</div>
-	</div>
 @stop
 
 @section('section')
@@ -37,21 +37,40 @@
 		<div class="row">
 			<div class="col s4">
 				<ul class="">
-					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;">Basic Information</li>
-					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;">Work Experience</li>
-					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;">Qualification</li>
-					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;">Education</li>
-					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;">Objective</li>
-					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;">Personal Details</li>
-					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;">Projects</li>
+					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;" id="basicinfo">Basic Information</li>
+					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;" id="work_exp">Work Experience</li>
+					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;" id="educ">Education</li>
+					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;" id="object">Objective</li>
+					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;" id="per_det">Personal Details</li>
+					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;" id="proj">Projects</li>
+					<li class="waves-effect waves-light btn" style="margin-bottom: 10px; width: 300px;" id="skills">Skills</li>
 				</ul>
 				<div class="waves-effect waves-light btn" style="border-radius: 20px;"><i class="medium material-icons">playlist_add</i>
 					Add New Section
 				</div>
 			</div>
 			<div class="col s8">
-			@include('_resumeForms')
-			</div>
+				<div id="basic_info" style="display: none;">
+		            @include('form._basic_info')
+		        </div>
+		        <div id="education" style="display: none;">
+		            @include('form._education')
+		        </div>
+		        <div id="objective" style="display: none;">
+		            @include('form._objective')
+		        </div>
+		        <div id="personal_details" style="display: none;">
+		            @include('form._personal_details')
+		        </div>
+		        <div id="project" style="display: none;">
+		            @include('form._project')
+		        </div>
+		        <div id="skill" style="display: none;">
+		            @include('form._skill')
+		        </div>
+		        <div id="work_experience" style="display: none;">
+		            @include('form._work_experience')
+		        </div>
 		</div>
 	</div>
 @stop
