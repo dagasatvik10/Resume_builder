@@ -21,15 +21,15 @@ class Resume extends Model
      */
     public function sections()
     {
-        return $this->belongsToMany('App\Section','mapping_sections');
+        return $this->belongsToMany('App\Section','mapping_sections')->withPivot('id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function details()
+    public function mapping_subsections()
     {
-        return $this->hasManyThrough('App\Detail','App\Mapping_subsection','App\Mapping_section');
+        return $this->hasManyThrough('App\Mapping_subsection','App\Mapping_section');
     }
 
     /**
