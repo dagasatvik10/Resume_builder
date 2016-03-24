@@ -5,7 +5,6 @@ use App\Http\Controllers\UserController;
 
 
 /*Route::group(['middleware' => ['web']], function()
->>>>>>> d1928f6e88b6d55a1c8257d8f8a4a198562ac6db
 {
 	Route::get('auth/github','Auth\AuthController@redirectGithub');
 	Route::get('auth/github/callback','Auth\AuthController@githubCallback');
@@ -13,15 +12,13 @@ use App\Http\Controllers\UserController;
 	Route::get('auth/fb/callback','Auth\AuthController@fbCallback');
 
 });*/
-Route::get('/','HomeController@home');
 
 Route::group(['middleware' => 'web'], function ()
 {
     Route::auth();
+    Route::get('/','HomeController@home');
     Route::get('dashboard',['as' => 'user.dashboard','uses' => 'UserController@showDashboard']);
-    Route::get('resume',['as' => 'resume.create','uses' => 'ResumeController@create']);
-	Route::post('/storeName',['as' => 'resume.name','uses' => 'ResumeController@store_resume_name']);
+    Route::get('resume/{id}',['as' => 'resume.create','uses' => 'ResumeController@create']);
+    Route::post('resume/{id}',['as' => 'resume.store','uses' => 'ResumeController@store']);
+    Route::post('/resume',['as' => 'resume.name','uses' => 'ResumeController@store_resume_name']);
 });
-
-
-

@@ -9,14 +9,6 @@ class Subsection extends Model
     public $timestamps = false;
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function resume()
-    {
-        return $this->belongsToMany('App\Resume','details')->withPivot('content');
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function section()
@@ -27,8 +19,8 @@ class Subsection extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function mapping_subsections()
+    public function mapping_sections()
     {
-        return $this->belongsToMany('App\Mapping_section','mapping_subsections');
+        return $this->belongsToMany('App\Mapping_section','mapping_subsections')->withPivot('id');
     }
 }
