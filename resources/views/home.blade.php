@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	 <!DOCTYPE html>
 <html>
 <head>
 	<title>Resume Builder | Software Incubator</title>
@@ -9,10 +9,68 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+	<script type="text/javascript">
+		/*$(document).ready(function() {
+		 var s = $(".navbar_scroll");
+		 var pos = s.position();        
+		 $(window).scroll(function() {
+		  var windowpos = $(window).scrollTop();
+		  if (windowpos >= pos.top) {
+		   s.addClass("navbaron");
+		  }
+		  else {
+		   s.removeClass("navbaron"); 
+		  }
+		 });
+		});*/
+		$(document).ready(function(){       
+		   var scroll_start = 0;
+		   var startchange = $('#download');
+		   var offset = startchange.offset();
+		    if (startchange.length){
+		   $(document).scroll(function() { 
+		      scroll_start = $(this).scrollTop();
+		      if(scroll_start > offset.top) {
+		          $(".navbar-default").css('background-color', 'blue');
+		       } else {
+		          $('.navbar-default').css('background-color', 'black');
+		       }
+		   });
+		    }
+		});
+		window.onmouseover=load;
+		function load(){
+			land_temp=document.getElementByClassName("land_temp");
+			land_temp.style.position="relative";
+			land_temp.style.top='50px';
+			mUp();
+		}
+		function mUp(){
+			land_temp.style.top=parseInt(land_temp.style.top)-10+'px'
+			//alert('done');
+		}
+
+		function mDown(){
+			land_temp.style.top=parseInt(land_temp.style.top)+10+'px'
+			//alert('try again');
+		}
+	</script>
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+	<div id="content-land">
+		<div style="font-size:40px; padding-top: 100px;">Create a standout resume in minutes.</div>
+		<div style="font-size:30px; padding-top: 20px; padding-bottom: 20px;">Easily create professional resumes.</div>
+		<a class="btn btn-info" href={{ url('/login') }} id="create_button">Create Resume Now</a><br>
+		<img src="img/a.png" class="land_temp" onmouseover="mUp(this)" onmouseout="mDown(this)">
+		<img src="img/b.png" class="land_temp">
+		<img src="img/c.png" class="land_temp">
+	</div>
+	<div id="download">
+		<span>Downloaded 0</span> <span>Saved 0</span>
+	</div>
 	<!--fixed navigation-->
-	<nav class="navbar navbar-fixed-top" style="font-size: 20px; color: #fff;">
+	<div class="navbar_scroll">
+	<nav class="navbar navbar-fixed-top" style="font-size: 20px;">
 		<div class="container-fluid" >
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false">
@@ -26,20 +84,27 @@
 			<div class="collapse navbar-collapse" id="mynavbar">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Customer Reviews</a></li>
-					<li><a href="#"> Sample Designs</a></li>
-					<li><a href="#"> Contact Us</a></li>
-					<li><a href={{ url('/login') }}>LogIn</a></li>
+					<li><a href="#sample_design"> Sample Designs</a></li>
+					<li><a href="#contact"> Contact Us</a></li>
+					@if (Auth::guest())
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                    @else
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} 
+                            <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                               <li><a href="{{ url('/logout') }}">
+                               <i class="fa fa-btn fa-sign-out"></i>
+                               Logout</a></li>
+                            </ul>
+                        </li>
+                    @endif
 				</ul>
 			</div>				
 		</div>			
 	</nav>
-	<div id="content-land">
-		<div style="font-size:45px; padding-top: 200px;">Create a standout resume in minutes.</div>
-		<div style="font-size:35px; padding-top: 20px; padding-bottom: 20px;">Easily create professional resumes.</div>
-		<a class="btn btn-default" href={{ url('/login') }} id="create_button">Create Resume Now</a>
-	</div>
-	<div id="download">
-		<span>Downloaded 0</span> <span>Saved 0</span>
 	</div>
 	<div class="container-fluid" id="why_rb">
 		<h2 style="text-align: center;">Why Resume Builder</h2>
@@ -48,83 +113,72 @@
 	</div>
 	<div class="container-fluid" id="how_itworks">
 		<h1 style="text-align: center;">How It <span style="color: #15b8db">Works</span></h1>
-		<div class="container step">
-			<div style="float: left;">
+		<div class="row step">
+			<div class="col-sm-6">
 				<img src="img/macpro.png" class="img-responsive">
 			</div>
-			<div style="float: right; font-size: 25px; width: 50%;">
-				&#9312; &nbsp &nbsp Build a resume with the help of few simple steps.
-				
+			<div class="col-sm-6" style="font-size: 25px; width: 50%;">
+				 Build a resume with the help of few simple steps.
 			</div>
-		</div><hr><br>
-		<div class="container step">
-			<div style="float:left; font-size: 25px; width: 50%;">
-				&#9313; &nbsp &nbsp Choose a template, of your choice.Make your resume of your choice. 
+		</div><hr>
+		<div class="pointer pointer-right">
+			<img src="img/arrow_down_left.png">
+		</div>
+		<div class="row step">
+			<div class="col-sm-6" style="font-size: 25px; width: 50%;">
+				Choose a template, of your choice.Make your resume of your choice.
 			</div>
-			<div style="float: right;">
+			<div class="col-sm-6">
 				<img src="img/templates.png" class="img-responsive">
 			</div>
 		</div><hr>
-		<div class="container step">
-			<div style="float: left;">
+		<div class="pointer pointer-left">
+			<img src="img/arrow_down_right.png">
+		</div>
+		<div class="row step">
+			<div class="col-sm-6">
 				<img src="img/download.png" class="img-responsive">
 			</div>
-			<div style="float: right; font-size: 25px; width: 50%;">
-				&#9314; &nbsp &nbsp Download Your resume in pdf or word document format.
+			<div class="col-sm-6" style="font-size: 25px; width: 50%;">
+				Download Your resume in pdf or word document format.
 			</div>
 		</div><hr>
-		<div class="container step">
-			<div style="float: left; font-size: 25px; width: 50%;">
-				&#9315; &nbsp &nbsp Save your resume for future reference. You can edit/ view your resume in future. By creating an account in Resume Builder.
+		<div class="pointer pointer-right">
+			<img src="img/arrow_down_left.png">
+		</div>
+		<div class="row step">
+			<div style="font-size: 25px; width: 50%;" class="col-sm-6">
+				Save your resume for future reference. You can edit/ view your resume in future. By creating an account in Resume Builder.
 			</div>
-			<div style="float: right;">
+			<div class="col-sm-6">
 				<img src="img/login.png" class="img-responsive">
 			</div>
 		</div><hr>
 	</div>
-<div class="container">
-  <br>
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="img/template1.jpg" alt="Chania" width="460" height="345">
-      </div>
-
-      <div class="item">
-        <img src="img/template2.png" alt="Chania" width="460" height="345">
-      </div>
-    
-      <div class="item">
-        <img src="img/template3.jpg" alt="Flower" width="460" height="345">
-      </div>
-
-      <div class="item">
-        <img src="img/template4.png" alt="Flower" width="460" height="345">
-      </div>
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
-
-
+	<div class="container" id="sample_design">
+		<ul class="nav nav-tabs">
+		    <li class="active"><a href="#sample-featured" data-toggle="tab">Featured</a></li>
+		    <li><a href="#" data-toggle="tab">Professional</a></li>
+		    <li><a href="#" data-toggle="tab">Engineer</a></li>
+	  	</ul>
+	</div>
+	<!--Tab panes-->
+	<div class="tab-content cv-templates">
+		<div class="tab-pane" id="sample-featured">
+			<div class="template">
+				<img src="img/avant.jpg">
+				<figcaption>Design Director</figcaption>
+			</div>
+			<div class="template">
+				<img src="img/gallant.jpg">
+				<figcaption>President</figcaption>
+			</div>
+			<div class="template">
+				<img src="img/slate.jpg">
+				<figcaption>Sales & Marketing</figcaption>
+			</div>
+		</div>
+	</div>
 
 	<div class="container-fluid" id="features">
 		<h1 style="text-align: center; margin-bottom: 80px;">Features</h1>
@@ -144,12 +198,12 @@
 		</ul>
 	</div>
 	<footer class="container-fluid panel-footer">
-		ResumeBuilder-2016 &copy; @ Software Incubator.
-		<ul style="list-style: none; display: inline;">
+	<ul style="list-style: none; text-align: center;">
 			<li style="display: inline;"><img src="img/fb.png" class="f_img"></li>
 			<li style="display: inline;"><img src="img/twitter.png"class="f_img"></li>
 			<li style="display: inline;"><img src="img/google.png" class="f_img"></li>
 		</ul>
+		<div style="text-align: center;">ResumeBuilder-2016 &copy; @ Software Incubator.</div>
 	</footer>
 </body>
 </html>

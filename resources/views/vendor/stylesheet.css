@@ -1,0 +1,80 @@
+body
+{
+	margin: 0px;
+	font-family: Roboto;
+}
+#download
+{
+	font-size: 30px;
+	padding-bottom: 70px;
+	padding-top: 60px;
+	text-align: center;
+	color: #545454;
+}
+#content-land
+{
+	height: 600px;
+	width: 100%;
+	color: #fff;
+	background: url(blue_bg.jpg);
+	background-size: cover;
+	text-align: center;
+}
+#create_button
+{
+	margin-top: 50px;
+	margin: auto;
+	height: 50px;
+	width: 350px;
+	font-size: 25px;
+	font-weight: bold;
+}
+#why_rb
+{
+	padding: 30px;
+	background: url(blue_bg.jpg);
+	font-size: 25px;
+	color: #fff; 
+	text-align: center;
+}
+#how_itworks
+{
+	padding-top: 50px;
+	margin-top: 100px;
+}
+.step
+{
+	margin-top: 50px;
+}
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 50%;
+      margin: auto;
+  }
+#features
+{
+	margin-top: 150px;
+	background: url(blue_bg.jpg) no-repeat;
+	color: #fff;
+	font-size: 25px;
+	padding: 50px;
+	height: 500px;
+	width: 100%;
+}
+#contact
+{
+	margin-top: 50px;
+	font-size: 20px;
+}
+.panel-footer
+{
+	margin-top: 60px;
+	font-size: 17px;
+	background-color: #15b8db;
+	color: #fff;
+	padding-right: 50px;
+}
+.f_img
+{
+	border-radius: 30px;
+}

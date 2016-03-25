@@ -1,33 +1,38 @@
 @extends('layouts.master')
 
 @section('header')
-	<nav>
-		  <div class="nav-wrapper teal lighten-2">
-		    <a href="#" class="" style="margin-left: 80px;">Create, Maintain and publish your CV's for free</a>
-		    <ul id="nav-mobile" class="right hide-on-med-and-down">
-		      <li>{{ $user->email }}</li>
-		      <li><a href={{ url('/logout') }}>Logout</a></li>
-		     </ul>
+	<nav class="navbar navbar-fixed-top" style="font-size: 20px; background: repeating-linear-gradient(
+	  45deg,
+	  #000040,
+	  #191953 2px,
+	  #000040 2px,
+	  #465298 2px
+	);">
+		  <div class="container-fluid">
+			  <div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            	</button>
+					<a class="navbar-brand" href={{ url('/') }}>Resume Builder</a>
+				</div>
+				<div class="collapse navbar-collapse" id="mynavbar">
+					<ul class="nav navbar-nav navbar-right">
+			          <li style="color: #fff; padding-top: 10px;">{{ $user->email }}</li>
+			      	  <li><a href={{ url('/logout') }}>Logout</a></li>
+			        </ul>
+			  </div>
 		  </div>
 		</nav>
-		<div class="row card-panel" style="margin-top: 0px; height: 100px;">
-			<div class="col s8 brand-logo">
-				<i class="medium material-icons">library_books</i>Resume Builder
-			</div>
-			<div class="col s2">
-				
-			</div>
-			<div class="col s2">
-				
-			</div>
-		</div>
 @stop
 
 @section('section')
-		<div class="container">
-			<div class="flow-text">Your CV's</div><br>
-			<a class="waves-effect waves-light btn-large modal-trigger" href="#modal1" style="border-radius: 25px;">Create a new CV</a>
-		<table class="highlight" style="margin-top:40px; border: 1px solid grey; border-collapse: collapse; ">
+		<div class="container" style="margin-top: 100px; font-size: 25px;">
+			<div class="flow-text">Your Resume's</div><br>
+			<button class="btn-info" style="border-radius: 25px;"><a class="modal-trigger" href="#modal1" >Create a new Resume</a></button>
+			<table class="table table-hover" style="margin-top:40px; border: 1px solid grey; ">
 				<tr>
 					<th>Name</th>
 					<th>Created At</th>
@@ -38,8 +43,8 @@
 					<td>{{ $resume->name }}</td>
 					<td>{{ $resume->created_at }}</td>
 					<td>
-						<button class="waves-effect waves-light btn-large">Delete</button>
-						<button class="waves-effect waves-light btn-large"><i class="small material-icons">mode_edit</i></button>
+						<button class="btn-info">Delete</button>
+						<button class="btn-info">Edit</button>
 					</td>
 				</tr>
 				@endforeach
@@ -64,16 +69,12 @@
 @stop
 
 @section('footer')
-	<footer class="page-footer">
-		<div class="row card-panel #212121 grey darken-4 #fafafa grey-text text-lighten-5">
-			<div class="col s8">
-				Resume Builder &copy; Software Incubator 2016.
-				All rights Reserved 
-			</div>
-			 <div class="col s2">Terms and Policy</div>
-			 <div class="col s2">
-			 	Contact 
-			 </div> 
-		</div>
+	<footer class="container-fluid panel-footer">
+	<ul style="list-style: none; text-align: center;">
+			<li style="display: inline;"><a href="www.facebook.com/softwareincubator"><img src="img/fb.png" class="f_img"></a></li>
+			<li style="display: inline;"><img src="img/twitter.png"class="f_img"></li>
+			<li style="display: inline;"><img src="img/google.png" class="f_img"></li>
+		</ul>
+		<div style="text-align: center;">ResumeBuilder-2016 &copy; @ Software Incubator.</div>
 	</footer>
 @stop
