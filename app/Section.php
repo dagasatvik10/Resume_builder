@@ -13,7 +13,7 @@ class Section extends Model
      */
     public function resumes()
     {
-        return $this->belongsToMany('App\Resume','mapping_sections');
+        return $this->belongsToMany('App\Resume','mapping_sections')->withPivot('id');
     }
 
     /**
