@@ -27,23 +27,32 @@
 		<div class="container">
 			<div class="flow-text">Your CV's</div><br>
 			<a class="waves-effect waves-light btn-large modal-trigger" href="#modal1" style="border-radius: 25px;">Create a new CV</a>
-		<table class="highlight" style="margin-top:40px; border: 1px solid grey; border-collapse: collapse; ">
-				<tr>
-					<th>Name</th>
-					<th>Created At</th>
-					<th>Options</th>
-				</tr>
-				@foreach($resumes as $resume)
-				<tr>
-					<td>{{ $resume->name }}</td>
-					<td>{{ $resume->created_at }}</td>
-					<td>
-						<button class="waves-effect waves-light btn-large">Delete</button>
-						<button class="waves-effect waves-light btn-large"><i class="small material-icons">mode_edit</i></button>
-					</td>
-				</tr>
-				@endforeach
-			</table>
+			<div class="divider"></div>
+			@if($resumes->count())
+				<table class="highlight" style="margin-top:40px; border: 1px solid grey; border-collapse: collapse; ">
+					<tr>
+						<th>Name</th>
+						<th>Created At</th>
+						<th>Options</th>
+					</tr>
+					@foreach($resumes as $resume)
+						<tr>
+							<td>{{ $resume->name }}</td>
+							<td>{{ $resume->created_at }}</td>
+							<td>
+								<a class="btn-floating btn-large waves-green waves-light red"
+								   href={{ route('resume.delete',['id' => $resume->id]) }}><i class="small material-icons">delete</i></a>
+								<a class="btn-floating btn-large waves-green waves-light"
+								   href={{ route('resume.create',['id' => $resume->id]) }} ><i class="small material-icons">mode_edit</i></a>
+							</td>
+						</tr>
+					@endforeach
+				</table>
+			@else
+				<div class="row">
+					<h5>No CV stored at present</h5>
+				</div>
+			@endif
 		</div>
 		<!-- Modal Structure -->
 		<div id="modal1" class="modal">

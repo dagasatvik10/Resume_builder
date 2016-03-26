@@ -58,8 +58,12 @@
 								<div class="section">
 									@foreach($mapping_section->subsections as $subsection)
 										<div class="row">
+											<?php $default = \App\Detail::where('mapping_subsection_id',
+													'=',$subsection->pivot->id)->first();
+												  $content = $default===null?null:$default->content;
+											?>
 											<div class="input-field col s12">
-												{!! Form::text($subsection->pivot->id,'',['class' => 'validate']) !!}
+												{!! Form::text($subsection->pivot->id,$content,['class' => 'validate']) !!}
 												{!! Form::label($subsection->pivot->id,$subsection->subsection_name) !!}
 											</div>
 										</div>

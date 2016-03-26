@@ -50,6 +50,10 @@ class ResumeController extends Controller
 
     public function create($id)
     {
+        if($id===null)
+        {
+            return redirect()->route('resume.dashboard');
+        }
         $user = Auth::user();
         $resume = $user->resumes()->find($id);
         return view('resume',compact(['user','resume']));
@@ -81,8 +85,9 @@ class ResumeController extends Controller
 
     }
 
-    public function delete()
+    public function delete($id)
     {
-
+        Resume::destroy($id);
+        return redirect()->route('user.dashboard');
     }
 }

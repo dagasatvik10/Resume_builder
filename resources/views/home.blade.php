@@ -36,7 +36,7 @@
 	<div id="content-land">
 		<div style="font-size:45px; padding-top: 200px;">Create a standout resume in minutes.</div>
 		<div style="font-size:35px; padding-top: 20px; padding-bottom: 20px;">Easily create professional resumes.</div>
-		<a class="btn btn-default" href={{ url('/login') }} id="create_button">Create Resume Now</a>
+		<a class="btn btn-default" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a>
 	</div>
 	<div id="download">
 		<span>Downloaded 0</span> <span>Saved 0</span>
