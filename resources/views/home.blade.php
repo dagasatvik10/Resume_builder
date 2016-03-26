@@ -38,22 +38,14 @@
 		   });
 		    }
 		});
-		window.onmouseover=load;
-		function load(){
-			land_temp=document.getElementByClassName("land_temp");
-			land_temp.style.position="relative";
-			land_temp.style.top='50px';
-			mUp();
-		}
-		function mUp(){
-			land_temp.style.top=parseInt(land_temp.style.top)-10+'px'
-			//alert('done');
-		}
-
-		function mDown(){
-			land_temp.style.top=parseInt(land_temp.style.top)+10+'px'
-			//alert('try again');
-		}
+		$(document).ready(function(){
+			$(".land_temp").mouseover(function(){
+				$(this).stop().animate({bottom:'5px'},"fast");
+			});
+			$(".land_temp").mouseout(function(){
+				$(this).stop().animate({bottom:'0px'},"fast");
+			});
+		});
 	</script>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -61,7 +53,7 @@
 		<div style="font-size:40px; padding-top: 100px;">Create a standout resume in minutes.</div>
 		<div style="font-size:30px; padding-top: 20px; padding-bottom: 20px;">Easily create professional resumes.</div>
 		<a class="btn btn-info" href={{ url('/login') }} id="create_button">Create Resume Now</a><br>
-		<img src="img/a.png" class="land_temp" onmouseover="mUp(this)" onmouseout="mDown(this)">
+		<img src="img/a.png" class="land_temp">
 		<img src="img/b.png" class="land_temp">
 		<img src="img/c.png" class="land_temp">
 	</div>
