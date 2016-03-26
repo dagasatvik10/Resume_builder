@@ -28,14 +28,6 @@ class UserController extends Controller
         $user = Auth::user();
         $resumes = $user->resumes;
         return view('dashboard',compact(['user','resumes']));
-
     }
-
-    public function createResume($id=null)
-    {
-
-        return view('resume');
-    }
-
 
 }

@@ -11,7 +11,7 @@ class Mapping_section extends Model
      */
     public function subsections()
     {
-        return $this->belongsToMany('App\Subsection','mapping_subsections');
+        return $this->belongsToMany('App\Subsection','mapping_subsections')->withPivot('id');
     }
 
     /**
@@ -25,7 +25,7 @@ class Mapping_section extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function sections()
+    public function section()
     {
         return $this->belongsTo('App\Section');
     }

@@ -9,9 +9,9 @@ class Detail extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function section()
+    public function mapping_subsection()
     {
-        return $this->belongsTo('App\Mapping_section');
+        return $this->belongsTo('App\Mapping_subsection');
     }
 
 }
