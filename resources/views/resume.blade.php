@@ -41,7 +41,8 @@
 					@foreach($resume->sections as $section)
 						@if($section->id != $check)
 							<li class="waves-effect waves-light btn form_navigation" style="margin-bottom: 10px; width: 300px;"
-							id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}</li>
+								onclick="show({{ $section->id }})"
+								id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}</li>
 							<?php $check = $section->id; ?>
 						@endif
 				 	@endforeach
