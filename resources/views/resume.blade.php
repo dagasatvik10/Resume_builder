@@ -30,21 +30,27 @@
 		</div>
 		<nav class="card-panel #ffffff white lighten-5" style="box-shadow: none;">
 			<ul class="right">
-				<li class="waves-effect waves-light btn">Save</li>
+				<li class="waves-effect waves-light btn" id="resume_submit">Save</li>
 				<li class="waves-effect waves-light btn" style="margin-left: 20px;">Download</li>
 			</ul>
 		</nav>
 		<div class="row">
 			<div class="col s4">
 				<ul class="">
-					<?php $check = -1; ?>
+					<?php
+						$i = 0;
+						$check = array();
+					?>
 					@foreach($resume->sections as $section)
 						@if($section->id != $check)
 							<li class="waves-effect waves-light btn form_navigation" style="margin-bottom: 10px; width: 300px;"
 								onclick="show({{ $section->id }})"
 								id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}</li>
-							<?php $check = $section->id; ?>
 						@endif
+						<?php
+							$check[$i] = $section->id;
+							$i++;
+						?>
 				 	@endforeach
 				</ul>
 				<div class="waves-effect waves-light btn" style="border-radius: 20px;"><i class="medium material-icons">playlist_add</i>
@@ -52,7 +58,7 @@
 				</div>
 			</div>
 			<div class="col s8">
-				{!! Form::open() !!}
+				{!! Form::open(['id' => 'resume','name' => 'resume']) !!}
 					@foreach($resume->sections as $section)
 						<div id={{ 'form_'.$section->id}}>
 							@foreach($section->mapping_sections()->where('resume_id','=',$resume->id)->get() as $mapping_section)
@@ -74,7 +80,7 @@
 							@endforeach
 						</div>
 					@endforeach
-					{!! Form::submit('Save') !!}
+
 				{!! Form::close() !!}
 			</div>
 		</div>
