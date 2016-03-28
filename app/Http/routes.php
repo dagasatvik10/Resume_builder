@@ -9,4 +9,8 @@ Route::group(['middleware' => 'web'], function ()
     Route::post('resume/{id}',['as' => 'resume.store','uses' => 'ResumeController@store']);
     Route::post('/resume',['as' => 'resume.name','uses' => 'ResumeController@store_resume_name']);
     Route::get('resume/{id}/delete',['as' => 'resume.delete','uses' => 'ResumeController@delete']);
+
+    Route::get('/myresume',function(){
+        return view('layouts.resume');
+    });
 });
