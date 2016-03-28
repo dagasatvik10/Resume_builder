@@ -29,47 +29,47 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
-
-    /**
-     * Create a new authentication controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest', ['except' => 'logout']);
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-    }
-
+//    protected $redirectTo = '/';
+//
+//    /**
+//     * Create a new authentication controller instance.
+//     *
+//     * @return void
+//     */
+//    public function __construct()
+//    {
+//        $this->middleware('guest', ['except' => 'logout']);
+//    }
+//
+//    /**
+//     * Get a validator for an incoming registration request.
+//     *
+//     * @param  array  $data
+//     * @return \Illuminate\Contracts\Validation\Validator
+//     */
+//    protected function validator(array $data)
+//    {
+//        return Validator::make($data, [
+//            'name' => 'required|max:255',
+//            'email' => 'required|email|max:255|unique:users',
+//            'password' => 'required|confirmed|min:6',
+//        ]);
+//    }
+//
+//    /**
+//     * Create a new user instance after a valid registration.
+//     *
+//     * @param  array  $data
+//     * @return User
+//     */
+//    protected function create(array $data)
+//    {
+//        return User::create([
+//            'email' => $data['email'],
+//            'password' => bcrypt($data['password']),
+//        ]);
+//    }
+//
     public function redirectGithub()
     {
         return Socialite::driver('github')->redirect();
@@ -83,33 +83,35 @@ class AuthController extends Controller
 
         // $user->token;
     }
+//
+//    public function redirectFb()
+//    {
+//        return Socialite::driver('facebook')->redirect();
+//    }
+//
+//    public function FbCallback()
+//    {
+//        $user = Socialite::driver('facebook')->user();
+//
+//        return dd($user);
+//
+//        // $user->token;
+//    }
+//
+//    public function redirectToGithub()
+//    {
+//        return Socialite::with('github')->redirect();
+//    }
+//
+//    public function handleGithubCallback()
+//    {
+//        $user = Socialite::with('github')->user();
+//
+//        return dd($user);
+//
+//
+//        // $user->token;
+//    }
 
-    public function redirectFb()
-    {
-        return Socialite::driver('facebook')->redirect();
-    }
 
-    public function FbCallback()
-    {
-        $user = Socialite::driver('facebook')->user();
-
-        return dd($user);
-
-        // $user->token;
-    }
-
-    public function redirectToGithub()
-    {
-        return Socialite::with('github')->redirect();
-    }
-
-    public function handleGithubCallback()
-    {
-        $user = Socialite::with('github')->user();
-
-        return dd($user);
-
-
-        // $user->token;
-    }
 }
