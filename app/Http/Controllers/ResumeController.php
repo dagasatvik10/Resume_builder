@@ -56,7 +56,7 @@ class ResumeController extends Controller
         }
         $user = Auth::user();
         $resume = $user->resumes()->find($id);
-        return view('resume',compact(['user','resume']));
+        return view('resume.create',compact(['user','resume']));
     }
 
     public function store($id,Request $request)
@@ -80,9 +80,11 @@ class ResumeController extends Controller
         return redirect()->route('user.dashboard');
     }
 
-    public function update()
+    public function show($id)
     {
-
+        $user = Auth::user();
+        $resume = Resume::find($id);
+        return view('resume.show',compact('resume','user'));
     }
 
     public function delete($id)
