@@ -48,20 +48,20 @@ class ResumeController extends Controller
         return redirect()->route('resume.create',[$resume]);
     }
 
-    public function create($id)
+    public function create($id=null)
     {
-        if($id===null)
-        {
-            return redirect()->route('resume.dashboard');
-        }
         $user = Auth::user();
-        $resume = $user->resumes()->find($id);
-        return view('resume',compact(['user','resume']));
+        $resume = $user->resumes->find($id);
+        if($resume==null)
+        {
+            return redirect()->route('user.dashboard');
+        }
+        return view('resume.create',compact(['user','resume']));
     }
 
     public function store($id,Request $request)
     {
-        $resume = Resume::find($id);
+        $resume = Auth::user()->resumes->find($id);
         foreach($resume->mapping_subsections as $mapping_subsection)
         {
             $detail = $mapping_subsection->detail;
@@ -80,14 +80,25 @@ class ResumeController extends Controller
         return redirect()->route('user.dashboard');
     }
 
-    public function update()
+    public function show($id=null)
     {
-
+        $user = Auth::user();
+        $resume = $user->resumes->find($id);
+        if($resume==null)
+        {
+            return redirect()->route('user.dashboard');
+        }
+        return view('resume.show',compact('resume','user'));
     }
 
-    public function delete($id)
+    public function delete($id=null)
     {
-        Resume::destroy($id);
+        $resume = Auth::user()->resumes->find($id);
+        if($resume==null)
+        {
+            return redirect()->route('user.dashboard');
+        }
+        $resume->delete();
         return redirect()->route('user.dashboard');
     }
 }

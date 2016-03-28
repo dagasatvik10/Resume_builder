@@ -1,28 +1,5 @@
 @extends('layouts.master')
 
-@section('header')
-	<nav>
-		  <div class="nav-wrapper teal lighten-2">
-		    <a href="#" class="" style="margin-left: 80px;">Create, Maintain and publish your CV's for free</a>
-		    <ul id="nav-mobile" class="right hide-on-med-and-down">
-		      <li>{{ $user->email }}</li>
-		      <li><a href={{ url('/logout') }}>Logout</a></li>
-		     </ul>
-		  </div>
-		</nav>
-		<div class="row card-panel" style="margin-top: 0px; height: 100px;">
-			<div class="col s8 brand-logo">
-				<i class="medium material-icons">library_books</i>Resume Builder
-			</div>
-			<div class="col s2">
-				
-			</div>
-			<div class="col s2">
-				
-			</div>
-		</div>
-@stop
-
 @section('section')
 		<div class="container">
 			<div class="flow-text">Your CV's</div><br>
@@ -40,10 +17,18 @@
 							<td>{{ $resume->name }}</td>
 							<td>{{ $resume->created_at }}</td>
 							<td>
-								<a class="btn-floating btn-large waves-green waves-light red"
-								   href={{ route('resume.delete',['id' => $resume->id]) }}><i class="small material-icons">delete</i></a>
 								<a class="btn-floating btn-large waves-green waves-light"
-								   href={{ route('resume.create',['id' => $resume->id]) }} ><i class="small material-icons">mode_edit</i></a>
+								href={{ route('resume.create',['id' => $resume->id]) }} >
+									<i class="small material-icons">mode_edit</i>
+								</a>
+								<a class="btn-floating btn-large waves-green waves-light red"
+								   href={{ route('resume.delete',['id' => $resume->id]) }}>
+									<i class="small material-icons">delete</i>
+								</a>
+								<a class="btn-floating btn-large waves-green waves-light blue"
+								   href={{ route('resume.show',['id' => $resume->id]) }}>
+									Show
+								</a>
 							</td>
 						</tr>
 					@endforeach
@@ -57,11 +42,15 @@
 		<!-- Modal Structure -->
 		<div id="modal1" class="modal">
 			<div class="modal-content">
-				<h4>Name of Resume</h4>
 				<div>
 					{!! Form::open(['route' => 'resume.name']) !!}
-					{!! Form::text('name') !!}
-					{!! Form::submit('submit') !!}
+					<div class="input-field">
+						{!! Form::text('name','',['class' => 'validate']) !!}
+						{!! Form::label('name','Resume Name') !!}
+					</div>
+					<div class="input-field">
+						{!! Form::submit('Create',['class' => 'btn']) !!}
+					</div>
 					{!! Form::close() !!}
 				</div>
 			</div>
@@ -85,4 +74,13 @@
 			 </div> 
 		</div>
 	</footer>
+@stop
+
+@section('script')
+	<script>
+		$(document).ready(function(){
+			//the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+			$('.modal-trigger').leanModal();
+		});
+	</script>
 @stop

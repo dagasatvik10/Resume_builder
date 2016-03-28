@@ -23,7 +23,7 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    public function showDashboard()
+    public function dashboard()
     {
         $user = Auth::user();
         $resumes = $user->resumes;

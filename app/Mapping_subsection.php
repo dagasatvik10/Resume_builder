@@ -22,4 +22,11 @@ class Mapping_subsection extends Model
         return $this->belongsTo('App\Mapping_section');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function subsection()
+    {
+        return $this->belongsTo('App\Subsection');
+    }
 }

@@ -28,7 +28,12 @@
 					<li><a href="#">Customer Reviews</a></li>
 					<li><a href="#"> Sample Designs</a></li>
 					<li><a href="#"> Contact Us</a></li>
-					<li><a href={{ url('/login') }}>LogIn</a></li>
+					@if(!Auth::check())
+						<li><a href={{ url('/login') }}>LogIn</a></li>
+					@else
+						<li><a href={{ route('user.dashboard') }}>{{ Auth::user()->name }}</a></li>
+						<li><a href={{ url('/logout') }}>LogOut</a></li>
+					@endif
 				</ul>
 			</div>				
 		</div>			
