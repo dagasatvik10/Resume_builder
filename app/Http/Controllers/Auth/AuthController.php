@@ -79,8 +79,16 @@ class AuthController extends Controller
     {
         $user = Socialite::driver('github')->user();
 
-        return dd($user);
-
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_USERAGENT =>'PrakharAkgec',
+            CURLOPT_URL => $user['repos_url']
+        ));
+        $result = curl_exec($curl);
+        curl_close($curl);
+        $result_array = json_decode($result,true);
+        return dd($result_array[0]['name']);
         // $user->token;
     }
 //
