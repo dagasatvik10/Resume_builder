@@ -84,10 +84,13 @@ class ResumeController extends Controller
     {
         $user = Auth::user();
         $resume = $user->resumes->find($id);
+
         if($resume==null)
         {
             return redirect()->route('user.dashboard');
         }
+
+        
         return view('resume.show',compact('resume','user'));
     }
 
