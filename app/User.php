@@ -11,8 +11,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'email', 'password',
+    protected $guarded = [
+        'id'
     ];
 
     /**
@@ -32,11 +32,4 @@ class User extends Authenticatable
         return $this->hasMany('App\Resume');
     }
 
-    public function update_user($input)
-    {
-        $user = new User;
-        $user->email = $this->input->email;
-        $user->password = $input['password'];
-        $user->save();
-    }
 }

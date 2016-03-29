@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Resume extends Model
 {
@@ -16,64 +17,27 @@ class Resume extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function skills()
+    public function sections()
     {
-        return $this->hasMany('App\Skill');
+        return $this->belongsToMany('App\Section','mapping_sections')->withPivot('id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function mapping_subsections()
+    {
+        return $this->hasManyThrough('App\Mapping_subsection','App\Mapping_section');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function achievements()
+    public function mapping_sections()
     {
-        return $this->hasMany('App\Achievements');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function contacts()
-    {
-        return $this->hasMany('App\Contact');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function educations()
-    {
-        return $this->hasMany('App\Education');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function websites()
-    {
-        return $this->hasMany('App\Website');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function work_experiences()
-    {
-        return $this->hasMany('App\WorkExperience');
-    }
-
-    public function update_resume($input)
-    {
-        $resume = new Resume;
-        $resume->fullname = $input['fullname'];
-        $resume->father_name = $input['father_name'];
-        $resume->country = $input['country'];
-        $resume->address = $input['address'];
-        $resume->objective = $input['objective'];
-        $resume->profile_pic = $input['profile_pic'];
-        
-        $resume->save();
+        return $this->hasMany('App\Mapping_section');
     }
 
 }
