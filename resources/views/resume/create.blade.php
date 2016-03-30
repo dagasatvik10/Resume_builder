@@ -19,13 +19,12 @@
 						$check = array();
 					?>
 					@foreach($resume->sections as $section)
-
-						@if(!in_array($section->id,$check))
+						
 						<li class="waves-effect waves-light btn form_navigation" style="margin-bottom: 10px; width: 300px;"
 							onclick="show({{ $section->id }})"
 							id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}</li>
 
-						@endif
+						
 						<?php
 							$check[$i] = $section->id;
 							$i++;
