@@ -38,14 +38,7 @@
 		   });
 		    }
 		});
-		$(document).ready(function(){
-			$(".land_temp").mouseover(function(){
-				$(this).stop().animate({bottom:'5px'},"fast");
-			});
-			$(".land_temp").mouseout(function(){
-				$(this).stop().animate({bottom:'0px'},"fast");
-			});
-		});
+		
 	</script>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
