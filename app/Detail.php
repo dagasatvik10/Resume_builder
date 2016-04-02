@@ -11,7 +11,7 @@ class Detail extends Model
      */
     public function mapping_subsection()
     {
-        return $this->belongsTo('App\Mapping_section');
+        return $this->belongsTo('App\Mapping_subsection');
     }
 
 }

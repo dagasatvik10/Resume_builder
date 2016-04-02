@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ResumeController extends Controller
 {
-  /**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
+//  /**
+//   * Create a new controller instance.
+//   *
+//   * @return void
+//   */
   public function __construct()
   {
       $this->middleware('auth');
@@ -48,33 +48,57 @@ class ResumeController extends Controller
         return redirect()->route('resume.create',[$resume]);
     }
 
-    public function create($id)
+    public function create($id=null)
     {
         $user = Auth::user();
-        $resume = $user->resumes()->find($id);
-        return view('resume',compact(['user','resume']));
+        $resume = $user->resumes->find($id);
+        if($resume==null)
+        {
+            return redirect()->route('user.dashboard');
+        }
+        return view('resume.create',compact(['user','resume']));
     }
 
     public function store($id,Request $request)
     {
-        $resume = Resume::find($id);
+        $resume = Auth::user()->resumes->find($id);
         foreach($resume->mapping_subsections as $mapping_subsection)
         {
-            $detail = new Detail;
-            $detail->content = $request->input($mapping_subsection->id);
-            $detail->mapping_subsection()->associate($mapping_subsection);
-            $detail->save();
+            $detail = $mapping_subsection->detail;
+            if($detail === null)
+            {
+                $detail = new Detail;
+                $detail->content = $request->input($mapping_subsection->id);
+                $mapping_subsection->detail()->save($detail);
+            }
+            else
+            {
+                $detail->content = $request->input($mapping_subsection->id);
+                $detail->save();
+            }
         }
         return redirect()->route('user.dashboard');
     }
 
-    public function update()
+    public function show($id=null)
     {
-
+        $user = Auth::user();
+        $resume = $user->resumes->find($id);
+        if($resume==null)
+        {
+            return redirect()->route('user.dashboard');
+        }
+        return view('resume.show',compact('resume','user'));
     }
 
-    public function delete()
+    public function delete($id=null)
     {
-
+        $resume = Auth::user()->resumes->find($id);
+        if($resume==null)
+        {
+            return redirect()->route('user.dashboard');
+        }
+        $resume->delete();
+        return redirect()->route('user.dashboard');
     }
 }

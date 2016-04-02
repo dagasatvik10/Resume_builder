@@ -45,7 +45,7 @@
 	<div id="content-land">
 		<div style="font-size:40px; padding-top: 100px;">Create a standout resume in minutes.</div>
 		<div style="font-size:30px; padding-top: 20px; padding-bottom: 20px;">Easily create professional resumes.</div>
-		<a class="btn btn-info" href={{ url('/login') }} id="create_button">Create Resume Now</a><br>
+		<a class="btn btn-info" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a><br>
 		<img src="img/a.png" class="land_temp">
 		<img src="img/b.png" class="land_temp">
 		<img src="img/c.png" class="land_temp">
@@ -72,15 +72,15 @@
 					<li><a href="#sample_design"> Sample Designs</a></li>
 					<li><a href="#contact"> Contact Us</a></li>
 					@if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href={{ url('/login') }}>Login</a></li>
                     @else
                         <li class="dropdown">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                           <a href={{ route('user.dashboard') }} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} 
                             <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                               <li><a href="{{ url('/logout') }}">
+                               <li><a href={{ url('/logout') }}>
                                <i class="fa fa-btn fa-sign-out"></i>
                                Logout</a></li>
                             </ul>
@@ -90,7 +90,6 @@
 			</div>				
 		</div>			
 	</nav>
-	</div>
 	<div class="container-fluid" id="why_rb">
 		<h2 style="text-align: center;">Why Resume Builder</h2>
 			Resume Builder makes it fast and easy to create the powerful, professional resume hiring managers are looking for.<br>

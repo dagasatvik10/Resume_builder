@@ -9,9 +9,9 @@ class Mapping_subsection extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function details()
+    public function detail()
     {
-        return $this->hasMany('App\Detail');
+        return $this->hasOne('App\Detail');
     }
 
     /**
@@ -20,5 +20,13 @@ class Mapping_subsection extends Model
     public function mapping_section()
     {
         return $this->belongsTo('App\Mapping_section');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function subsection()
+    {
+        return $this->belongsTo('App\Subsection');
     }
 }
