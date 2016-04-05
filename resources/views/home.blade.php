@@ -37,7 +37,7 @@
 		<img src="img/b.png" class="land_temp">
 		<img src="img/c.png" class="land_temp">
 	</div>
-	<div id="download" style="font-family:Raslani American letters ">
+	<div id="download" style="font-family:Raslani American letters; font-size: 35px;">
 		<span>Downloaded 0</span> <span>Saved 0</span>
 	</div>
 	<!--fixed navigation-->
@@ -108,7 +108,7 @@
 		</div>
 		<div class="row step">
 			<div class="col-sm-6">
-				<img src="img/download.png" class="img-responsive">
+				<img src="img/download.jpg" class="img-responsive">
 			</div>
 			<div class="col-sm-6" style="font-size: 25px; width: 50%;">
 				Download Your resume in pdf or word document format.
@@ -151,14 +151,21 @@
 		</div>
 	</div>
 
-	<div class="container-fluid" id="features">
-		<h1 style="text-align: center; margin-bottom: 80px;">Features</h1>
-		<ul style="list-style: none;">
-			<li>Easy to create with social login</li>
-			<li>Provides different design templates</li>
-			<li>You can Save and download your resume for future.</li>
-			<li>You can Edit your resume. Change the templates</li>
-		</ul>
+	<div class="container-fluid row " id="features">
+		<div class="col-sm-7">
+			<h1 style="text-align: center; margin-bottom: 80px;">Features</h1>
+			<ul style="list-style-type: arrow;">
+				<li>Easy to create with social login</li>
+				<li>Provides different design templates</li>
+				<li>You can Save and download your resume for future.</li>
+				<li>You can Edit your resume. Change the templates</li>
+			</ul>
+		</div>
+
+		<div class="col-sm-5">
+			<img src="img/features.png" >
+		</div>
+		
 	</div>
 	<div class="container" id="contact">
 		<h1 style="text-align: center; color: #15b8db; margin-bottom: 30px; ">Contact Us</h1>
