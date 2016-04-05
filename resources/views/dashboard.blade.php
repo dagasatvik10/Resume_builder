@@ -40,26 +40,6 @@
 				</div>
 			@endif
 		</div>
-		<!-- Modal Structure 
-		<div id="modal1" class="modal">
-			<div class="modal-content">
-				<div>
-					{!! Form::open(['route' => 'resume.name']) !!}
-					<div class="input-field">
-						{!! Form::text('name','',['class' => 'validate']) !!}
-						{!! Form::label('name','Resume Name') !!}
-					</div>
-					<div class="input-field">
-						{!! Form::submit('Create',['class' => 'btn']) !!}
-					</div>
-					{!! Form::close() !!}
-				</div>
-			</div>
-			<div class="modal-footer">
-				<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-			</div>
-		</div>-->
-		<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog">
 		  <div class="modal-dialog">
 
@@ -81,7 +61,8 @@
 @stop
 
 @section('footer')
-	<footer class="container-fluid panel-footer">
+	<footer class="container-fluid panel-footer " style="position: fixed;
+	bottom: 0px;">
 	<ul style="list-style: none; text-align: center;">
 			<li style="display: inline;"><a href="www.facebook.com/softwareincubator"><img src="img/fb.png" class="f_img"></a></li>
 			<li style="display: inline;"><img src="img/twitter.png"class="f_img"></li>

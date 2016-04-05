@@ -1,16 +1,18 @@
 @extends('layouts.master')
 
 @section('section')
-	<div class="container col s12">
-		<div class="flow-text">
-			{{ $resume->name }}
+	<div class="container" style="margin-top: 150px;">
+		<div class="row" style="margin-bottom: 60px;">
+			<div class="col-sm-4" style="font-size: 25px; font-weight: bold; margin-left: 50px;">
+				{{ $resume->name }}
+			</div>
+			<div class="col-sm-4">
+				<ul style="list-style: none; ">
+					<li style="display: inline;"><button class=" btn-info" id="resume_submit">Save</button></li>
+					<li style="display: inline;"><button class="btn-info" style="margin-left: 20px;">Download</button></li>
+				</ul>
+			</div>			
 		</div>
-		<nav class="card-panel #ffffff white lighten-5" style="box-shadow: none;">
-			<ul class="right">
-				<li class="waves-effect waves-light btn" id="resume_submit">Save</li>
-				<li class="waves-effect waves-light btn" style="margin-left: 20px;">Download</li>
-			</ul>
-		</nav>
 		<div class="row">
 			<div class="col-sm-4">
 				<ul class="">
@@ -34,14 +36,14 @@
 							$i++;
 						?>
 				 	@endforeach
-				</ul>
-				<div class=" btn" style="color: #fff; background: repeating-linear-gradient( 45deg,
+				<li class=" btn" style="color: #fff; background: repeating-linear-gradient( 45deg,
 										      #000040,
 										      #191953 2px,
 										      #000040 2px,
 										      #465298 2px);">
-					Add New Section
-				</div>
+					Add New Section<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
+				</li>
+			</ul>
 			</div>
 			<div class="col-sm-8">
 				{!! Form::open(['id' => 'resume','name' => 'resume']) !!}
@@ -77,7 +79,7 @@
 
 @section('footer')
 	<footer class="container-fluid panel-footer" style="margin-top: 50px;">
-	<ul style="list-style: none; text-align: center;">
+		<ul style="list-style: none; text-align: center;">
 			<li style="display: inline;"><a href="www.facebook.com/softwareincubator"><img src="img/fb.png" class="f_img"></a></li>
 			<li style="display: inline;"><img src="img/twitter.png"class="f_img"></li>
 			<li style="display: inline;"><img src="img/google.png" class="f_img"></li>

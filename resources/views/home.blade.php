@@ -1,7 +1,7 @@
-	 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Resume Builder | Software Incubator</title>
+	<title>Resume Builder | HomePage</title>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<!-- Optional theme -->
@@ -10,19 +10,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 	<script type="text/javascript">
-		/*$(document).ready(function() {
-		 var s = $(".navbar_scroll");
-		 var pos = s.position();        
-		 $(window).scroll(function() {
-		  var windowpos = $(window).scrollTop();
-		  if (windowpos >= pos.top) {
-		   s.addClass("navbaron");
-		  }
-		  else {
-		   s.removeClass("navbaron"); 
-		  }
-		 });
-		});*/
 		$(document).ready(function(){       
 		   var scroll_start = 0;
 		   var startchange = $('#download');
@@ -50,7 +37,7 @@
 		<img src="img/b.png" class="land_temp">
 		<img src="img/c.png" class="land_temp">
 	</div>
-	<div id="download">
+	<div id="download" style="font-family:Raslani American letters ">
 		<span>Downloaded 0</span> <span>Saved 0</span>
 	</div>
 	<!--fixed navigation-->
