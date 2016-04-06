@@ -10,4 +10,8 @@ Route::group(['middleware' => 'web'], function ()
     Route::post('/store_resume_name',['as' => 'resume.name','uses' => 'ResumeController@store_resume_name']);
     Route::get('resume/{id?}/delete',['as' => 'resume.delete','uses' => 'ResumeController@delete']);
     Route::get('resume/{id?}/show',['as' => 'resume.show','uses' => 'ResumeController@show']);
+    Route::get('auth/github','Auth\AuthController@redirectGithub');
+    Route::get('auth/github/callback','Auth\AuthController@githubCallback');
+    Route::get('auth/fb','Auth\AuthController@redirectFb');
+    Route::get('auth/fb/callback','Auth\AuthController@FbCallback');
 });
