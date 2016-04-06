@@ -3,15 +3,15 @@
 @section('section')
     <div class="container">
         @foreach($resume->sections as $section)
-            <div id={{ 'section_'.$section->id }}>
-                <h3>{{ $section->section_name }}</h3>
-                @foreach($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)
-                    <div class="mapping_section">
+            <div class="row" id={{ 'section_'.$section->id }}>
+                <div class="col-sm-4" style="font-weight: bold; font-size: 30px;">{{ $section->section_name }}</div>
+                <div class="col-sm-7" style="font-size: 25px;">@foreach($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)</div>
+                    <div class="mapping_section row">
                         @foreach($mapping_section->subsections as $subsection)
-                            <div class="row" id={{ 'subsection_'.$subsection->id }}>
-                                <h5>{{ $subsection->subsection_name }}</h5>
+                            <div  id={{ 'subsection_'.$subsection->id }}>
+                                <div class="col-sm-4" style="font-size: 25px; font-weight: bold;">{{ $subsection->subsection_name }}</div>
                                 @foreach($subsection->detail()->where('mapping_subsection_id',$subsection->pivot->id)->get() as $detail)
-                                    <div class="col s12">{{ $detail->content }}</div>
+                                    <div class="col-sm-8" style="font-size: 25px;">{{ $detail->content }}</div>
                                 @endforeach
                             </div>
                         @endforeach
@@ -23,16 +23,12 @@
 @stop
 
 @section('footer')
-    <footer>
-        <div class="row card-panel #212121 grey darken-4 #fafafa grey-text text-lighten-5">
-            <div class="col s8">
-                Resume Builder &copy; Software Incubator 2016.
-                All rights Reserved
-            </div>
-            <div class="col s2">Terms and Policy</div>
-            <div class="col s2">
-                Contact
-            </div>
-        </div>
+    <footer class="container-fluid panel-footer" style="margin-top: 50px;">
+        <ul style="list-style: none; text-align: center;">
+            <li style="display: inline;"><a href="www.facebook.com/softwareincubator"><img src="img/fb.png" class="f_img"></a></li>
+            <li style="display: inline;"><img src="img/twitter.png"class="f_img"></li>
+            <li style="display: inline;"><img src="img/google.png" class="f_img"></li>
+        </ul>
+        <div style="text-align: center;">ResumeBuilder-2016 &copy; @ Software Incubator.</div>
     </footer>
 @stop
