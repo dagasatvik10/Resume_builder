@@ -9,24 +9,6 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-	<script type="text/javascript">
-		$(document).ready(function(){       
-		   var scroll_start = 0;
-		   var startchange = $('#download');
-		   var offset = startchange.offset();
-		    if (startchange.length){
-		   $(document).scroll(function() { 
-		      scroll_start = $(this).scrollTop();
-		      if(scroll_start > offset.top) {
-		          $(".navbar-default").css('background-color', 'blue');
-		       } else {
-		          $('.navbar-default').css('background-color', 'black');
-		       }
-		   });
-		    }
-		});
-		
-	</script>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 	<div id="content-land">
@@ -42,7 +24,7 @@
 	</div>
 	<!--fixed navigation-->
 	<div class="navbar_scroll">
-	<nav class="navbar navbar-fixed-top" style="font-size: 20px;">
+	<nav class="navbar navbar-fixed-top" style="font-size: 20px;" data-spy="affix" data-offset-top="650">
 		<div class="container-fluid" >
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false">

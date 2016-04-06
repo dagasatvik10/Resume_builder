@@ -8,11 +8,30 @@
 			</div>
 			<div class="col-sm-4">
 				<ul style="list-style: none; ">
-					<li style="display: inline;"><button class=" btn-info" id="resume_submit">Save</button></li>
-					<li style="display: inline;"><button class="btn-info" style="margin-left: 20px;">Download</button></li>
+					<li style="display: inline;">
+						<button class=" btn-info" id="resume_submit" >Save</button>
+					</li>
+					<li style="display: inline;">
+
+						<button class="btn-info" style="margin-left: 20px;" data-toggle="modal" data-target="#myTemplateModal">Download</button>
+					</li>
 				</ul>
 			</div>			
 		</div>
+		<div id="myTemplateModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content" style="padding: 50px;">
+					<img src="img/template1.jpeg">
+					<img src="img/template2.png">
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+		    </div>
+
+		  </div>
 		<div class="row">
 			<div class="col-sm-4">
 				<ul class="">
@@ -78,13 +97,13 @@
 @stop
 
 @section('footer')
-	<footer class="container-fluid panel-footer " style="position: fixed;
+	<footer class="container-fluid panel-footer " style=" position: absolute;
     bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;
     color: #888888;">
 		<ul style="list-style: none; text-align: center;">
-			<li style="display: inline;"><a href="www.facebook.com/softwareincubator"><img src="img/fb.png" class="f_img"></a></li>
-			<li style="display: inline;"><img src="img/twitter.png"class="f_img"></li>
-			<li style="display: inline;"><img src="img/google.png" class="f_img"></li>
+			<li style="display: inline;"><a href="www.facebook.com/softwareincubator"><img src="/img/fb.png" class="f_img"></a></li>
+			<li style="display: inline;"><img src="/img/twitter.png"class="f_img"></li>
+			<li style="display: inline;"><img src="/img/google.png" class="f_img"></li>
 		</ul>
 		<div style="text-align: center;">ResumeBuilder-2016 &copy; @ Software Incubator.</div>
 	</footer>
