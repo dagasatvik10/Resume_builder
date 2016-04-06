@@ -1,0 +1,125 @@
+body
+{
+	margin: 0px;
+	font-family: Arial;
+}
+#download
+{
+	font-size: 30px;
+	padding-bottom: 70px;
+	padding-top: 60px;
+	text-align: center;
+	color: #545454;
+}
+#content-land
+{
+	height: 650px;
+	width: 100%;
+	color: #fff;
+	/*background-image: url(bg.jpg);
+	background-size: cover;*/
+	padding-left: 60px;
+	background: repeating-linear-gradient(
+	  45deg,
+	  #000040,
+	  #191953 2px,
+	  #000040 2px,
+	  #465298 2px
+	);
+}
+.land_temp
+{
+	display: inline;
+	width: 400px;
+	height: 250px;
+	margin-top: 50px;
+}
+.land_temp:hover
+{
+	-webkit-transform: translateY(10px);
+}
+#create_button
+{
+	margin-top: 50px;
+	margin: auto;
+	height: 50px;
+	width: 300px;
+	font-size: 25px;
+	font-weight: bold;
+}
+#why_rb
+{
+	padding: 30px;
+	background: repeating-linear-gradient(
+	  45deg,
+	  #000040,
+	  #191953 2px,
+	  #000040 2px,
+	  #465298 2px
+	);
+	font-size: 25px;
+	color: #fff; 
+	text-align: center;
+}
+#how_itworks
+{
+	padding-top: 50px;
+	margin-top: 100px;
+}
+.pointer {
+    position: absolute;
+    /*z-index: 10;*/
+    display: block;
+}
+.pointer.pointer-right {
+    right: 0px;
+}
+.pointer.pointer-left {
+    left: 0px;
+}
+.step
+{
+	margin-top: 50px;
+}
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 100%;
+      margin: auto;
+  }
+#features
+{
+	margin-top: 150px;
+	background: repeating-linear-gradient(
+	  45deg,
+	  #000040,
+	  #191953 2px,
+	  #000040 2px,
+	  #465298 2px
+	);
+	color: #fff;
+	font-size: 25px;
+	padding: 50px;
+	height: 500px;
+	
+}
+.template
+{
+	display: inline-block;
+	margin-left: 150px;
+	margin-top: 30px;
+}
+#contact
+{
+	margin-top: 50px;
+	font-size: 20px;
+}
+.panel-footer
+{
+	font-size: 17px;
+	background-color: #151515;
+	color: #888888;
+	width: 100%;
+	text-align: center;
+}
+
+	
