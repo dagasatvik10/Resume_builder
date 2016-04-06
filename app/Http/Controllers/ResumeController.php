@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ResumeController extends Controller
 {
@@ -56,6 +57,7 @@ class ResumeController extends Controller
         {
             return redirect()->route('user.dashboard');
         }
+        Session::put('user.resume',$resume);
         return view('resume.create',compact(['user','resume']));
     }
 
