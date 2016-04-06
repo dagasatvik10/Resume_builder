@@ -72,7 +72,7 @@
 @endsection
 
 @section('footer')
-    <footer class="container-fluid panel-footer " style="position: fixed;
+    <footer class="container-fluid panel-footer " style="position: absolute;
     bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;
     color: #888888;">
     <ul style="list-style: none; text-align: center;">
