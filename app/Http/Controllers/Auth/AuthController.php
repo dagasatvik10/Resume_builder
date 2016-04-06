@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
@@ -73,12 +75,12 @@ class AuthController extends Controller
         ]);
     }
 
-    public function redirectGithub()
+    protected function redirectGithub()
     {
         return Socialite::driver('github')->redirect();
     }
 
-    public function githubCallback()
+    protected function githubCallback()
     {
         $user = Socialite::driver('github')->user();
 
@@ -91,38 +93,37 @@ class AuthController extends Controller
         $result = curl_exec($curl);
         curl_close($curl);
         $result_array = json_decode($result,true);
-        return dd($result_array[0]['name']);
+        return dd($result_array[1]['name']);
         // $user->token;
     }
-//
-//    public function redirectFb()
-//    {
-//        return Socialite::driver('facebook')->redirect();
-//    }
-//
-//    public function FbCallback()
-//    {
-//        $user = Socialite::driver('facebook')->user();
-//
-//        return dd($user);
-//
-//        // $user->token;
-//    }
-//
-//    public function redirectToGithub()
-//    {
-//        return Socialite::with('github')->redirect();
-//    }
-//
-//    public function handleGithubCallback()
-//    {
-//        $user = Socialite::with('github')->user();
-//
-//        return dd($user);
-//
-//
-//        // $user->token;
-//    }
+
+    protected function redirectFb()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    protected function FbCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        $authUser = $this->findOrCreateUser($user);
+        Auth::login($authUser, true);
+        return Redirect::to('/dashboard');
+    }
+
+    private function findOrCreateUser($fbUser)
+    {
+        if ($authUser = User::where('email', $fbUser->email)->first()) {
+            return $authUser;
+        }
+
+        return User::create([
+            'name' => $fbUser->name,
+            'email' => $fbUser->email,
+            'password' => bcrypt($fbUser->token)
+
+        ]);
+    }
 
 
 }

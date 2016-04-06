@@ -73,6 +73,12 @@
                                 </button>
                             </div>
                         </div>
+
+                        <div>
+                            <div>
+                                <a href="auth/fb">Login with Facebook</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
