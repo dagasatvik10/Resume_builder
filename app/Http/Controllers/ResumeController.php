@@ -89,8 +89,6 @@ class ResumeController extends Controller
         {
             return redirect()->route('user.dashboard');
         }
-
-        
         return view('resume.show',compact('resume','user'));
     }
 
