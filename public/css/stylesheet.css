@@ -13,11 +13,8 @@ body
 }
 #content-land
 {
-	height: 650px;
 	width: 100%;
 	color: #fff;
-	/*background-image: url(bg.jpg);
-	background-size: cover;*/
 	padding-left: 60px;
 	background: repeating-linear-gradient(
 	  45deg,
@@ -99,7 +96,6 @@ body
 	color: #fff;
 	font-size: 25px;
 	padding: 50px;
-	height: 500px;
 	
 }
 .template
@@ -110,17 +106,12 @@ body
 }
 #contact
 {
-	margin-top: 50px;
-	font-size: 20px;
-}
-.panel-footer
-{
 	font-size: 17px;
 	background-color: #151515;
 	color: #888888;
 	width: 100%;
 	text-align: center;
-	bottom: 0px;
+	bottom:0px;
 	left: 0px;
 }
 

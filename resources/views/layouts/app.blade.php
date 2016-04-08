@@ -55,7 +55,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -82,7 +82,10 @@
 
     @yield('content')
 
-    @yield('footer')
+    <footer class="container-fluid panel-footer " style="position: absolute;
+    bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515; color: #888888;">
+        <div>ResumeBuilder-2016 &copy; Software Incubator.</div>
+    </footer>
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
