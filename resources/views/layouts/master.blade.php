@@ -2,7 +2,7 @@
 <html>
     <title></title>
 
-    <Head>
+    <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
         <!-- Compiled and minified CSS -->
@@ -12,6 +12,7 @@
 
         @yield('script')
 
+        @yield('link')
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
