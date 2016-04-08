@@ -8,7 +8,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+
+	<link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 	<div id="content-land">
@@ -150,14 +152,17 @@
 		
 	</div>
 	<div class="container" id="contact">
+
 		<h1 style="text-align: center; color: #fff; margin-bottom: 30px; ">CONTACT</h1>
 		Thanks for your interest in Resume Builder. If you have a question regarding your Resume Builder, please visit our support forums.<br><br>
 		<p style="font-size: 23px;">We'd <span class="glyphicon glyphicon-heart-empty"></span> to help.</p>
 		<ul style="list-style: none;">
 			<a href=" http://silive.in/"><li>http://silive.in/</li></a>
 			<a href="https://www.facebook.com/RedefiningLimitations/"><li>https://www.facebook.com/RedefiningLimitations/</li></a>
+
 		</ul>
 		<div style="text-align: center;">ResumeBuilder-2016 &copy;Software Incubator.</div>
 	</div>
+	
 </body>
 </html>
