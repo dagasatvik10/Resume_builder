@@ -1,7 +1,8 @@
 body
 {
 	margin: 0px;
-	font-family: Arial;
+	font-size: 18px;
+	font-family: 'Ubuntu', sans-serif;
 }
 #download
 {
@@ -9,20 +10,14 @@ body
 	padding-bottom: 70px;
 	padding-top: 60px;
 	text-align: center;
-	color: #545454;
+	color: #696969;
 }
 #content-land
 {
 	width: 100%;
 	color: #fff;
 	padding-left: 60px;
-	background: repeating-linear-gradient(
-	  45deg,
-	  #000040,
-	  #191953 2px,
-	  #000040 2px,
-	  #465298 2px
-	);
+	background-color: #3f51b5;
 }
 .land_temp
 {
@@ -47,14 +42,7 @@ body
 #why_rb
 {
 	padding: 30px;
-	background: repeating-linear-gradient(
-	  45deg,
-	  #000040,
-	  #191953 2px,
-	  #000040 2px,
-	  #465298 2px
-	);
-	font-size: 25px;
+	background-color: #3f51b5;
 	color: #fff; 
 	text-align: center;
 }
@@ -85,17 +73,13 @@ body
   }
 #features
 {
-	margin-top: 150px;
-	background: repeating-linear-gradient(
-	  45deg,
-	  #000040,
-	  #191953 2px,
-	  #000040 2px,
-	  #465298 2px
-	);
+	background-color: #3f51b5;
 	color: #fff;
-	font-size: 25px;
-	padding: 50px;
+	padding: 30px;
+	margin-top: 50px;
+}
+.feature{
+	
 	
 }
 .template
@@ -104,17 +88,28 @@ body
 	margin-left: 150px;
 	margin-top: 30px;
 }
+.nav-tab > li.active . a,
+.nav-tab > li.active . a:hover,
+.nav-tab > li.active . a:focus {
+
+}
+
 #contact
 {
-	font-size: 17px;
+	font-size: 15px;
 	background-color: #151515;
 	color: #888888;
 	width: 100%;
-	text-align: center;
 	bottom:0px;
 	left: 0px;
+	padding: 20px;
 }
-
+.social_icons
+{
+	font-size: 2.5em;
+	padding-left:10px;
+	padding-right:10px;
+}
 	
 .affix {
       top: 0;
@@ -127,7 +122,7 @@ body
 
   }
   .affix a {
-  	background-color: white;
+  	background-color:transparent; ;
       padding: 15px !important;
       -webkit-transition: all .5s ease-in-out;
       transition: all .5s ease-in-out;
@@ -138,3 +133,8 @@ body
   .affix + .container-fluid {
       padding-top: 95px;
   }
+.features{
+	border-radius: 150px;
+	width: 150px;
+	height: 150px;
+}

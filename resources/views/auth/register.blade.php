@@ -5,13 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading" style="background: repeating-linear-gradient(
-                                  45deg,
-                                  #000040,
-                                  #191953 2px,
-                                  #000040 2px,
-                                  #465298 2px
-                                ); color: #fff; font-size: 22px;">Register</div>
+                <div class="panel-heading" style="background-color: #3f51b5; color: #fff; font-size: 22px;">Register</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}

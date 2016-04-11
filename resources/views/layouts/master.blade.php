@@ -15,22 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        {{--<!--<nav>--}}
-            {{--<div class="nav-wrapper teal lighten-2">--}}
-                {{--<a href={{ route('user.dashboard') }} class="" style="margin-left: 80px;">--}}
-                    {{--Create, Maintain and publish your CV's for free--}}
-                {{--</a>--}}
-                {{--<ul id="nav-mobile" class="right hide-on-med-and-down">--}}
-                    {{--<li>{{ $user->name }}</li>--}}
-                    {{--<li><a href={{ url('/logout') }}>Logout</a></li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
-        {{--</nav>-->--}}
-        <nav class="navbar navbar-fixed-top" style="font-size: 20px; background: repeating-linear-gradient( 45deg,
-      #000040,
-      #191953 2px,
-      #000040 2px,
-      #465298 2px);">
+        <nav class="navbar navbar-fixed-top" style="font-size: 20px; background-color: #3f51b5;">
         <div class="container-fluid" >
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false">

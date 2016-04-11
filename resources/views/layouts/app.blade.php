@@ -9,7 +9,8 @@
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+    <!--<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>-->
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -27,14 +28,7 @@
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-fixed-top" 
-    style="background: repeating-linear-gradient(
-                                                          45deg,
-                                                          #000040,
-                                                          #191953 2px,
-                                                          #000040 2px,
-                                                          #465298 2px
-                                                        );">
+    <nav class="navbar navbar-fixed-top" style="background-color: #3f51b5;">
         <div class="container">
             <div class="navbar-header">
 

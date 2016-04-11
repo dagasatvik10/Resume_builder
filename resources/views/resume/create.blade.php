@@ -41,11 +41,7 @@
 					?>
 					@foreach($resume->sections as $section)
 						
-						<li class=" btn form_navigation" style="margin-bottom: 10px; width: 300px; color: #fff; background: repeating-linear-gradient( 45deg,
-										      #000040,
-										      #191953 2px,
-										      #000040 2px,
-										      #465298 2px);"
+						<li class=" btn form_navigation" style="margin-bottom: 10px;  background-color: #3f51b5; width: 300px; color: #fff; "
 							onclick="show({{ $section->id }})"
 							id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}</li>
 
@@ -55,11 +51,7 @@
 							$i++;
 						?>
 				 	@endforeach
-				<li class=" btn" style="color: #fff; background: repeating-linear-gradient( 45deg,
-										      #000040,
-										      #191953 2px,
-										      #000040 2px,
-										      #465298 2px);">
+				<li class=" btn" style="color: #fff; background-color: #3f51b5;">
 					Add New Section<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
 				</li>
 			</ul>
