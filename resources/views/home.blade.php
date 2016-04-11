@@ -20,15 +20,17 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 	<!--fixed navigation-->
 	<div class="navbar_scroll">
-	<div id="content-land">
-		<div style="font-size:30px; padding-top: 100px;">Create a standout resume in minutes.</div>
-		<div style="font-size:25px; padding-top: 20px; padding-bottom: 20px;">Easily create professional resumes.</div>
-		<a class="btn btn-info" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a><br>
-		<img src="img/a.png" class="land_temp">
-		<img src="img/b.png" class="land_temp">
-		<img src="img/c.png" class="land_temp">
-	</div>
-	<nav class="navbar navbar-fixed-top" style="font-size: 15px;" data-spy="affix" data-offset-top="650">
+		<div id="content-land">
+			<div style="font-size:30px; padding-top: 100px;">
+				Create a standout resume in minutes.
+			</div>
+			<div style="font-size:25px; padding-top: 20px; padding-bottom: 20px;">Easily create professional resumes.</div>
+			<a class="btn btn-info" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a><br>
+			<img src="img/a.png" class="land_temp">
+			<img src="img/b.png" class="land_temp">
+			<img src="img/c.png" class="land_temp">
+		</div>
+	<nav class="navbar navbar_top navbar-inverse navbar-fixed-top" style="background-color: #3f51b5;" data-spy="affix" data-offset-top="650">
 		<div class="container-fluid" >
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false">
@@ -63,14 +65,17 @@
 			</div>				
 		</div>			
 	</nav>
-	<div id="download" style="font-family: 'Inknut Antiqua', serif; font-size: 35px; font-weight: bolder;">
-		<span>Downloaded 0</span> <span>Saved 0</span>
 	</div>
-	<div class="container-fluid" id="why_rb">
-		<h2 style="text-align: center;">Why Resume Builder</h2>
-			Resume Builder makes it fast and easy to create the powerful, professional resume hiring managers are looking for.<br>
-			Our Resume Builder lets you create a resume in minutes!
-	</div>
+		
+		<div id="download" style="font-size: 35px; font-weight: bolder;">
+			<span>Downloaded 0</span> <span>Saved 0</span>
+		</div>
+		
+		<div class="container-fluid" id="why_rb">
+			<h2 style="text-align: center;">Why Resume Builder</h2>
+				Resume Builder makes it fast and easy to create the powerful, professional resume hiring managers are looking for.<br>
+				Our Resume Builder lets you create a resume in minutes!
+		</div>
 	<div class="container" id="how_itworks">
 		<h1 style="text-align: center;">How It <span style="color: #15b8db">Works</span></h1>
 		<div class="row ">
@@ -191,12 +196,47 @@
 	</ul>		
 	</div>
 	
-		<div class="col-sm-4" style="text-align: right; font-size: 17px;"> 
+		<div class="col-sm-4" style="text-align: right; font-size: 14px;"> 
 			Copyright &copy; Resume Builder.All right reserved.<br>
 			Powered By Software Incubator.
 		</div>
 	</div>
 </div>
+<nav class="navbar navbar-default" style="font-size: 15px; z-index: 9999;" data-spy="affix" data-offset-top="650">
+		<div class="container-fluid" >
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            	</button>
+				<a class="navbar-brand" href="#">Resume Builder</a>
+			</div>
+			<div class="collapse navbar-collapse" id="mynavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Customer Reviews</a></li>
+					<li><a href="#sample_design"> Sample Designs</a></li>
+					<li><a href="#contact"> Contact Us</a></li>
+					@if (Auth::guest())
+                        <li><a href={{ url('/login') }}>Login</a></li>
+                    @else
+                        <li class="dropdown">
+                           <a href={{ route('user.dashboard') }} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} 
+                            <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                               <li><a href={{ url('/logout') }}>
+                               <i class="fa fa-btn fa-sign-out"></i>
+                               Logout</a></li>
+                            </ul>
+                        </li>
+                    @endif
+				</ul>
+			</div>				
+		</div>			
+	</nav>
 	
 </body>
 </html>
