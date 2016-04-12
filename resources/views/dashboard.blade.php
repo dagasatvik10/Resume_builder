@@ -1,12 +1,13 @@
 @extends('layouts.master')
 
 @section('section')
-		<div class="container">
-			<div class="flow-text">Your CV's</div><br>
-			<a class="waves-effect waves-light btn-large modal-trigger" href="#modal1" style="border-radius: 25px;">Create a new CV</a>
+		<div class="container" style="margin-top: 100px;">
+			<div class="lead" style="">Your Resume's</div><br>
+			<!--<a class="btn btn-info" href="#modal1" style="border-radius: 25px;">Create a new CV</a>-->
+			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create new resume</button>
 			<div class="divider"></div>
 			@if($resumes->count())
-				<table class="highlight" style="margin-top:40px; border: 1px solid grey; border-collapse: collapse; ">
+				<table class="table table-hover" style="margin-top:40px; border: 1px solid grey; border-collapse: collapse; ">
 					<tr>
 						<th>Name</th>
 						<th>Created At</th>
@@ -19,11 +20,11 @@
 							<td>
 								<a class="btn-floating btn-large waves-green waves-light"
 								href={{ route('resume.create',['id' => $resume->id]) }} >
-									<i class="small material-icons">mode_edit</i>
+									<span class="glyphicon glyphicon-edit"></span>
 								</a>
 								<a class="btn-floating btn-large waves-green waves-light red"
 								   href={{ route('resume.delete',['id' => $resume->id]) }}>
-									<i class="small material-icons">delete</i>
+									<span class="glyphicon glyphicon-remove-circle"></span>
 								</a>
 								<a class="btn-floating btn-large waves-green waves-light blue"
 								   href={{ route('resume.show',['id' => $resume->id]) }}>
@@ -39,40 +40,35 @@
 				</div>
 			@endif
 		</div>
-		<!-- Modal Structure -->
-		<div id="modal1" class="modal">
-			<div class="modal-content">
-				<div>
+		<div id="myModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content" style="padding: 50px;">
 					{!! Form::open(['route' => 'resume.name']) !!}
 					<div class="input-field">
-						{!! Form::text('name','',['class' => 'validate']) !!}
 						{!! Form::label('name','Resume Name') !!}
+						{!! Form::text('name','',['class' => 'validate']) !!}
 					</div>
-					<div class="input-field">
-						{!! Form::submit('Create',['class' => 'btn']) !!}
-					</div>
-					{!! Form::close() !!}
-				</div>
-			</div>
-			<div class="modal-footer">
-				<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-			</div>
-		</div>
-		
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+		    </div>
+
+		  </div>
+		</div>		
 @stop
 
 @section('footer')
-	<footer class="page-footer">
-		<div class="row card-panel #212121 grey darken-4 #fafafa grey-text text-lighten-5">
-			<div class="col s8">
-				Resume Builder &copy; Software Incubator 2016.
-				All rights Reserved 
-			</div>
-			 <div class="col s2">Terms and Policy</div>
-			 <div class="col s2">
-			 	Contact 
-			 </div> 
-		</div>
+	<footer class="container-fluid panel-footer " style="position: fixed;
+	bottom: 0px;">
+	<ul style="list-style: none; text-align: center;">
+			<li style="display: inline;"><a href="http://www.facebook.com/RedefiningLimitations"><img src="img/fb.png" class="f_img"></a></li>
+			<li style="display: inline;"><img src="/img/twitter.png"class="f_img"></li>
+			<li style="display: inline;"><img src="/img/google.png" class="f_img"></li>
+		</ul>
+		<div style="text-align: center;">ResumeBuilder-2016 &copy; @ Software Incubator.</div>
 	</footer>
 @stop
 

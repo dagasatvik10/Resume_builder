@@ -1,7 +1,7 @@
 body
 {
 	margin: 0px;
-	font-family: Roboto;
+	font-family: Arial;
 }
 #download
 {
@@ -13,26 +13,50 @@ body
 }
 #content-land
 {
-	height: 600px;
+	height: 650px;
 	width: 100%;
 	color: #fff;
-	background-image: url(/blue_bg.jpg);
-	background-size: cover;
-	text-align: center;
+	/*background-image: url(bg.jpg);
+	background-size: cover;*/
+	padding-left: 60px;
+	background: repeating-linear-gradient(
+	  45deg,
+	  #000040,
+	  #191953 2px,
+	  #000040 2px,
+	  #465298 2px
+	);
+}
+.land_temp
+{
+	display: inline;
+	width: 400px;
+	height: 250px;
+	margin-top: 50px;
+}
+.land_temp:hover
+{
+	-webkit-transform: translateY(10px);
 }
 #create_button
 {
 	margin-top: 50px;
 	margin: auto;
 	height: 50px;
-	width: 350px;
+	width: 300px;
 	font-size: 25px;
 	font-weight: bold;
 }
 #why_rb
 {
 	padding: 30px;
-	background: url(/blue_bg.jpg);
+	background: repeating-linear-gradient(
+	  45deg,
+	  #000040,
+	  #191953 2px,
+	  #000040 2px,
+	  #465298 2px
+	);
 	font-size: 25px;
 	color: #fff; 
 	text-align: center;
@@ -42,24 +66,47 @@ body
 	padding-top: 50px;
 	margin-top: 100px;
 }
+.pointer {
+    position: absolute;
+    /*z-index: 10;*/
+    display: block;
+}
+.pointer.pointer-right {
+    right: 0px;
+}
+.pointer.pointer-left {
+    left: 0px;
+}
 .step
 {
 	margin-top: 50px;
 }
 .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
-      width: 50%;
+      width: 100%;
       margin: auto;
   }
 #features
 {
 	margin-top: 150px;
-	background: url(/blue_bg.jpg) no-repeat;
+	background: repeating-linear-gradient(
+	  45deg,
+	  #000040,
+	  #191953 2px,
+	  #000040 2px,
+	  #465298 2px
+	);
 	color: #fff;
 	font-size: 25px;
 	padding: 50px;
 	height: 500px;
-	width: 100%;
+	
+}
+.template
+{
+	display: inline-block;
+	margin-left: 150px;
+	margin-top: 30px;
 }
 #contact
 {
@@ -68,13 +115,35 @@ body
 }
 .panel-footer
 {
-	margin-top: 60px;
 	font-size: 17px;
-	background-color: #15b8db;
-	color: #fff;
-	padding-right: 50px;
+	background-color: #151515;
+	color: #888888;
+	width: 100%;
+	text-align: center;
+	bottom: 0px;
+	left: 0px;
 }
-.f_img
-{
-	border-radius: 30px;
-}
+
+	
+.affix {
+      top: 0;
+      width: 100%;
+      -webkit-transition: all .5s ease-in-out;
+      transition: all .5s ease-in-out;
+      background-color: #fff;
+      border-color: #fff;
+      box-shadow: 0px 1px 10px;
+
+  }
+  .affix a {
+  	background-color: white;
+      padding: 15px !important;
+      -webkit-transition: all .5s ease-in-out;
+      transition: all .5s ease-in-out;
+  }
+  .affix-top a {
+      padding: 15px !important;
+  }
+  .affix + .container-fluid {
+      padding-top: 95px;
+  }

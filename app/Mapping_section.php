@@ -30,4 +30,11 @@ class Mapping_section extends Model
         return $this->belongsTo('App\Section');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function details()
+    {
+        return $this->hasManyThrough('App\Detail','App\Mapping_subsection');
+    }
 }
