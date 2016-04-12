@@ -8,7 +8,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 	<div id="content-land">
@@ -49,9 +51,11 @@
                             <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                               <li><a href={{ url('/logout') }}>
-                               <i class="fa fa-btn fa-sign-out"></i>
-                               Logout</a></li>
+								<li><a href={{ route('user.dashboard') }}>Dashboard</a></li>
+								<li><a href={{ url('/logout') }}>
+										<i class="fa fa-btn fa-sign-out"></i>
+                               Logout</a>
+								</li>
                             </ul>
                         </li>
                     @endif
@@ -153,12 +157,12 @@
 		<h1 style="text-align: center; color: #15b8db; margin-bottom: 30px; ">Contact Us</h1>
 		Thanks for your interest in Resume Builder. If you have a question regarding your Resume Builder, please visit our support forums. To get in touch, use the contacts listed below.
 		<ul>
-			<li>silive.in</li>
-			<li>www.facebook.com/si</li>
+			<li><a class="btn btn-link" href="http://www.silive.in">silive.in</a></li>
+			<li><a class="btn btn-link" href="http://www.facebook.com/RedefiningLimitations">www.facebook.com/si</a></li>
 		</ul>
 	</div>
 	<footer class="container-fluid panel-footer">
-	<ul style="list-style: none; text-align: center;">
+		<ul style="list-style: none; text-align: center;">
 			<li style="display: inline;"><img src="img/fb.png" class="f_img"></li>
 			<li style="display: inline;"><img src="img/twitter.png"class="f_img"></li>
 			<li style="display: inline;"><img src="img/google.png" class="f_img"></li>
