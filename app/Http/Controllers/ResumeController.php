@@ -84,11 +84,21 @@ class ResumeController extends Controller
     {
         $user = Auth::user();
         $resume = $user->resumes->find($id);
+
         if($resume==null)
         {
             return redirect()->route('user.dashboard');
         }
-        return view('resume.show',compact('resume','user'));
+
+        foreach($resume->mapping_sections as $mapping_section)
+        {
+            foreach($mapping_section->mapping_subsections as $mapping_subsection)
+            {
+                $section[$mapping_section->section->id][$mapping_subsection->subsection->subsection_name] = $mapping_subsection->detail->content;
+            }
+        }
+
+        return view('resume.show',compact('resume','user','section'));
     }
 
     public function delete($id=null)

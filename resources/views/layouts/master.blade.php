@@ -9,27 +9,13 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
-            @yield('script')
-
+        @yield('script')
+        @yield('link')
+        <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <!--<nav>
-            <div class="nav-wrapper teal lighten-2">
-                <a href={{ route('user.dashboard') }} class="" style="margin-left: 80px;">
-                    Create, Maintain and publish your CV's for free
-                </a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li>{{ $user->name }}</li>
-                    <li><a href={{ url('/logout') }}>Logout</a></li>
-                </ul>
-            </div>
-        </nav>-->
-        <nav class="navbar navbar-fixed-top" style="font-size: 20px; background: repeating-linear-gradient( 45deg,
-      #000040,
-      #191953 2px,
-      #000040 2px,
-      #465298 2px);">
+        <nav class="navbar navbar-fixed-top" style="font-size: 20px; background-color: #3f51b5;">
         <div class="container-fluid" >
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false">
@@ -51,6 +37,7 @@
                             <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href={{ route('user.dashboard') }}>Dashboard</a></li>
                                <li><a href={{ url('/logout') }}>
                                <i class="fa fa-btn fa-sign-out"></i>
                                Logout</a></li>
@@ -64,6 +51,8 @@
 
         @yield('section')
 
-        @yield('footer')
+        <footer class="container-fluid panel-footer " style=" position: absolute;bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;color: #888888;">
+        <div >ResumeBuilder-2016 &copy; Software Incubator.</div>
+    </footer>
     </body>
 </html>

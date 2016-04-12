@@ -41,11 +41,7 @@
 					?>
 					@foreach($resume->sections as $section)
 						
-						<li class=" btn form_navigation" style="margin-bottom: 10px; width: 300px; color: #fff; background: repeating-linear-gradient( 45deg,
-										      #000040,
-										      #191953 2px,
-										      #000040 2px,
-										      #465298 2px);"
+						<li class=" btn form_navigation" style="margin-bottom: 10px;  background-color: #3f51b5; width: 300px; color: #fff; "
 							onclick="show({{ $section->id }})"
 							id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}</li>
 
@@ -55,11 +51,7 @@
 							$i++;
 						?>
 				 	@endforeach
-				<li class=" btn" style="color: #fff; background: repeating-linear-gradient( 45deg,
-										      #000040,
-										      #191953 2px,
-										      #000040 2px,
-										      #465298 2px);">
+				<li class=" btn" style="color: #fff; background-color: #3f51b5;">
 					Add New Section<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
 				</li>
 			</ul>
@@ -95,20 +87,6 @@
 		</div>
 	</div>
 @stop
-
-@section('footer')
-	<footer class="container-fluid panel-footer " style=" position: absolute;
-    bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;
-    color: #888888;">
-		<ul style="list-style: none; text-align: center;">
-			<li style="display: inline;"><a href="www.facebook.com/softwareincubator"><img src="img/fb.png" class="f_img"></a></li>
-			<li style="display: inline;"><img src="img/twitter.png"class="f_img"></li>
-			<li style="display: inline;"><img src="img/google.png" class="f_img"></li>
-		</ul>
-		<div style="text-align: center;">ResumeBuilder-2016 &copy; @ Software Incubator.</div>
-	</footer>
-@stop
-
 @section('script')
 	<script>
 		$(document).ready(function(){
