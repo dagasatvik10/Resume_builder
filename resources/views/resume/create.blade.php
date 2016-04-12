@@ -93,7 +93,7 @@
 								</div>
 							@endif
                          @foreach($resume->sections as $section)
-                            @if($section->id === 1)
+                            @if($section->flag == 1)
                                  <div>
                                      <a class='btn btn-primary' href="#">ADD +</a>
                                  </div>
