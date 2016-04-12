@@ -14,7 +14,8 @@
                     {{ @$section[6]['Address'] }}
                 </li>
             </ul>
-        </div><br>
+        </div>
+        <br>
         <div id="objective">
             <h3>Objective</h3>
             {{ @$section[5]['Objective'] }}
@@ -34,19 +35,6 @@
                 {{ @$section[7]['Other Information'] }}
             </div>
         </div>
-        {{--<div id="qualifications">--}}
-            {{--<h3>Qualifications</h3>--}}
-            {{--<ul>--}}
-                {{--<li>Certified Public Accountant (CPA)</li>--}}
-                {{--<li>Certified Management Accountant (CMA)</li>--}}
-                {{--<li>Certified Financial Manager (CFM)</li>--}}
-                {{--<li>Certified Fraud Examiner (CFE)</li>--}}
-                {{--<li>Certified Financial Planner (CFP)</li>--}}
-                {{--<li>Certified Internal Auditor (CIA)</li>--}}
-                {{--<li>Enrolled Agent (EA)</li>--}}
-                {{--<li>Certified Government Financial Manager (CGFM)</li>--}}
-            {{--</ul>--}}
-        {{--</div>--}}
         <div id="education">
             <h3 >Education</h3>
             <div id="course_name">
@@ -68,43 +56,28 @@
                 {{ $section[4]['Skill'] }}
             </div>
         </div>
-        {{--@foreach($resume->sections as $section)--}}
-            {{--<div id={{ 'section_'.$section->id }}>--}}
-                {{--<h3>{{ $section->section_name }}</h3>--}}
-                {{--@foreach($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)--}}
-                    {{--<div class="mapping_section">--}}
-                        {{--@foreach($mapping_section->subsections as $subsection)--}}
-                            {{--<div class="row" id={{ 'subsection_'.$subsection->id }}>--}}
-                                {{--<h5>{{ $subsection->subsection_name }}</h5>--}}
-                                {{--@foreach($subsection->detail()->where('mapping_subsection_id',$subsection->pivot->id)->get() as $detail)--}}
-                                    {{--<div class="col s12">{{ $detail->content }}</div>--}}
-                                {{--@endforeach--}}
-                            {{--</div>--}}
-                        {{--@endforeach--}}
-                    {{--</div>--}}
-                {{--@endforeach--}}
-            {{--</div>--}}
-        {{--@endforeach--}}
-        {{--@foreach($resume->sections as $section)--}}
-            {{--<div class="row" id={{ 'section_'.$section->id }}>--}}
-                {{--<div class="col-sm-4" style="font-weight: bold; font-size: 30px;">{{ $section->section_name }}</div>--}}
-                {{--<div class="col-sm-7" style="font-size: 25px;">@foreach($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)</div>--}}
-                    {{--<div class="mapping_section row">--}}
-                        {{--@foreach($mapping_section->subsections as $subsection)--}}
-                            {{--<div  id={{ 'subsection_'.$subsection->id }}>--}}
-                                {{--<div class="col-sm-4" style="font-size: 25px; font-weight: bold;">{{ $subsection->subsection_name }}</div>--}}
-                                {{--@foreach($subsection->detail()->where('mapping_subsection_id',$subsection->pivot->id)->get() as $detail)--}}
-                                    {{--<div class="col-sm-8" style="font-size: 25px;">{{ $detail->content }}</div>--}}
-                                {{--@endforeach--}}
-                            {{--</div>--}}
-                        {{--@endforeach--}}
-                    {{--</div>--}}
-                {{--@endforeach--}}
-            {{--</div>--}}
-        {{--@endforeach--}}
+
+        {{--@foreach($resume->sections as $section)
+            <div id={{ 'section_'.$section->id }}>
+                <h3>{{ $section->section_name }}</h3>
+                @foreach($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)
+                    <div>
+                        @foreach($mapping_section->subsections as $subsection)
+                            <div  id={{ 'subsection_'.$subsection->id }}>
+                                <div>{{ $subsection->subsection_name }}</div>
+                                @foreach($subsection->detail()->where('mapping_subsection_id',$subsection->pivot->id)->get() as $detail)
+                                    <div>{{ $detail->content }}</div>
+                                @endforeach
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
+            </div>
+        @endforeach--}}
     </div>
 @stop
 @section('link')
-    <link href='/css/stylesheet1.css' rel="stylesheet">
+
+    <link href='/css/resume_show.css' rel="stylesheet">
 
 @stop

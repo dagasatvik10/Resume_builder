@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mapping_subsection extends Model
 {
+    public $timestamps = false;
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
