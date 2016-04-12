@@ -23,8 +23,8 @@
 
 		    <!-- Modal content-->
 		    <div class="modal-content" style="padding: 50px;">
-					<img src="img/template1.jpeg">
-					<img src="img/template2.png">
+					<img src="/img/template1.jpeg">
+					<img src="/img/template2.png">
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 			      </div>
@@ -40,7 +40,7 @@
 						$check = array();
 					?>
 					@foreach($resume->sections as $section)
-						
+						@if(!in_array($section->id,$check))
 						<li class=" btn form_navigation" style="margin-bottom: 10px; width: 300px; color: #fff; background: repeating-linear-gradient( 45deg,
 										      #000040,
 										      #191953 2px,
@@ -54,6 +54,7 @@
 							$check[$i] = $section->id;
 							$i++;
 						?>
+						@endif
 				 	@endforeach
 				<li class=" btn" style="color: #fff; background: repeating-linear-gradient( 45deg,
 										      #000040,
@@ -66,36 +67,93 @@
 			</div>
 			<div class="col-sm-8">
 				{!! Form::open(['id' => 'resume','name' => 'resume']) !!}
+					<?php
+					$i = 0;
+					$check = array();
+					?>
 					@foreach($resume->sections as $section)
-					@if($section->flag == 0)
-					{{dd($section->flag)}}
-					@endif
 
+						@if(!in_array($section->id,$check))
+						<div id={{ 'form_'.$section->id}}>
+							<?php $l = 1; ?>
+							@foreach($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)
 
-					<div id={{ 'form_'.$section->id}}>
-							@foreach($section->mapping_sections()->where('resume_id','=',$resume->id)->get() as $mapping_section)
 								<div class="mapping_section">
+                                    <?php
+                                    $j = 0;
+                                    $c = array();
+                                    ?>
 									@foreach($mapping_section->subsections as $subsection)
-										<div class="row">
-											<?php $default = \App\Detail::where('mapping_subsection_id',
-													'=',$subsection->pivot->id)->first();
-												  $content = $default===null?null:$default->content;
-											?><br>
-											<div class="input-field col-sm-3">
-												{!! Form::label($subsection->pivot->id,$subsection->subsection_name) !!}
+										@if(!in_array($subsection->id,$c))
+											<div class="row">
+												<div class="input-field col-sm-12">
+													{{ Form::label($subsection->pivot->id,$subsection->subsection_name) }}
 												</div>
-												<div class="col-sm-9"> 
-												{!! Form::text($subsection->pivot->id,$content,['class' => 'validate']) !!}
-												
+												<?php $k = 1; ?>
+												@foreach($subsection->mapping_subsections()->where('mapping_section_id',$mapping_section->id)->get()
+                                                as $mapping_subsection)
+													<?php
+													$content = $mapping_subsection->detail==null?null:$mapping_subsection->detail->content;
+													?>
+													<div class="input-field col-sm-12">
+														{!! Form::text($mapping_subsection->id,$content,['class' => 'validate']) !!}
+													</div>
+													@if($subsection->flag != 0 and $k > 1)
+														<br>
+														<div class="row">
+															<a class="btn btn-danger btn-flat"
+															   href={{ route('resume.deleteSubsection',['mapping_subsection_id' => $mapping_subsection->id,'resume_id' => $resume->id]) }}>
+																Delete {{ $subsection->subsection_name }}
+															</a>
+														</div>
+													@endif
+													<?php $k++; ?>
+												@endforeach
+												@if($subsection->flag != 0)
+													<br><br>
+													<div class="row">
+														<a class="btn btn-primary btn-flat"
+														   href={{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}>
+															Add new {{ $subsection->subsection_name }}
+														</a>
+													</div>
+												@endif
 											</div>
-										</div>
+											<?php
+											$c[$j] = $subsection->id;
+											$j++;
+											?>
+										@endif
 									@endforeach
 								</div>
+								@if($section->flag != 0 and $l > 1)
+									<br>
+									<div class="row">
+										<a class="btn btn-flat btn-danger"
+										   href={{ route('resume.deleteSection',['mapping_section_id' => $mapping_section->id,'resume_id' => $resume->id]) }}>
+											Delete {{ $section->section_name }}
+										</a>
+									</div>
+								@endif
+								<?php $l++; ?>
 							@endforeach
+							@if($section->flag != 0)
+								<br>
+								<div class="row">
+									<a class="btn btn-flat btn-primary"
+									   href={{ route('resume.addSection',['section_id' => $section->id,'resume_id' => $resume->id]) }}>
+										Add new {{ $section->section_name }}
+									</a>
+								</div>
+							@endif
 						</div>
-				@endforeach
 
-
+						<?php
+						$check[$i] = $section->id;
+						$i++;
+						?>
+						@endif
+					@endforeach
 
 				{!! Form::close() !!}
 			</div>
@@ -108,7 +166,7 @@
     bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;
     color: #888888;">
 		<ul style="list-style: none; text-align: center;">
-			<li style="display: inline;"><a href="www.facebook.com/softwareincubator"><img src="/img/fb.png" class="f_img"></a></li>
+			<li style="display: inline;"><a href="http://www.facebook.com/RedefiningLimitations"><img src="/img/fb.png" class="f_img"></a></li>
 			<li style="display: inline;"><img src="/img/twitter.png"class="f_img"></li>
 			<li style="display: inline;"><img src="/img/google.png" class="f_img"></li>
 		</ul>
