@@ -6,11 +6,12 @@ body
 }
 #download
 {
-	font-size: 30px;
-	padding-bottom: 70px;
+	font-size: 22px;
+	padding-bottom: 60px;
 	padding-top: 60px;
 	text-align: center;
 	color: #696969;
+	letter-spacing: 2.5px;
 }
 
 /*Top Navigation Bar*/
@@ -35,12 +36,13 @@ body
 }
 #create_button
 {
-	margin-top: 50px;
-	margin: auto;
-	height: 50px;
-	width: 300px;
-	font-size: 25px;
-	font-weight: bold;
+	margin-top: 25px;
+	height: 40px;
+	width: 200px;
+	font-size: 18px;
+}
+.navbar {
+    border-radius: 0px; 
 }
 #why_rb
 {
@@ -48,22 +50,12 @@ body
 	background-color: #3f51b5;
 	color: #fff; 
 	text-align: center;
+	padding-bottom: 50px;
 }
 #how_itworks
 {
-	padding-top: 50px;
-	margin-top: 100px;
-}
-.pointer {
-    position: absolute;
-    /*z-index: 10;*/
-    display: block;
-}
-.pointer.pointer-right {
-    right: 5px;
-}
-.pointer.pointer-left {
-    left: 5px;
+	padding-top: 40px;
+	padding-bottom: 40px;
 }
 .step
 {
@@ -78,12 +70,9 @@ body
 {
 	background-color: #3f51b5;
 	color: #fff;
-	padding: 30px;
+	padding-bottom: 50px;
+	padding-top: 50px;
 	margin-top: 50px;
-}
-.feature{
-	
-	
 }
 .template
 {
@@ -112,6 +101,7 @@ body
 	font-size: 2.5em;
 	padding-left:10px;
 	padding-right:10px;
+	color: #fff;
 }
 	
 .affix {

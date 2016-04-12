@@ -21,16 +21,16 @@
 	<!--fixed navigation-->
 	<div class="navbar_scroll">
 		<div id="content-land">
-			<div style="font-size:30px; padding-top: 100px;">
+			<div style="font-size:24px; padding-top: 100px;">
 				Create a standout resume in minutes.
 			</div>
-			<div style="font-size:25px; padding-top: 20px; padding-bottom: 20px;">Easily create professional resumes.</div>
+			<div style="font-size:20px;">Easily create professional resumes.</div>
 			<a class="btn btn-info" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a><br>
 			<img src="img/a.png" class="land_temp">
 			<img src="img/b.png" class="land_temp">
 			<img src="img/c.png" class="land_temp">
 		</div>
-	<nav class="navbar navbar_top navbar-inverse navbar-fixed-top" style="background-color: #3f51b5;" data-spy="affix" data-offset-top="650">
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #3f51b5;" data-spy="affix" data-offset-top="650">
 		<div class="container-fluid" >
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false">
@@ -66,18 +66,16 @@
 		</div>			
 	</nav>
 	</div>
-		
-		<div id="download" style="font-size: 35px; font-weight: bolder;">
+	<div id="download">
 			<span>Downloaded 0</span> <span>Saved 0</span>
-		</div>
-		
-		<div class="container-fluid" id="why_rb">
-			<h2 style="text-align: center;">Why Resume Builder</h2>
-				Resume Builder makes it fast and easy to create the powerful, professional resume hiring managers are looking for.<br>
-				Our Resume Builder lets you create a resume in minutes!
-		</div>
+	</div>		
+	<div class="container-fluid" id="why_rb">
+		<h2 style="text-align: center;">Why Resume Builder</h2>
+			Resume Builder makes it fast and easy to create the powerful, professional resume hiring managers are looking for.<br>
+			Our Resume Builder lets you create a resume in minutes!
+	</div>
 	<div class="container" id="how_itworks">
-		<h1 style="text-align: center;">How It <span style="color: #15b8db">Works</span></h1>
+		<h1 style="text-align: center; padding-bottom: 70px;">How It <span style="color: #15b8db">Works</span></h1>
 		<div class="row ">
 			<div class="col-sm-6">
 				<img src="img/macpro.png" class="img-responsive">
@@ -85,9 +83,6 @@
 			<div class="col-sm-6">
 				 Build a resume with the help of few simple steps.
 			</div>
-		</div>
-		<div class="pointer pointer-right">
-			<img src="img/arrow_down_left.png" class="img-responsive">
 		</div>
 		<div class="row step">
 			<div class="col-sm-6">
@@ -97,9 +92,6 @@
 				<img src="img/templates.png" class="img-responsive">
 			</div>
 		</div>
-		<div class="pointer pointer-left">
-			<img src="img/arrow_down_right.png" class="img-responsive">
-		</div>
 		<div class="row step">
 			<div class="col-sm-6">
 				<img src="img/download.jpg" class="img-responsive">
@@ -107,9 +99,6 @@
 			<div class="col-sm-6">
 				Download Your resume in pdf or word document format.
 			</div>
-		</div>
-		<div class="pointer pointer-right">
-			<img src="img/arrow_down_left.png" class="img-responsive">
 		</div>
 		<div class="row step">
 			<div class="col-sm-6">
@@ -121,7 +110,7 @@
 		</div>
 	</div>
 	<div class="container" id="sample_design">
-		<h2 style="text-align: center; margin-bottom: 50px;">Sample <span style="color: #15b8db">Designs</span></h2>
+		<h2 style="text-align: center; padding-bottom: 70px;">Sample <span style="color: #15b8db">Designs</span></h2>
 		<ul class="nav nav-tabs nav-justified">
 		    <li class="active"><a href="#sample-featured" data-toggle="tab">Featured</a></li>
 		    <li><a href="#sample-professional" data-toggle="tab">Professional</a></li>
@@ -179,7 +168,7 @@
 			<h1 style="text-align: center; margin-bottom: 80px;">Features</h1>
 			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-sign-in social_icons"></i></span><br><br>Easy to create with social login</div>
 			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-file-text social_icons"></i></span><br><br>Provides different design templates</div>
-			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-download social_icons"></i></span><br><br>You can Save and download your resume for future.</div>
+			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-cloud-download social_icons"></i></span><br><br>You can Save and download your resume for future.</div>
 			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-pencil-square social_icons"></i></span><br><br>You can Edit your resume. Change the templates</div>
 		</div>		
 	</div>
