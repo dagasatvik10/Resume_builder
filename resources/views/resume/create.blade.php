@@ -136,6 +136,7 @@
 								<?php $l++; ?>
 							@endforeach
 
+
 							@if($section->flag != 0)
 								<br>
 								<div class="row">
@@ -145,6 +146,7 @@
 									</a>
 								</div>
 							@endif
+
 
 						</div>
 

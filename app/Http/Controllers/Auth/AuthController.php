@@ -94,6 +94,7 @@ class AuthController extends Controller
         $result = curl_exec($curl);
         curl_close($curl);
         $result_array = json_decode($result,true);
+
 //        $resume = Session::get('user.resume');
 //        $i = sizeof($result_array);
 //        while($i>1)
@@ -112,6 +113,7 @@ class AuthController extends Controller
 //
 //        }
 //        return redirect()->route('resume.create');
+
     }
 
     protected function redirectFb()
