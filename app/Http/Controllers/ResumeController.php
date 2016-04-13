@@ -78,7 +78,8 @@ class ResumeController extends Controller
                 $detail->save();
             }
         }
-        return redirect()->route('user.dashboard');
+        return back();
+        //return response()->json(['responseText' => 'Success!'], 200);
     }
 
     public function show($id=null)
@@ -91,22 +92,50 @@ class ResumeController extends Controller
             return redirect()->route('user.dashboard');
         }
 
-        foreach($resume->mapping_sections as $mapping_section)
+        $check_section = [];
+        foreach($resume->sections as $section)
         {
-            foreach($mapping_section->mapping_subsections as $mapping_subsection)
+            if(!in_array($section->id,$check_section))
             {
-                if(!empty($mapping_subsection->detail))
+                $j = 0;
+                foreach ($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)
                 {
-                    $section[$mapping_section->section->id][$mapping_subsection->subsection->subsection_name] =
-                        $mapping_subsection->detail->content;
+                    $check_subsection = [];
+                    //$default_section[$section->id][$j] = 'hey';
+                    foreach ($mapping_section->subsections as $subsection)
+                    {
+                        if(!in_array($subsection->id,$check_subsection))
+                        {
+                            $i = 0;
+                            foreach ($subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->get()
+                                     as $mapping_subsection)
+                            {
+                               if ($mapping_subsection->detail != null) {
+                                    $default_section[$section->id][$j][$subsection->subsection_name][$i] =
+                                        $mapping_subsection->detail->content;
+                                } else {
+                                    $default_section[$section->id][$j][$subsection->subsection_name][$i] = null;
+                                }
+                                $i++;
+                            }
+                            array_push($check_subsection,$subsection->id);
+                        }
+                    }
+                    $j++;
                 }
-                else
-                {
-                    $section[$mapping_section->section->id][$mapping_subsection->subsection->subsection_name] = null;
-                }
+                array_push($check_section,$section->id);
             }
+
         }
-        return view('resume.show',compact('resume','user','section'));
+        /*$default_section = collect($default_section)->map(function ($name){
+                return strtolower($name);
+            })
+                ->reject(function ($name){
+           return empty($name);
+        });*/
+        foreach()
+        dd($default_section);
+        return view('resume.show',compact('resume','user','default_section'));
     }
 
     public function delete($id=null)
@@ -157,7 +186,8 @@ class ResumeController extends Controller
     public function addSubsection($mapping_section_id,$subsection_id)
     {
         $subsection = Subsection::find($subsection_id);
-        if($subsection->flag != 0) {
+        if($subsection->flag != 0)
+        {
             $subsection->mapping_sections()->attach($mapping_section_id);
         }
 
@@ -177,6 +207,39 @@ class ResumeController extends Controller
         return back();
     }
 
+    public function addNewSection($id,Request $request)
+    {
+        $resume = Auth::user()->resumes->find($id);
+        $section = new Section;
+        $section->section_name = $request->input('section_name');
+        $section->flag = 2;
+        $section->save();
+        $subsection = new Subsection;
+        $subsection->subsection_name = $request->input('subsection_name');
+        $subsection->flag = 2;
+        $subsection->section()->associate($section);
+        $subsection->save();
+        $resume->sections()->attach($section->id);
+        $mapping_section = $section->mapping_sections()->where('resume_id',$resume->id)->first();
+        $subsection->mapping_sections()->attach($mapping_section);
 
+        return back();
+    }
+
+    public function deleteNewAddedSection($id,$section_id)
+    {
+        $user = Auth::user();
+        $resume = $user->resumes->find($id);
+
+        if($resume==null)
+        {
+            return redirect()->route('user.dashboard');
+        }
+
+        $section = $resume->section->find($section_id);
+        $section->delete();
+
+        return back();
+    }
 
 }
