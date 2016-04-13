@@ -21,4 +21,10 @@ Route::group(['middleware' => 'web'], function ()
     Route::get('resume/{mapping_section_id}/{resume_id}/deleteSection',['as' => 'resume.deleteSection','uses' => 'ResumeController@deleteSection']);
     Route::get('resume/{mapping_subsection_id}/{resume_id}/deleteSubsection',['as' => 'resume.deleteSubsection','uses' => 'ResumeController@deleteSubsection']);
 
+//    Route::get('/pdf', function(){
+//        $pdf = PDF::loadHTML('<h1>Test</h1>');
+//        return $pdf->stream();
+//    });
+    Route::get('resume/{id?}/generatePDF',['as' => 'resume.download','uses' => 'ResumeController@generatePDF']);
+
 });

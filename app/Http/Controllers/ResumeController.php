@@ -12,6 +12,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use PDF;
 
 class ResumeController extends Controller
 {
@@ -109,6 +110,37 @@ class ResumeController extends Controller
             }
         }
         return view('resume.show',compact('resume','user','section'));
+    }
+
+    public function generatePDF($id=null)
+    {
+        $user = Auth::user();
+        $resume = $user->resumes->find($id);
+
+        if($resume==null)
+        {
+            return redirect()->route('user.dashboard');
+        }
+
+        foreach($resume->mapping_sections as $mapping_section)
+        {
+            foreach($mapping_section->mapping_subsections as $mapping_subsection)
+            {
+                if(!empty($mapping_subsection->detail))
+                {
+                    $section[$mapping_section->section->id][$mapping_subsection->subsection->subsection_name] =
+                        $mapping_subsection->detail->content;
+                }
+                else
+                {
+                    $section[$mapping_section->section->id][$mapping_subsection->subsection->subsection_name] = null;
+                }
+            }
+        }
+        $pdf = PDF::loadView('resume.show',compact('resume','user','section'));
+        return $pdf->download('resume.pdf');
+//        return $pdf->stream();
+
     }
 
     public function delete($id=null)

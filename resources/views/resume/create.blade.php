@@ -10,30 +10,32 @@
 				<ul style="list-style: none; ">
 					<li style="display: inline;">
 						<button class=" btn-info" id="resume_submit" >Save</button>
+						<a class="btn-info" id="resume_download" href={{ route('resume.download',['id' => $resume->id]) }}>Download</a>
 					</li>
 					<li style="display: inline;">
 
-						<button class="btn-info" style="margin-left: 20px;" data-toggle="modal" data-target="#myTemplateModal">Download</button>
+						{{--<button class="btn-info" style="margin-left: 20px;" data-toggle="modal" data-target="#myTemplateModal">Download</button>--}}
 					</li>
 				</ul>
-			</div>			
+			</div>
 		</div>
-		<div id="myTemplateModal" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
+		{{--<div id="myTemplateModal" class="modal fade" role="dialog">--}}
+		  {{--<div class="modal-dialog">--}}
 
-		    <!-- Modal content-->
-		    <div class="modal-content" style="padding: 50px;">
+		    {{--<!-- Modal content-->--}}
+		    {{--<div class="modal-content" style="padding: 50px;">--}}
 
-					<img src="/img/template1.jpeg">
-					<img src="/img/template2.png">
+					{{--<img src="/img/template1.jpeg">--}}
+					{{--<img src="/img/template2.png">--}}
 
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-			      </div>
-			    </div>
-		    </div>
+			      {{--<div class="modal-footer">--}}
+			        {{--<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>--}}
+			      {{--</div>--}}
+			    {{--</div>--}}
+		    {{--</div>--}}
 
-		  </div>
+		  {{--</div>--}}
+
 		<div class="row">
 			<div class="col-sm-4">
 				<ul class="">
@@ -42,12 +44,10 @@
 						$check = array();
 					?>
 					@foreach($resume->sections as $section)
-						@if(!in_array($section->id,$check))
-						<li class=" btn form_navigation" style="margin-bottom: 10px; width: 300px; color: #fff; background: repeating-linear-gradient( 45deg,
-										      #000040,
-										      #191953 2px,
-										      #000040 2px,
-										      #465298 2px);"
+
+						
+						<li class=" btn form_navigation" style="margin-bottom: 10px;  background-color: #3f51b5; width: 300px; color: #fff; "
+
 							onclick="show({{ $section->id }})"
 							id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}</li>
 
@@ -56,13 +56,9 @@
 							$check[$i] = $section->id;
 							$i++;
 						?>
-						@endif
+						{{--@endif--}}
 				 	@endforeach
-				<li class=" btn" style="color: #fff; background: repeating-linear-gradient( 45deg,
-										      #000040,
-										      #191953 2px,
-										      #000040 2px,
-										      #465298 2px);">
+				<li class=" btn" style="color: #fff; background-color: #3f51b5;">
 					Add New Section<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
 				</li>
 			</ul>
@@ -164,22 +160,6 @@
 		</div>
 	</div>
 @stop
-
-@section('footer')
-
-{{--@section('footer')
-
-	<footer class="container-fluid panel-footer " style=" position: absolute;
-    bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;
-    color: #888888;">
-		<ul style="list-style: none; text-align: center;">
-			<li style="display: inline;"><a href="http://www.facebook.com/RedefiningLimitations"><img src="/img/fb.png" class="f_img"></a></li>
-			<li style="display: inline;"><img src="/img/twitter.png"class="f_img"></li>
-			<li style="display: inline;"><img src="/img/google.png" class="f_img"></li>
-		</ul>
-		<div style="text-align: center;">ResumeBuilder-2016 &copy; @ Software Incubator.</div>
-	</footer>
-@sto--}}
 
 @section('script')
 	<script>
