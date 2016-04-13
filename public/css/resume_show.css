@@ -2,6 +2,9 @@ body
 {
 	font-family: arial;
 }
+#template{
+	margin-top: 150px;
+}
 #personal_details
 {
 	text-align: center;

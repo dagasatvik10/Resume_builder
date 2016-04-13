@@ -21,14 +21,20 @@
 	<!--fixed navigation-->
 	<div class="navbar_scroll">
 		<div id="content-land">
-			<div style="font-size:24px; padding-top: 100px;">
+			<div>
+				<div style="font-size:24px; padding-top: 100px; letter-spacing: 1.5px;">
 				Create a standout resume in minutes.
+				</div>
+				<div style="font-size:20px; letter-spacing: 1.5px;">
+					Easily create professional resumes.
+				</div>
+				<a class="btn btn-info" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a>
 			</div>
-			<div style="font-size:20px;">Easily create professional resumes.</div>
-			<a class="btn btn-info" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a><br>
-			<img src="img/a.png" class="land_temp">
-			<img src="img/b.png" class="land_temp">
-			<img src="img/c.png" class="land_temp">
+			<div>
+				<img src="img/a.png" class="land_temp img-responsive">
+				<img src="img/b.png" class="land_temp img-responsive">
+				<img src="img/c.png" class="land_temp img-responsive center">
+			</div>
 		</div>
 	<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #3f51b5;" data-spy="affix" data-offset-top="650">
 		<div class="container-fluid" >
@@ -73,8 +79,8 @@
 	</div>		
 	<div class="container-fluid" id="why_rb">
 		<h2 style="text-align: center;">Why Resume Builder</h2>
-			Resume Builder makes it fast and easy to create the powerful, professional resume hiring managers are looking for.<br>
-			Our Resume Builder lets you create a resume in minutes!
+			<p style="padding: 10px;">Resume Builder makes it fast and easy to create the powerful, professional resume hiring managers are looking for.<br>
+			Our Resume Builder lets you create a resume in minutes!<p>
 	</div>
 	<div class="container" id="how_itworks">
 		<h1 style="text-align: center; padding-bottom: 70px;">How It <span style="color: #15b8db">Works</span></h1>
@@ -113,7 +119,7 @@
 	</div>
 	<div class="container" id="sample_design">
 		<h2 style="text-align: center; padding-bottom: 70px;">Sample <span style="color: #15b8db">Designs</span></h2>
-		<ul class="nav nav-tabs nav-justified">
+		<ul class="nav nav-pills">
 		    <li class="active"><a href="#sample-featured" data-toggle="tab">Featured</a></li>
 		    <li><a href="#sample-professional" data-toggle="tab">Professional</a></li>
 		    <li><a href="#sample-engineer" data-toggle="tab">Engineer</a></li>
@@ -176,20 +182,18 @@
 	</div>
 <div class="container-fluid" id="contact">
 	<div class="row">
-	
-		<div class="col-sm-4" style="text-align: left;">
+		<div class="col-sm-3" style="text-align: left;">
 			Resume Builder
 		</div>
-		<div class="col-sm-4" style="text-align: center;">
-	<ul style="list-style: none;">
-		<a href="https://www.facebook.com/RedefiningLimitations/"><li style="display: inline;"><i class="fa fa-facebook-square social_icons"></i></li></a>
-		<a href="https://twitter.com/si_akgec"><li style="display: inline;"><i class="fa fa-twitter-square social_icons"></i></li></a>
-	</ul>		
-	</div>
-	
-		<div class="col-sm-4" style="text-align: right; font-size: 14px;"> 
-			Copyright &copy; Resume Builder.All right reserved.<br>
+		<div class="col-sm-5" style="text-align: center; font-size: 14px;"> 
+			Copyright &copy; 2016.All right reserved.<br>
 			Powered By Software Incubator.
+		</div>
+		<div class="col-sm-4" style="text-align: right;">
+			<ul style="list-style: none;">
+				<a href="https://www.facebook.com/RedefiningLimitations/"><li style="display: inline;"><i class="fa fa-facebook-square social_icons_footer"></i></li></a>
+				<a href="https://twitter.com/si_akgec"><li style="display: inline;"><i class="fa fa-twitter-square social_icons_footer"></i></li></a>
+			</ul>		
 		</div>
 	</div>
 </div>

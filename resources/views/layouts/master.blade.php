@@ -13,9 +13,24 @@
         @yield('link')
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <style type="text/css">
+            .add_new{
+                    /*margin-top: 20px;*/
+                    margin-left: 28px;
+                    font-size: 13px;
+                    margin-bottom: 20px;
+                }
+            .delete{
+                 /*margin-top: 20px;*/
+                margin-left: 28px;
+                font-size: 13px;
+            }
+            
+        </style>
     </head>
     <body>
-        <nav class="navbar navbar-fixed-top" style="font-size: 20px; background-color: #3f51b5;">
+        <nav class="navbar navbar-inverse navbar-fixed-top"  data-spy="affix" data-offset-top="650">
         <div class="container-fluid" >
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false">
@@ -24,7 +39,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href={{ url('/') }}>Resume Builder</a>
+                <a class="navbar-brand" href="#">Resume Builder</a>
             </div>
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -38,9 +53,10 @@
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href={{ route('user.dashboard') }}>Dashboard</a></li>
-                               <li><a href={{ url('/logout') }}>
-                               <i class="fa fa-btn fa-sign-out"></i>
-                               Logout</a></li>
+                                <li><a href={{ url('/logout') }}>
+                                        <i class="fa fa-btn fa-sign-out"></i>
+                               Logout</a>
+                                </li>
                             </ul>
                         </li>
                     @endif
@@ -49,10 +65,7 @@
         </div>          
     </nav>
 
-        @yield('section')
-
-        <footer class="container-fluid panel-footer " style=" position: absolute;bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;color: #888888;">
-        <div >ResumeBuilder-2016 &copy; Software Incubator.</div>
-    </footer>
+ @yield('section')
+    
     </body>
 </html>

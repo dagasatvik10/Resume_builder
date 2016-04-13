@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('section')
-    <div class="container">
+    <div class="container" id="template">
         <div id="personal_details">
             <div id="name">{{ @$section[1]['Name'] }}</div>
             <ul id="contact">
