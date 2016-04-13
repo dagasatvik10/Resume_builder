@@ -76,18 +76,6 @@
         @endforeach--}}
     </div>
 @stop
-
-@section('footer')
-    <footer class="container-fluid panel-footer" style="margin-top: 50px;">
-        <ul style="list-style: none; text-align: center;">
-            <li style="display: inline;"><a href="http://www.facebook.com/RedefiningLimitations"><img src="/img/fb.png" class="f_img"></a></li>
-            <li style="display: inline;"><img src="/img/twitter.png"class="f_img"></li>
-            <li style="display: inline;"><img src="/img/google.png" class="f_img"></li>
-        </ul>
-        <div style="text-align: center;">ResumeBuilder-2016 &copy; @ Software Incubator.</div>
-    </footer>
-@stop
-
 @section('link')
     <link href='/css/resume_show.css' rel="stylesheet">
 @stop

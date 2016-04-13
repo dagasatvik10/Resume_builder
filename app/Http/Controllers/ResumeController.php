@@ -117,6 +117,7 @@ class ResumeController extends Controller
             return redirect()->route('user.dashboard');
         }
         $resume->delete();
+
         return redirect()->route('user.dashboard');
     }
 
