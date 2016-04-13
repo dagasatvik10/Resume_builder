@@ -58,6 +58,11 @@
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
                             </div>
                         </div>
+                        <div>
+                            <div>
+                                <a href="auth/fb">Login with Facebook</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -78,6 +78,6 @@
 @stop
 @section('link')
 
-    <link href='/css/resume_show.css' rel="stylesheet">
+    <link href='/css/stylesheet1.css' rel="stylesheet">
 
 @stop

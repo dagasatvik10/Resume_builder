@@ -10,28 +10,32 @@
 				<ul style="list-style: none; ">
 					<li style="display: inline;">
 						<button class=" btn-info" id="resume_submit" >Save</button>
+						<a class="btn-info" id="resume_download" href={{ route('resume.download',['id' => $resume->id]) }}>Download</a>
 					</li>
 					<li style="display: inline;">
 
-						<button class="btn-info" style="margin-left: 20px;" data-toggle="modal" data-target="#myTemplateModal">Download</button>
+						{{--<button class="btn-info" style="margin-left: 20px;" data-toggle="modal" data-target="#myTemplateModal">Download</button>--}}
 					</li>
 				</ul>
-			</div>			
+			</div>
 		</div>
-		<div id="myTemplateModal" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
+		{{--<div id="myTemplateModal" class="modal fade" role="dialog">--}}
+		  {{--<div class="modal-dialog">--}}
 
-		    <!-- Modal content-->
-		    <div class="modal-content" style="padding: 50px;">
-					<img src="/img/template1.jpeg">
-					<img src="/img/template2.png">
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-			      </div>
-			    </div>
-		    </div>
+		    {{--<!-- Modal content-->--}}
+		    {{--<div class="modal-content" style="padding: 50px;">--}}
 
-		  </div>
+					{{--<img src="/img/template1.jpeg">--}}
+					{{--<img src="/img/template2.png">--}}
+
+			      {{--<div class="modal-footer">--}}
+			        {{--<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>--}}
+			      {{--</div>--}}
+			    {{--</div>--}}
+		    {{--</div>--}}
+
+		  {{--</div>--}}
+
 		<div class="row">
 			<div class="col-sm-4">
 				<ul class="">
@@ -41,8 +45,8 @@
 					?>
 					@foreach($resume->sections as $section)
 
-						@if(!in_array($section->id,$check))
-						<li class=" btn  form_navigation" style="margin-bottom: 10px; width: 200px; color: #fff; background-color: #3f51b5;"
+						
+						<li class=" btn form_navigation" style="margin-bottom: 10px;  background-color: #3f51b5; width: 300px; color: #fff; "
 							onclick="show({{ $section->id }})"
 							id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}</li>
 
@@ -51,7 +55,7 @@
 							$check[$i] = $section->id;
 							$i++;
 						?>
-						@endif
+						{{--@endif--}}
 				 	@endforeach
 				<li class=" btn" style="color: #fff; background-color: #3f51b5;">
 					Add New Section<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
@@ -65,10 +69,12 @@
 					$check = array();
 					?>
 					@foreach($resume->sections as $section)
+
 						@if(!in_array($section->id,$check))
 						<div id={{ 'form_'.$section->id}}>
 							<?php $l = 1; ?>
 							@foreach($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)
+
 								<div class="mapping_section">
                                     <?php
                                     $j = 0;
@@ -126,6 +132,8 @@
 								@endif
 								<?php $l++; ?>
 							@endforeach
+
+
 							@if($section->flag != 0)
 								<br>
 								<div class="row">
@@ -135,20 +143,26 @@
 									</a>
 								</div>
 							@endif
+
+
 						</div>
+
 						<?php
 						$check[$i] = $section->id;
 						$i++;
 						?>
 						@endif
 					@endforeach
+
 				{!! Form::close() !!}
 			</div>
 		</div>
 	</div>
+
 	<footer class="container-fluid panel-footer" style="width: 100%; font-size: 17px; text-align:center; background-color: #151515; color: #888888; overflow:hidden; position: static; margin-bottom: 0px;">
         <div>ResumeBuilder-2016 &copy; Software Incubator.</div>
     </footer>	
+
 @stop
 
 @section('script')
