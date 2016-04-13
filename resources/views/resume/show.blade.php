@@ -3,10 +3,12 @@
 @section('section')
     <div class="container" id="template">
         <div id="personal_details">
-            <div id="name">{{ @$section[1]['Name'] }}</div>
+            <div id="name">
+                {{ @$section[1]['Name'] }}
+            </div>
             <ul id="contact">
-                <li id="email">E-mail : {{ @$section[1]['Email'] }}</li>
-                <li id="website">Website : {{ @$section[1]['Websites'] }}</li><br>
+                <li id="email"> E-mail : {{ @$section[1]['Email'] }} </li>
+                <li id="website"> Website : {{ @$section[1]['Websites'] }} </li><br>
                 <li id="phone">
                     Phone : {{ @$section[7]['Contact No.'] }}<br>
                 </li>

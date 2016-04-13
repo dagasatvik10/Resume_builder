@@ -8,13 +8,11 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
 	<!--fontawsome CDN-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<!--google fonts-->
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,900' rel='stylesheet' type='text/css'>
-
 
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
@@ -87,34 +85,34 @@
 	<div class="container" id="how_itworks">
 		<h1 style="text-align: center; padding-bottom: 70px;">How It <span style="color: #15b8db">Works</span></h1>
 		<div class="row ">
-			<div class="col-sm-6">
+			<div class="col-sm-5">
 				<img src="img/macpro.png" class="img-responsive">
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				 Build a resume with the help of few simple steps.
 			</div>
 		</div>
 		<div class="row step">
-			<div class="col-sm-6">
+			<div class="col-sm-7 ">
 				Choose a template, of your choice.Make your resume of your choice.
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-5">
 				<img src="img/templates.png" class="img-responsive">
 			</div>
 		</div>
 		<div class="row step">
-			<div class="col-sm-6">
+			<div class="col-sm-5">
 				<img src="img/download.jpg" class="img-responsive">
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				Download Your resume in pdf or word document format.
 			</div>
 		</div>
 		<div class="row step">
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				Save your resume for future reference. You can edit/ view your resume in future. By creating an account in Resume Builder.
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-5">
 				<img src="img/login.png" class="img-responsive">
 			</div>
 		</div>
@@ -131,43 +129,43 @@
 	<div class="tab-content cv-templates">
 		<div class="tab-pane fade in active" id="sample-featured">
 			<div class="template">
-				<img src="img/avant.jpg" class="img-responsive">
+				<img src="img/avant.jpg" class="img-responsive sample_img">
 				<figcaption>Design Director</figcaption>
 			</div>
 			<div class="template">
-				<img src="img/gallant.jpg" class="img-responsive">
+				<img src="img/gallant.jpg" class="img-responsive sample_img">
 				<figcaption>President</figcaption>
 			</div>
 			<div class="template">
-				<img src="img/slate.jpg" class="img-responsive">
+				<img src="img/slate.jpg" class="img-responsive sample_img">
 				<figcaption>Sales & Marketing</figcaption>
 			</div>
 		</div>	 
 		<div class="tab-pane fade" id="sample-professional">
 			<div class="template">
-				<img src="img/majed-project-manager.jpg" class="img-responsive">
+				<img src="img/majed-project-manager.jpg" class="img-responsive sample_img">
 				<figcaption>Project Manager</figcaption>
 			</div>
 			<div class="template">
-				<img src="img/carolyn-principal.jpg" class="img-responsive">
+				<img src="img/carolyn-principal.jpg" class="img-responsive sample_img">
 				<figcaption>Principal</figcaption>
 			</div>
 			<div class="template">
-				<img src="img/bobbie-doctor.jpg" class="img-responsive">
+				<img src="img/bobbie-doctor.jpg" class="img-responsive sample_img">
 				<figcaption>Doctor</figcaption>
 			</div>
 		</div>
 		<div class="tab-pane fade" id="sample-engineer">
 			<div class="template">
-				<img src="img/scott-software-engineer.jpg" class="img-responsive">
+				<img src="img/scott-software-engineer.jpg" class="img-responsive sample_img">
 				<figcaption>Software Engineeer</figcaption>
 			</div>
 			<div class="template">
-				<img src="img/khaled-site-engineer.jpg" class="img-responsive">
+				<img src="img/khaled-site-engineer.jpg" class="img-responsive sample_img">
 				<figcaption>Site Engineer</figcaption>
 			</div>
 			<div class="template">
-				<img src="img/vincent-application-engineer.jpg" class="img-responsive">
+				<img src="img/vincent-application-engineer.jpg" class="img-responsive sample_img">
 				<figcaption>Application Engineer</figcaption>
 			</div>
 		</div>

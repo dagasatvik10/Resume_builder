@@ -16,13 +16,13 @@
 
         <style type="text/css">
             .add_new{
-                    /*margin-top: 20px;*/
+                    margin-top: 20px;
                     margin-left: 28px;
                     font-size: 13px;
                     margin-bottom: 20px;
                 }
             .delete{
-                 /*margin-top: 20px;*/
+                
                 margin-left: 28px;
                 font-size: 13px;
             }
@@ -39,7 +39,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Resume Builder</a>
+                <a class="navbar-brand" href={{ url('/') }}>Resume Builder</a>
             </div>
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="nav navbar-nav navbar-right">

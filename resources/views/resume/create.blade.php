@@ -9,8 +9,8 @@
 			<div class="col-sm-4">
 				<ul style="list-style: none; ">
 					<li style="display: inline;">
-						<button class=" btn-info" id="resume_submit" >Save</button>
-						<a class="btn-info" id="resume_download" href={{ route('resume.download',['id' => $resume->id]) }}>Download</a>
+						<button class=" btn-info btn" id="resume_submit" >Save</button>
+						<a id="resume_download" href={{ route('resume.download',['id' => $resume->id]) }}><button class="btn-info btn">Download</button></a>
 					</li>
 					<li style="display: inline;">
 
@@ -58,7 +58,7 @@
 						{{--@endif--}}
 				 	@endforeach
 				<li class=" btn" style="color: #fff; background-color: #3f51b5;">
-					Add New Section<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
+					Add New Section <span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
 				</li>
 			</ul>
 			</div>
@@ -93,11 +93,11 @@
 													$content = $mapping_subsection->detail==null?null:$mapping_subsection->detail->content;
 													?>
 													<div class=" col-sm-8">
-														{!! Form::text($mapping_subsection->id,$content,['class' => 'form-control']) !!}
+														{!! Form::text($mapping_subsection->id,$content,['class' => 'form-control']) !!}<br>
 													</div>
 													@if($subsection->flag != 0 and $k > 1)
-														<br>
 														<div class="row">
+														<br>
 															<a class="btn btn-danger delete"
 															   href={{ route('resume.deleteSubsection',['mapping_subsection_id' => $mapping_subsection->id,'resume_id' => $resume->id]) }}>
 																Delete {{ $subsection->subsection_name }}
@@ -159,9 +159,9 @@
 		</div>
 	</div>
 
-	<footer class="container-fluid panel-footer" style="width: 100%; font-size: 17px; text-align:center; background-color: #151515; color: #888888; overflow:hidden; position: static; margin-bottom: 0px;">
+	<!--<footer class="container-fluid panel-footer" style="width: 100%; font-size: 17px; text-align:center; background-color: #151515; color: #888888; overflow:hidden; position: static; margin-bottom: 0px;">
         <div>ResumeBuilder-2016 &copy; Software Incubator.</div>
-    </footer>	
+    </footer>-->	
 
 @stop
 

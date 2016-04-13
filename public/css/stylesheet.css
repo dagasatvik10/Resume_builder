@@ -34,12 +34,18 @@ body
 {
 	-webkit-transform: translateY(10px);
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1200px) {
     .center{
     	display: block;
     	margin-left: auto;
     	margin-right: auto;
     }
+}
+@media only screen and (max-width: 1200px){
+	.sample_img{
+		width:100px ;
+		height: 200px;
+	}
 }
 #create_button
 {
@@ -101,7 +107,7 @@ body
 	width: 100%;
 	bottom:0px;
 	left: 0px;
-	padding: 20px;
+	padding: 50px;
 }
 .social_icons
 {
@@ -157,17 +163,4 @@ body
 	overflow:hidden; 
 	position: absolute; 
 	bottom: 0px;
-}
-@media (min-width: 768px) {
-	.footor{
-	width: 100%; 
-	font-size: 17px; 
-	text-align:center; 
-	background-color: #151515; 
-	color: #888888; 
-	margin:0 auto; 
-	overflow:hidden; 
-	position: static; 
-	margin-bottom: 0px;
-	}
 }
