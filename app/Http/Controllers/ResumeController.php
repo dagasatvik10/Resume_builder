@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use PDF;
+use Laravel\Socialite\Facades\Socialite;
 
 
 class ResumeController extends Controller
@@ -139,8 +140,8 @@ class ResumeController extends Controller
             }
         }
         $pdf = PDF::loadView('resume.show',compact('resume','user','section'));
-        return $pdf->download('resume.pdf');
-//        return $pdf->stream();
+//        return $pdf->download('resume.pdf');
+        return $pdf->stream();
 
     }
 
@@ -209,6 +210,52 @@ class ResumeController extends Controller
         }
 
         return back();
+    }
+
+    public function redirectGithub()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    public function githubCallback()
+    {
+        $user = Socialite::driver('github')->user();
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_USERAGENT =>'PrakharAkgec',
+            CURLOPT_URL => $user['repos_url']
+        ));
+        $result = curl_exec($curl);
+        curl_close($curl);
+        $result_array = json_decode($result,true);
+//        $v;
+        foreach($result_array as $result_array)
+         $v[] = $result_array['name'];
+        return $v;
+
+
+
+//        $resume = Session::get('user.resume');
+//        $i = sizeof($result_array);
+//        while($i>1)
+//        {
+//            $resume->sections()->attach(3);
+//            $section = $resume->sections()->orderBy('id','desc')->first();
+//            foreach($section->subsections as $subsection)
+//            {
+//                $subsection->mapping_sections()->attach($section->pivot->id);
+//            }
+//            $i--;
+//        }
+//
+//        foreach($result_array as $repository)
+//        {
+//
+//        }
+//        return redirect()->route('resume.create');
+
     }
 
 
