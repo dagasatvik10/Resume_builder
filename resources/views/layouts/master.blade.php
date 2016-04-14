@@ -17,7 +17,7 @@
 
         <style type="text/css">
             .add_new{
-                    margin-top: 20px;
+                    display: block;
                     margin-left: 28px;
                     font-size: 13px;
                     margin-bottom: 20px;

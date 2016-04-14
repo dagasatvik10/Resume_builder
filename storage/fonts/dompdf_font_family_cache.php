@@ -95,4 +95,7 @@
   'glyphicons halflings' => array(
     'normal' => DOMPDF_FONT_DIR . '719f26678b0bc7b0e251839e077c9c2c',
   ),
+  'ubuntu' => array(
+    'normal' => DOMPDF_FONT_DIR . 'ab3f537000319e641ebe1de0e2bfa658',
+  ),
 ) ?>
