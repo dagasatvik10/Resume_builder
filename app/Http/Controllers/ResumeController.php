@@ -128,6 +128,7 @@ class ResumeController extends Controller
             }
 
         }
+
         foreach($default_section as $key_s => $section)
         {
             $counter_s = 0;
@@ -161,8 +162,16 @@ class ResumeController extends Controller
                 $default_section[$key_s] = null;
             }
         }
-        //dd($default_section);
-        return view('resume.show',compact('resume','user','default_section'));
+        $new_section = [];
+        foreach($default_section as $key => $section)
+        {
+            if($key > 7)
+            {
+                $new_section[$key] = $section;
+            }
+        }
+       // dd($new_section);
+        return view('resume.show',compact('resume','user','default_section','new_section'));
     }
 
     public function delete($id=null)
