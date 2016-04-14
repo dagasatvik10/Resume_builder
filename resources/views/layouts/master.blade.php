@@ -52,7 +52,7 @@
 
         @yield('section')
 
-       {{-- <footer class="container-fluid panel-footer " style=" position: absolute;bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;color: #888888;">
+	{{--<footer class="container-fluid panel-footer " style=" position: absolute;bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;color: #888888;">
         <div >ResumeBuilder-2016 &copy; Software Incubator.</div>
     </footer>--}}
     </body>

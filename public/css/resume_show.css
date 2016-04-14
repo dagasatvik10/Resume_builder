@@ -18,12 +18,12 @@ body
 {
 	font-size: 60px;
 }
-#email,#phone
+.email,.phone
 {
 	
 	float: left;
 }
-#website,#address
+.website,#address
 {
 	float: right;
 }
@@ -31,18 +31,18 @@ h3
 {
 	border-bottom: 2px solid grey;
 }
-#work_experience,#qualifications,#education,#skills,#objective
+.work_experience,.qualifications,.education,#skills,#objective
 {
 	/*float: left;*/
 	margin-left: 100px;
 	margin-right: 100px;
 	margin-bottom: 50px;
 }
-#company_name,#course_name
+.company_name,.course_name
 {
 	font-size: 25px;
 }
-#date,#passing_year
+.date,.passing_year
 {
 	float: right;
 	margin-bottom: 30px;

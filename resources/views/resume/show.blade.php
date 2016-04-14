@@ -1,75 +1,153 @@
-@extends('layouts.master')
+@extends('layouts.resume_show')
 
 @section('section')
     <div class="container">
-        <div id="personal_details">
-            <div id="name">{{ $default_section[1][0]['Name'][0] }}</div>
-            <ul id="contact">
-                @foreach($default_section[1][0]['Email'] as $email)
-					<li class="email">E-mail : {{ $email }}</li>
-				@endforeach
-                @foreach($default_section[1][0]['Websites'] as $website)
-					<li class="website">Website : {{ $website }}</li>
-				@endforeach
-				@foreach($default_section[6][0]['Contact No.'] as $phone)
-                <li class="phone">
-                    Phone : {{ $phone }}<br>
-                </li>
-				@endforeach
-                <li id="address">
-                    {{ $default_section[6][0]['Address'][0] }}
-                </li>
-            </ul>
-        </div>
+		@if($default_section[1] != null and $default_section[6] != null)
+			<div id="personal_details">
+				@if(!empty($default_section[1][0]['Name'][0]))
+					<div id="name">
+						{{ $default_section[1][0]['Name'][0] }}
+					</div>
+				@endif
+				<div id="contact">
+					@if($default_section[1][0]['Email'] != null)
+						<div id="email">Email:
+							@foreach($default_section[1][0]['Email'] as $email)
+								@if(!empty($email))
+									<div class="email">{{ $email }}</div>
+								@endif
+							@endforeach
+						</div>
+					@endif
+					@if($default_section[1][0]['Websites'] != null)
+						<div id='website'>
+							Websites:
+							@foreach($default_section[1][0]['Websites'] as $website)
+								@if(!empty($website))
+									<div class="website">{{ $website }}</div>
+								@endif
+							@endforeach
+						</div>
+					@endif
+					@if($default_section[6][0]['Contact No.'] != null)
+						<div id="phone">
+							Phone:
+							@foreach($default_section[6][0]['Contact No.'] as $phone)
+								@if(!empty($phone))
+									<div class="phone">{{ $phone }}</div>
+								@endif
+							@endforeach
+						</div>
+					@endif
+					@if(!empty($default_section[6][0]['Address'][0]))
+						<div id="address">
+							{{ $default_section[6][0]['Address'][0] }}
+						</div>
+					@endif
+				</div>
+			</div>
+		@endif
         <br>
-        <div id="objective">
-            <h3>Objective</h3>
-            {{ $default_section[5][0]['Objective'][0] }}
-        </div>
-        <div id="work_experience">
-            <h3>Work experience</h3>
-			@foreach($default_section[7] as $default_section)
-            <div id="company_name">
-				{{ $default_section['Company'][0] }}
-            </div>
-			<span id="date">
-				{{ $default_section['Start Date'][0] }} &#45;{{ $default_section['End Date'][0] }}
-			</span>
-            <div id="job_title">
-                {{ $default_section['Job Title'][0] }}
-            </div>
-            <div class="other_info">
-                {{ $default_section['Other Information'][0] }}
-            </div>
-			@endforeach
-        </div>
-        <div id="education">
-            <h3 >Education</h3>
-			@foreach($default_section[2] as $default_section)
-            <div id="course_name">
-                {{ $default_section['Course Name'][0] }}
-            </div>
-            <div id="institution_name">
-                {{ $default_section['Institution'][0] }}
-            </div>
-            <div id="passing_year">
-                {{ $default_section['Passing Year'][0] }}
-            </div>
-            <div class="other_info">
-                Marks: {{ $default_section['Marks'][0] }}
-            </div>
-			@endforeach
-        </div>
-        <div id="skills">
-            <h3>Skills</h3>
-			@foreach($default_section[4] as $default_section)
-            <div id="skill_name">
-                {{ $default_section['Skill'][0] }}
-            </div>
-			@endforeach
-        </div>
+		<br>
+		@if($default_section[5] != null)
+			<div id="objective">
+				<h3>Objective</h3>
+				{{ $default_section[5][0]['Objective'][0] }}
+			</div>
+		@endif
+		@if($default_section[7] != null)
+			<div id="work_experience">
+				<h3>Work experience</h3>
+				@foreach($default_section[7] as $section)
+					@if($section != null)
+						<div class="work_experience">
+							@if(!empty($section['Company'][0]))
+								<div class="company_name">
+									{{ $section['Company'][0] }}
+								</div>
+							@endif
+							@if(!empty($section['Start Date'][0]) or $section['End Date'][0])
+								<span class="date">
+									{{ $section['Start Date'][0] }} &#45;{{ $section['End Date'][0] }}
+								</span>
+							@endif
+							@if(!empty($section['Job Title'][0]))
+								<div class="job_title">
+									{{ $section['Job Title'][0] }}
+								</div>
+							@endif
+							@if(!empty($section))
+								<div class="other_info">
+									{{ $section['Other Information'][0] }}
+								</div>
+							@endif
+						</div>
+					@endif
+				@endforeach
+			</div>
+		@endif
+		@if($default_section[2] != null)
+			<div id="education">
+				<h3 >Education</h3>
+				@foreach($default_section[2] as $section)
+					@if($section != null)
+						<div class="education">
+							@if(!empty($section['Course Name'][0]))
+								<div class="course_name">
+									{{ $section['Course Name'][0] }}
+								</div>
+							@endif
+							@if(!empty($section['Institution'][0]))
+								<div class="institution_name">
+									{{ $section['Institution'][0] }}
+								</div>
+							@endif
+							@if(!empty($section['Passing Year'][0]))
+								<div class="passing_year">
+									{{ $section['Passing Year'][0] }}
+								</div>
+							@endif
+							@if(!empty($section['Marks'][0]))
+								<div class="other_info">
+									Marks: {{ $section['Marks'][0] }}
+								</div>
+							@endif
+						</div>
+					@endif
+				@endforeach
+			</div>
+		@endif
+		@if($default_section[3] != null)
+			<div id="project">
+				<h3>Projects</h3>
+				@foreach($default_section[3] as $section)
+					@if($section != null)
+						<div class="project">
+							<div class="project_name">
+								{{ $section['Project Name'][0] }}
+							</div>
+							<div class="project_status">
+								{{ $section['Project Status'][0] }}
+							</div>
+						</div>
+					@endif
+				@endforeach
+			</div>
+		@endif
+		@if($default_section[4] != null)
+			<div id="skills">
+				<h3>Skills</h3>
+				@foreach($default_section[4] as $section)
+					@if(!empty($section['Skill'][0]))
+						<div class="skill_name">
+							{{ $section['Skill'][0] }}
+						</div>
+					@endif
+				@endforeach
+			</div>
+		@endif
     </div>
 @stop
 @section('link')
-    <link href='/css/resume_show.css' rel="stylesheet">
+    {{--<link href='/css/resume_show.css' rel="stylesheet">--}}
 @stop

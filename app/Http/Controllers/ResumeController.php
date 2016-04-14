@@ -93,6 +93,7 @@ class ResumeController extends Controller
         }
 
         $check_section = [];
+        $default_section = [];
         foreach($resume->sections as $section)
         {
             if(!in_array($section->id,$check_section))
@@ -127,14 +128,40 @@ class ResumeController extends Controller
             }
 
         }
-        /*$default_section = collect($default_section)->map(function ($name){
-                return strtolower($name);
-            })
-                ->reject(function ($name){
-           return empty($name);
-        });*/
-        foreach()
-        dd($default_section);
+        foreach($default_section as $key_s => $section)
+        {
+            $counter_s = 0;
+            foreach($section as $key_mp => $mapping_section)
+            {
+                $counter_mp = 0;
+                foreach($mapping_section as $key_sub => $subsection)
+                {
+                    $counter_sub = 0;
+                    foreach($subsection as $mapping_subsection)
+                    {
+                        if(!empty($mapping_subsection))
+                        {
+                            $counter_s++;
+                            $counter_mp++;
+                            $counter_sub++;
+                        }
+                    }
+                    if($counter_sub == 0)
+                    {
+                        $default_section[$key_s][$key_mp][$key_sub] = null;
+                    }
+                }
+                if($counter_mp == 0)
+                {
+                    $default_section[$key_s][$key_mp] = null;
+                }
+            }
+            if($counter_s == 0)
+            {
+                $default_section[$key_s] = null;
+            }
+        }
+        //dd($default_section);
         return view('resume.show',compact('resume','user','default_section'));
     }
 
