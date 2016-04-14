@@ -12,10 +12,6 @@
 						<button class=" btn-info btn" id="resume_submit" >Save</button>
 						<a id="resume_download" href={{ route('resume.download',['id' => $resume->id]) }}><button class="btn-info btn">Download</button></a>
 					</li>
-					<li style="display: inline;">
-
-						<button class="btn-info" style="margin-left: 20px;">Download</button>
-					</li>
 				</ul>
 			</div>
 		</div>
@@ -25,18 +21,19 @@
 		    <!-- Modal content-->
 		    <div class="modal-content" style="padding: 50px;">
 				{!! Form::open(['route' => ['resume.addNewSection',$resume->id]]) !!}
-				<div class="input-field">
+				<div>
 					{!! Form::label('section_name','Section Name') !!}
-					{!! Form::text('section_name','',['class' => 'validate']) !!}
+					{!! Form::text('section_name','',['class' => 'form-control']) !!}
 				</div>
-				<div class="input-field">
+				<div >
 					{!! Form::label('subsection_name','Subsection Name') !!}
-					{!! Form::text('subsection_name','',['class' => 'validate']) !!}
-				</div>
-				<div class="input-field">
-					{!! Form::submit('Add') !!}
-				</div>
-				{!! Form::close() !!}
+					{!! Form::text('subsection_name','',['class' => 'form-control']) !!}
+				</div><br>
+				<div>
+					<!--{!! Form::submit('Add','',['class' => 'btn btn-info']) !!}-->
+					<button type="submit" class="btn btn-info">Add</button>
+				</div>				
+				{!! Form::close() !!}<br>
 				<div class="modal-footer">
 			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 				</div>
@@ -59,7 +56,7 @@
 							$check[$i] = $section->id;
 							$i++;
 						?>
-						{{--@endif--}}
+						@endif
 				 	@endforeach
 				<li class=" btn" style="color: #fff; background-color: #3f51b5;" data-toggle="modal" data-target="#addSectionModal">
 					Add New Section<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
@@ -73,7 +70,6 @@
 					$check = array();
 					?>
 					@foreach($resume->sections as $section)
-
 						@if(!in_array($section->id,$check))
 						<div id={{ 'form_'.$section->id}}>
 							<?php $l = 1; ?>
@@ -101,7 +97,7 @@
 													</div>
 													@if($subsection->flag != 0 and $k > 1)
 														<div class="row">
-															<a class="btn btn-danger btn-flat input-field col-sm-12"
+															<a class="btn btn-danger col-sm-2"
 															href={{ route('resume.deleteSubsection',['mapping_subsection_id' => $mapping_subsection->id,'resume_id' => $resume->id]) }}>
 																Delete {{ $subsection->subsection_name }}
 															</a>
@@ -111,7 +107,7 @@
 												@endforeach
 												@if($subsection->flag != 0)
 													<div class="row">
-														<a class="btn btn-primary add_new"
+														<a class="btn btn-primary add_new col-sm-2"
 														   href={{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}>
 															Add new {{ $subsection->subsection_name }}
 														</a>
@@ -128,7 +124,7 @@
 								@if($section->flag == 1 and $l > 1)
 									<br>
 									<div class="row">
-										<a class="btn btn-flat btn-danger input-field col-sm-12"
+										<a class="btn btn-danger input-field col-sm-2"
 										   href={{ route('resume.deleteSection',['mapping_section_id' => $mapping_section->id,'resume_id' => $resume->id]) }}>
 											Delete {{ $section->section_name }}
 										</a>
@@ -139,16 +135,13 @@
 							@if($section->flag == 1)
 								<br>
 								<div class="row">
-									<a class="btn btn-flat btn-primary input-field col-sm-12"
+									<a class="btn btn-primary input-field col-sm-2"
 									   href={{ route('resume.addSection',['section_id' => $section->id,'resume_id' => $resume->id]) }}>
 										Add new {{ $section->section_name }}
 									</a>
 								</div>
 							@endif
-
-
 						</div>
-
 						<?php
 						$check[$i] = $section->id;
 						$i++;

@@ -1,49 +1,60 @@
 @extends('layouts.resume_show')
 
+@section('link')
+	<link rel="stylesheet" type="text/css" href="/css/resume_show.css">
+@stop
+
 @section('section')
-    <div class="container">
+    <div class="container" id="template">
 		@if($default_section[1] != null and $default_section[6] != null)
-			<div id="personal_details">
+			<div id="personal_details" >
 				@if(!empty($default_section[1][0]['Name'][0]))
-					<div id="name">
+					<div id="name" class="col-sm-12">
 						{{ $default_section[1][0]['Name'][0] }}
 					</div>
 				@endif
-				<div id="contact">
-					@if($default_section[1][0]['Email'] != null)
-						<div id="email">Email:
-							@foreach($default_section[1][0]['Email'] as $email)
-								@if(!empty($email))
-									<div class="email">{{ $email }}</div>
-								@endif
-							@endforeach
-						</div>
-					@endif
-					@if($default_section[1][0]['Websites'] != null)
-						<div id='website'>
-							Websites:
-							@foreach($default_section[1][0]['Websites'] as $website)
-								@if(!empty($website))
-									<div class="website">{{ $website }}</div>
-								@endif
-							@endforeach
-						</div>
-					@endif
-					@if($default_section[6][0]['Contact No.'] != null)
-						<div id="phone">
+				<div id="contact" >
+					<div class="row">
+						@if($default_section[1][0]['Email'] != null)
+							<div id="email" class="col-sm-6">
+								Email:
+								@foreach($default_section[1][0]['Email'] as $email)
+									@if(!empty($email))
+										<span class="email">{{ $email }}</span><br>
+									@endif
+								@endforeach
+							</div>
+						@endif
+						@if($default_section[1][0]['Websites'] != null)
+							<div id='website' class="col-sm-6">
+								Websites:
+								@foreach($default_section[1][0]['Websites'] as $website)
+									@if(!empty($website))
+										<span class="website">{{ $website }}</span><br>
+									@endif
+								@endforeach
+							</div>
+						@endif
+					</div>
+					
+					<div class="row">
+						@if($default_section[6][0]['Contact No.'] != null)
+						<div id="phone" class="col-sm-6">
 							Phone:
 							@foreach($default_section[6][0]['Contact No.'] as $phone)
 								@if(!empty($phone))
-									<div class="phone">{{ $phone }}</div>
+									<span class="phone">{{ $phone }}</span>
 								@endif
 							@endforeach
 						</div>
-					@endif
-					@if(!empty($default_section[6][0]['Address'][0]))
-						<div id="address">
-							{{ $default_section[6][0]['Address'][0] }}
-						</div>
-					@endif
+						@endif
+						@if(!empty($default_section[6][0]['Address'][0]))
+							<span id="address" class="col-sm-6">
+								Address:
+								{{ $default_section[6][0]['Address'][0] }}
+							</span>
+						@endif
+					</div>
 				</div>
 			</div>
 		@endif
@@ -104,6 +115,7 @@
 							@endif
 							@if(!empty($section['Passing Year'][0]))
 								<div class="passing_year">
+									Passing Year:
 									{{ $section['Passing Year'][0] }}
 								</div>
 							@endif
@@ -167,6 +179,4 @@
 			</div>
 		@endif
     </div>
-@stop
-@section('link')
 @stop
