@@ -7,7 +7,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 
         @yield('script')
         @yield('link')
@@ -66,6 +67,10 @@
     </nav>
 
  @yield('section')
-    
+
+
+	{{--<footer class="container-fluid panel-footer " style=" position: absolute;bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;color: #888888;">
+        <div >ResumeBuilder-2016 &copy; Software Incubator.</div>
+    </footer>--}}
     </body>
 </html>
