@@ -117,6 +117,26 @@
 				@endforeach
 			</div>
 		@endif
+		@if(!empty($new_section))
+			<div id="new_section">
+				@foreach($new_section as $section_id => $section)
+					@if($section != null)
+					<div class="new_section">
+						<h3>{{ App\Section::find($section_id)->section_name }}</h3>
+						<div class="new_subsection">
+							@foreach($section[0][App\Section::find($section_id)->subsections->first()->subsection_name] as $subsection)
+								@if(!empty($subsection))
+									<div class="new_subsection_content">
+										{{ $subsection }}
+									</div>
+								@endif
+							@endforeach
+						</div>
+					</div>
+					@endif
+				@endforeach
+			</div>
+		@endif
 		@if($default_section[3] != null)
 			<div id="project">
 				<h3>Projects</h3>
