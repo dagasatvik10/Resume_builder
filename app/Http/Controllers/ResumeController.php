@@ -224,20 +224,44 @@ class ResumeController extends Controller
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_USERAGENT =>'PrakharAkgec',
+            CURLOPT_USERAGENT => 'PrakharAkgec',
             CURLOPT_URL => $user['repos_url']
         ));
         $result = curl_exec($curl);
         curl_close($curl);
-        $result_array = json_decode($result,true);
+        $result_array = json_decode($result, true);
 //        $v;
-        foreach($result_array as $result_array)
-         $v[] = $result_array['name'];
-        return $v;
+        $resume = Session::get('user.resume');
+        foreach ($result_array as $result_array) {
+            $resume->sections()->attach(3);
+            $section = $resume->sections->find(3);
+
+            $mapping_section = $section->mapping_sections()->where('resume_id', $resume->id)->orderBy('id', 'desc')->first();
+
+            $subsections = $section->subsections;
+            foreach ($subsections as $subsection)
+            {
+                $subsection->mapping_sections()->attach($mapping_section->id);
+                if ($subsection->id === 8) {
+                    $s = $subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->orderBy('id', 'desc')->first();
+                    $detail = new Detail;
+                    $detail->content = $result_array['name'];
+                    $s->detail()->save($detail);
+                }
+                else
+                {
+                    $s = $subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->orderBy('id', 'desc')->first();
+                    $detail = new Detail;
+                    $detail->content = 'undeployed';
+                    $s->detail()->save($detail);
+                }
+            }
+        }
+//        return $v;
+        return redirect()->route('resume.create');
+    }
 
 
-
-//        $resume = Session::get('user.resume');
 //        $i = sizeof($result_array);
 //        while($i>1)
 //        {
@@ -255,8 +279,6 @@ class ResumeController extends Controller
 //
 //        }
 //        return redirect()->route('resume.create');
-
-    }
 
 
 
