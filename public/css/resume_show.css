@@ -19,6 +19,12 @@ body{
 {
 	font-size: 60px;
 }
+.row_left{
+	float: left;
+}
+.row_right{
+	float: right;
+}
 h3
 {
 	border-bottom: 2px solid grey;

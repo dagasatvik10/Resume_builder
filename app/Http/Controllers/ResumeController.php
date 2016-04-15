@@ -175,6 +175,9 @@ class ResumeController extends Controller
             }
         }
        // dd($new_section);
+        $pdf = PDF::loadView('resume.show',compact('resume','user','default_section','new_section'));
+        //return $pdf->stream();
+        //return $pdf->download('resume.pdf');
         return view('resume.show',compact('resume','user','default_section','new_section'));
     }
 

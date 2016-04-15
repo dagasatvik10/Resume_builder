@@ -9,7 +9,7 @@
 			<div class="col-sm-4">
 				<ul style="list-style: none; ">
 					<li style="display: inline;">
-						<button class=" btn-info btn" id="resume_submit" >Save</button>
+						<button class=" btn-info btn" id="resume_submit" >Submit</button>
 						<a id="resume_download" href={{ route('resume.download',['id' => $resume->id]) }}><button class="btn-info btn">Download</button></a>
 					</li>
 				</ul>

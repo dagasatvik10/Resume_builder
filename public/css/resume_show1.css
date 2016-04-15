@@ -1,55 +1,42 @@
-body
-{
+body{
 	font-family: 'Ubuntu', sans-serif;
-	margin: 0px;
+}
+#template{
+		margin-top: 100px;
 }
 #personal_details
 {
-	float: left;
-	width: 20%;
-	background-color: #FF6969;
-	text-align: center;
-	height: 100%;
-	padding-bottom: 100px;
+	text-align: left;
+	margin-top: 20px;
+	background-color: #1b9fdf;
 }
-#sideright
+.sections{
+	background-color: #87cff2;
+	font-weight: bold;
+	padding: 10px;
+}
+#contact
 {
-	float: right;
-	margin-top: 50px;
-	margin-right: 50px;
+	list-style: none;
+	margin-top: 40px;
+	margin-bottom: 30px;
 }
 #name
 {
-	font-size: 50px;
-	margin-top: 200px;
-	color: #fff;
+	font-size: 60px;
 }
-#email,#phone,#website
+
+.work_experience,.qualifications,.education,#skills,#objective
 {
-	font-size: 15px;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	
+	margin-bottom: 50px;
 }
-#address
-{
-	font-size: 15px;
-	margin-top: 10px;
-	margin-bottom: 60px;
-}
-.glyphicon
-{
-	margin-right: 10px;
-}
-#date,#passing_year
-{
-	float: right;
-}
-#company_name,#course_name
-{
-	font-size: 30px;
-}
-#job_title,#institution_name
+.company_name,.course_name
 {
 	font-size: 25px;
+}
+.date,.passing_year
+{
+	float: right;
 	margin-bottom: 30px;
 }

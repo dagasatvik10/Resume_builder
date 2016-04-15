@@ -2,21 +2,24 @@
 
 @section('link')
 	<link rel="stylesheet" type="text/css" href="/css/resume_show.css">
+	<!--<style type="text/css">
+		include(app_path().'/css/resume_show.css');
+	</style>-->
 @stop
 
 @section('section')
     <div class="container" id="template">
 		@if($default_section[1] != null and $default_section[6] != null)
-			<div id="personal_details" >
+			<div id="personal_details">
 				@if(!empty($default_section[1][0]['Name'][0]))
-					<div id="name" class="col-sm-12">
+					<div id="name" class="col-sm-12 subsections">
 						{{ $default_section[1][0]['Name'][0] }}
 					</div>
 				@endif
 				<div id="contact" >
 					<div class="row">
 						@if($default_section[1][0]['Email'] != null)
-							<div id="email" class="col-sm-6">
+							<div id="email" class="col-sm-6 subsections">
 								Email:
 								@foreach($default_section[1][0]['Email'] as $email)
 									@if(!empty($email))
@@ -26,7 +29,7 @@
 							</div>
 						@endif
 						@if($default_section[1][0]['Websites'] != null)
-							<div id='website' class="col-sm-6">
+							<div id='website' class="col-sm-6 subsections">
 								Websites:
 								@foreach($default_section[1][0]['Websites'] as $website)
 									@if(!empty($website))
@@ -39,7 +42,7 @@
 					
 					<div class="row">
 						@if($default_section[6][0]['Contact No.'] != null)
-						<div id="phone" class="col-sm-6">
+						<div id="phone" class="col-sm-6 subsections">
 							Phone:
 							@foreach($default_section[6][0]['Contact No.'] as $phone)
 								@if(!empty($phone))
@@ -49,7 +52,7 @@
 						</div>
 						@endif
 						@if(!empty($default_section[6][0]['Address'][0]))
-							<span id="address" class="col-sm-6">
+							<span id="address" class="col-sm-6 subsections">
 								Address:
 								{{ $default_section[6][0]['Address'][0] }}
 							</span>
@@ -62,13 +65,13 @@
 		<br>
 		@if($default_section[5] != null)
 			<div id="objective">
-				<h3>Objective</h3>
+				<h3 class="sections">Objective</h3>
 				{{ $default_section[5][0]['Objective'][0] }}
 			</div>
 		@endif
 		@if($default_section[7] != null)
 			<div id="work_experience">
-				<h3>Work experience</h3>
+				<h3 class="sections">Work experience</h3>
 				@foreach($default_section[7] as $section)
 					@if($section != null)
 						<div class="work_experience">
@@ -99,7 +102,7 @@
 		@endif
 		@if($default_section[2] != null)
 			<div id="education">
-				<h3 >Education</h3>
+				<h3 class="sections">Education</h3>
 				@foreach($default_section[2] as $section)
 					@if($section != null)
 						<div class="education">
@@ -134,7 +137,7 @@
 				@foreach($new_section as $section_id => $section)
 					@if($section != null)
 					<div class="new_section">
-						<h3>{{ App\Section::find($section_id)->section_name }}</h3>
+						<h3 class="sections">{{ App\Section::find($section_id)->section_name }}</h3>
 						<div class="new_subsection">
 							@foreach($section[0][App\Section::find($section_id)->subsections->first()->subsection_name] as $subsection)
 								@if(!empty($subsection))
@@ -151,7 +154,7 @@
 		@endif
 		@if($default_section[3] != null)
 			<div id="project">
-				<h3>Projects</h3>
+				<h3 class="sections">Projects</h3>
 				@foreach($default_section[3] as $section)
 					@if($section != null)
 						<div class="project">
@@ -168,7 +171,7 @@
 		@endif
 		@if($default_section[4] != null)
 			<div id="skills">
-				<h3>Skills</h3>
+				<h3 class="sections">Skills</h3>
 				@foreach($default_section[4] as $section)
 					@if(!empty($section['Skill'][0]))
 						<div class="skill_name">
