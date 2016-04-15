@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use PDF;
+use Laravel\Socialite\Facades\Socialite;
 
 
 class ResumeController extends Controller
@@ -207,8 +208,8 @@ class ResumeController extends Controller
             }
         }
         $pdf = PDF::loadView('resume.show',compact('resume','user','section'));
-        return $pdf->download('resume.pdf');
-//        return $pdf->stream();
+//        return $pdf->download('resume.pdf');
+        return $pdf->stream();
 
     }
 
@@ -281,21 +282,74 @@ class ResumeController extends Controller
         return back();
     }
 
-    public function addNewSection($id,Request $request)
+    public function redirectGithub()
     {
-        $resume = Auth::user()->resumes->find($id);
-        $section = new Section;
-        $section->section_name = $request->input('section_name');
-        $section->flag = 2;
-        $section->save();
-        $subsection = new Subsection;
-        $subsection->subsection_name = $request->input('subsection_name');
-        $subsection->flag = 2;
-        $subsection->section()->associate($section);
-        $subsection->save();
-        $resume->sections()->attach($section->id);
-        $mapping_section = $section->mapping_sections()->where('resume_id',$resume->id)->first();
-        $subsection->mapping_sections()->attach($mapping_section);
+        return Socialite::driver('github')->redirect();
+    }
+
+    public function githubCallback()
+    {
+        $user = Socialite::driver('github')->user();
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_USERAGENT => 'PrakharAkgec',
+            CURLOPT_URL => $user['repos_url']
+        ));
+        $result = curl_exec($curl);
+        curl_close($curl);
+        $result_array = json_decode($result, true);
+//        $v;
+        $resume = Session::get('user.resume');
+        foreach ($result_array as $result_array) {
+            $resume->sections()->attach(3);
+            $section = $resume->sections->find(3);
+
+            $mapping_section = $section->mapping_sections()->where('resume_id', $resume->id)->orderBy('id', 'desc')->first();
+
+            $subsections = $section->subsections;
+            foreach ($subsections as $subsection)
+            {
+                $subsection->mapping_sections()->attach($mapping_section->id);
+                if ($subsection->id === 8) {
+                    $s = $subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->orderBy('id', 'desc')->first();
+                    $detail = new Detail;
+                    $detail->content = $result_array['name'];
+                    $s->detail()->save($detail);
+                }
+                else
+                {
+                    $s = $subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->orderBy('id', 'desc')->first();
+                    $detail = new Detail;
+                    $detail->content = 'undeployed';
+                    $s->detail()->save($detail);
+                }
+            }
+        }
+//        return $v;
+        return redirect()->route('resume.create');
+    }
+
+
+//        $i = sizeof($result_array);
+//        while($i>1)
+//        {
+//            $resume->sections()->attach(3);
+//            $section = $resume->sections()->orderBy('id','desc')->first();
+//            foreach($section->subsections as $subsection)
+//            {
+//                $subsection->mapping_sections()->attach($section->pivot->id);
+//            }
+//            $i--;
+//        }
+//
+//        foreach($result_array as $repository)
+//        {
+//
+//        }
+//        return redirect()->route('resume.create');
+
 
         return back();
     }
