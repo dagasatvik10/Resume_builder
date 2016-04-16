@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Detail;
 use App\Resume;
 use App\Section;
+use App\Subsection;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use PDF;
+use Laravel\Socialite\Facades\Socialite;
 
 class ResumeController extends Controller
 {
@@ -86,11 +89,125 @@ class ResumeController extends Controller
     {
         $user = Auth::user();
         $resume = $user->resumes->find($id);
+
         if($resume==null)
         {
             return redirect()->route('user.dashboard');
         }
-        return view('resume.show',compact('resume','user'));
+
+        $check_section = [];
+        $default_section = [];
+        foreach($resume->sections as $section)
+        {
+            if(!in_array($section->id,$check_section))
+            {
+                $j = 0;
+                foreach ($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)
+                {
+                    $check_subsection = [];
+                    //$default_section[$section->id][$j] = 'hey';
+                    foreach ($mapping_section->subsections as $subsection)
+                    {
+                        if(!in_array($subsection->id,$check_subsection))
+                        {
+                            $i = 0;
+                            foreach ($subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->get()
+                                     as $mapping_subsection)
+                            {
+                                if ($mapping_subsection->detail != null) {
+                                    $default_section[$section->id][$j][$subsection->subsection_name][$i] =
+                                        $mapping_subsection->detail->content;
+                                } else {
+                                    $default_section[$section->id][$j][$subsection->subsection_name][$i] = null;
+                                }
+                                $i++;
+                            }
+                            array_push($check_subsection,$subsection->id);
+                        }
+                    }
+                    $j++;
+                }
+                array_push($check_section,$section->id);
+            }
+
+        }
+
+        foreach($default_section as $key_s => $section)
+        {
+            $counter_s = 0;
+            foreach($section as $key_mp => $mapping_section)
+            {
+                $counter_mp = 0;
+                foreach($mapping_section as $key_sub => $subsection)
+                {
+                    $counter_sub = 0;
+                    foreach($subsection as $mapping_subsection)
+                    {
+                        if(!empty($mapping_subsection))
+                        {
+                            $counter_s++;
+                            $counter_mp++;
+                            $counter_sub++;
+                        }
+                    }
+                    if($counter_sub == 0)
+                    {
+                        $default_section[$key_s][$key_mp][$key_sub] = null;
+                    }
+                }
+                if($counter_mp == 0)
+                {
+                    $default_section[$key_s][$key_mp] = null;
+                }
+            }
+            if($counter_s == 0)
+            {
+                $default_section[$key_s] = null;
+            }
+        }
+        $new_section = [];
+        foreach($default_section as $key => $section)
+        {
+            if($key > 7)
+            {
+                $new_section[$key] = $section;
+            }
+        }
+        $pdf = PDF::loadView('resume.show',compact('resume','user','default_section','new_section'));
+        return $pdf->stream();
+        //return $pdf->download('resume.pdf');
+        //return view('resume.show',compact('resume','user','default_section','new_section'));
+    }
+
+    public function generatePDF($id=null)
+    {
+        $user = Auth::user();
+        $resume = $user->resumes->find($id);
+
+        if($resume==null)
+        {
+            return redirect()->route('user.dashboard');
+        }
+
+        foreach($resume->mapping_sections as $mapping_section)
+        {
+            foreach($mapping_section->mapping_subsections as $mapping_subsection)
+            {
+                if(!empty($mapping_subsection->detail))
+                {
+                    $section[$mapping_section->section->id][$mapping_subsection->subsection->subsection_name] =
+                        $mapping_subsection->detail->content;
+                }
+                else
+                {
+                    $section[$mapping_section->section->id][$mapping_subsection->subsection->subsection_name] = null;
+                }
+            }
+        }
+        $pdf = PDF::loadView('resume.show',compact('resume','user','default_section','new_section'));
+//        return $pdf->download('resume.pdf');
+        return $pdf->stream();
+
     }
 
     public function delete($id=null)
@@ -102,5 +219,110 @@ class ResumeController extends Controller
         }
         $resume->delete();
         return redirect()->route('user.dashboard');
+    }
+
+    public function addSection($section_id,$resume_id)
+    {
+        $resume = Auth::user()->resumes->find($resume_id);
+        $section = Section::find($section_id);
+        if($section->flag != 0)
+        {
+            $resume->sections()->attach($section->id);
+
+            $mapping_section = $section->mapping_sections()->where('resume_id',$resume->id)->orderBy('id','desc')->first();
+
+            $subsections = $section->subsections;
+            foreach ($subsections as $subsection)
+            {
+                $subsection->mapping_sections()->attach($mapping_section->id);
+            }
+        }
+
+        return back();
+    }
+
+    public function deleteSection($mapping_section_id,$resume_id)
+    {
+        $resume = Auth::user()->resumes->find($resume_id);
+        $mapping_section = $resume->mapping_sections->find($mapping_section_id);
+
+        if ($mapping_section->section->flag != 0)
+        {
+            $mapping_section->delete();
+        }
+
+        return back();
+    }
+
+    public function addSubsection($mapping_section_id,$subsection_id)
+    {
+        $subsection = Subsection::find($subsection_id);
+        if($subsection->flag != 0) {
+            $subsection->mapping_sections()->attach($mapping_section_id);
+        }
+
+        return back();
+    }
+
+    public function deleteSubsection($mapping_subsection_id,$resume_id)
+    {
+        $resume = Auth::user()->resumes->find($resume_id);
+        $mapping_subsection = $resume->mapping_subsections->find($mapping_subsection_id);
+
+        if($mapping_subsection->subsection->flag != 0)
+        {
+            $mapping_subsection->delete();
+        }
+
+        return back();
+    }
+
+    public function redirectGithub()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    public function githubCallback()
+    {
+        $user = Socialite::driver('github')->user();
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_USERAGENT => 'PrakharAkgec',
+            CURLOPT_URL => $user['repos_url']
+        ));
+        $result = curl_exec($curl);
+        curl_close($curl);
+        $result_array = json_decode($result, true);
+//        $v;
+        $resume = Session::get('user.resume');
+        foreach ($result_array as $result_array) {
+            $resume->sections()->attach(3);
+            $section = $resume->sections->find(3);
+
+            $mapping_section = $section->mapping_sections()->where('resume_id', $resume->id)->orderBy('id', 'desc')->first();
+
+            $subsections = $section->subsections;
+            foreach ($subsections as $subsection)
+            {
+                $subsection->mapping_sections()->attach($mapping_section->id);
+                if ($subsection->id === 8) {
+                    $s = $subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->orderBy('id', 'desc')->first();
+                    $detail = new Detail;
+                    $detail->content = $result_array['name'];
+                    $s->detail()->save($detail);
+                }
+                else
+                {
+                    $s = $subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->orderBy('id', 'desc')->first();
+                    $detail = new Detail;
+                    $detail->content = 'undeployed';
+                    $s->detail()->save($detail);
+                }
+            }
+        }
+//        return $v;
+        return redirect()->route('resume.create',['id' => $resume->id]);
     }
 }

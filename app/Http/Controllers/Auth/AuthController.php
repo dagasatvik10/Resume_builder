@@ -93,7 +93,10 @@ class AuthController extends Controller
 
     private function findOrCreateUser($fbUser)
     {
-        if ($authUser = User::where('email', $fbUser->email)->first()) {
+        $authUser = User::where('email', $fbUser->email)->first();
+
+        if ($authUser != null)
+        {
             return $authUser;
         }
 
@@ -101,7 +104,6 @@ class AuthController extends Controller
             'name' => $fbUser->name,
             'email' => $fbUser->email,
             'password' => bcrypt($fbUser->token)
-
         ]);
     }
 
