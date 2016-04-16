@@ -1,10 +1,7 @@
 @extends('layouts.resume_show')
 
 @section('link')
-	<link rel="stylesheet" type="text/css" href="/css/resume_show.css">
-	<!--<style type="text/css">
-		include(app_path().'/css/resume_show.css');
-	</style>-->
+	@include('_resume_show_1')
 @stop
 
 @section('section')
