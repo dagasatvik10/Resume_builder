@@ -76,46 +76,9 @@ class AuthController extends Controller
         ]);
     }
 
-    protected function redirectGithub()
-    {
-        return Socialite::driver('github')->redirect();
-    }
-
-    protected function githubCallback()
-    {
-        $user = Socialite::driver('github')->user();
-
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_USERAGENT =>'PrakharAkgec',
-            CURLOPT_URL => $user['repos_url']
-        ));
-        $result = curl_exec($curl);
-        curl_close($curl);
-        $result_array = json_decode($result,true);
-        $resume = Session::get('user.resume');
-        $i = sizeof($result_array);
-        while($i>1)
-        {
-            $resume->sections()->attach(3);
-            $section = $resume->sections()->orderBy('id','desc')->first();
-            foreach($section->subsections as $subsection)
-            {
-                $subsection->mapping_sections()->attach($section->pivot->id);
-            }
-            $i--;
-        }
-
-        foreach($result_array as $repository)
-        {
-
-        }
-        return redirect()->route('resume.create');
-    }
-
     protected function redirectFb()
     {
+
         return Socialite::driver('facebook')->redirect();
     }
 

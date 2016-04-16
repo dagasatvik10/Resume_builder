@@ -2,33 +2,83 @@
 
 @section('section')
     <div class="container">
-        @foreach($resume->sections as $section)
-            <div class="row" id={{ 'section_'.$section->id }}>
-                <div class="col-sm-4" style="font-weight: bold; font-size: 30px;">{{ $section->section_name }}</div>
-                <div class="col-sm-7" style="font-size: 25px;">@foreach($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)</div>
-                    <div class="mapping_section row">
+        <div id="personal_details">
+            <div id="name">{{ @$section[1]['Name'] }}</div>
+            <ul id="contact">
+                <li id="email">E-mail : {{ @$section[1]['Email'] }}</li>
+                <li id="website">Website : {{ @$section[1]['Websites'] }}</li><br>
+                <li id="phone">
+                    Phone : {{ @$section[7]['Contact No.'] }}<br>
+                </li>
+                <li id="address">
+                    {{ @$section[6]['Address'] }}
+                </li>
+            </ul>
+        </div>
+        <br>
+        <div id="objective">
+            <h3>Objective</h3>
+            {{ @$section[5]['Objective'] }}
+        </div>
+        <div id="work_experience">
+            <h3>Work experience</h3>
+            <div id="company_name">
+                {{ @$section[7]['Company'] }}
+            </div>
+		<span id="date">
+				{{ @$section[7]['Start Date'] }} &#45;{{ @$section[7]['End Date'] }}
+		</span>
+            <div id="job_title">
+                {{ @$section[7]['Job Title'] }}
+            </div>
+            <div class="other_info">
+                {{ @$section[7]['Other Information'] }}
+            </div>
+        </div>
+        <div id="education">
+            <h3 >Education</h3>
+            <div id="course_name">
+                {{ $section[2]['Course Name'] }}
+            </div>
+            <div id="institution_name">
+                {{ $section[2]['Institution'] }}
+            </div>
+            <div id="passing_year">
+                {{ $section[2]['Passing Year'] }}
+            </div>
+            <div class="other_info">
+                Marks: {{ $section[2]['Marks'] }}
+            </div>
+        </div>
+        <div id="skills">
+            <h3>Skills</h3>
+            <div id="skill_name">
+                {{ $section[4]['Skill'] }}
+            </div>
+        </div>
+
+        {{--@foreach($resume->sections as $section)
+            <div id={{ 'section_'.$section->id }}>
+                <h3>{{ $section->section_name }}</h3>
+                @foreach($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)
+                    <div>
                         @foreach($mapping_section->subsections as $subsection)
                             <div  id={{ 'subsection_'.$subsection->id }}>
-                                <div class="col-sm-4" style="font-size: 25px; font-weight: bold;">{{ $subsection->subsection_name }}</div>
+                                <div>{{ $subsection->subsection_name }}</div>
                                 @foreach($subsection->detail()->where('mapping_subsection_id',$subsection->pivot->id)->get() as $detail)
-                                    <div class="col-sm-8" style="font-size: 25px;">{{ $detail->content }}</div>
+                                    <div>{{ $detail->content }}</div>
                                 @endforeach
                             </div>
                         @endforeach
                     </div>
                 @endforeach
             </div>
-        @endforeach
+        @endforeach--}}
     </div>
 @stop
+@section('link')
 
-@section('footer')
-    <footer class="container-fluid panel-footer" style="margin-top: 50px;">
-        <ul style="list-style: none; text-align: center;">
-            <li style="display: inline;"><a href="www.facebook.com/softwareincubator"><img src="img/fb.png" class="f_img"></a></li>
-            <li style="display: inline;"><img src="img/twitter.png"class="f_img"></li>
-            <li style="display: inline;"><img src="img/google.png" class="f_img"></li>
-        </ul>
-        <div style="text-align: center;">ResumeBuilder-2016 &copy; @ Software Incubator.</div>
-    </footer>
+    <link href='/css/stylesheet1.css' rel="stylesheet">
+
+
 @stop
