@@ -83,7 +83,8 @@ class ResumeController extends Controller
                 $detail->save();
             }
         }
-        return redirect()->route('user.dashboard');
+        return back();
+        //return response()->json(['responseText' => 'Success!'], 200);
     }
 
     public function show($id=null)
@@ -96,23 +97,89 @@ class ResumeController extends Controller
             return redirect()->route('user.dashboard');
         }
 
-        foreach($resume->mapping_sections as $mapping_section)
+        $check_section = [];
+        $default_section = [];
+        foreach($resume->sections as $section)
         {
-            foreach($mapping_section->mapping_subsections as $mapping_subsection)
+            if(!in_array($section->id,$check_section))
             {
-                if(!empty($mapping_subsection->detail))
+                $j = 0;
+                foreach ($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)
                 {
-                    $section[$mapping_section->section->id][$mapping_subsection->subsection->subsection_name] =
-                        $mapping_subsection->detail->content;
+                    $check_subsection = [];
+                    //$default_section[$section->id][$j] = 'hey';
+                    foreach ($mapping_section->subsections as $subsection)
+                    {
+                        if(!in_array($subsection->id,$check_subsection))
+                        {
+                            $i = 0;
+                            foreach ($subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->get()
+                                     as $mapping_subsection)
+                            {
+                               if ($mapping_subsection->detail != null) {
+                                    $default_section[$section->id][$j][$subsection->subsection_name][$i] =
+                                        $mapping_subsection->detail->content;
+                                } else {
+                                    $default_section[$section->id][$j][$subsection->subsection_name][$i] = null;
+                                }
+                                $i++;
+                            }
+                            array_push($check_subsection,$subsection->id);
+                        }
+                    }
+                    $j++;
                 }
-                else
+                array_push($check_section,$section->id);
+            }
+
+        }
+
+        foreach($default_section as $key_s => $section)
+        {
+            $counter_s = 0;
+            foreach($section as $key_mp => $mapping_section)
+            {
+                $counter_mp = 0;
+                foreach($mapping_section as $key_sub => $subsection)
                 {
-                    $section[$mapping_section->section->id][$mapping_subsection->subsection->subsection_name] = null;
+                    $counter_sub = 0;
+                    foreach($subsection as $mapping_subsection)
+                    {
+                        if(!empty($mapping_subsection))
+                        {
+                            $counter_s++;
+                            $counter_mp++;
+                            $counter_sub++;
+                        }
+                    }
+                    if($counter_sub == 0)
+                    {
+                        $default_section[$key_s][$key_mp][$key_sub] = null;
+                    }
+                }
+                if($counter_mp == 0)
+                {
+                    $default_section[$key_s][$key_mp] = null;
                 }
             }
+            if($counter_s == 0)
+            {
+                $default_section[$key_s] = null;
+            }
         }
-        
-        return view('resume.show',compact('resume','user','section'));
+        $new_section = [];
+        foreach($default_section as $key => $section)
+        {
+            if($key > 7)
+            {
+                $new_section[$key] = $section;
+            }
+        }
+       // dd($new_section);
+        $pdf = PDF::loadView('resume.show',compact('resume','user','default_section','new_section'));
+        return $pdf->stream();
+        //return $pdf->download('resume.pdf');
+        //return view('resume.show',compact('resume','user','default_section','new_section'));
     }
 
     public function generatePDF($id=null)
@@ -154,6 +221,7 @@ class ResumeController extends Controller
             return redirect()->route('user.dashboard');
         }
         $resume->delete();
+
         return redirect()->route('user.dashboard');
     }
 
@@ -193,7 +261,8 @@ class ResumeController extends Controller
     public function addSubsection($mapping_section_id,$subsection_id)
     {
         $subsection = Subsection::find($subsection_id);
-        if($subsection->flag != 0) {
+        if($subsection->flag != 0)
+        {
             $subsection->mapping_sections()->attach($mapping_section_id);
         }
 
@@ -213,53 +282,39 @@ class ResumeController extends Controller
         return back();
     }
 
-    public function redirectGithub()
+
+    public function addNewSection($id,Request $request)
     {
-        return Socialite::driver('github')->redirect();
+        $resume = Auth::user()->resumes->find($id);
+        $section = new Section;
+        $section->section_name = $request->input('section_name');
+        $section->flag = 2;
+        $section->save();
+        $subsection = new Subsection;
+        $subsection->subsection_name = $request->input('subsection_name');
+        $subsection->flag = 2;
+        $subsection->section()->associate($section);
+        $subsection->save();
+        $resume->sections()->attach($section->id);
+        $mapping_section = $section->mapping_sections()->where('resume_id',$resume->id)->first();
+        $subsection->mapping_sections()->attach($mapping_section);
+        return back();
     }
 
-    public function githubCallback()
+    public function deleteNewAddedSection($id,$section_id)
     {
-        $user = Socialite::driver('github')->user();
+        $user = Auth::user();
+        $resume = $user->resumes->find($id);
 
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_USERAGENT => 'PrakharAkgec',
-            CURLOPT_URL => $user['repos_url']
-        ));
-        $result = curl_exec($curl);
-        curl_close($curl);
-        $result_array = json_decode($result, true);
-//        $v;
-        $resume = Session::get('user.resume');
-        foreach ($result_array as $result_array) {
-            $resume->sections()->attach(3);
-            $section = $resume->sections->find(3);
-
-            $mapping_section = $section->mapping_sections()->where('resume_id', $resume->id)->orderBy('id', 'desc')->first();
-
-            $subsections = $section->subsections;
-            foreach ($subsections as $subsection)
-            {
-                $subsection->mapping_sections()->attach($mapping_section->id);
-                if ($subsection->id === 8) {
-                    $s = $subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->orderBy('id', 'desc')->first();
-                    $detail = new Detail;
-                    $detail->content = $result_array['name'];
-                    $s->detail()->save($detail);
-                }
-                else
-                {
-                    $s = $subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->orderBy('id', 'desc')->first();
-                    $detail = new Detail;
-                    $detail->content = 'undeployed';
-                    $s->detail()->save($detail);
-                }
-            }
+        if($resume==null)
+        {
+            return redirect()->route('user.dashboard');
         }
-        
-        return redirect()->route('resume.create',['id' => $resume->id]);
+
+        $section = $resume->section->find($section_id);
+        $section->delete();
+
+        return back();
     }
 
 }

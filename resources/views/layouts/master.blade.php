@@ -7,15 +7,31 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+		
 
         @yield('script')
         @yield('link')
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <style type="text/css">
+            .add_new{
+                    display: block;
+                    margin-left: 28px;
+                    font-size: 13px;
+                    margin-bottom: 20px;
+                }
+            .delete{
+                
+                margin-left: 28px;
+                font-size: 13px;
+            }
+            
+        </style>
     </head>
     <body>
-        <nav class="navbar navbar-fixed-top" style="font-size: 20px; background-color: #3f51b5;">
+        <nav class="navbar navbar-inverse navbar-fixed-top"  data-spy="affix" data-offset-top="650">
         <div class="container-fluid" >
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false">
@@ -38,9 +54,10 @@
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href={{ route('user.dashboard') }}>Dashboard</a></li>
-                               <li><a href={{ url('/logout') }}>
-                               <i class="fa fa-btn fa-sign-out"></i>
-                               Logout</a></li>
+                                <li><a href={{ url('/logout') }}>
+                                        <i class="fa fa-btn fa-sign-out"></i>
+                               Logout</a>
+                                </li>
                             </ul>
                         </li>
                     @endif
@@ -49,10 +66,11 @@
         </div>          
     </nav>
 
-        @yield('section')
+ @yield('section')
 
-        <footer class="container-fluid panel-footer " style=" position: absolute;bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;color: #888888;">
+
+	{{--<footer class="container-fluid panel-footer " style=" position: absolute;bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;color: #888888;">
         <div >ResumeBuilder-2016 &copy; Software Incubator.</div>
-    </footer>
+    </footer>--}}
     </body>
 </html>
