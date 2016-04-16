@@ -34,6 +34,19 @@ body
 {
 	-webkit-transform: translateY(10px);
 }
+@media only screen and (max-width: 1200px) {
+    .center{
+    	display: block;
+    	margin-left: auto;
+    	margin-right: auto;
+    }
+}
+@media only screen and (max-width: 1200px){
+	.sample_img{
+		width:100px ;
+		height: 200px;
+	}
+}
 #create_button
 {
 	margin-top: 25px;
@@ -94,14 +107,21 @@ body
 	width: 100%;
 	bottom:0px;
 	left: 0px;
-	padding: 20px;
+	padding: 50px;
 }
 .social_icons
 {
 	font-size: 2.5em;
 	padding-left:10px;
 	padding-right:10px;
-	color: #fff;
+	color: #fff; 
+}
+.social_icons_footer
+{
+	font-size: 2.5em;
+	padding-left:10px;
+	padding-right:10px;
+	color: #888888; 
 }
 	
 .affix {
@@ -131,4 +151,16 @@ body
 	border-radius: 150px;
 	width: 150px;
 	height: 150px;
+}
+.footor{
+	width: 100%; 
+	font-size: 17px; 
+	text-align:center; 
+	background-color: #151515; 
+	color: #888888; 
+	margin:0 auto; 
+	height:auto; 
+	overflow:hidden; 
+	position: absolute; 
+	bottom: 0px;
 }

@@ -4,7 +4,7 @@
 <div class="container" style="margin-top: 100px;">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-default" style="box-shadow: 5px 5px 0px #888888;">
                 <div class="panel-heading" style="background-color: #3f51b5; color: #fff; font-size: 22px;">Register</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
@@ -71,6 +71,12 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-user"></i>Register
                                 </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <a href="auth/fb">Login with Facebook</a>
                             </div>
                         </div>
                     </form>
