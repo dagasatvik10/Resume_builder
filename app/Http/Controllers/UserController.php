@@ -30,4 +30,11 @@ class UserController extends Controller
         return view('dashboard',compact(['user','resumes']));
     }
 
+    public function homepage()
+    {
+        return view('vendor.homepage');
+    }
+
+
+
 }

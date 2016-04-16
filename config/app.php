@@ -1,6 +1,6 @@
 <?php
 
-return [
+return array(
 
     /*
     |--------------------------------------------------------------------------
@@ -93,6 +93,7 @@ return [
 
     'key' => env('APP_KEY'),
 
+
     'cipher' => 'AES-256-CBC',
 
     /*
@@ -158,6 +159,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -172,7 +174,7 @@ return [
     |
     */
 
-    'aliases' => [
+    'aliases' => array(
 
         'App'       => Illuminate\Support\Facades\App::class,
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,
@@ -194,6 +196,7 @@ return [
         'Log'       => Illuminate\Support\Facades\Log::class,
         'Mail'      => Illuminate\Support\Facades\Mail::class,
         'Password'  => Illuminate\Support\Facades\Password::class,
+        'PDF'       => Barryvdh\DomPDF\Facade::class,
         'Queue'     => Illuminate\Support\Facades\Queue::class,
         'Redirect'  => Illuminate\Support\Facades\Redirect::class,
         'Redis'     => Illuminate\Support\Facades\Redis::class,
@@ -208,6 +211,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
-    ],
+    ),
 
-];
+);

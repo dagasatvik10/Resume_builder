@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
@@ -73,27 +76,36 @@ class AuthController extends Controller
         ]);
     }
 
-    public function redirectGithub()
+    protected function redirectFb()
     {
-        return Socialite::driver('github')->redirect();
-    }
 
-    public function githubCallback()
-    {
-        $user = Socialite::driver('github')->user();
-        return dd($user);
-    }
-
-    public function redirectFb()
-    {
         return Socialite::driver('facebook')->redirect();
     }
 
-    public function fbCallback(Request $request)
+    protected function FbCallback()
     {
         $user = Socialite::driver('facebook')->user();
-        return dd($user);
 
+        $authUser = $this->findOrCreateUser($user);
+        Auth::login($authUser, true);
+        return Redirect::to('/dashboard');
     }
+
+    private function findOrCreateUser($fbUser)
+    {
+        $authUser = User::where('email', $fbUser->email)->first();
+
+        if ($authUser != null)
+        {
+            return $authUser;
+        }
+
+        return User::create([
+            'name' => $fbUser->name,
+            'email' => $fbUser->email,
+            'password' => bcrypt($fbUser->token)
+        ]);
+    }
+
 
 }

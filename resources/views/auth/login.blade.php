@@ -4,7 +4,7 @@
 <div class="container" style="margin-top:100px;">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-default" style="box-shadow: 5px 5px 0px #888888;">
                 <div class="panel-heading" style="background-color: #3f51b5; color: #fff; font-weight: bold;">
                                 Login</div>
                 <div class="panel-body">
@@ -56,6 +56,11 @@
                                 </button>
 
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <a href="auth/fb">Login with Facebook</a>
                             </div>
                         </div>
                     </form>
