@@ -2,10 +2,9 @@
 
 @section('section')
 		<div class="container" style="margin-top: 100px;">
-			<div class="lead" style="">Your Resume's</div><br>
-			<!--<a class="btn btn-info" href="#modal1" style="border-radius: 25px;">Create a new CV</a>-->
-			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create new resume</button>
-			<div class="divider"></div>
+			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Create new resume</button>
+			<div class="divider"></div><br><br>
+			<div class="lead" style="">Your Resume's</div>
 			@if($resumes->count())
 				<table class="table table-hover" style="margin-top:40px; border: 1px solid grey; border-collapse: collapse; ">
 					<tr>
@@ -50,15 +49,16 @@
 						{!! Form::label('name','Resume Name') !!}
 						{!! Form::text('name','',['class' => 'validate']) !!}
 					</div>
+					<div class="input-field">
+						{!! Form::submit('Create') !!}
+					</div>
 			      <div class="modal-footer">
 			      	<button class="btn btn-info">Create</button>
 			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 			      </div>
 			    </div>
 		    </div>
-
-		  </div>
-		</div>		
+		</div>
 @stop
 
 

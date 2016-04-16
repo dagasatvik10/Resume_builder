@@ -12,7 +12,7 @@
       <data directive="@endforeach" />
       <data directive="@parent" />
       <data directive="@lang" injection="true" prefix="&lt;?php echo \Illuminate\Support\Facades\Lang::get(" suffix="); ?&gt;" />
-     <data directive="@for" injection="true" prefix="&lt;?php for (" suffix="): ?&gt;" />
+      <data directive="@for" injection="true" prefix="&lt;?php for (" suffix="): ?&gt;" />
       <data directive="@endforelse" />
       <data directive="@endsection" />
       <data directive="@yield" injection="true" prefix="&lt;?php echo $__env-&gt;yieldContent(" suffix="); ?&gt;" />

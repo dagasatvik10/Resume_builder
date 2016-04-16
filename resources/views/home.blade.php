@@ -8,13 +8,11 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
 	<!--fontawsome CDN-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<!--google fonts-->
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,900' rel='stylesheet' type='text/css'>
-
 
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
@@ -23,14 +21,20 @@
 	<!--fixed navigation-->
 	<div class="navbar_scroll">
 		<div id="content-land">
-			<div style="font-size:24px; padding-top: 100px;">
+			<div>
+				<div style="font-size:24px; padding-top: 100px; letter-spacing: 1.5px;">
 				Create a standout resume in minutes.
+				</div>
+				<div style="font-size:20px; letter-spacing: 1.5px;">
+					Easily create professional resumes.
+				</div>
+				<a class="btn btn-info" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a>
 			</div>
-			<div style="font-size:20px;">Easily create professional resumes.</div>
-			<a class="btn btn-info" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a><br>
-			<img src="img/a.png" class="land_temp">
-			<img src="img/b.png" class="land_temp">
-			<img src="img/c.png" class="land_temp">
+			<div>
+				<img src="img/a.png" class="land_temp img-responsive">
+				<img src="img/b.png" class="land_temp img-responsive">
+				<img src="img/c.png" class="land_temp img-responsive center">
+			</div>
 		</div>
 	<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #3f51b5;" data-spy="affix" data-offset-top="650">
 		<div class="container-fluid" >
@@ -75,47 +79,47 @@
 	</div>		
 	<div class="container-fluid" id="why_rb">
 		<h2 style="text-align: center;">Why Resume Builder</h2>
-			Resume Builder makes it fast and easy to create the powerful, professional resume hiring managers are looking for.<br>
-			Our Resume Builder lets you create a resume in minutes!
+			<p style="padding: 10px;">Resume Builder makes it fast and easy to create the powerful, professional resume hiring managers are looking for.<br>
+			Our Resume Builder lets you create a resume in minutes!<p>
 	</div>
 	<div class="container" id="how_itworks">
 		<h1 style="text-align: center; padding-bottom: 70px;">How It <span style="color: #15b8db">Works</span></h1>
 		<div class="row ">
-			<div class="col-sm-6">
+			<div class="col-sm-5">
 				<img src="img/macpro.png" class="img-responsive">
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				 Build a resume with the help of few simple steps.
 			</div>
 		</div>
 		<div class="row step">
-			<div class="col-sm-6">
+			<div class="col-sm-7 ">
 				Choose a template, of your choice.Make your resume of your choice.
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-5">
 				<img src="img/templates.png" class="img-responsive">
 			</div>
 		</div>
 		<div class="row step">
-			<div class="col-sm-6">
+			<div class="col-sm-5">
 				<img src="img/download.jpg" class="img-responsive">
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				Download Your resume in pdf or word document format.
 			</div>
 		</div>
 		<div class="row step">
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				Save your resume for future reference. You can edit/ view your resume in future. By creating an account in Resume Builder.
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-5">
 				<img src="img/login.png" class="img-responsive">
 			</div>
 		</div>
 	</div>
 	<div class="container" id="sample_design">
 		<h2 style="text-align: center; padding-bottom: 70px;">Sample <span style="color: #15b8db">Designs</span></h2>
-		<ul class="nav nav-tabs nav-justified">
+		<ul class="nav nav-pills">
 		    <li class="active"><a href="#sample-featured" data-toggle="tab">Featured</a></li>
 		    <li><a href="#sample-professional" data-toggle="tab">Professional</a></li>
 		    <li><a href="#sample-engineer" data-toggle="tab">Engineer</a></li>
@@ -125,43 +129,43 @@
 	<div class="tab-content cv-templates">
 		<div class="tab-pane fade in active" id="sample-featured">
 			<div class="template">
-				<img src="img/avant.jpg" class="img-responsive">
+				<img src="img/avant.jpg" class="img-responsive sample_img">
 				<figcaption>Design Director</figcaption>
 			</div>
 			<div class="template">
-				<img src="img/gallant.jpg" class="img-responsive">
+				<img src="img/gallant.jpg" class="img-responsive sample_img">
 				<figcaption>President</figcaption>
 			</div>
 			<div class="template">
-				<img src="img/slate.jpg" class="img-responsive">
+				<img src="img/slate.jpg" class="img-responsive sample_img">
 				<figcaption>Sales & Marketing</figcaption>
 			</div>
 		</div>	 
 		<div class="tab-pane fade" id="sample-professional">
 			<div class="template">
-				<img src="img/majed-project-manager.jpg" class="img-responsive">
+				<img src="img/majed-project-manager.jpg" class="img-responsive sample_img">
 				<figcaption>Project Manager</figcaption>
 			</div>
 			<div class="template">
-				<img src="img/carolyn-principal.jpg" class="img-responsive">
+				<img src="img/carolyn-principal.jpg" class="img-responsive sample_img">
 				<figcaption>Principal</figcaption>
 			</div>
 			<div class="template">
-				<img src="img/bobbie-doctor.jpg" class="img-responsive">
+				<img src="img/bobbie-doctor.jpg" class="img-responsive sample_img">
 				<figcaption>Doctor</figcaption>
 			</div>
 		</div>
 		<div class="tab-pane fade" id="sample-engineer">
 			<div class="template">
-				<img src="img/scott-software-engineer.jpg" class="img-responsive">
+				<img src="img/scott-software-engineer.jpg" class="img-responsive sample_img">
 				<figcaption>Software Engineeer</figcaption>
 			</div>
 			<div class="template">
-				<img src="img/khaled-site-engineer.jpg" class="img-responsive">
+				<img src="img/khaled-site-engineer.jpg" class="img-responsive sample_img">
 				<figcaption>Site Engineer</figcaption>
 			</div>
 			<div class="template">
-				<img src="img/vincent-application-engineer.jpg" class="img-responsive">
+				<img src="img/vincent-application-engineer.jpg" class="img-responsive sample_img">
 				<figcaption>Application Engineer</figcaption>
 			</div>
 		</div>
@@ -178,20 +182,18 @@
 	</div>
 <div class="container-fluid" id="contact">
 	<div class="row">
-	
-		<div class="col-sm-4" style="text-align: left;">
+		<div class="col-sm-3" style="text-align: left;">
 			Resume Builder
 		</div>
-		<div class="col-sm-4" style="text-align: center;">
-	<ul style="list-style: none;">
-		<a href="https://www.facebook.com/RedefiningLimitations/"><li style="display: inline;"><i class="fa fa-facebook-square social_icons"></i></li></a>
-		<a href="https://twitter.com/si_akgec"><li style="display: inline;"><i class="fa fa-twitter-square social_icons"></i></li></a>
-	</ul>		
-	</div>
-	
-		<div class="col-sm-4" style="text-align: right; font-size: 14px;"> 
-			Copyright &copy; Resume Builder.All right reserved.<br>
+		<div class="col-sm-5" style="text-align: center; font-size: 14px;"> 
+			Copyright &copy; 2016.All right reserved.<br>
 			Powered By Software Incubator.
+		</div>
+		<div class="col-sm-4" style="text-align: right;">
+			<ul style="list-style: none;">
+				<a href="https://www.facebook.com/RedefiningLimitations/"><li style="display: inline;"><i class="fa fa-facebook-square social_icons_footer"></i></li></a>
+				<a href="https://twitter.com/si_akgec"><li style="display: inline;"><i class="fa fa-twitter-square social_icons_footer"></i></li></a>
+			</ul>		
 		</div>
 	</div>
 </div>
