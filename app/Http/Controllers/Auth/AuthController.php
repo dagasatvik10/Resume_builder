@@ -76,12 +76,12 @@ class AuthController extends Controller
         ]);
     }
 
-    protected function redirectGithub()
+  /*  public function redirectGithub()
     {
         return Socialite::driver('github')->redirect();
     }
 
-    protected function githubCallback()
+    public function githubCallback()
     {
         $user = Socialite::driver('github')->user();
 
@@ -94,6 +94,7 @@ class AuthController extends Controller
         $result = curl_exec($curl);
         curl_close($curl);
         $result_array = json_decode($result,true);
+        return $result_array[0]['name'];
 
 //        $resume = Session::get('user.resume');
 //        $i = sizeof($result_array);
@@ -114,10 +115,11 @@ class AuthController extends Controller
 //        }
 //        return redirect()->route('resume.create');
 
-    }
+    }*/
 
     protected function redirectFb()
     {
+
         return Socialite::driver('facebook')->redirect();
     }
 

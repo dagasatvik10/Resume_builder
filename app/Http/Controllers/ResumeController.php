@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use PDF;
+use Laravel\Socialite\Facades\Socialite;
 
 
 class ResumeController extends Controller
@@ -174,7 +175,6 @@ class ResumeController extends Controller
                 $new_section[$key] = $section;
             }
         }
-        //dd($default_section);
         $pdf = PDF::loadView('resume.show',compact('resume','user','default_section','new_section'));
         return $pdf->stream();
         //return $pdf->download('resume.pdf');
@@ -207,8 +207,8 @@ class ResumeController extends Controller
             }
         }
         $pdf = PDF::loadView('resume.show',compact('resume','user','section'));
-        return $pdf->download('resume.pdf');
-//        return $pdf->stream();
+//        return $pdf->download('resume.pdf');
+        return $pdf->stream();
 
     }
 
@@ -281,6 +281,7 @@ class ResumeController extends Controller
         return back();
     }
 
+
     public function addNewSection($id,Request $request)
     {
         $resume = Auth::user()->resumes->find($id);
@@ -296,7 +297,6 @@ class ResumeController extends Controller
         $resume->sections()->attach($section->id);
         $mapping_section = $section->mapping_sections()->where('resume_id',$resume->id)->first();
         $subsection->mapping_sections()->attach($mapping_section);
-
         return back();
     }
 
