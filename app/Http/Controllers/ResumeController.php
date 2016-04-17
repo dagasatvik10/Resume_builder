@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Detail;
+use App\Mapping_section;
 use App\Resume;
 use App\Section;
 use App\Subsection;
@@ -66,24 +67,25 @@ class ResumeController extends Controller
 
     public function store($id,Request $request)
     {
-        $resume = Auth::user()->resumes->find($id);
-        foreach($resume->mapping_subsections as $mapping_subsection)
-        {
-            $detail = $mapping_subsection->detail;
-            if($detail === null)
-            {
-                $detail = new Detail;
-                $detail->content = $request->input($mapping_subsection->id);
-                $mapping_subsection->detail()->save($detail);
-            }
-            else
-            {
-                $detail->content = $request->input($mapping_subsection->id);
-                $detail->save();
+        $user = Auth::user();
+        //$id = $request->resume_id;
+        $resume = $user->resumes->find($id);
+
+        if(!$resume == null) {
+            foreach ($resume->mapping_subsections as $mapping_subsection) {
+                $detail = $mapping_subsection->detail;
+                if ($detail === null) {
+                    $detail = new Detail;
+                    $detail->content = $request->input('detail'.$mapping_subsection->id);
+                    $mapping_subsection->detail()->save($detail);
+                } else {
+                    $detail->content = $request->input('detail'.$mapping_subsection->id);
+                    $detail->save();
+                }
             }
         }
-        return back();
-        //return response()->json(['responseText' => 'Success!'], 200);
+        //return view('resume.create',compact(['user','resume']));
+
     }
 
     public function show($id=null)
@@ -234,7 +236,8 @@ class ResumeController extends Controller
             }
         }
 
-        return back();
+        $html = view('resume.test',compact('resume','user'))->render();
+        return response()->json(['success' => true,'html' => $html]);
     }
 
     public function deleteSection($mapping_section_id,$resume_id)
@@ -247,18 +250,30 @@ class ResumeController extends Controller
             $mapping_section->delete();
         }
 
-        return back();
+        $html = view('resume.test',compact('resume','user'))->render();
+        return response()->json(['success' => true,'html' => $html]);
     }
 
     public function addSubsection($mapping_section_id,$subsection_id)
     {
         $subsection = Subsection::find($subsection_id);
+        $mapping_section = Mapping_section::find($mapping_section_id);
+
+        $resume = Session::get('user.resume');
+        $user = Auth::user();
+
         if($subsection->flag != 0)
         {
             $subsection->mapping_sections()->attach($mapping_section_id);
+            $mapping_subsection = $mapping_section->mapping_subsections()->orderBy('id','desc')->first();
+            $detail = new Detail;
+            $detail->content = '';
+            $mapping_subsection->detail()->save($detail);
         }
 
-        return back();
+        $html = view('resume.test',compact('resume','user'))->render();
+        return response()->json(['success' => true,'html' => $html]);
+        //return back();
     }
 
     public function deleteSubsection($mapping_subsection_id,$resume_id)
@@ -271,7 +286,8 @@ class ResumeController extends Controller
             $mapping_subsection->delete();
         }
 
-        return back();
+        $html = view('resume.test',compact('resume','user'))->render();
+        return response()->json(['success' => true,'html' => $html]);
     }
 
 
@@ -359,4 +375,11 @@ class ResumeController extends Controller
         return redirect()->route('resume.create',['id' => $resume->id]);
     }
 
+    public function test($id)
+    {
+        $user = Auth::user();
+        $resume = $user->resumes->find($id);
+
+        return view('resume.test',compact('user','resume'));
+    }
 }

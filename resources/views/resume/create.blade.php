@@ -30,7 +30,6 @@
 					{!! Form::text('subsection_name','',['class' => 'form-control']) !!}
 				</div><br>
 				<div>
-					<!--{!! Form::submit('Add','',['class' => 'btn btn-info']) !!}-->
 					<button type="submit" class="btn btn-info">Add</button>
 				</div>				
 				{!! Form::close() !!}<br>
@@ -40,7 +39,7 @@
 			</div>
 		  </div>
 		  </div>
-		<div class="row">
+		<div class="row" id="resume_full_div">
 			<div class="col-sm-4">
 				<ul class="">
 					<?php
@@ -64,11 +63,12 @@
 			</ul>
 			</div>
 			<div class="col-sm-8">
-				{!! Form::open(['id' => 'resume','name' => 'resume']) !!}
+				{!! Form::open(['id' => 'resume_form','name' => 'resume']) !!}
 					<?php
 					$i = 0;
 					$check = array();
 					?>
+					<input type="hidden" name="resume_id" id="resume_id" value={{ $resume->id }}>
 					@foreach($resume->sections as $section)
 						@if(!in_array($section->id,$check))
 						<div id={{ 'form_'.$section->id}}>
@@ -83,7 +83,7 @@
 										@if(!in_array($subsection->id,$c))
 											<div class="row">
 												<div class=" col-sm-12">
-													{{ Form::label($subsection->pivot->id,$subsection->subsection_name)}}
+													{{ Form::label('detail'.$subsection->pivot->id,$subsection->subsection_name)}}
 												</div>
 												<?php $k = 1; ?>
 												@foreach($subsection->mapping_subsections()->where('mapping_section_id',$mapping_section->id)->get()
@@ -92,24 +92,24 @@
 													$content = $mapping_subsection->detail==null?null:$mapping_subsection->detail->content;
 													?>
 													<div class=" col-sm-8">
-														{!! Form::text($mapping_subsection->id,$content,['class' => 'form-control']) !!}<br>
+														{!! Form::text('detail'.$mapping_subsection->id,$content,['class' => 'form-control detail_resume']) !!}<br>
 													</div>
 													@if($subsection->flag != 0 and $k > 1)
 														<div class="row">
-															<a class="btn btn-danger col-sm-2"
-															href={{ route('resume.deleteSubsection',['mapping_subsection_id' => $mapping_subsection->id,'resume_id' => $resume->id]) }}>
+															<button class="btn btn-danger col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
+															link={{ route('resume.deleteSubsection',['mapping_subsection_id' => $mapping_subsection->id,'resume_id' => $resume->id]) }}>
 																Delete {{ $subsection->subsection_name }}
-															</a>
+															</button>
 														</div>
 													@endif
 													<?php $k++; ?>
 												@endforeach
 												@if($subsection->flag != 0)
 													<div class="row">
-														<a class="btn btn-primary add_new col-sm-2"
-														   href={{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}>
+														<button class="btn btn-primary add_new col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
+														link='{{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}'>
 															Add new {{ $subsection->subsection_name }}
-														</a>
+														</button>
 													</div>
 												@endif
 											</div>
@@ -123,10 +123,10 @@
 								@if($section->flag == 1 and $l > 1)
 									<br>
 									<div class="row">
-										<a class="btn btn-danger input-field col-sm-2"
-										   href={{ route('resume.deleteSection',['mapping_section_id' => $mapping_section->id,'resume_id' => $resume->id]) }}>
+										<button class="btn btn-danger input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
+										   link={{ route('resume.deleteSection',['mapping_section_id' => $mapping_section->id,'resume_id' => $resume->id]) }}>
 											Delete {{ $section->section_name }}
-										</a>
+										</button>
 									</div>
 								@endif
 								<?php $l++; ?>
@@ -134,10 +134,10 @@
 							@if($section->flag == 1)
 								<br>
 								<div class="row">
-									<a class="btn btn-primary input-field col-sm-2"
-									   href={{ route('resume.addSection',['section_id' => $section->id,'resume_id' => $resume->id]) }}>
+									<button class="btn btn-primary input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
+											link={{ route('resume.addSection',['section_id' => $section->id,'resume_id' => $resume->id]) }}>
 										Add new {{ $section->section_name }}
-									</a>
+									</button>
 								</div>
 							@endif
 						</div>
@@ -155,14 +155,8 @@
 @stop
 
 @section('script')
+	<script type="application/javascript" src={{ asset('js/resume_create.js') }}></script>
 	<script>
-		$(document).ready(function(){
-			show(1);
-			$('#resume_submit').click(function(){
-				$('#resume').submit();
-			});
-		});
-
 		function show(obj)
 		{
 			//console.log(obj);
@@ -172,6 +166,5 @@
             $("#form_"+obj).show();
 		}
 	</script>
-	<script type="application/javascript" href={{ asset('js/resume_create.js') }}></script>
 @stop
 
