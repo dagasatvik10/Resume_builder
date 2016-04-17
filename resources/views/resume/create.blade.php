@@ -74,7 +74,6 @@
 						<div id={{ 'form_'.$section->id}}>
 							<?php $l = 1; ?>
 							@foreach($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)
-
 								<div class="mapping_section">
                                     <?php
                                     $j = 0;
@@ -158,12 +157,10 @@
 @section('script')
 	<script>
 		$(document).ready(function(){
-			//var resumesubmiturl = "{{ route('resume.store',['id' => $resume->id]) }}";
 			show(1);
 			$('#resume_submit').click(function(){
 				$('#resume').submit();
 			});
-
 		});
 
 		function show(obj)
@@ -175,5 +172,6 @@
             $("#form_"+obj).show();
 		}
 	</script>
+	<script type="application/javascript" href={{ asset('js/resume_create.js') }}></script>
 @stop
 

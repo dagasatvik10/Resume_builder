@@ -76,47 +76,6 @@ class AuthController extends Controller
         ]);
     }
 
-  /*  public function redirectGithub()
-    {
-        return Socialite::driver('github')->redirect();
-    }
-
-    public function githubCallback()
-    {
-        $user = Socialite::driver('github')->user();
-
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_USERAGENT =>'PrakharAkgec',
-            CURLOPT_URL => $user['repos_url']
-        ));
-        $result = curl_exec($curl);
-        curl_close($curl);
-        $result_array = json_decode($result,true);
-        return $result_array[0]['name'];
-
-//        $resume = Session::get('user.resume');
-//        $i = sizeof($result_array);
-//        while($i>1)
-//        {
-//            $resume->sections()->attach(3);
-//            $section = $resume->sections()->orderBy('id','desc')->first();
-//            foreach($section->subsections as $subsection)
-//            {
-//                $subsection->mapping_sections()->attach($section->pivot->id);
-//            }
-//            $i--;
-//        }
-//
-//        foreach($result_array as $repository)
-//        {
-//
-//        }
-//        return redirect()->route('resume.create');
-
-    }*/
-
     protected function redirectFb()
     {
 
@@ -134,7 +93,10 @@ class AuthController extends Controller
 
     private function findOrCreateUser($fbUser)
     {
-        if ($authUser = User::where('email', $fbUser->email)->first()) {
+        $authUser = User::where('email', $fbUser->email)->first();
+
+        if ($authUser != null)
+        {
             return $authUser;
         }
 
@@ -142,7 +104,6 @@ class AuthController extends Controller
             'name' => $fbUser->name,
             'email' => $fbUser->email,
             'password' => bcrypt($fbUser->token)
-
         ]);
     }
 
