@@ -16,10 +16,10 @@ Route::group(['middleware' => 'web'], function ()
     Route::get('auth/fb','Auth\AuthController@redirectFb');
     Route::get('auth/fb/callback','Auth\AuthController@FbCallback');
 
-    Route::get('resume/{section_id}/{resume_id}/addSection',['as' => 'resume.addSection','uses' => 'ResumeController@addSection']);
-    Route::get('resume/{mapping_section_id}/{subsection_id}/addSubsection',['as' => 'resume.addSubsection','uses' => 'ResumeController@addSubsection']);
-    Route::get('resume/{mapping_section_id}/{resume_id}/deleteSection',['as' => 'resume.deleteSection','uses' => 'ResumeController@deleteSection']);
-    Route::get('resume/{mapping_subsection_id}/{resume_id}/deleteSubsection',['as' => 'resume.deleteSubsection','uses' => 'ResumeController@deleteSubsection']);
+    Route::post('resume/{section_id}/{resume_id}/addSection',['as' => 'resume.addSection','uses' => 'ResumeController@addSection']);
+    Route::post('resume/{mapping_section_id}/{subsection_id}/addSubsection',['as' => 'resume.addSubsection','uses' => 'ResumeController@addSubsection']);
+    Route::post('resume/{mapping_section_id}/{resume_id}/deleteSection',['as' => 'resume.deleteSection','uses' => 'ResumeController@deleteSection']);
+    Route::post('resume/{mapping_subsection_id}/{resume_id}/deleteSubsection',['as' => 'resume.deleteSubsection','uses' => 'ResumeController@deleteSubsection']);
 //    Route::get('/pdf', function(){
 //        $pdf = PDF::loadHTML('<h1>Test</h1>');
 //        return $pdf->stream();
@@ -28,4 +28,6 @@ Route::group(['middleware' => 'web'], function ()
     Route::get('resume/{id?}/preview',['as' => 'resume.preview','uses' => 'ResumeController@preview']);
 
     Route::post('resume/{id}/addNewSection',['as' => 'resume.addNewSection','uses' => 'ResumeController@addNewSection']);
+    Route::get('test/{id}','ResumeController@test');
+
 });

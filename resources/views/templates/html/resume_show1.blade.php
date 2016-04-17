@@ -4,7 +4,6 @@
 					<div id="contact" >
 						@if($default_section[1][0]['Email'] != null)
 							<div id="email">
-								
 								@foreach($default_section[1][0]['Email'] as $email)
 									@if(!empty($email))
 										{{ $email }}<br>
@@ -14,7 +13,6 @@
 						@endif
 						@if($default_section[1][0]['Websites'] != null)
 							<div id='website'>
-							
 								@foreach($default_section[1][0]['Websites'] as $website)
 									@if(!empty($website))
 										{{ $website }}
@@ -23,23 +21,26 @@
 							</div>
 						@endif
 					</div>
-						@if($default_section[6][0]['Contact No.'] != null)
-						<div id="phone">
-							
-							@foreach($default_section[6][0]['Contact No.'] as $phone)
-								@if(!empty($phone))
-									<span class="phone">{{ $phone }}</span>
-								@endif
-							@endforeach
-						</div>
-						@endif
-						@if(!empty($default_section[6][0]['Address'][0]))
-							<div id="address">
-								
-								{{ $default_section[6][0]['Address'][0] }}
-							</div>
-						@endif
+					@if($default_section[6][0]['Contact No.'] != null)
+					<div id="phone">
+						@foreach($default_section[6][0]['Contact No.'] as $phone)
+							@if(!empty($phone))
+								<span class="phone">{{ $phone }}</span>
+							@endif
+						@endforeach
 					</div>
+					@endif
+					@if(!empty($default_section[6][0]['Address'][0]))
+						<div id="address">
+							{{ $default_section[6][0]['Address'][0] }}
+						</div>
+					@endif
+					@if(!empty($default_section[6][0]['Country'][0]))
+						<div id="country">
+							{{ $default_section[6][0]['Country'][0] }}
+						</div>
+					@endif
+				</div>
 				@if(!empty($default_section[1][0]['Name'][0]))
 					<div id="name">
 						{{ $default_section[1][0]['Name'][0] }}

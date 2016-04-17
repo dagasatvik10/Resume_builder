@@ -49,11 +49,9 @@
 						{!! Form::label('name','Resume Name') !!}
 						{!! Form::text('name','',['class' => 'validate']) !!}
 					</div>
-					<div class="input-field">
-						{!! Form::submit('Create') !!}
-					</div>
 			      <div class="modal-footer">
-			      	<button class="btn btn-info">Create</button>
+			      	<button type="submit" class="btn btn-info">Create</button>
+					  {!! Form::close() !!}
 			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 			        {!! Form::close() !!}
 			      </div>
