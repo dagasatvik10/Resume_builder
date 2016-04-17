@@ -51,16 +51,20 @@
 		<br>
 		@if($default_section[5] != null)
 			<div id="objective">
-				<h3 class="sections">Objective</h3>
-				{{ $default_section[5][0]['Objective'][0] }}
+				<div class="sections">
+					Objective
+				</div>
+				<div class="subsections">{{ $default_section[5][0]['Objective'][0] }}</div>
 			</div>
 		@endif
 		@if($default_section[7] != null)
-			<div id="work_experience">
-				<h3 class="sections">Work experience</h3>
+			<div id="work_experience" >
+				<div class="sections ">
+					Work experience
+				</div>
 				@foreach($default_section[7] as $section)
 					@if($section != null)
-						<div class="work_experience">
+						<div class="subsections">
 							@if(!empty($section['Company'][0]))
 								<div class="company_name">
 									{{ $section['Company'][0] }}
@@ -87,11 +91,11 @@
 			</div>
 		@endif
 		@if($default_section[2] != null)
-			<div id="education">
-				<h3 class="sections">Education</h3>
+			<div id="education" >
+				<div class="sections">Education</div>
 				@foreach($default_section[2] as $section)
 					@if($section != null)
-						<div class="education">
+						<div  class="subsections">
 							@if(!empty($section['Course Name'][0]))
 								<div class="course_name">
 									{{ $section['Course Name'][0] }}
@@ -122,9 +126,11 @@
 			<div id="new_section">
 				@foreach($new_section as $section_id => $section)
 					@if($section != null)
-					<div class="new_section">
-						<h3 class="sections">{{ App\Section::find($section_id)->section_name }}</h3>
-						<div class="new_subsection">
+					<div>
+						<div class="sections ">
+							{{ App\Section::find($section_id)->section_name }}
+						</div>
+						<div class="subsections">
 							@foreach($section[0][App\Section::find($section_id)->subsections->first()->subsection_name] as $subsection)
 								@if(!empty($subsection))
 									<div class="new_subsection_content">
@@ -139,11 +145,11 @@
 			</div>
 		@endif
 		@if($default_section[3] != null)
-			<div id="project">
-				<h3 class="sections">Projects</h3>
+			<div id="project" >
+				<div class="sections ">Projects</div>
 				@foreach($default_section[3] as $section)
 					@if($section != null)
-						<div class="project">
+						<div class="subsections">
 							<div class="project_name">
 								{{ $section['Project Name'][0] }}
 							</div>
@@ -156,11 +162,11 @@
 			</div>
 		@endif
 		@if($default_section[4] != null)
-			<div id="skills">
-				<h3 class="sections">Skills</h3>
+			<div id="skills" >
+				<div class="sections">Skills</div>
 				@foreach($default_section[4] as $section)
 					@if(!empty($section['Skill'][0]))
-						<div class="skill_name">
+						<div class="subsections">
 							{{ $section['Skill'][0] }}
 						</div>
 					@endif

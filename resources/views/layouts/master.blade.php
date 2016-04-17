@@ -18,16 +18,24 @@
         <style type="text/css">
             .add_new{
                     display: block;
-                    margin-left: 28px;
+                    margin-left: 30px;
                     font-size: 13px;
                     margin-bottom: 20px;
+                    padding: 1px;
                 }
             .delete{
-                
+                padding: 1px;
                 margin-left: 28px;
                 font-size: 13px;
             }
-            
+            #github_button{
+                
+            }
+            .section{
+            height: 50%;
+            overflow-y:auto;
+            overflow-x:hidden; 
+             }
         </style>
     </head>
     <body>
@@ -67,10 +75,5 @@
     </nav>
 
  @yield('section')
-
-
-	{{--<footer class="container-fluid panel-footer " style=" position: absolute;bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;color: #888888;">
-        <div >ResumeBuilder-2016 &copy; Software Incubator.</div>
-    </footer>--}}
     </body>
 </html>

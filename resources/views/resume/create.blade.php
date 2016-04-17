@@ -11,6 +11,7 @@
 					<li style="display: inline;">
 						<button class=" btn-info btn" id="resume_submit" >Submit</button>
 						<a id="resume_download" href={{ route('resume.download',['id' => $resume->id]) }}><button class="btn-info btn">Download</button></a>
+						<a id="resume_preview" href=><button class="btn-info btn">Preview</button></a>
 					</li>
 				</ul>
 			</div>
@@ -71,7 +72,7 @@
 					?>
 					@foreach($resume->sections as $section)
 						@if(!in_array($section->id,$check))
-						<div id={{ 'form_'.$section->id}}>
+						<div class="section" id={{ 'form_'.$section->id}} >
 							<?php $l = 1; ?>
 							@foreach($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)
 								<div class="mapping_section">
@@ -106,7 +107,7 @@
 												@endforeach
 												@if($subsection->flag != 0)
 													<div class="row">
-														<a class="btn btn-primary add_new col-sm-2"
+														<a class="btn btn-info add_new col-sm-2"
 														   href={{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}>
 															Add new {{ $subsection->subsection_name }}
 														</a>
@@ -122,19 +123,27 @@
 								</div>
 								@if($section->flag == 1 and $l > 1)
 									<br>
-									<div class="row">
-										<a class="btn btn-danger input-field col-sm-2"
+									<div>
+										<a class="btn btn-danger"
 										   href={{ route('resume.deleteSection',['mapping_section_id' => $mapping_section->id,'resume_id' => $resume->id]) }}>
 											Delete {{ $section->section_name }}
 										</a>
-									</div>
+									</div><br>
 								@endif
 								<?php $l++; ?>
-							@endforeach
+							@endforeach<br>
+							@if($section->id == 3)
+								<div id="github_button">
+									<a class="btn btn-info"
+									   href={{ url('auth/github') }}>
+										Fetch from GitHub
+									</a>
+								</div>
+							@endif
 							@if($section->flag == 1)
 								<br>
-								<div class="row">
-									<a class="btn btn-primary input-field col-sm-2"
+								<div>
+									<a class="btn btn-info"
 									   href={{ route('resume.addSection',['section_id' => $section->id,'resume_id' => $resume->id]) }}>
 										Add new {{ $section->section_name }}
 									</a>
@@ -174,4 +183,4 @@
 	</script>
 	<script type="application/javascript" href={{ asset('js/resume_create.js') }}></script>
 @stop
-
+@sec

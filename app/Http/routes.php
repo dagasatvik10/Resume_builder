@@ -25,6 +25,7 @@ Route::group(['middleware' => 'web'], function ()
 //        return $pdf->stream();
 //    });
     Route::get('resume/{id?}/generatePDF',['as' => 'resume.download','uses' => 'ResumeController@generatePDF']);
+    Route::get('resume/{id?}/preview',['as' => 'resume.preview','uses' => 'ResumeController@preview']);
 
     Route::post('resume/{id}/addNewSection',['as' => 'resume.addNewSection','uses' => 'ResumeController@addNewSection']);
 });
