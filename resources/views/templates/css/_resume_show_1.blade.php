@@ -17,8 +17,14 @@
 		color: #8b9dc3;
 		float: left;
 	}
-	.subsections{
+	ul li {
+    /* Bullet color */
+    color: #8b9dc3;
+    list-style-type: disc;
+		}
+	.sub_sections{
 		float: right;
+		color: black;
 	}
 	#work_experience,#objective,#education,#new_section,#project,#skills{
 		border-bottom: 2px solid #8b9dc3;

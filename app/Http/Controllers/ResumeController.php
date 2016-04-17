@@ -358,5 +358,9 @@ class ResumeController extends Controller
         }
         return redirect()->route('resume.create',['id' => $resume->id]);
     }
+    public function preview()
+    {
+        
+    }
 
 }
