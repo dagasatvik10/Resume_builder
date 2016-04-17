@@ -8,9 +8,7 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
-		<meta name="csrf-token" content="{{ csrf_token() }}">
 
-        @yield('script')
         @yield('link')
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -72,5 +70,6 @@
 	{{--<footer class="container-fluid panel-footer " style=" position: absolute;bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;color: #888888;">
         <div >ResumeBuilder-2016 &copy; Software Incubator.</div>
     </footer>--}}
+		@yield('script')
     </body>
 </html>
