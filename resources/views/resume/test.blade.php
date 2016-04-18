@@ -29,7 +29,7 @@
 	<input type="hidden" name="resume_id" id="resume_id" value={{ $resume->id }}>
 	@foreach($resume->sections as $section)
 		@if(!in_array($section->id,$check))
-			<div id={{ 'form_'.$section->id}}>
+			<div class="section" id={{ 'form_'.$section->id}} >
 				<?php $l = 1; ?>
 				@foreach($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)
 					<div class="mapping_section">
@@ -88,7 +88,15 @@
 						</div>
 					@endif
 					<?php $l++; ?>
-				@endforeach
+				@endforeach<br>
+				@if($section->id == 3)
+					<div id="github_button">
+						<a class="btn btn-info"
+						   href={{ url('auth/github') }}>
+							Fetch from GitHub
+						</a>
+					</div>
+				@endif
 				@if($section->flag == 1)
 					<br>
 					<div class="row">
