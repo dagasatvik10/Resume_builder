@@ -9,8 +9,8 @@
 			<div class="col-sm-4">
 				<ul style="list-style: none; ">
 					<li style="display: inline;">
-						<button class=" btn-info btn" id="resume_submit" >Submit</button>
-						<a id="resume_download" href={{ route('resume.download',['id' => $resume->id]) }}><button class="btn-info btn">Download</button></a>
+						<a id="resume_download" href='{{ route('resume.download',['id' => $resume->id]) }}' class="btn-info btn">Download</a>
+						<a id="resume_preview" href='{{ route('resume.show',['id' => $resume->id]) }}' class="btn-info btn">Preview</a>
 					</li>
 				</ul>
 			</div>
@@ -71,7 +71,7 @@
 					<input type="hidden" name="resume_id" id="resume_id" value={{ $resume->id }}>
 					@foreach($resume->sections as $section)
 						@if(!in_array($section->id,$check))
-						<div id={{ 'form_'.$section->id}}>
+						<div class="section" id={{ 'form_'.$section->id}} >
 							<?php $l = 1; ?>
 							@foreach($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)
 								<div class="mapping_section">
@@ -130,7 +130,15 @@
 									</div>
 								@endif
 								<?php $l++; ?>
-							@endforeach
+							@endforeach<br>
+							@if($section->id == 3)
+								<div id="github_button">
+									<a class="btn btn-info"
+									   href={{ url('auth/github') }}>
+										Fetch from GitHub
+									</a>
+								</div>
+							@endif
 							@if($section->flag == 1)
 								<br>
 								<div class="row">
@@ -167,4 +175,4 @@
 		}
 	</script>
 @stop
-
+@sec

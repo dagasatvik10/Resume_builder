@@ -53,6 +53,7 @@
 			      	<button type="submit" class="btn btn-info">Create</button>
 					  {!! Form::close() !!}
 			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+			        {!! Form::close() !!}
 			      </div>
 			    </div>
 		    </div>

@@ -10,6 +10,7 @@ Route::group(['middleware' => 'web'], function ()
     Route::post('store_resume_name',['as' => 'resume.name','uses' => 'ResumeController@store_resume_name']);
     Route::get('resume/{id?}/delete',['as' => 'resume.delete','uses' => 'ResumeController@delete']);
     Route::get('resume/{id?}/show',['as' => 'resume.show','uses' => 'ResumeController@show']);
+    Route::get('resume/{id?}/download',['as' => 'resume.download','uses' => 'ResumeController@download']);
 
     Route::get('auth/github','ResumeController@redirectGithub');
     Route::get('auth/github/callback','ResumeController@githubCallback');
@@ -24,7 +25,6 @@ Route::group(['middleware' => 'web'], function ()
 //        $pdf = PDF::loadHTML('<h1>Test</h1>');
 //        return $pdf->stream();
 //    });
-    Route::get('resume/{id?}/generatePDF',['as' => 'resume.download','uses' => 'ResumeController@generatePDF']);
 
     Route::post('resume/{id}/addNewSection',['as' => 'resume.addNewSection','uses' => 'ResumeController@addNewSection']);
     Route::get('test/{id}','ResumeController@test');

@@ -88,7 +88,7 @@ class ResumeController extends Controller
 
     }
 
-    public function show($id=null)
+    public function createShow($id=null)
     {
         $user = Auth::user();
         $resume = $user->resumes->find($id);
@@ -170,41 +170,23 @@ class ResumeController extends Controller
             }
         }
 
-        $pdf = PDF::loadView('resume.show',compact('resume','user','default_section','new_section'));
-        return $pdf->stream();
+        return PDF::loadView('resume.show',compact('resume','user','default_section','new_section'));
+        //return $pdf->stream();
+
         //return $pdf->download('resume.pdf');
         //return view('resume.show',compact('resume','user','default_section','new_section'));
     }
 
-    public function generatePDF($id=null)
+    public function show($id)
     {
-        $user = Auth::user();
-        $resume = $user->resumes->find($id);
-
-        if($resume==null)
-        {
-            return redirect()->route('user.dashboard');
-        }
-
-        foreach($resume->mapping_sections as $mapping_section)
-        {
-            foreach($mapping_section->mapping_subsections as $mapping_subsection)
-            {
-                if(!empty($mapping_subsection->detail))
-                {
-                    $section[$mapping_section->section->id][$mapping_subsection->subsection->subsection_name] =
-                        $mapping_subsection->detail->content;
-                }
-                else
-                {
-                    $section[$mapping_section->section->id][$mapping_subsection->subsection->subsection_name] = null;
-                }
-            }
-        }
-        $pdf = PDF::loadView('resume.show',compact('resume','user','default_section','new_section'));
-//        return $pdf->download('resume.pdf');
+        $pdf = $this->createShow($id);
         return $pdf->stream();
+    }
 
+    public function download($id=null)
+    {
+        $pdf = $this->createShow($id);
+        return $pdf->download('resume.pdf');
     }
 
     public function delete($id=null)

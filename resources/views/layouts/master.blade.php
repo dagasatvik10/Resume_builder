@@ -16,16 +16,24 @@
         <style type="text/css">
             .add_new{
                     display: block;
-                    margin-left: 28px;
+                    margin-left: 30px;
                     font-size: 13px;
                     margin-bottom: 20px;
+                    padding: 1px;
                 }
             .delete{
-                
+                padding: 1px;
                 margin-left: 28px;
                 font-size: 13px;
             }
-            
+            #github_button{
+                
+            }
+            .section{
+            height: 50%;
+            overflow-y:auto;
+            overflow-x:hidden; 
+             }
         </style>
     </head>
     <body>
