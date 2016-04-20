@@ -16,8 +16,12 @@
 
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
+	<script type="text/javascript">
+		
+		
+	</script>
 </head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body >
 	<!--fixed navigation-->
 	<div class="navbar_scroll">
 		<div id="content-land">
@@ -36,16 +40,16 @@
 				<img src="img/c.png" class="land_temp img-responsive center">
 			</div>
 		</div>
-	<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #3f51b5;" data-spy="affix" data-offset-top="650">
-		<div class="container-fluid" >
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #3f51b5;" data-spy="affix" data-offset-top="650" id="navbar_top" role="navigation">
+		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            	</button>
-				<a class="navbar-brand" href="#">Resume Builder</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	        	</button>
+				<a class="navbar-brand" href={{ url('/') }}>Resume Builder</a>
 			</div>
 			<div class="collapse navbar-collapse" id="mynavbar">
 				<ul class="nav navbar-nav navbar-right">
@@ -53,25 +57,25 @@
 					<li><a href="#sample_design"> Sample Designs</a></li>
 					<li><a href="#contact"> Contact Us</a></li>
 					@if (Auth::guest())
-                        <li><a href={{ url('/login') }}>Login</a></li>
-                    @else
-                        <li class="dropdown">
-                           <a href={{ route('user.dashboard') }} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} 
-                            <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
+	                    <li><a href={{ url('/login') }}>Login</a></li>
+	                @else
+	                    <li class="dropdown">
+	                       <a href={{ route('user.dashboard') }} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+	                        {{ Auth::user()->name }} 
+	                        <span class="caret"></span>
+	                        </a>
+	                        <ul class="dropdown-menu" role="menu">
 								<li><a href={{ route('user.dashboard') }}>Dashboard</a></li>
 								<li><a href={{ url('/logout') }}>
 										<i class="fa fa-btn fa-sign-out"></i>
-                               Logout</a>
+	                           Logout</a>
 								</li>
-                            </ul>
-                        </li>
-                    @endif
+	                        </ul>
+	                    </li>
+	                @endif
 				</ul>
-			</div>				
-		</div>			
+			</div>
+		</div>	
 	</nav>
 	</div>
 	<div id="download">
@@ -84,7 +88,7 @@
 	</div>
 	<div class="container" id="how_itworks">
 		<h1 style="text-align: center; padding-bottom: 70px;">How It <span style="color: #15b8db">Works</span></h1>
-		<div class="row ">
+		<div class="row">
 			<div class="col-sm-5">
 				<img src="img/macpro.png" class="img-responsive">
 			</div>
@@ -96,7 +100,7 @@
 			<div class="col-sm-7 ">
 				Choose a template, of your choice.Make your resume of your choice.
 			</div>
-			<div class="col-sm-5">
+			<div class="col-sm-5 ">
 				<img src="img/templates.png" class="img-responsive">
 			</div>
 		</div>
@@ -174,10 +178,10 @@
 	<div class="container-fluid " id="features">
 		<div class="row">
 			<h1 style="text-align: center; margin-bottom: 80px;">Features</h1>
-			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-sign-in social_icons"></i></span><br><br>Easy to create with social login</div>
-			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-file-text social_icons"></i></span><br><br>Provides different design templates</div>
-			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-cloud-download social_icons"></i></span><br><br>You can Save and download your resume for future.</div>
-			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-pencil-square social_icons"></i></span><br><br>You can Edit your resume. Change the templates</div>
+			<div class="col-sm-3 feature" style="text-align: center;"><i class="fa fa-sign-in social_icons"></i><div >Easy to create with social login</div></div>
+			<div class="col-sm-3 feature" style="text-align: center;"><i class="fa fa-file-text social_icons"></i><div >Provides different design templates</div></div>
+			<div class="col-sm-3 feature" style="text-align: center;"><i class="fa fa-cloud-download social_icons"></i><div >You can Save and download your resume for future.</div></div>
+			<div class="col-sm-3 feature" style="text-align: center;"><i class="fa fa-pencil-square social_icons"></i><div >You can Edit your resume. Change the templates</div></div>
 		</div>		
 	</div>
 <div class="container-fluid" id="contact">
@@ -197,7 +201,7 @@
 		</div>
 	</div>
 </div>
-<nav class="navbar navbar-default" style="font-size: 15px; z-index: 9999;" data-spy="affix" data-offset-top="650">
+<nav class="navbar navbar-default" style="font-size: 15px;  z-index: 9999;" data-spy="affix" data-offset-top="650" id="navbar_bottom">
 		<div class="container-fluid" >
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false">
@@ -231,7 +235,6 @@
 				</ul>
 			</div>				
 		</div>			
-	</nav>
-	
+	</nav>	
 </body>
 </html>

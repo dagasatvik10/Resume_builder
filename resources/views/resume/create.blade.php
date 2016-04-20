@@ -40,7 +40,7 @@
 		  </div>
 		  </div>
 		<div class="row" id="resume_full_div">
-			<div class="col-sm-4">
+			<div class="col-sm-4 section">
 				<ul class="">
 					<?php
 						$i = 0;
@@ -48,8 +48,7 @@
 					?>
 					@foreach($resume->sections as $section)
 						@if(!in_array($section->id,$check))
-							<li class=" btn form_navigation" style="margin-bottom: 10px;  background-color: #3f51b5; width: 300px; color: #fff; "
-								onclick="show({{ $section->id }})"
+							<li class=" btn form_navigation" style="margin-bottom: 10px;  background-color: #3f51b5; width: 80%; color: #fff;" onclick="show({{ $section->id }})"
 								id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}</li>
 						<?php
 							$check[$i] = $section->id;
@@ -57,12 +56,12 @@
 						?>
 						@endif
 				 	@endforeach
-				<li class=" btn" style="color: #fff; background-color: #3f51b5;" data-toggle="modal" data-target="#addSectionModal">
+				<li class="btn" style="color: #fff; background-color: #3f51b5;" data-toggle="modal" data-target="#addSectionModal">
 					Add New Section<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
 				</li>
 			</ul>
 			</div>
-			<div class="col-sm-8">
+			<div class="col-sm-8 subsection">
 				{!! Form::open(['id' => 'resume_form','name' => 'resume']) !!}
 					<?php
 					$i = 0;
@@ -91,12 +90,12 @@
 													<?php
 													$content = $mapping_subsection->detail==null?null:$mapping_subsection->detail->content;
 													?>
-													<div class=" col-sm-8">
+													<div class="col-sm-8">
 														{!! Form::text('detail'.$mapping_subsection->id,$content,['class' => 'form-control detail_resume']) !!}<br>
 													</div>
 													@if($subsection->flag != 0 and $k > 1)
-														<div>
-															<button class="btn btn-danger col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
+														<div class="col-sm-4">
+															<button class="btn btn-danger section_subsection"  show_id='{{ $section->id }}' token='{{ csrf_token() }}'
 															link={{ route('resume.deleteSubsection',['mapping_subsection_id' => $mapping_subsection->id,'resume_id' => $resume->id]) }}>
 																Delete {{ $subsection->subsection_name }}
 															</button>

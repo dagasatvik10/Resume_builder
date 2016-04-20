@@ -17,10 +17,19 @@
                     display: block;
                     }
             .section{
-            height: 55%;
-            overflow-y:auto;
-            overflow-x:hidden; 
-             }
+                height: 55%;
+                overflow-y:auto;
+                overflow-x:hidden; 
+                 }
+            @media only screen and (max-width: 1200px) {
+                .section_subsection{
+                    margin-bottom: 10px;
+                }
+                
+                .add_new{
+                    margin-left: 20px;
+                }
+            }
         </style>
     </head>
     <body>

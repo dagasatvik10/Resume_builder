@@ -40,12 +40,14 @@ body
     	margin-left: auto;
     	margin-right: auto;
     }
-}
-@media only screen and (max-width: 1200px){
-	.sample_img{
+    .sample_img{
 		width:100px ;
 		height: 200px;
 	}
+	.feature{
+		margin-top: 20px;
+	}
+	
 }
 #create_button
 {
@@ -130,9 +132,8 @@ body
       -webkit-transition: all .5s ease-in-out;
       transition: all .5s ease-in-out;
       background-color: #fff;
-      font-weight: bold;
       border-color: #fff;
-      box-shadow: 0px 1px 10px;
+      box-shadow: 0px 1px 5px;
 
   }
   .affix a {
