@@ -9,8 +9,8 @@
 			<div class="col-sm-4">
 				<ul style="list-style: none; ">
 					<li style="display: inline;">
-						<a id="resume_download" href='{{ route('resume.download',['id' => $resume->id]) }}' class="btn-info btn">Download</a>
-						<a id="resume_preview" href='{{ route('resume.show',['id' => $resume->id]) }}' class="btn-info btn">Preview</a>
+						<a id="resume_download" data-toggle="modal" data-target="#downloadModal" class="btn-info btn">Download</a>
+						<a id="resume_preview" data-toggle="modal" data-target="#previewModal" class="btn-info btn">Preview</a>
 					</li>
 				</ul>
 			</div>
@@ -38,17 +38,17 @@
 				</div>
 			</div>
 		  </div>
-		  </div>
+		</div>
 		<div class="row" id="resume_full_div">
 			<div class="col-sm-4">
 				<ul class="">
 					<?php
 						$i = 0;
-						$check = array();
+						$check = [];
 					?>
 					@foreach($resume->sections as $section)
 						@if(!in_array($section->id,$check))
-							<li class=" btn form_navigation" style="margin-bottom: 10px;  background-color: #3f51b5; width: 300px; color: #fff; "
+							<li class=" btn form_navigation" style="margin-bottom: 10px;  background-color: #3f51b5; width: 80%; color: #fff; "
 								onclick="show({{ $section->id }})"
 								id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}</li>
 						<?php
@@ -57,7 +57,7 @@
 						?>
 						@endif
 				 	@endforeach
-				<li class=" btn" style="color: #fff; background-color: #3f51b5;" data-toggle="modal" data-target="#addSectionModal">
+				<li class="btn" style="color: #fff; background-color: #3f51b5;" data-toggle="modal" data-target="#addSectionModal">
 					Add New Section<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
 				</li>
 			</ul>
@@ -91,9 +91,16 @@
 													<?php
 													$content = $mapping_subsection->detail==null?null:$mapping_subsection->detail->content;
 													?>
-													<div class=" col-sm-8">
+													@if($subsection->validation != 6)
+													<div class="col-sm-8">
 														{!! Form::text('detail'.$mapping_subsection->id,$content,['class' => 'form-control detail_resume']) !!}<br>
 													</div>
+													@else
+													<div class="col-sm-8">
+														<textarea name="{{ 'detail'.$mapping_subsection->id }}"
+														class="form-control detail_resume" rows="5">{{ $content }}</textarea><br>
+													</div>
+													@endif
 													@if($subsection->flag != 0 and $k > 1)
 														<div class="row">
 															<button class="btn btn-danger col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
@@ -175,4 +182,4 @@
 		}
 	</script>
 @stop
-@sec
+

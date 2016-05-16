@@ -24,7 +24,7 @@ class FormRequest extends Request
     public function rules()
     {
         return [
-            'email' => 'email',
+            '' => 'email',
             'website' => 'url'
         ];
     }

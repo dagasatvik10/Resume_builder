@@ -62,13 +62,13 @@ class ResumeController extends Controller
             return redirect()->route('user.dashboard');
         }
         Session::put('user.resume',$resume);
+        //dd($resume);
         return view('resume.create',compact(['user','resume']));
     }
 
     public function store($id,Request $request)
     {
         $user = Auth::user();
-        //$id = $request->resume_id;
         $resume = $user->resumes->find($id);
 
         if(!$resume == null) {
@@ -88,7 +88,7 @@ class ResumeController extends Controller
 
     }
 
-    public function createShow($id=null)
+    public function createShow($id=null,$resume_design)
     {
         $user = Auth::user();
         $resume = $user->resumes->find($id);
@@ -96,6 +96,10 @@ class ResumeController extends Controller
         if($resume==null)
         {
             return redirect()->route('user.dashboard');
+        }
+
+        if(empty($resume_design)){
+            $resume_design = 1;
         }
 
         $check_section = [];
@@ -170,23 +174,24 @@ class ResumeController extends Controller
             }
         }
 
-        return PDF::loadView('resume.show',compact('resume','user','default_section','new_section'));
+        return PDF::loadView('resume.show',compact('resume','user','default_section','new_section','resume_design'));
         //return $pdf->stream();
 
         //return $pdf->download('resume.pdf');
         //return view('resume.show',compact('resume','user','default_section','new_section'));
     }
 
-    public function show($id)
+    public function show($id,Request $request)
     {
-        $pdf = $this->createShow($id);
+        $pdf = $this->createShow($id,$request->resume_design);
         return $pdf->stream();
     }
 
-    public function download($id=null)
+    public function download($id,Request $request)
     {
-        $pdf = $this->createShow($id);
-        return $pdf->download('resume.pdf');
+        $pdf = $this->createShow($id,$request->resume_design);
+        $resume = Session::get('user.resume');
+        return $pdf->download($resume->name.'.pdf');
     }
 
     public function delete($id=null)
