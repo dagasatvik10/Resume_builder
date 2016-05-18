@@ -22,12 +22,15 @@
 									<span class="glyphicon glyphicon-edit"></span>
 								</a>
 								<a class="btn-floating btn-large waves-green waves-light red"
-								   href={{ route('resume.delete',['id' => $resume->id]) }}>
+								   href='{{ route('resume.delete',['id' => $resume->id]) }}' data-method="delete"
+								   data-token="{{csrf_token()}}" data-confirm="Are you sure?">
 									<span class="glyphicon glyphicon-remove-circle"></span>
 								</a>
-								<a class="btn-floating btn-large waves-green waves-light blue"
-								   href={{ route('resume.show',['id' => $resume->id]) }}>
+								<a class="btn-floating btn-large waves-green waves-light blue" data-toggle="modal" data-target="#previewModal">
 									Show
+								</a>
+								<a class="btn-floating btn-large waves-green waves-light blue" data-toggle="modal" data-target="#downloadModal">
+									<span class="glyphicon glyphicon-download-alt"></span>
 								</a>
 							</td>
 						</tr>
@@ -35,7 +38,7 @@
 				</table>
 			@else
 				<div class="row">
-					<h5>No CV stored at present</h5>
+					<h5>No Resumes at present</h5>
 				</div>
 			@endif
 		</div>
@@ -53,6 +56,7 @@
 			      	<button type="submit" class="btn btn-info">Create</button>
 					  {!! Form::close() !!}
 			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+			        {!! Form::close() !!}
 			      </div>
 			    </div>
 		    </div>

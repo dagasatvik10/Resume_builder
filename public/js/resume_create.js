@@ -14,7 +14,7 @@ function linkEvent(){
 
         resumeId = $('#resume_id').val();
 
-        myUrl = 'http://localhost:8000/resume' + '/' + resumeId ;
+        myUrl = window.location.href;
 
         $.ajax({
             type: 'POST',
@@ -22,7 +22,6 @@ function linkEvent(){
             url: myUrl,
             dataType: 'json'
         })
-
     });
 
 

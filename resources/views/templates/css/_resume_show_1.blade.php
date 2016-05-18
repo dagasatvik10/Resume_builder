@@ -1,6 +1,6 @@
 <style>
 		body{
-	font-family: 'Ubuntu', sans-serif;
+			font-family: 'Ubuntu', sans-serif;
 		}
 		#template{
 				margin-top: 100px;
@@ -39,5 +39,4 @@
 			float: right;
 			margin-bottom: 30px;
 		}
-
-	</style>
+</style>

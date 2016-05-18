@@ -38,7 +38,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Resume Builder</a>
+                <a class="navbar-brand" href='{{ route('home') }}'>Resume Builder</a>
             </div>
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -69,8 +69,8 @@
 
     <!--<footer class="container-fluid panel-footer " style="position: static;
     bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515; color: #888888;">
-        <div>ResumeBuilder-2016 &copy; Software Incubator.</div>-->
-    </footer>
+        <div>ResumeBuilder-2016 &copy; Software Incubator.</div>
+    </footer-->
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

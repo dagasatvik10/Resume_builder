@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="{{  asset('css/stylesheet.css') }}">
 
         @yield('link')
         <!--Let browser know website is optimized for mobile-->
@@ -16,16 +16,24 @@
         <style type="text/css">
             .add_new{
                     display: block;
-                    margin-left: 28px;
+                    margin-left: 30px;
                     font-size: 13px;
                     margin-bottom: 20px;
+                    padding: 1px;
                 }
             .delete{
-                
+                padding: 1px;
                 margin-left: 28px;
                 font-size: 13px;
             }
-            
+            #github_button{
+                
+            }
+            .section{
+            height: 50%;
+            overflow-y:auto;
+            overflow-x:hidden; 
+             }
         </style>
     </head>
     <body>
@@ -66,10 +74,51 @@
 
  @yield('section')
 
+		<div id="previewModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content" style="padding: 50px;">
+					{!! Form::open(['route' => ['resume.show',$resume->id]]) !!}
+					<div class="form-group">
+						<select class="form-control" name="resume_design">
+							<option value="1">Simple</option>
+							<option value="2">Business</option>
+						</select>
+					</div>
+					<div class="form-group">
+						{!! Form::submit('Preview',['class' => 'btn btn-info']) !!}
+					</div>
+					{!! Form::close() !!}
+					<div class="modal-footer">
+						<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-	{{--<footer class="container-fluid panel-footer " style=" position: absolute;bottom: 0px; width: 100%; font-size: 17px; text-align:center; background-color: #151515;color: #888888;">
-        <div >ResumeBuilder-2016 &copy; Software Incubator.</div>
-    </footer>--}}
+		<div id="downloadModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content" style="padding: 50px;">
+					{!! Form::open(['route' => ['resume.download',$resume->id]]) !!}
+					<div class="form-group">
+						<select class="form-control" name="resume_design">
+							<option value="1">Simple</option>
+							<option value="2">Business</option>
+						</select>
+					</div>
+					<div class="form-group">
+						{!! Form::submit('Download',['class' => 'btn btn-info']) !!}
+					</div>
+					{!! Form::close() !!}
+					<div class="modal-footer">
+						<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src={{ asset('js/laravel.js') }}></script>
 		@yield('script')
     </body>
 </html>
