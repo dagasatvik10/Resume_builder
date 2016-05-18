@@ -9,8 +9,8 @@
 			<div class="col-sm-4">
 				<ul style="list-style: none; ">
 					<li style="display: inline;">
-						<a id="resume_download" href={{ route('resume.download',['id' => $resume->id]) }}><button class="btn-info btn">Download</button></a>
-						<a id="resume_preview" href=><button class="btn-info btn">Preview</button></a>
+						<a id="resume_download" data-toggle="modal" data-target="#downloadModal" class="btn-info btn">Download</a>
+						<a id="resume_preview" data-toggle="modal" data-target="#previewModal" class="btn-info btn">Preview</a>
 					</li>
 				</ul>
 			</div>
@@ -38,17 +38,18 @@
 				</div>
 			</div>
 		  </div>
-		  </div>
+		</div>
 		<div class="row" id="resume_full_div">
 			<div class="col-sm-4 section">
 				<ul class="">
 					<?php
 						$i = 0;
-						$check = array();
+						$check = [];
 					?>
 					@foreach($resume->sections as $section)
 						@if(!in_array($section->id,$check))
-							<li class=" btn form_navigation" style="margin-bottom: 10px;  background-color: #3f51b5; width: 80%; color: #fff;" onclick="show({{ $section->id }})"
+							<li class=" btn form_navigation" style="margin-bottom: 10px;  background-color: #3f51b5; width: 80%; color: #fff; "
+								onclick="show({{ $section->id }})"
 								id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}</li>
 						<?php
 							$check[$i] = $section->id;
@@ -90,10 +91,16 @@
 													<?php
 													$content = $mapping_subsection->detail==null?null:$mapping_subsection->detail->content;
 													?>
+													@if($subsection->validation != 6)
 													<div class="col-sm-8">
 														{!! Form::text('detail'.$mapping_subsection->id,$content,['class' => 'form-control detail_resume']) !!}<br>
 													</div>
-													<div class="col-sm-1"></div>
+													@else
+													<div class="col-sm-8">
+														<textarea name="{{ 'detail'.$mapping_subsection->id }}"
+														class="form-control detail_resume" rows="5">{{ $content }}</textarea><br>
+													</div>
+													@endif
 													@if($subsection->flag != 0 and $k > 1)
 														<div class="col-sm-3">
 															<button class="btn btn-danger section_subsection"  show_id='{{ $section->id }}' token='{{ csrf_token() }}'
@@ -105,9 +112,10 @@
 													<?php $k++; ?>
 												@endforeach
 												@if($subsection->flag != 0)
-													<div>
-														<button class="btn btn-info add_new section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
-														link='{{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}'>Add new {{ $subsection->subsection_name }}
+													<div class="row">
+														<button class="btn btn-primary add_new col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
+														link='{{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}'>
+															Add new {{ $subsection->subsection_name }}
 														</button>
 													</div>
 												@endif
@@ -121,8 +129,8 @@
 								</div>
 								@if($section->flag == 1 and $l > 1)
 									<br>
-									<div >
-										<button class="btn btn-danger delete section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
+									<div class="row">
+										<button class="btn btn-danger input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
 										   link={{ route('resume.deleteSection',['mapping_section_id' => $mapping_section->id,'resume_id' => $resume->id]) }}>
 											Delete {{ $section->section_name }}
 										</button>
@@ -140,8 +148,8 @@
 							@endif
 							@if($section->flag == 1)
 								<br>
-								<div >
-									<button class="btn btn-info add_new section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
+								<div class="row">
+									<button class="btn btn-primary input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
 											link={{ route('resume.addSection',['section_id' => $section->id,'resume_id' => $resume->id]) }}>
 										Add new {{ $section->section_name }}
 									</button>
