@@ -50,19 +50,23 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-2 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-sign-in"></i>Login
                                 </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
                             </div>
+							<div class="col-md-2">OR</div>
+							<div class="col-md-3">
+								<a class="btn btn-primary btn-floating" href='{{ url('auth/fb') }}'>
+									Login with Facebook
+								</a>
+							</div>
                         </div>
-                        <div>
-                            <div>
-                                <a href="auth/fb" class="btn btn-primary">Login with Facebook</a>
-                            </div>
-                        </div>
+                        <div class="row">
+							<div class="col-md-4 col-md-offset-4">
+								<a class="btn btn-link disabled" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+							</div>
+						</div>
                     </form>
                 </div>
             </div>

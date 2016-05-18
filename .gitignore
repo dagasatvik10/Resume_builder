@@ -6,4 +6,5 @@ Homestead.json
 .env
 /.idea/workspace.xml
 /.idea
+/.idea/rsb.iml
 

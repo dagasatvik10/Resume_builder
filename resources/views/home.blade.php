@@ -79,7 +79,7 @@
 	</nav>
 	</div>
 	<div id="download">
-			<span>Downloaded 0</span> <span>Saved 0</span>
+			{{--<span>Downloaded 0</span>--}} <span>Resumes Created- {{ $resume->count() }}</span>
 	</div>		
 	<div class="container-fluid" id="why_rb">
 		<h2 style="text-align: center;">Why Resume Builder</h2>
