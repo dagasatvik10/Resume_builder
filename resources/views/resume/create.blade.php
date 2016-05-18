@@ -93,8 +93,9 @@
 													<div class="col-sm-8">
 														{!! Form::text('detail'.$mapping_subsection->id,$content,['class' => 'form-control detail_resume']) !!}<br>
 													</div>
+													<div class="col-sm-1"></div>
 													@if($subsection->flag != 0 and $k > 1)
-														<div class="col-sm-4">
+														<div class="col-sm-3">
 															<button class="btn btn-danger section_subsection"  show_id='{{ $section->id }}' token='{{ csrf_token() }}'
 															link={{ route('resume.deleteSubsection',['mapping_subsection_id' => $mapping_subsection->id,'resume_id' => $resume->id]) }}>
 																Delete {{ $subsection->subsection_name }}

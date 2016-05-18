@@ -60,7 +60,7 @@
                         </div>
                         <div>
                             <div>
-                                <a href="auth/fb">Login with Facebook</a>
+                                <a href="auth/fb" class="btn btn-primary">Login with Facebook</a>
                             </div>
                         </div>
                     </form>

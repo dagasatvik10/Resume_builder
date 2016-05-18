@@ -89,37 +89,71 @@
 	<div class="container" id="how_itworks">
 		<h1 style="text-align: center; padding-bottom: 70px;">How It <span style="color: #15b8db">Works</span></h1>
 		<div class="row">
+			<div class="col-sm-6">
+				<img src="img/macpro.png" class="img-responsive" style="align:left;">
+			</div>
+			<div class="col-sm-6">
+				 Build a resume with the help of few simple steps.
+			</div>
+		</div>
+		<div class="row step">
+			<div class="col-sm-6 ">
+				Choose a template, of your choice.Make your resume of your choice.
+			</div>
+			<div class="col-sm-6 ">
+				<img src="img/templates.png" class="img-responsive" style="align:right;">
+			</div>
+		</div>
+		<div class="row step">
+			<div class="col-sm-6">
+				<img src="img/download.jpg" class="img-responsive" style="align:left;">
+			</div>
+			<div class="col-sm-6">
+				Download Your resume in pdf or word document format.
+			</div>
+		</div>
+		<div class="row step">
+			<div class="col-sm-6">
+				Save your resume for future reference. You can edit/ view your resume in future. By creating an account in Resume Builder.
+			</div>
+			<div class="col-sm-6">
+				<img src="img/login.png" class="img-responsive" style="align:right;">
+			</div>
+		</div>
+		<!--<div class="row">
 			<div class="col-sm-5">
-				<img src="img/macpro.png" class="img-responsive">
+				<img src="img/macpro.png" class="img-responsive" style="align:left;">
 			</div>
 			<div class="col-sm-7">
 				 Build a resume with the help of few simple steps.
 			</div>
 		</div>
 		<div class="row step">
+			
+			<div class="col-sm-5 ">
+				<img src="img/templates.png" class="img-responsive" style="align:right;">
+			</div>
 			<div class="col-sm-7 ">
 				Choose a template, of your choice.Make your resume of your choice.
-			</div>
-			<div class="col-sm-5 ">
-				<img src="img/templates.png" class="img-responsive">
 			</div>
 		</div>
 		<div class="row step">
 			<div class="col-sm-5">
-				<img src="img/download.jpg" class="img-responsive">
+				<img src="img/download.jpg" class="img-responsive" style="align:left;">
 			</div>
 			<div class="col-sm-7">
 				Download Your resume in pdf or word document format.
 			</div>
 		</div>
 		<div class="row step">
+			
+			<div class="col-sm-5">
+				<img src="img/login.png" class="img-responsive" style="align:right;">
+			</div>
 			<div class="col-sm-7">
 				Save your resume for future reference. You can edit/ view your resume in future. By creating an account in Resume Builder.
 			</div>
-			<div class="col-sm-5">
-				<img src="img/login.png" class="img-responsive">
-			</div>
-		</div>
+		</div>-->
 	</div>
 	<div class="container" id="sample_design">
 		<h2 style="text-align: center; padding-bottom: 70px;">Sample <span style="color: #15b8db">Designs</span></h2>
@@ -186,10 +220,10 @@
 	</div>
 <div class="container-fluid" id="contact">
 	<div class="row">
-		<div class="col-sm-3" style="text-align: left;">
+		<div class="col-sm-2" style="text-align: left;">
 			Resume Builder
 		</div>
-		<div class="col-sm-5" style="text-align: center; font-size: 14px;"> 
+		<div class="col-sm-6" style="text-align: center; font-size: 14px;"> 
 			Copyright &copy; 2016.All right reserved.<br>
 			Powered By Software Incubator.
 		</div>
