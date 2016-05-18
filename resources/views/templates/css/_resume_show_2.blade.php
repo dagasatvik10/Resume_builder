@@ -1,5 +1,4 @@
 <style type="text/css">
-
 	body{
 			font-family: 'Ubuntu', sans-serif;
 		}
