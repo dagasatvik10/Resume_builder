@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $resume = Resume::all();
-        return view('home',compact('resume'));
+        $resumes = Resume::all();
+        return view('home',compact('resumes'));
     }
 }

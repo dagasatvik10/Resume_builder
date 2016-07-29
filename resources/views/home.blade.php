@@ -57,7 +57,7 @@
                     @else
                         <li class="dropdown">
                            <a href={{ route('user.dashboard') }} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} 
+                            {{ Auth::user()->name }}
                             <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
@@ -70,13 +70,13 @@
                         </li>
                     @endif
 				</ul>
-			</div>				
-		</div>			
+			</div>
+		</div>
 	</nav>
 	</div>
 	<div id="download">
-			{{--<span>Downloaded 0</span>--}} <span>Resumes Created- {{ $resume->count() }}</span>
-	</div>		
+			{{--<span>Downloaded 0</span>--}} <span>Resumes Created- {{ $resumes->count() }}</span>
+	</div>
 	<div class="container-fluid" id="why_rb">
 		<h2 style="text-align: center;">Why Resume Builder</h2>
 			<p style="padding: 10px;">Resume Builder makes it fast and easy to create the powerful, professional resume hiring managers are looking for.<br>
@@ -140,7 +140,7 @@
 				<img src="img/slate.jpg" class="img-responsive sample_img">
 				<figcaption>Sales & Marketing</figcaption>
 			</div>
-		</div>	 
+		</div>
 		<div class="tab-pane fade" id="sample-professional">
 			<div class="template">
 				<img src="img/majed-project-manager.jpg" class="img-responsive sample_img">
@@ -178,14 +178,14 @@
 			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-file-text social_icons"></i></span><br><br>Provides different design templates</div>
 			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-cloud-download social_icons"></i></span><br><br>You can Save and download your resume for future.</div>
 			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-pencil-square social_icons"></i></span><br><br>You can Edit your resume. Change the templates</div>
-		</div>		
+		</div>
 	</div>
 <div class="container-fluid" id="contact">
 	<div class="row">
 		<div class="col-sm-3" style="text-align: left;">
 			Resume Builder
 		</div>
-		<div class="col-sm-5" style="text-align: center; font-size: 14px;"> 
+		<div class="col-sm-5" style="text-align: center; font-size: 14px;">
 			Copyright &copy; 2016.All right reserved.<br>
 			Powered By Software Incubator.
 		</div>
@@ -193,7 +193,7 @@
 			<ul style="list-style: none;">
 				<a href="https://www.facebook.com/RedefiningLimitations/"><li style="display: inline;"><i class="fa fa-facebook-square social_icons_footer"></i></li></a>
 				<a href="https://twitter.com/si_akgec"><li style="display: inline;"><i class="fa fa-twitter-square social_icons_footer"></i></li></a>
-			</ul>		
+			</ul>
 		</div>
 	</div>
 </div>
@@ -218,7 +218,7 @@
                     @else
                         <li class="dropdown">
                            <a href={{ route('user.dashboard') }} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} 
+                            {{ Auth::user()->name }}
                             <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
@@ -229,9 +229,9 @@
                         </li>
                     @endif
 				</ul>
-			</div>				
-		</div>			
+			</div>
+		</div>
 	</nav>
-	
+
 </body>
 </html>
