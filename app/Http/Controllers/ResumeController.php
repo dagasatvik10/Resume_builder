@@ -319,7 +319,7 @@ class ResumeController extends Controller
     public function githubCallback()
     {
         $user = Socialite::driver('github')->user();
-        //dd($user);
+        // dd($user);
 
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -361,6 +361,18 @@ class ResumeController extends Controller
             }
         }
         return redirect()->route('resume.create',['id' => $resume->id]);
+    }
+
+    public function redirectLn()
+    {
+        return Socialite::driver('linkedin')->redirect();
+    }
+
+    public function LnCallback()
+    {
+        $user = Socialite::driver('github')->user();
+        dd($user);
+
     }
 
     public function test($id)
