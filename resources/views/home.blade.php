@@ -24,7 +24,7 @@
 <body >
 	<!--fixed navigation-->
 	<div class="navbar_scroll">
-		<div id="content-land">
+		<div class="container-fluid" id="content-land">
 			<div>
 				<div style="font-size:24px; padding-top: 100px; letter-spacing: 1.5px;">
 				Create a standout resume in minutes.
@@ -32,15 +32,21 @@
 				<div style="font-size:20px; letter-spacing: 1.5px;">
 					Easily create professional resumes.
 				</div>
-				<a class="btn btn-info" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a>
+				<a class="btn" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a>
 			</div>
-			<div>
-				<img src="img/a.png" class="land_temp img-responsive">
-				<img src="img/b.png" class="land_temp img-responsive">
-				<img src="img/c.png" class="land_temp img-responsive center">
+			<div class="row" style="margin-top: 5%;">
+				<div class="col-sm-4">
+					<img src="img/a.png" class="land_temp img-responsive">
+				</div >
+				<div  class="col-sm-4">
+					<img src="img/b.png" class="land_temp img-responsive">
+				</div>
+				<div  class="col-sm-4">
+					<img src="img/c.png" class="land_temp img-responsive center">
+				</div>
 			</div>
 		</div>
-	<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #3f51b5;" data-spy="affix" data-offset-top="650" id="navbar_top" role="navigation">
+	<nav class="navbar  navbar-fixed-top" data-spy="affix" data-offset-top="650" id="navbar_top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
@@ -77,7 +83,7 @@
 	</nav>
 	</div>
 	<div id="download">
-			{{--<span>Downloaded 0</span>--}} <span>Resumes Created- {{ $resumes->count() }}</span>
+			{{--<span>Downloaded 0</span>--}} <strong><span>Resumes Created- {{ $resumes->count() }}</span></strong>
 	</div>
 	<div class="container-fluid" id="why_rb">
 		<div class="col-sm-3" style="font-family: 'Lato', sans-serif; ">
@@ -95,22 +101,22 @@
 		<h1 style="text-align: center; padding-bottom: 70px;">How It <span style="color: #15b8db">Works</span></h1>
 		<div class="row ">
 			<div class="col-sm-3">
-				<span class="number">&#x41;</span>
+				<span class="number">&#49;</span>
 				<img src="img/macpro.png" class="img-responsive">
 				 <p>Build a resume with the help of few simple steps.</p>
 			</div>
 			<div class="col-sm-3">
-			<span class="number">2</span>
+			<span class="number">&#50;</span>
 				<img src="img/templates.png" class="img-responsive">
 				<p>Choose a template, of your choice.Make your resume of your choice.</p>				
 			</div>
 			<div class="col-sm-3">
-				<span class="number">3</span>
+				<span class="number">&#51;</span>
 				<img src="img/download.jpg" class="img-responsive">
 				<p>Download Your resume in pdf or word document format.</p>
 			</div>
 			<div class="col-sm-3">
-				<span class="number">4</span>
+				<span class="number">&#52;</span>
 				<img src="img/login.png" class="img-responsive">
 				<p>Save your resume for future reference. You can edit/ view your resume in future. By creating an account in Resume Builder.</p>				
 			</div>
@@ -180,17 +186,6 @@
 		</div>
 	</div>
 <div class="container" id="contact">
-	<!-- <div class="row">
-		<div class="col-sm-4">
-			<p>Copyright &copy; 2016.All right reserved.</p>
-		</div>
-		<div class="col-sm-4 center-block">
-			<p class="center-block">Powered By Software Incubator.</p>
-		</div>
-		<div class="col-sm-4 pull-right" >
-			<button>Visit us</button>
-		</div>
-	</div> -->
 	<div class="row">
 		<div class="col-md-4">
 			<p>Copyright &copy; 2016.All right reserved.</p>
@@ -199,7 +194,7 @@
 			<p style="text-align:center;">Powered By - Software Incubator.</p>
 		</div>
 		<div class="col-md-4">
-			<button class="pull-right">Visit Us</button>
+			<a  style="text-decoration: none;" href={{ url('http://silive.in/') }}><span class="pull-right"><img src="img/si_logo.png" >Visit Us</span></a>
 		</div>
 	</div>
 </div>
@@ -216,8 +211,6 @@
 			</div>
 			<div class="collapse navbar-collapse" id="mynavbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Customer Reviews</a></li>
-					<li><a href="#sample_design"> Sample Designs</a></li>
 					<li><a href="#contact"> Contact Us</a></li>
 					@if (Auth::guest())
                         <li><a href={{ url('/login') }}>Login</a></li>
