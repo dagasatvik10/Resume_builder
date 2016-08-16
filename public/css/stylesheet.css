@@ -67,6 +67,9 @@ body
 	text-align: center;
 	padding-bottom: 50px;
 }
+.number{
+	
+}
 #how_itworks
 {
 	padding-top: 40px;
@@ -108,9 +111,7 @@ body
 	background-color: #151515;
 	color: #888888;
 	width: 100%;
-	bottom:0px;
-	left: 0px;
-	padding: 50px;
+	padding: 20px;
 }
 .social_icons
 {

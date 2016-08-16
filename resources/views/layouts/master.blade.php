@@ -26,11 +26,19 @@
                 .section_subsection{
                     margin-bottom: 10px;
                 }
-                
-                .add_new{
-                    margin-left: 20px;
-                }
+            .delete{
+                padding: 1px;
+                margin-left: 28px;
+                font-size: 13px;
             }
+            #github_button{
+
+            }
+            .section  {
+                height: 50%;
+                overflow-y:auto;
+                overflow-x:hidden;
+             }
         </style>
     </head>
     <body>
@@ -52,7 +60,7 @@
                     @else
                         <li class="dropdown">
                            <a href={{ route('user.dashboard') }} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} 
+                            {{ Auth::user()->name }}
                             <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
@@ -65,8 +73,8 @@
                         </li>
                     @endif
                 </ul>
-            </div>              
-        </div>          
+            </div>
+        </div>
     </nav>
 
  @yield('section')
@@ -75,7 +83,7 @@
 			<div class="modal-dialog">
 				<!-- Modal content-->
 				<div class="modal-content" style="padding: 50px;">
-					{!! Form::open(['route' => ['resume.show',$resume->id]]) !!}
+					{!! Form::open(['route' => ['resume.show',@$resume->id]]) !!}
 					<div class="form-group">
 						<select class="form-control" name="resume_design">
 							<option value="1">Simple</option>
@@ -97,7 +105,7 @@
 			<div class="modal-dialog">
 				<!-- Modal content-->
 				<div class="modal-content" style="padding: 50px;">
-					{!! Form::open(['route' => ['resume.download',$resume->id]]) !!}
+					{!! Form::open(['route' => ['resume.download',@$resume->id]]) !!}
 					<div class="form-group">
 						<select class="form-control" name="resume_design">
 							<option value="1">Simple</option>

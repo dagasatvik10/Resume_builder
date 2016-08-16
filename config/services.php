@@ -48,4 +48,11 @@ return [
 
     ],
 
+    'linkedin' => [
+        'client_id' => '75zsorr4lbhxs2',
+        'client_secret' => 'pe77syYTPcKUjcKk',
+        'redirect' => 'http://localhost:8000/auth/ln/callback',
+
+    ],
+
 ];

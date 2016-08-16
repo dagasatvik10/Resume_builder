@@ -13,13 +13,13 @@
 	<!--google fonts-->
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,900' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
-	<script type="text/javascript">
-		
-		
-	</script>
+
 </head>
 <body >
 	<!--fixed navigation-->
@@ -53,18 +53,16 @@
 			</div>
 			<div class="collapse navbar-collapse" id="mynavbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Customer Reviews</a></li>
-					<li><a href="#sample_design"> Sample Designs</a></li>
 					<li><a href="#contact"> Contact Us</a></li>
 					@if (Auth::guest())
-	                    <li><a href={{ url('/login') }}>Login</a></li>
-	                @else
-	                    <li class="dropdown">
-	                       <a href={{ route('user.dashboard') }} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-	                        {{ Auth::user()->name }} 
-	                        <span class="caret"></span>
-	                        </a>
-	                        <ul class="dropdown-menu" role="menu">
+                        <li><a href={{ url('/login') }}>Login</a></li>
+                    @else
+                        <li class="dropdown">
+                           <a href={{ route('user.dashboard') }} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                            <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
 								<li><a href={{ route('user.dashboard') }}>Dashboard</a></li>
 								<li><a href={{ url('/logout') }}>
 										<i class="fa fa-btn fa-sign-out"></i>
@@ -75,95 +73,59 @@
 	                @endif
 				</ul>
 			</div>
-		</div>	
+		</div>
 	</nav>
 	</div>
 	<div id="download">
-			{{--<span>Downloaded 0</span>--}} <span>Resumes Created- {{ $resume->count() }}</span>
-	</div>		
+			{{--<span>Downloaded 0</span>--}} <span>Resumes Created- {{ $resumes->count() }}</span>
+	</div>
 	<div class="container-fluid" id="why_rb">
-		<h2 style="text-align: center;">Why Resume Builder</h2>
-			<p style="padding: 10px;">Resume Builder makes it fast and easy to create the powerful, professional resume hiring managers are looking for.<br>
+		<div class="col-sm-3" style="font-family: 'Lato', sans-serif; ">
+			<p style="font-size: 40px;"><strong>Why ??</strong> </p>
+			<p>Resume Builder</p>
+		</div>
+		<div class="col-sm-1"></div>
+		<div class="col-sm-6">
+			<p>Resume Builder makes it fast and easy to create the powerful, professional resume hiring managers are looking for.<br>
 			Our Resume Builder lets you create a resume in minutes!<p>
+		</div>	
+		<div class="col-sm-2"></div>				
 	</div>
 	<div class="container" id="how_itworks">
 		<h1 style="text-align: center; padding-bottom: 70px;">How It <span style="color: #15b8db">Works</span></h1>
-		<div class="row">
-			<div class="col-sm-6">
-				<img src="img/macpro.png" class="img-responsive" style="align:left;">
+		<div class="row ">
+			<div class="col-sm-3">
+				<span class="number">&#x41;</span>
+				<img src="img/macpro.png" class="img-responsive">
+				 <p>Build a resume with the help of few simple steps.</p>
 			</div>
-			<div class="col-sm-6">
-				 Build a resume with the help of few simple steps.
+			<div class="col-sm-3">
+			<span class="number">2</span>
+				<img src="img/templates.png" class="img-responsive">
+				<p>Choose a template, of your choice.Make your resume of your choice.</p>				
 			</div>
-		</div>
-		<div class="row step">
-			<div class="col-sm-6 ">
-				Choose a template, of your choice.Make your resume of your choice.
+			<div class="col-sm-3">
+				<span class="number">3</span>
+				<img src="img/download.jpg" class="img-responsive">
+				<p>Download Your resume in pdf or word document format.</p>
 			</div>
-			<div class="col-sm-6 ">
-				<img src="img/templates.png" class="img-responsive" style="align:right;">
-			</div>
-		</div>
-		<div class="row step">
-			<div class="col-sm-6">
-				<img src="img/download.jpg" class="img-responsive" style="align:left;">
-			</div>
-			<div class="col-sm-6">
-				Download Your resume in pdf or word document format.
+			<div class="col-sm-3">
+				<span class="number">4</span>
+				<img src="img/login.png" class="img-responsive">
+				<p>Save your resume for future reference. You can edit/ view your resume in future. By creating an account in Resume Builder.</p>				
 			</div>
 		</div>
-		<div class="row step">
-			<div class="col-sm-6">
-				Save your resume for future reference. You can edit/ view your resume in future. By creating an account in Resume Builder.
-			</div>
-			<div class="col-sm-6">
-				<img src="img/login.png" class="img-responsive" style="align:right;">
-			</div>
-		</div>
-		<!--<div class="row">
-			<div class="col-sm-5">
-				<img src="img/macpro.png" class="img-responsive" style="align:left;">
-			</div>
-			<div class="col-sm-7">
-				 Build a resume with the help of few simple steps.
-			</div>
-		</div>
-		<div class="row step">
-			
-			<div class="col-sm-5 ">
-				<img src="img/templates.png" class="img-responsive" style="align:right;">
-			</div>
-			<div class="col-sm-7 ">
-				Choose a template, of your choice.Make your resume of your choice.
-			</div>
-		</div>
-		<div class="row step">
-			<div class="col-sm-5">
-				<img src="img/download.jpg" class="img-responsive" style="align:left;">
-			</div>
-			<div class="col-sm-7">
-				Download Your resume in pdf or word document format.
-			</div>
-		</div>
-		<div class="row step">
-			
-			<div class="col-sm-5">
-				<img src="img/login.png" class="img-responsive" style="align:right;">
-			</div>
-			<div class="col-sm-7">
-				Save your resume for future reference. You can edit/ view your resume in future. By creating an account in Resume Builder.
-			</div>
-		</div>-->
 	</div>
-	<div class="container" id="sample_design">
+	<!--<div class="container" id="sample_design">
 		<h2 style="text-align: center; padding-bottom: 70px;">Sample <span style="color: #15b8db">Designs</span></h2>
 		<ul class="nav nav-pills">
 		    <li class="active"><a href="#sample-featured" data-toggle="tab">Featured</a></li>
 		    <li><a href="#sample-professional" data-toggle="tab">Professional</a></li>
 		    <li><a href="#sample-engineer" data-toggle="tab">Engineer</a></li>
 	  	</ul>
+	  	
 	</div>
-	<!--Tab panes-->
+
 	<div class="tab-content cv-templates">
 		<div class="tab-pane fade in active" id="sample-featured">
 			<div class="template">
@@ -178,7 +140,7 @@
 				<img src="img/slate.jpg" class="img-responsive sample_img">
 				<figcaption>Sales & Marketing</figcaption>
 			</div>
-		</div>	 
+		</div>
 		<div class="tab-pane fade" id="sample-professional">
 			<div class="template">
 				<img src="img/majed-project-manager.jpg" class="img-responsive sample_img">
@@ -207,31 +169,37 @@
 				<figcaption>Application Engineer</figcaption>
 			</div>
 		</div>
-	</div>
-
+	</div>-->
 	<div class="container-fluid " id="features">
 		<div class="row">
-			<h1 style="text-align: center; margin-bottom: 80px;">Features</h1>
-			<div class="col-sm-3 feature" style="text-align: center;"><i class="fa fa-sign-in social_icons"></i><div >Easy to create with social login</div></div>
-			<div class="col-sm-3 feature" style="text-align: center;"><i class="fa fa-file-text social_icons"></i><div >Provides different design templates</div></div>
-			<div class="col-sm-3 feature" style="text-align: center;"><i class="fa fa-cloud-download social_icons"></i><div >You can Save and download your resume for future.</div></div>
-			<div class="col-sm-3 feature" style="text-align: center;"><i class="fa fa-pencil-square social_icons"></i><div >You can Edit your resume. Change the templates</div></div>
-		</div>		
+			<h1 style="text-align: center; margin-bottom: 50px;">Features</h1>
+			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-sign-in social_icons"></i></span><br><br>Easy to create with social login</div>
+			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-file-text social_icons"></i></span><br><br>Provides different design templates</div>
+			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-cloud-download social_icons"></i></span><br><br>You can Save and download your resume for future.</div>
+			<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-pencil-square social_icons"></i></span><br><br>You can Edit your resume. Change the templates</div>
+		</div>
 	</div>
-<div class="container-fluid" id="contact">
+<div class="container" id="contact">
+	<!-- <div class="row">
+		<div class="col-sm-4">
+			<p>Copyright &copy; 2016.All right reserved.</p>
+		</div>
+		<div class="col-sm-4 center-block">
+			<p class="center-block">Powered By Software Incubator.</p>
+		</div>
+		<div class="col-sm-4 pull-right" >
+			<button>Visit us</button>
+		</div>
+	</div> -->
 	<div class="row">
-		<div class="col-sm-2" style="text-align: left;">
-			Resume Builder
+		<div class="col-md-4">
+			<p>Copyright &copy; 2016.All right reserved.</p>
 		</div>
-		<div class="col-sm-6" style="text-align: center; font-size: 14px;"> 
-			Copyright &copy; 2016.All right reserved.<br>
-			Powered By Software Incubator.
+		<div class="col-md-4 center-block">
+			<p style="text-align:center;">Powered By - Software Incubator.</p>
 		</div>
-		<div class="col-sm-4" style="text-align: right;">
-			<ul style="list-style: none;">
-				<a href="https://www.facebook.com/RedefiningLimitations/"><li style="display: inline;"><i class="fa fa-facebook-square social_icons_footer"></i></li></a>
-				<a href="https://twitter.com/si_akgec"><li style="display: inline;"><i class="fa fa-twitter-square social_icons_footer"></i></li></a>
-			</ul>		
+		<div class="col-md-4">
+			<button class="pull-right">Visit Us</button>
 		</div>
 	</div>
 </div>
@@ -256,7 +224,7 @@
                     @else
                         <li class="dropdown">
                            <a href={{ route('user.dashboard') }} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} 
+                            {{ Auth::user()->name }}
                             <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
@@ -267,8 +235,8 @@
                         </li>
                     @endif
 				</ul>
-			</div>				
-		</div>			
-	</nav>	
+			</div>
+		</div>
+	</nav>
 </body>
 </html>

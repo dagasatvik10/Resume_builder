@@ -119,5 +119,9 @@
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="materialize" level="application" />
+<<<<<<< HEAD
+=======
+    <orderEntry type="library" name="3f8483f0f3dc9e3ec5d9" level="application" />
+>>>>>>> b995f0d02f208881388f0532e6b213f67a81ef7e
   </component>
 </module>

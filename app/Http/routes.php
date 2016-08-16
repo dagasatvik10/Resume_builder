@@ -16,6 +16,8 @@ Route::group(['middleware' => 'web'], function ()
     Route::get('auth/github/callback','ResumeController@githubCallback');
     Route::get('auth/fb','Auth\AuthController@redirectFb');
     Route::get('auth/fb/callback','Auth\AuthController@FbCallback');
+    Route::get('auth/ln','ResumeController@redirectLn');
+    Route::get('auth/ln/callback','ResumeController@LnCallback');
 
     Route::post('resume/{section_id}/{resume_id}/addSection',['as' => 'resume.addSection','uses' => 'ResumeController@addSection']);
     Route::post('resume/{mapping_section_id}/{subsection_id}/addSubsection',['as' => 'resume.addSubsection','uses' => 'ResumeController@addSubsection']);
