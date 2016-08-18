@@ -37,6 +37,7 @@ nav{
 .land_temp:hover
 {
 	-webkit-transform: translateY(10px);
+	transition-timing-function: linear;
 }
 @media only screen and (max-width: 1200px) {
     .center{
@@ -52,6 +53,22 @@ nav{
 		margin-top: 20px;
 	}
 	
+}
+label {
+	font-weight: normal;
+}
+#loginform, #register{
+	margin-top: 5%;
+}
+.modal-header {
+	background-color: #0288D1;
+	color: #fff; 
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+		background-color: #03A9F4;
+	}
+.nav-tabs>li>a {
+	color: #03A9F4;
 }
 #create_button
 {
@@ -76,7 +93,10 @@ nav{
 .number{
 	border: 2px solid grey;
 	border-radius: 200px;
-	padding: 5px;
+	padding: 10px 15px;
+}
+.how {
+	margin-top: 5%;
 }
 #how_itworks
 {
@@ -97,9 +117,9 @@ nav{
 	background-color: #03A9F4;
 	color: #fff;
 	padding-bottom: 50px;
-	padding-top: 50px;
+	padding-top: 30px;
 	margin-top: 50px;
-	padding-top: 50px;
+	
 }
 .template
 {
