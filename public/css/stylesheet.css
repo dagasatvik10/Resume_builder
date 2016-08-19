@@ -241,7 +241,6 @@ label {
 	position: absolute; 
 	bottom: 0px;
 }
-
 .form_navigation{
 	display: block;
 	list-style: none;
@@ -292,7 +291,6 @@ label {
 .control-label{
 	font-size: 16px;
 }
-
 .navbar{
 	margin-bottom: 0px;
 }

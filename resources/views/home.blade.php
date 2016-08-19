@@ -24,7 +24,11 @@
 <body >
 	<!--fixed navigation-->
 
+
 	<!-- <nav class="navbar  navbar-static" role="navigation">
+>>>>>>> 1089e61492e79364d11b27a1f5caf1d38e0ac04c
+=======
+	<!-<nav class="navbar  navbar-static" role="navigation">
 >>>>>>> 1089e61492e79364d11b27a1f5caf1d38e0ac04c
 		<div class="container-fluid">
 			<div class="navbar-header">
