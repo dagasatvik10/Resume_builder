@@ -23,48 +23,9 @@
 </head>
 <body >
 	<!--fixed navigation-->
-	<div class="navbar_scroll">
-		<div class="container-fluid" id="content-land">
-			<div>
-				<div style="font-size:24px; padding-top: 100px; letter-spacing: 1.5px;">
-				Create a standout resume in minutes.
-				</div>
-				<div style="font-size:20px; letter-spacing: 1.5px;">
-					Easily create professional resumes.
-				</div>
-				<a class="btn white" data-toggle="modal" data-target="#myModal" id="create_button">Create Resume Now</a>
-			</div>
-			<div id="myModal" class="modal fade" role="dialog">
-			  <div class="modal-dialog">	
-			    <!-- Modal content-->
-			    <div class="modal-content" style="padding: 50px;">
-			    		<button type="button" class="close" data-dismiss="modal">&times;</button>
-						{!! Form::open(['route' => 'resume.name'],['class' => 'form-control']) !!}
 
-						<div class="input-field">
-							<span style="color: #000;">{!! Form::label('name','Resume Name') !!}</span>
-							{!! Form::text('name','',['class' => 'validate']) !!}
-						</div>
-				      <div class="modal-footer" style="border-top: none;">
-				      	<button type="submit" class="btn btn-info">Create</button>
-						  {!! Form::close() !!}
-				      </div>
-				    </div>
-			    </div>
-			</div>
-			<div class="row" style="margin-top: 5%;">
-				<div class="col-sm-4">
-					<img src="img/a.png" class="land_temp img-responsive">
-				</div >
-				<div  class="col-sm-4">
-					<img src="img/b.png" class="land_temp img-responsive">
-				</div>
-				<div  class="col-sm-4">
-					<img src="img/c.png" class="land_temp img-responsive center">
-				</div>
-			</div>
-		</div>
-	<nav class="navbar  navbar-fixed-top" data-spy="affix" data-offset-top="650" id="navbar_top" role="navigation">
+	<!-- <nav class="navbar  navbar-static" role="navigation">
+>>>>>>> 1089e61492e79364d11b27a1f5caf1d38e0ac04c
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
@@ -98,7 +59,48 @@
 				</ul>
 			</div>
 		</div>
-	</nav>
+	</nav> -->
+	<div class="navbar_scroll" style="background-image: url(img/land-bg.jpg); background-size:cover;">
+		<div class="container">
+			<div class="row pull-right top-fix">
+				<div id="register" class="inline">
+					<button>
+						<span class="fa fa-pencil register-icon"></span><span class="register-text">Register</span>
+					</button>
+				</div>
+				<div id="login" class="inline">
+					<button>
+						<span class="fa fa-user login-icon"></span><span class="login-text">Login</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid" id="content-land" >
+			<div class="col-md-12 landing">
+				<h1 class="head-name">RESUME BUILDER
+				<p id="subhead-name">Powered by Software Incubator</p></h1>
+
+				<div style="font-size:20px;letter-spacing: 1.5px; padding-top:20px;">
+				Create a standout resume in minutes.
+				</div>
+				<div style="font-size:16px; letter-spacing: 1.5px;">
+					Easily create professional resumes.
+				</div>
+				<a class="btn" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a>
+			</div>
+			<!-- <div class="col-md-6" style="margin-top: 5%;">
+				<div class="col-sm-4">
+					<img src="img/a.png" class="land_temp img-responsive">
+				</div >
+				<div  class="col-sm-4">
+					<img src="img/b.png" class="land_temp img-responsive">
+				</div>
+				<div  class="col-sm-4">
+					<img src="img/c.png" class="land_temp img-responsive center">
+				</div>
+				<img src="img/a1.png" class="img-responsive land-img">
+			</div> -->
+		</div>
 	</div>
 	<!-- Modal -->
 <div id="login" class="modal fade" role="dialog">
@@ -250,7 +252,15 @@
 	</div>
 </div>
 	<div id="download">
-			{{--<span>Downloaded 0</span>--}} <strong><span>Resumes Created- {{ $resumes->count() }}</span></strong>
+			{{--<span>Downloaded 0</span>--}} <strong>Resumes Created- <span class="count">500</span></strong>
+
+<style type="text/css">
+.count{
+  color:inherit;
+  font-size:inherit;
+}
+
+</style>
 	</div>
 	<div class="container-fluid" id="why_rb">
 		<div class="col-sm-3" style="font-family: 'Lato', sans-serif; ">
@@ -268,22 +278,22 @@
 		<h1 style="text-align: center; padding-bottom: 70px;">How It <span style="color: #15b8db">Works</span></h1>
 		<div class="row ">
 			<div class="col-sm-3">
-				<span class="number">&#49;</span>
+				<span class="number">1</span>
 				<img src="img/macpro.png" class="img-responsive how">
 				 <p>Build a resume with the help of few simple steps.</p>
 			</div>
 			<div class="col-sm-3">
-			<span class="number">&#50;</span>
+			<span class="number">2</span>
 				<img src="img/templates.png" class="img-responsive how">
 				<p>Choose a template, of your choice.Make your resume of your choice.</p>				
 			</div>
 			<div class="col-sm-3">
-				<span class="number">&#51;</span>
+				<span class="number">3</span>
 				<img src="img/download.jpg" class="img-responsive how">
 				<p>Download Your resume in pdf or word document format.</p>
 			</div>
 			<div class="col-sm-3">
-				<span class="number">&#52;</span>
+				<span class="number">4</span>
 				<img src="img/login.png" class="img-responsive how">
 				<p>Save your resume for future reference. You can edit/ view your resume in future. By creating an account in Resume Builder.</p>				
 			</div>
@@ -313,5 +323,19 @@
 			</div>
 		</div>
 	</div>
+
+<script type="text/javascript">
+	$('.count').each(function () {
+	    $(this).prop('Counter',0).animate({
+	        Counter: $(this).text()
+	    }, {
+	        duration: 10000,
+	        easing: 'swing',
+	        step: function (now) {
+	            $(this).text(Math.ceil(now));
+	        }
+	    });
+	});
+</script>
 </body>
 </html>
