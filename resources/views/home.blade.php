@@ -289,60 +289,6 @@
 			</div>
 		</div>
 	</div>
-	<!--<div class="container" id="sample_design">
-		<h2 style="text-align: center; padding-bottom: 70px;">Sample <span style="color: #15b8db">Designs</span></h2>
-		<ul class="nav nav-pills">
-		    <li class="active"><a href="#sample-featured" data-toggle="tab">Featured</a></li>
-		    <li><a href="#sample-professional" data-toggle="tab">Professional</a></li>
-		    <li><a href="#sample-engineer" data-toggle="tab">Engineer</a></li>
-	  	</ul>
-	  	
-	</div>
-
-	<div class="tab-content cv-templates">
-		<div class="tab-pane fade in active" id="sample-featured">
-			<div class="template">
-				<img src="img/avant.jpg" class="img-responsive sample_img">
-				<figcaption>Design Director</figcaption>
-			</div>
-			<div class="template">
-				<img src="img/gallant.jpg" class="img-responsive sample_img">
-				<figcaption>President</figcaption>
-			</div>
-			<div class="template">
-				<img src="img/slate.jpg" class="img-responsive sample_img">
-				<figcaption>Sales & Marketing</figcaption>
-			</div>
-		</div>
-		<div class="tab-pane fade" id="sample-professional">
-			<div class="template">
-				<img src="img/majed-project-manager.jpg" class="img-responsive sample_img">
-				<figcaption>Project Manager</figcaption>
-			</div>
-			<div class="template">
-				<img src="img/carolyn-principal.jpg" class="img-responsive sample_img">
-				<figcaption>Principal</figcaption>
-			</div>
-			<div class="template">
-				<img src="img/bobbie-doctor.jpg" class="img-responsive sample_img">
-				<figcaption>Doctor</figcaption>
-			</div>
-		</div>
-		<div class="tab-pane fade" id="sample-engineer">
-			<div class="template">
-				<img src="img/scott-software-engineer.jpg" class="img-responsive sample_img">
-				<figcaption>Software Engineeer</figcaption>
-			</div>
-			<div class="template">
-				<img src="img/khaled-site-engineer.jpg" class="img-responsive sample_img">
-				<figcaption>Site Engineer</figcaption>
-			</div>
-			<div class="template">
-				<img src="img/vincent-application-engineer.jpg" class="img-responsive sample_img">
-				<figcaption>Application Engineer</figcaption>
-			</div>
-		</div>
-	</div>-->
 	<div class="container-fluid " id="features">
 		<div class="container">
 			<div class="row">

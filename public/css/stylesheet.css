@@ -209,6 +209,22 @@ label {
 	padding: 0px;
 	padding-left:0px;
 	background-color: #161616; 
-	width:20%; 
 
+}
+.row{
+	margin-right: 0px;
+	margin-left: 0px;
+}
+.resumeform{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.select_template {
+	padding: 15px;
+}
+#resume_download, #resume_preview{
+	background-color: #161616;
+	color: #737373;
+	letter-spacing: 1.5px;
+	padding: 10px;
 }

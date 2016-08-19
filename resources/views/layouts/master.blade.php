@@ -18,30 +18,14 @@
 
         <style type="text/css">
             .add_new{
-                    display: block;
+                    
                     }
-            .section{
-                height: 55%;
-                overflow-y:auto;
-                overflow-x:hidden; 
-                 }
-            @media only screen and (max-width: 1200px) {
-                .section_subsection{
-                    margin-bottom: 10px;
-                }
-            .delete{
-                padding: 1px;
-                margin-left: 28px;
-                font-size: 13px;
-            }
+            
+            
             #github_button{
 
             }
-            .section  {
-                height: 50%;
-                overflow-y:auto;
-                overflow-x:hidden;
-             }
+            
         </style>
     </head>
     <body>
@@ -67,7 +51,6 @@
                             <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu white" role="menu">
-                                <li><a href={{ route('user.dashboard') }}>Dashboard</a></li>
                                 <li><a href={{ url('/logout') }}>
                                         <i class="fa fa-btn fa-sign-out"></i>
                                Logout</a>
