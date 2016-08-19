@@ -198,3 +198,17 @@ label {
 	position: absolute; 
 	bottom: 0px;
 }
+.form_navigation{
+	display: block;
+	list-style: none;
+	text-align: left;
+}
+.section_form{
+	
+	color: #737373;
+	padding: 0px;
+	padding-left:0px;
+	background-color: #161616; 
+	width:20%; 
+
+}

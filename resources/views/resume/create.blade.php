@@ -1,46 +1,11 @@
 @extends('layouts.master')
 
 @section('section')
-	<div class="container" style="margin-top: 150px;">
-		<div class="row" style="margin-bottom: 60px;">
-			<div class="col-sm-4" style="font-size: 25px; font-weight: bold; margin-left: 50px;">
-				{{ $resume->name }}
-			</div>
-			<div class="col-sm-4">
-				<ul style="list-style: none; ">
-					<li style="display: inline;">
-						<a id="resume_download" data-toggle="modal" data-target="#downloadModal" class="btn-info btn">Download</a>
-						<a id="resume_preview" data-toggle="modal" data-target="#previewModal" class="btn-info btn">Preview</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div id="addSectionModal" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
 
-		    <!-- Modal content-->
-		    <div class="modal-content" style="padding: 50px;">
-				{!! Form::open(['route' => ['resume.addNewSection',$resume->id]]) !!}
-				<div>
-					{!! Form::label('section_name','Section Name') !!}
-					{!! Form::text('section_name','',['class' => 'form-control']) !!}
-				</div>
-				<div >
-					{!! Form::label('subsection_name','Subsection Name') !!}
-					{!! Form::text('subsection_name','',['class' => 'form-control']) !!}
-				</div><br>
-				<div>
-					<button type="submit" class="btn btn-info">Add</button>
-				</div>				
-				{!! Form::close() !!}<br>
-				<div class="modal-footer">
-			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		  </div>
-		</div>
-		<div class="row" id="resume_full_div">
-			<div class="col-sm-4 section">
+	<div class="container-fluid">
+
+		<div class="row" style="">
+			<div class="col-sm-3 section_form">
 				<ul class="">
 					<?php
 						$i = 0;
@@ -48,8 +13,7 @@
 					?>
 					@foreach($resume->sections as $section)
 						@if(!in_array($section->id,$check))
-							<li class=" btn form_navigation" style="margin-bottom: 10px;  background-color: #3f51b5; width: 80%; color: #fff; "
-								onclick="show({{ $section->id }})"
+							<li class=" btn form_navigation" onclick="show({{ $section->id }})"
 								id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}</li>
 						<?php
 							$check[$i] = $section->id;
@@ -57,12 +21,28 @@
 						?>
 						@endif
 				 	@endforeach
-				<li class="btn" style="color: #fff; background-color: #3f51b5;" data-toggle="modal" data-target="#addSectionModal">
-					Add New Section<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
-				</li>
-			</ul>
+					<li class="btn"  data-toggle="modal" data-target="#addSectionModal">
+						Add New Section<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
+					</li>
+				</ul>
 			</div>
-			<div class="col-sm-8 subsection">
+			<div class="col-sm-9" style="margin-top:3%;">
+				<div>
+					<span class="fi-laptop"></span> Dashboard
+				</div>
+				<div class="row" >
+					<div class="col-sm-4">
+						{{ $resume->name }}
+					</div>
+					<div class="col-sm-4">
+						<ul style="list-style: none;">
+							<li style="display: inline;">
+								<a id="resume_download" data-toggle="modal" data-target="#downloadModal" class="btn-info btn">Download</a>
+								<a id="resume_preview" data-toggle="modal" data-target="#previewModal" class="btn-info btn">Preview</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 				{!! Form::open(['id' => 'resume_form','name' => 'resume']) !!}
 					<?php
 					$i = 0;
@@ -162,11 +142,38 @@
 						?>
 						@endif
 					@endforeach
-
 				{!! Form::close() !!}
 			</div>
 		</div>
+		
 	</div>
+	
+		
+		<div id="addSectionModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content" style="padding: 50px;">
+				{!! Form::open(['route' => ['resume.addNewSection',$resume->id]]) !!}
+				<div>
+					{!! Form::label('section_name','Section Name') !!}
+					{!! Form::text('section_name','',['class' => 'form-control']) !!}
+				</div>
+				<div >
+					{!! Form::label('subsection_name','Subsection Name') !!}
+					{!! Form::text('subsection_name','',['class' => 'form-control']) !!}
+				</div><br>
+				<div>
+					<button type="submit" class="btn btn-info">Add</button>
+				</div>				
+				{!! Form::close() !!}<br>
+				<div class="modal-footer">
+			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		  </div>
+		</div>
+		
 @stop
 
 @section('script')

@@ -45,7 +45,7 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-fixed-top" data-spy="affix" data-offset-top="650" id="navbar_top" role="navigation">
+        <nav class="navbar navbar-static" data-spy="affix" data-offset-top="650" id="navbar_top" role="navigation" style="margin-bottom: 0px;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
