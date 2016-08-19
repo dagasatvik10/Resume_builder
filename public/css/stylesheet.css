@@ -7,6 +7,19 @@ body
 nav{
 	background-color: #0288D1;
 	color: #fff;
+	border-radius: 0px;
+}
+.navbar-brand:hover{
+	color: #fff;
+}
+.gap-off{
+	padding: 0px;
+}	
+.top-fix{
+	padding-top:20px; 
+}
+.inline{
+	display: inline-block;
 }
 #download
 {
@@ -17,14 +30,62 @@ nav{
 	color: #696969;
 	letter-spacing: 2.5px;
 }
-
+#register button{
+	padding: 0px; 
+	border: none; 
+	background-color: #26bcff;
+}
+#login button{
+	padding: 0px; 
+	border: none; 
+	background-color: #a0a0a0;
+}
+.register-icon{
+	font-size: 18px; 
+	background-color: #03a9f4; 
+	vertical-align: middle; 
+	padding: 10px; 
+	color: #5a5a5a;
+}
+.register-text{
+	font-size: 14px; 
+	background-color: #26bcff; 
+	padding: 8px; 
+	vertical-align: middle; 
+	color: #fff;
+}
+.login-icon{
+	font-size: 18px; 
+	background-color: #8e8e8e; 
+	vertical-align: middle; 
+	padding: 10px; 
+	color: #5a5a5a;
+}
+.login-text{
+	font-size: 14px; 
+	background-color: #a0a0a0; 
+	padding: 8px; 
+	vertical-align: middle; 
+	color: #fff;
+}
 /*Top Navigation Bar*/
 #content-land
 {
 	color: #fff;
 	padding-left: 60px;
-	background-color: #03A9F4;
 }
+.landing{
+	padding-top: 10%;
+	padding-bottom: 20%;
+}
+.head-name{
+	font-size: 56px;
+}
+#subhead-name{
+	font-size: 14px;
+	margin-top: 0px;
+	margin-left: 20%;
+	color: #000;
 }
 .land_temp
 {
@@ -58,7 +119,6 @@ label {
 	font-weight: normal;
 }
 #loginform, #register{
-	margin-top: 5%;
 }
 .modal-header {
 	background-color: #0288D1;
@@ -76,7 +136,8 @@ label {
 	height: 40px;
 	width: 200px;
 	font-size: 18px;
-	background-color: #9E9E9E;
+	background-color: #03A9F4;
+	border-radius: 0px;
 
 }
 .navbar {
@@ -95,6 +156,10 @@ label {
 	border-radius: 200px;
 	padding: 10px 15px;
 }
+.land-img{
+	max-height: 100%;
+}
+
 .how {
 	margin-top: 5%;
 }
@@ -158,29 +223,7 @@ a {
 	padding-right:10px;
 	color: #888888; 
 }
-	
-.affix {
-      top: 0;
-      width: 100%;
-      -webkit-transition: all .5s ease-in-out;
-      transition: all .5s ease-in-out;
-      background-color: #fff;
-      border-color: #fff;
-      box-shadow: 0px 1px 5px;
 
-  }
-  .affix a {
-  	background-color:transparent; ;
-      padding: 15px !important;
-      -webkit-transition: all .5s ease-in-out;
-      transition: all .5s ease-in-out;
-  }
-  .affix-top a {
-      padding: 15px !important;
-  }
-  .affix + .container-fluid {
-      padding-top: 95px;
-  }
 .features{
 	border-radius: 150px;
 	width: 150px;
@@ -197,4 +240,7 @@ a {
 	overflow:hidden; 
 	position: absolute; 
 	bottom: 0px;
+}
+.navbar{
+	margin-bottom: 0px;
 }
