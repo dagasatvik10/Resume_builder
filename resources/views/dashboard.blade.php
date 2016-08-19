@@ -9,13 +9,13 @@
 				<table class="table table-hover" style="margin-top:40px; border: 1px solid grey; border-collapse: collapse; ">
 					<tr>
 						<th>Name</th>
-						<th>Created At</th>
+						<th> <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp; &nbsp; Created At </th>
 						<th>Options</th>
 					</tr>
 					@foreach($resumes as $resume)
 						<tr>
 							<td>{{ $resume->name }}</td>
-							<td>{{ $resume->created_at }}</td>
+							<td><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp; &nbsp;{{ $resume->created_at }}</td>
 							<td>
 								<a class="btn-floating btn-large waves-green waves-light"
 								href={{ route('resume.create',['id' => $resume->id]) }} >
@@ -43,20 +43,18 @@
 			@endif
 		</div>
 		<div id="myModal" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-
+		  <div class="modal-dialog">	
 		    <!-- Modal content-->
 		    <div class="modal-content" style="padding: 50px;">
-					{!! Form::open(['route' => 'resume.name']) !!}
+		    		<button type="button" class="close" data-dismiss="modal">&times;</button>
+					{!! Form::open(['route' => 'resume.name'],'class', 'form-control') !!}
 					<div class="input-field">
 						{!! Form::label('name','Resume Name') !!}
 						{!! Form::text('name','',['class' => 'validate']) !!}
 					</div>
-			      <div class="modal-footer">
+			      <div class="modal-footer" style="border-top: none;">
 			      	<button type="submit" class="btn btn-info">Create</button>
 					  {!! Form::close() !!}
-			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-			        {!! Form::close() !!}
 			      </div>
 			    </div>
 		    </div>

@@ -32,7 +32,25 @@
 				<div style="font-size:20px; letter-spacing: 1.5px;">
 					Easily create professional resumes.
 				</div>
-				<a class="btn" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a>
+				<a class="btn white" data-toggle="modal" data-target="#myModal" id="create_button">Create Resume Now</a>
+			</div>
+			<div id="myModal" class="modal fade" role="dialog">
+			  <div class="modal-dialog">	
+			    <!-- Modal content-->
+			    <div class="modal-content" style="padding: 50px;">
+			    		<button type="button" class="close" data-dismiss="modal">&times;</button>
+						{!! Form::open(['route' => 'resume.name'],['class' => 'form-control']) !!}
+
+						<div class="input-field">
+							<span style="color: #000;">{!! Form::label('name','Resume Name') !!}</span>
+							{!! Form::text('name','',['class' => 'validate']) !!}
+						</div>
+				      <div class="modal-footer" style="border-top: none;">
+				      	<button type="submit" class="btn btn-info">Create</button>
+						  {!! Form::close() !!}
+				      </div>
+				    </div>
+			    </div>
 			</div>
 			<div class="row" style="margin-top: 5%;">
 				<div class="col-sm-4">
@@ -55,16 +73,16 @@
 	                <span class="icon-bar"></span>
 	                <span class="icon-bar"></span>
 	        	</button>
-				<a class="navbar-brand" href={{ url('/') }}>Resume Builder</a>
+				<a class="navbar-brand white" href={{ url('/') }}>Resume Builder</a>
 			</div>
 			<div class="collapse navbar-collapse" id="mynavbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#contact"> Contact Us</a></li>
+					<li><a class="white" href="#contact"> Contact Us</a></li>
 					@if (Auth::guest())
-                     <li data-toggle="modal" data-target="#login"><a>Login</a></li>				      
+                     <li  data-toggle="modal" data-target="#login"><a class="white">Login</a></li>				      
                     @else
                         <li class="dropdown">
-                           <a href={{ route('user.dashboard') }} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                           <a class="white" href={{ route('user.dashboard') }} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }}
                             <span class="caret"></span>
                             </a>
@@ -129,7 +147,7 @@
 		                    <div class="form-group">
 		                        <div class="col-md-6 col-md-offset-4">
 		                            <div class="checkbox">
-		                                <label>
+		                                <label style="font-size: 15px;">
 		                                    <input type="checkbox" name="remember"> Remember Me
 		                                </label>
 		                            </div>

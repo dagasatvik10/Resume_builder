@@ -132,7 +132,7 @@ label {
 .nav-tab > li.active . a:focus {
 
 }
-a {
+.white {
 	color: #f5f5f5;
 	text-decoration: none;
 }
