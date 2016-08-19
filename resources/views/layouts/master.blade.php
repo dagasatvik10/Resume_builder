@@ -15,18 +15,6 @@
         @yield('link')
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-        <style type="text/css">
-            .add_new{
-                    
-                    }
-            
-            
-            #github_button{
-
-            }
-            
-        </style>
     </head>
     <body>
         <nav class="navbar navbar-static" data-spy="affix" data-offset-top="650" id="navbar_top" role="navigation" style="margin-bottom: 0px;">
@@ -45,18 +33,16 @@
                     @if (Auth::guest())
                      <li  data-toggle="modal" data-target="#login"><a class="white">Login</a></li>                   
                     @else
-                        <li class="dropdown ">
-                           <a class="white" href={{ route('user.dashboard') }} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <li>
+                           <a class="white" href={{ route('user.dashboard') }}>
                             {{ Auth::user()->name }}
-                            <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu white" role="menu">
-                                <li><a href={{ url('/logout') }}>
-                                        <i class="fa fa-btn fa-sign-out"></i>
-                               Logout</a>
-                                </li>
-                            </ul>
                         </li>
+                        <li>
+                            <a class="white" href={{ url('/logout') }}><span class="fa fa-btn fa-sign-out"></span>
+                               Logout</a>
+                        </li>                          
+                        
                     @endif
                 </ul>
             </div>

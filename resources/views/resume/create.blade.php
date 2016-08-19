@@ -4,7 +4,7 @@
 
 	<div class="container-fluid resumeform">
 
-		<div class="row" style="">
+		<div class="row">
 			<div class="col-lg-3 col-xs-2 section_form">
 				<ul class="">
 					<?php
@@ -14,7 +14,10 @@
 					@foreach($resume->sections as $section)
 						@if(!in_array($section->id,$check))
 							<li class=" btn form_navigation" onclick="show({{ $section->id }})"
-								id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}</li>
+								id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}
+							</li>
+							
+
 						<?php
 							$check[$i] = $section->id;
 							$i++;
@@ -24,9 +27,10 @@
 					<li class="btn" data-toggle="modal" data-target="#addSectionModal">
 						<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
 					</li>
+
 				</ul>
 			</div>
-			<div class="col-lg-7 col-xs-10" style="background-color: #ededed; padding-top:1%; padding-left: 0px; padding-right:0px;">
+			<div class="col-lg-7 col-xs-10" style="background-color: #ededed; padding-top:1%; padding-left: 0px; padding-right:0px; padding-bottom: 3%;">
 				<div class="row" style="border-bottom: 1px solid #dcdcdc; padding:15px; background-color: #fff;">
 					<div class="col-lg-4">
 						<span class="fa fa-television" style="border: 2px solid #0288D1; border-radius: 80px; padding :10px;"></span> &nbsp; &nbsp;<a href={{ route('user.dashboard') }}>Dashboard</a>
@@ -71,7 +75,7 @@
 											@if(!in_array($subsection->id,$c))
 												<div class="row">
 													<div class=" col-lg-12">
-														{{ Form::label('detail'.$subsection->pivot->id,$subsection->subsection_name)}}
+														{{ Form::label('detail'.$subsection->pivot->id,$subsection->subsection_name ,['class' => 'section'])}}
 													</div>
 													<?php $k = 1; ?>
 													@foreach($subsection->mapping_subsections()->where('mapping_section_id',$mapping_section->id)->get()
@@ -100,12 +104,12 @@
 														<?php $k++; ?>
 													@endforeach
 													@if($subsection->flag != 0)
-														<div class="row">
+													
 															<button class="btn section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
 															link='{{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}'>
 																<span class="fa fa-plus-circle"></span>
 															</button>
-														</div>
+													
 													@endif
 												</div>
 												<?php
@@ -116,32 +120,32 @@
 										@endforeach
 									</div>
 									@if($section->flag == 1 and $l > 1)
-										<br>
-										<div class="row">
-											<button class="btn input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
-											   link={{ route('resume.deleteSection',['mapping_section_id' => $mapping_section->id,'resume_id' => $resume->id]) }}>
-												<span class="fa fa-minus-circle"></span>
-											</button>
-										</div>
+									
+											<div>
+												<button class="btn input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
+												   link={{ route('resume.deleteSection',['mapping_section_id' => $mapping_section->id,'resume_id' => $resume->id]) }}>
+													<span class="fa fa-minus-circle"></span>
+												</button>
+											</div>
+										
 									@endif
 									<?php $l++; ?>
-								@endforeach<br>
+								@endforeach
 								@if($section->id == 3)
-									<div id="github_button">
-										<a class="btn btn-info"
-										   href={{ url('auth/github') }}>
+									<span class="btn" id="github_button">
+										<a href={{ url('auth/github') }}>
 											Fetch from GitHub
 										</a>
-									</div>
+									</span>
 								@endif
 								@if($section->flag == 1)
-									<br>
-									<div class="row">
-										<button class="btn input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
-												link={{ route('resume.addSection',['section_id' => $section->id,'resume_id' => $resume->id]) }}>
-											<span class="fa fa-plus-circle"></span>
-										</button>
-									</div>
+										<div>
+											<button class="btn input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
+													link={{ route('resume.addSection',['section_id' => $section->id,'resume_id' => $resume->id]) }}>
+												<span class="fa fa-plus-circle"></span>
+											</button>
+										</div>
+									
 								@endif
 							</div>
 							<?php
@@ -169,27 +173,25 @@
 	</div>	
 		
 		<div id="addSectionModal" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
+		  	<div class="modal-dialog">
 
-		    <!-- Modal content-->
-		    <div class="modal-content" style="padding: 50px;">
-				{!! Form::open(['route' => ['resume.addNewSection',$resume->id]]) !!}
-				<div>
-					{!! Form::label('section_name','Section Name') !!}
-					{!! Form::text('section_name','',['class' => 'form-control']) !!}
+			    <!-- Modal content-->
+			    <div class="modal-content" style="padding: 50px;">
+			    	<button type="button" class="close" data-dismiss="modal">&times;</button>
+					{!! Form::open(['route' => ['resume.addNewSection',$resume->id]]) !!}
+					<div>
+						{!! Form::label('section_name','Section Name',['class' => 'section']) !!}
+						{!! Form::text('section_name','',['class' => 'form-control']) !!}
+					</div>
+					<div >
+						{!! Form::label('subsection_name','Subsection Name',['class' => 'section']) !!}
+						{!! Form::text('subsection_name','',['class' => 'form-control']) !!}
+					</div><br>
+					<div>
+						<button type="submit" class="btn add">Add</button>
+					</div>				
+					{!! Form::close() !!}
 				</div>
-				<div >
-					{!! Form::label('subsection_name','Subsection Name') !!}
-					{!! Form::text('subsection_name','',['class' => 'form-control']) !!}
-				</div><br>
-				<div>
-					<button type="submit" class="btn btn-info">Add</button>
-				</div>				
-				{!! Form::close() !!}<br>
-				<div class="modal-footer">
-			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-				</div>
-			</div>
 		  </div>
 		</div>
 		
