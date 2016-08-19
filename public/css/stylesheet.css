@@ -245,7 +245,7 @@ label {
 	display: block;
 	list-style: none;
 	text-align: left;
-	padding-top: 3%;
+	padding-top: 7%;
 }
 .section_form{
 	
@@ -268,13 +268,13 @@ label {
 .select_template {
 	padding: 15px;
 }
-#resume_download, #resume_preview, .add{
+#resume_download, #resume_preview, .add, .create, .preview{
 	color: #fff;
 	background-color: #0288D1;
 	letter-spacing: 1.5px;
 	padding: 10px;
 }
-#resume_download:hover, #resume_preview:hover, .add:hover{
+#resume_download:hover, #resume_preview:hover, .add:hover,.create:hover{
 
 	background-color: #161616;
 	color: #737373;
@@ -293,4 +293,28 @@ label {
 }
 .navbar{
 	margin-bottom: 0px;
+}
+.blank_img{
+	width: 40%;
+	height: 40%;
+	border-radius: 60%;
+	display: block;
+    margin: auto;
+    margin-top: 30%;
+}
+.side_right{
+	background-color: #ededed; 
+	padding-top:1%; 
+	padding-left: 0px; 
+	padding-right:0px; 
+	padding-bottom: 3%;
+}
+.create{
+	float: right;
+}
+table:nth-child(2){
+	background-color: #fff;
+}
+td{
+	font-size: 17px;
 }

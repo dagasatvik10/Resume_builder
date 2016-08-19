@@ -1,11 +1,6 @@
 <div class="container" id="template">
 		@if($default_section[1] != null and $default_section[6] != null)
 			<div id="personal_details">
-				@if(!empty($default_section[1][0]['Name'][0]))
-					<div id="name" class="col-sm-12 subsections">
-						{{ $default_section[1][0]['Name'][0] }}
-					</div>
-				@endif
 				<div id="contact" >
 					<div class="row">
 						@if($default_section[1][0]['Email'] != null)
@@ -49,6 +44,11 @@
 						@endif
 					</div>
 				</div>
+				@if(!empty($default_section[1][0]['Name'][0]))
+					<div id="name" class="col-sm-12 subsections">
+						{{ $default_section[1][0]['Name'][0] }}
+					</div>
+				@endif
 			</div>
 		@endif
         <br>

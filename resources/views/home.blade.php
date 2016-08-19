@@ -68,15 +68,22 @@
 		<div class="container">
 			<div class="row pull-right top-fix">
 				<div id="register" class="inline">
-					<button>
+					@if (Auth::guest())
+					<button data-toggle="modal" data-target="#registerform">
 						<span class="fa fa-pencil register-icon"></span><span class="register-text">Register</span>
 					</button>
 				</div>
 				<div id="login" class="inline">
-					<button>
+					<button data-toggle="modal" data-target="#loginform">
 						<span class="fa fa-user login-icon"></span><span class="login-text">Login</span>
 					</button>
 				</div>
+				@else
+					<div>
+	                   <span><a href={{ route('user.dashboard') }}>{{ Auth::user()->name }}</a></span> 
+	                  <span><a href={{ url('/logout') }}><span class="fa fa-btn fa-sign-out"></span>Logout</a></span>						
+	                </div>
+	                @endif
 			</div>
 		</div>
 		<div class="container-fluid" id="content-land" >
@@ -107,79 +114,85 @@
 		</div>
 	</div>
 	<!-- Modal -->
-<div id="login" class="modal fade" role="dialog">
-	<div class="modal-dialog">
+	<div id="loginform" class="modal fade" role="dialog">
+		<div class="modal-dialog">
 	    <!-- Modal content-->
-	    <div class="modal-content">
-		    <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Login/Register</h4>
-		    </div>
-	      	<div class="modal-body">						      
-		        <ul class="nav nav-tabs">
-				  <li class="active"><a data-toggle="tab" href="#loginform">Login</a></li>
-				  <li><a data-toggle="tab" href="#register">Register</a></li>
-				</ul>
-				<div class="tab-content">
-			  		<div id="loginform" class="tab-pane fade in active">
-			    		<form class="form-horizontal" role="form" method="POST" action="{{ url('/login') 	}}">
-                    		{!! csrf_field() !!}
+	    	<div class="modal-content">
+			    <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Login</h4>
+			    </div>
+		      	<div class="modal-body">						      
+		    		<form class="form-horizontal" role="form" method="POST" action="{{ url('/login') 	}}">
+	            		{!! csrf_field() !!}
 
-                    		<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-	                        	<label class="col-md-4 control-label">E-mail</label>
-		                        <div class="col-md-6">
-		                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+	            		<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+	                    	<label class="col-md-4 control-label">E-mail</label>
+	                        <div class="col-md-6">
+	                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
 
-		                            @if ($errors->has('email'))
-		                                <span class="help-block">
-		                                    <strong>{{ $errors->first('email') }}</strong>
-		                                </span>
-		                            @endif
-		                        </div>
-                    		</div>
-		                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-		                        <label class="col-md-4 control-label">Password</label>
+	                            @if ($errors->has('email'))
+	                                <span class="help-block">
+	                                    <strong>{{ $errors->first('email') }}</strong>
+	                                </span>
+	                            @endif
+	                        </div>
+	            		</div>
+	                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+	                        <label class="col-md-4 control-label">Password</label>
 
-		                        <div class="col-md-6">
-		                            <input type="password" class="form-control" name="password">
+	                        <div class="col-md-6">
+	                            <input type="password" class="form-control" name="password">
 
-		                            @if ($errors->has('password'))
-		                                <span class="help-block">
-		                                    <strong>{{ $errors->first('password') }}</strong>
-		                                </span>
-		                            @endif
-		                        </div>
-		                    </div>
-		                    <div class="form-group">
-		                        <div class="col-md-6 col-md-offset-4">
-		                            <div class="checkbox">
-		                                <label style="font-size: 15px;">
-		                                    <input type="checkbox" name="remember"> Remember Me
-		                                </label>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="form-group">
-		                        <div class="col-md-2 col-md-offset-4">
-		                            <button type="submit" class="btn" style="background-color: #9E9E9E;">
-		                                <i class="fa fa-btn fa-sign-in"></i> &nbsp; &nbsp; Login
-		                            </button>
-		                        </div>
-								<div class="col-md-1">or</div>
-								<div class="col-md-3">
-									<a class="btn " style="background-color: #9E9E9E;" href='{{ url('auth/fb') }}'>
-										Login with Facebook
-									</a>
-								</div>
-		                    </div>
-		                    <div class="row">
-								<div class="col-md-4 col-md-offset-4">
-									<a class="btn btn-link disabled" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-								</div>
+	                            @if ($errors->has('password'))
+	                                <span class="help-block">
+	                                    <strong>{{ $errors->first('password') }}</strong>
+	                                </span>
+	                            @endif
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <div class="col-md-6 col-md-offset-4">
+	                            <div class="checkbox">
+	                                <label style="font-size: 15px;">
+	                                    <input type="checkbox" name="remember"> Remember Me
+	                                </label>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <div class="col-md-2 col-md-offset-4">
+	                            <button type="submit" class="btn" style="background-color: #9E9E9E;">
+	                                <i class="fa fa-btn fa-sign-in"></i> &nbsp; &nbsp; Login
+	                            </button>
+	                        </div>
+							<div class="col-md-1">or</div>
+							<div class="col-md-3">
+								<a class="btn " style="background-color: #9E9E9E;" href='{{ url('auth/fb') }}'>
+									Login with Facebook
+								</a>
 							</div>
-                		</form>
-					</div>
-					<div id="register" class="tab-pane fade">
+	                    </div>
+	                    <div class="row">
+							<div class="col-md-4 col-md-offset-4">
+								<a class="btn btn-link disabled" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+							</div>
+						</div>
+	        		</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="registerform" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Register</h4>
+			     </div>
+			    <div class="modal-body">
+			        <div id="register" class="tab-pane fade">
 			    		<form class="form-horizontal" role="form" method="POST" action="{{ url('/		register') }}">
                     		{!! csrf_field() !!}
 
@@ -250,22 +263,22 @@
 							</div>
                 		</form>
 					</div>
-				</div>
-			</div>
+			    </div>					      
+			</div>				
 		</div>
 	</div>
-</div>
+			
 	<div id="download">
 			{{--<span>Downloaded 0</span>--}} <strong>Resumes Created- <span class="count">500</span></strong>
+		<style type="text/css">
+		.count{
+		  color:inherit;
+		  font-size:inherit;
+		}
 
-<style type="text/css">
-.count{
-  color:inherit;
-  font-size:inherit;
-}
-
-</style>
+		</style>
 	</div>
+
 	<div class="container-fluid" id="why_rb">
 		<div class="col-sm-3" style="font-family: 'Lato', sans-serif; ">
 			<p style="font-size: 40px;"><strong>Why ??</strong> </p>
@@ -278,6 +291,7 @@
 		</div>	
 		<div class="col-sm-2"></div>				
 	</div>
+
 	<div class="container" id="how_itworks">
 		<h1 style="text-align: center; padding-bottom: 70px;">How It <span style="color: #15b8db">Works</span></h1>
 		<div class="row ">
@@ -303,6 +317,7 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="container-fluid " id="features">
 		<div class="container">
 			<div class="row">

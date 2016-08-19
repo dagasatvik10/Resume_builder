@@ -205,6 +205,7 @@
 			<div class="modal-dialog">
 				<!-- Modal content-->
 				<div class="modal-content" style="padding: 50px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 					{!! Form::open(['route' => ['resume.show',@$resume->id]]) !!}
 					<div class="form-group">
 						<select class="form-control" name="resume_design">
@@ -213,12 +214,9 @@
 						</select>
 					</div>
 					<div class="form-group">
-						{!! Form::submit('Preview',['class' => 'btn btn-info']) !!}
+						{!! Form::submit('Preview',['class' => 'btn preview']) !!}
 					</div>
 					{!! Form::close() !!}
-					<div class="modal-footer">
-						<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -227,7 +225,8 @@
 			<div class="modal-dialog">
 				<!-- Modal content-->
 				<div class="modal-content" style="padding: 50px;">
-					{!! Form::open(['route' => ['resume.download',@$resume->id]]) !!}
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+					{!! Form::open(['route' => ['resume.download',@$resume->id]]) !!}                    
 					<div class="form-group">
 						<select class="form-control" name="resume_design">
 							<option value="1">Simple</option>
@@ -235,12 +234,9 @@
 						</select>
 					</div>
 					<div class="form-group">
-						{!! Form::submit('Download',['class' => 'btn btn-info']) !!}
+						{!! Form::submit('Download',['class' => 'btn download']) !!}
 					</div>
 					{!! Form::close() !!}
-					<div class="modal-footer">
-						<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-					</div>
 				</div>
 			</div>
 		</div>

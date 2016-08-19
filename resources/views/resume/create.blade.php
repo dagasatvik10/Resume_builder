@@ -3,7 +3,6 @@
 @section('section')
 
 	<div class="container-fluid resumeform">
-
 		<div class="row">
 			<div class="col-lg-3 col-xs-2 section_form">
 				<ul class="">
@@ -15,9 +14,7 @@
 						@if(!in_array($section->id,$check))
 							<li class=" btn form_navigation" onclick="show({{ $section->id }})"
 								id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}
-							</li>
-							
-
+							</li>					
 						<?php
 							$check[$i] = $section->id;
 							$i++;
@@ -30,7 +27,7 @@
 
 				</ul>
 			</div>
-			<div class="col-lg-7 col-xs-10" style="background-color: #ededed; padding-top:1%; padding-left: 0px; padding-right:0px; padding-bottom: 3%;">
+			<div class="col-lg-7 col-xs-10 side_right">
 				<div class="row" style="border-bottom: 1px solid #dcdcdc; padding:15px; background-color: #fff;">
 					<div class="col-lg-4">
 						<span class="fa fa-television" style="border: 2px solid #0288D1; border-radius: 80px; padding :10px;"></span> &nbsp; &nbsp;<a href={{ route('user.dashboard') }}>Dashboard</a>
@@ -118,7 +115,9 @@
 												?>
 											@endif
 										@endforeach
+
 									</div>
+
 									@if($section->flag == 1 and $l > 1)
 									
 											<div>
@@ -131,13 +130,7 @@
 									@endif
 									<?php $l++; ?>
 								@endforeach
-								@if($section->id == 3)
-									<span class="btn" id="github_button">
-										<a href={{ url('auth/github') }}>
-											Fetch from GitHub
-										</a>
-									</span>
-								@endif
+								
 								@if($section->flag == 1)
 										<div>
 											<button class="btn input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
@@ -146,6 +139,13 @@
 											</button>
 										</div>
 									
+								@endif
+								@if($section->id == 3)
+									<div class="btn" id="github_button">
+										<a class="white" href={{ url('auth/github') }}>
+											Fetch from GitHub
+										</a>
+									</div>
 								@endif
 							</div>
 							<?php
