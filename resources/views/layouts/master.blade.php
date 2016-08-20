@@ -10,6 +10,8 @@
         <link rel="stylesheet" type="text/css" href="{{  asset('css/stylesheet.css') }}">
 
         <script src="https://use.fontawesome.com/5cd91b09e0.js"></script>
+        <link rel="stylesheet" src="https://cdn.jsdelivr.net/foundation-icons/3.0/foundation-icons.min.css">
+        
 
 
         @yield('link')

@@ -13,7 +13,8 @@
 					@foreach($resume->sections as $section)
 						@if(!in_array($section->id,$check))
 							<li class=" btn form_navigation" onclick="show({{ $section->id }})"
-								id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}
+								id={{ 'form_navigation_'.$section->id }}><span class="fa fa-sticky-note"></span>&nbsp; &nbsp;{{ $section->section_name }}
+
 							</li>					
 						<?php
 							$check[$i] = $section->id;
