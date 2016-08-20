@@ -181,15 +181,15 @@ class ResumeController extends Controller
         //return view('resume.show',compact('resume','user','default_section','new_section'));
     }
 
-    public function show($id,Request $request)
+    public function show($id,$resume_design)
     {
-        $pdf = $this->createShow($id,$request->resume_design);
+        $pdf = $this->createShow($id,$resume_design);
         return $pdf->stream();
     }
 
-    public function download($id,Request $request)
+    public function download($id,$resume_design)
     {
-        $pdf = $this->createShow($id,$request->resume_design);
+        $pdf = $this->createShow($id,$resume_design);
         $resume = Session::get('user.resume');
         return $pdf->download($resume->name.'.pdf');
     }
