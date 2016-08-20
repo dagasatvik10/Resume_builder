@@ -3,7 +3,24 @@
 Homestead.yaml
 Homestead.json
 .env
-/.idea/workspace.xml
 /.idea
-/.idea/rsb.iml
 
+vendor/composer/autoload_static.php
+vendor/dompdf/dompdf/lib/php-font-lib/
+vendor/guzzlehttp/guzzle/build/
+vendor/guzzlehttp/guzzle/docs/
+vendor/guzzlehttp/guzzle/tests/
+vendor/laravel/socialite/.gitignore
+vendor/laravel/socialite/.travis.yml
+vendor/laravel/socialite/phpunit.xml
+vendor/laravel/socialite/tests/
+vendor/phpdocumentor/reflection-docblock/src/phpDocumentor/
+vendor/phpdocumentor/reflection-docblock/tests/phpDocumentor/
+vendor/phpspec/phpspec/features/bootstrap/Matcher/
+vendor/phpspec/phpspec/spec/PhpSpec/Process/ReRunner/PassthruRerunnerSpec.php
+vendor/phpunit/phpunit/build/
+vendor/phpunit/phpunit/phpdox.xml.dist
+vendor/phpunit/phpunit/phpunit.xml.dist
+vendor/sebastian/environment/phpunit.xml
+vendor/symfony/polyfill-mbstring/Resources/unidata/lowerCase.ser
+vendor/symfony/polyfill-mbstring/Resources/unidata/upperCase.ser
