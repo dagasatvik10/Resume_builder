@@ -1,4 +1,4 @@
-<div class="container-fluid resumeform">
+<div class="container-fluid resumeform" id="resume_full_div">
 	<div class="row">
 		<div class="col-lg-3 col-xs-2 section_form">
 			<ul class="">

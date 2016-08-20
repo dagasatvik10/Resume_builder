@@ -2,25 +2,25 @@
 
 @section('section')
 
-	<div class="container-fluid resumeform">
+	<div class="container-fluid resumeform" id="resume_full_div">
 		<div class="row">
 			<div class="col-lg-3 col-xs-2 section_form">
 				<ul class="">
 					<?php
-						$i = 0;
-						$check = [];
+					$i = 0;
+					$check = [];
 					?>
 					@foreach($resume->sections as $section)
 						@if(!in_array($section->id,$check))
 							<li class=" btn form_navigation" onclick="show({{ $section->id }})"
 								id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}
-							</li>					
-						<?php
+							</li>
+							<?php
 							$check[$i] = $section->id;
 							$i++;
-						?>
+							?>
 						@endif
-				 	@endforeach
+					@endforeach
 					<li class="btn" data-toggle="modal" data-target="#addSectionModal">
 						<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
 					</li>
@@ -35,13 +35,13 @@
 					<div class="col-lg-8">
 						<ul style="list-style: none;">
 							<li style="display: inline;">
-								<a id="resume_download" data-toggle="modal" data-target="#downloadModal" class="btn ">Download</a>
-								<a id="resume_preview" data-toggle="modal" data-target="#previewModal" class="btn">Preview</a>
+								<a class="btn btn-primary resume_op" token='{{ csrf_token() }}' data-id="{{ $resume->id }}" data-op="download">Download</a>
+								<a class="btn btn-primary resume_op" token='{{ csrf_token() }}' data-id="{{ $resume->id }}" data-op="show">Preview</a>
 							</li>
 						</ul>
 					</div>
-					
-					
+
+
 				</div>
 				<div  style="padding-top: 3%; padding-left:3%; padding-right:3%;">
 					<div class="row" style="margin-bottom: 5%;">
@@ -49,25 +49,25 @@
 							<span style="font-size: 13px; color: #696969;">Resume name : </span> &nbsp; &nbsp;{{ $resume->name }}
 						</div>
 						<div class="col-sm-4">
-							
+
 						</div>
 					</div>
 					{!! Form::open(['id' => 'resume_form','name' => 'resume']) !!}
-						<?php
-						$i = 0;
-						$check = array();
-						?>
-						<input type="hidden" name="resume_id" id="resume_id" value={{ $resume->id }}>
-						@foreach($resume->sections as $section)
-							@if(!in_array($section->id,$check))
+					<?php
+					$i = 0;
+					$check = array();
+					?>
+					<input type="hidden" name="resume_id" id="resume_id" value={{ $resume->id }}>
+					@foreach($resume->sections as $section)
+						@if(!in_array($section->id,$check))
 							<div class="section" id={{ 'form_'.$section->id}} >
 								<?php $l = 1; ?>
 								@foreach($section->mapping_sections()->where('resume_id',$resume->id)->get() as $mapping_section)
 									<div class="mapping_section">
-	                                    <?php
-	                                    $j = 0;
-	                                    $c = array();
-	                                    ?>
+										<?php
+										$j = 0;
+										$c = array();
+										?>
 										@foreach($mapping_section->subsections as $subsection)
 											@if(!in_array($subsection->id,$c))
 												<div class="row">
@@ -81,19 +81,19 @@
 														$content = $mapping_subsection->detail==null?null:$mapping_subsection->detail->content;
 														?>
 														@if($subsection->validation != 6)
-														<div class="col-lg-8">
-															{!! Form::text('detail'.$mapping_subsection->id,$content,['class' => 'form-control detail_resume']) !!}<br>
-														</div>
+															<div class="col-lg-8">
+																{!! Form::text('detail'.$mapping_subsection->id,$content,['class' => 'form-control detail_resume']) !!}<br>
+															</div>
 														@else
-														<div class="col-lg-8">
+															<div class="col-lg-8">
 															<textarea name="{{ 'detail'.$mapping_subsection->id }}"
-															class="form-control detail_resume" rows="5">{{ $content }}</textarea><br>
-														</div>
+																	  class="form-control detail_resume" rows="5">{{ $content }}</textarea><br>
+															</div>
 														@endif
 														@if($subsection->flag != 0 and $k > 1)
 															<div class="col-sm-3">
 																<button class="btn section_subsection"  show_id='{{ $section->id }}' token='{{ csrf_token() }}'
-																link={{ route('resume.deleteSubsection',['mapping_subsection_id' => $mapping_subsection->id,'resume_id' => $resume->id]) }}>
+																		link={{ route('resume.deleteSubsection',['mapping_subsection_id' => $mapping_subsection->id,'resume_id' => $resume->id]) }}>
 																	<span class="fa fa-minus-circle"></span>
 																</button>
 															</div>
@@ -101,12 +101,11 @@
 														<?php $k++; ?>
 													@endforeach
 													@if($subsection->flag != 0)
-													
-															<button class="btn section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
-															link='{{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}'>
-																<span class="fa fa-plus-circle"></span>
-															</button>
-													
+														<button class="btn section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
+																link='{{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}'>
+															<span class="fa fa-plus-circle"></span>
+														</button>
+
 													@endif
 												</div>
 												<?php
@@ -119,26 +118,26 @@
 									</div>
 
 									@if($section->flag == 1 and $l > 1)
-									
-											<div>
-												<button class="btn input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
-												   link={{ route('resume.deleteSection',['mapping_section_id' => $mapping_section->id,'resume_id' => $resume->id]) }}>
-													<span class="fa fa-minus-circle"></span>
-												</button>
-											</div>
-										
+
+										<div>
+											<button class="btn input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
+													link={{ route('resume.deleteSection',['mapping_section_id' => $mapping_section->id,'resume_id' => $resume->id]) }}>
+												<span class="fa fa-minus-circle"></span>
+											</button>
+										</div>
+
 									@endif
 									<?php $l++; ?>
 								@endforeach
-								
+
 								@if($section->flag == 1)
-										<div>
-											<button class="btn input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
-													link={{ route('resume.addSection',['section_id' => $section->id,'resume_id' => $resume->id]) }}>
-												<span class="fa fa-plus-circle"></span>
-											</button>
-										</div>
-									
+									<div>
+										<button class="btn input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
+												link={{ route('resume.addSection',['section_id' => $section->id,'resume_id' => $resume->id]) }}>
+											<span class="fa fa-plus-circle"></span>
+										</button>
+									</div>
+
 								@endif
 								@if($section->id == 3)
 									<div class="btn" id="github_button">
@@ -152,49 +151,49 @@
 							$check[$i] = $section->id;
 							$i++;
 							?>
-							@endif
-						@endforeach
+						@endif
+					@endforeach
 					{!! Form::close() !!}
 				</div>
 			</div>
 			<div class="col-lg-2">
 				<p class="select_template">Select Template</p>
 				<ul style="list-style:none; padding:0px;">
-					
-						<li class="thumbnail" value="1"><img src="/img/template1.JPG" class="img-responsive"></li>
-						<li class="thumbnail" value="2"><img src="/img/template2.JPG" class="img-responsive"></li>
-					
+
+					<li class="thumbnail resume_templates" value="1"><img src="/img/template1.JPG" class="img-responsive"></li>
+					<li class="thumbnail resume_templates" value="2"><img src="/img/template2.JPG" class="img-responsive"></li>
+
 					<!--<li class="thumbnail"><img src="/img/template3.png" class="img-responsive"></li>
 					<li class="thumbnail"><img src="/img/template4 .png" class="img-responsive"></li>-->
 				</ul>
-				
-			</div>
-		</div>		
-	</div>	
-		
-		<div id="addSectionModal" class="modal fade" role="dialog">
-		  	<div class="modal-dialog">
 
-			    <!-- Modal content-->
-			    <div class="modal-content" style="padding: 50px;">
-			    	<button type="button" class="close" data-dismiss="modal">&times;</button>
-					{!! Form::open(['route' => ['resume.addNewSection',$resume->id]]) !!}
-					<div>
-						{!! Form::label('section_name','Section Name',['class' => 'section']) !!}
-						{!! Form::text('section_name','',['class' => 'form-control']) !!}
-					</div>
-					<div >
-						{!! Form::label('subsection_name','Subsection Name',['class' => 'section']) !!}
-						{!! Form::text('subsection_name','',['class' => 'form-control']) !!}
-					</div><br>
-					<div>
-						<button type="submit" class="btn add">Add</button>
-					</div>				
-					{!! Form::close() !!}
-				</div>
-		  </div>
+			</div>
 		</div>
-		
+	</div>
+
+	<div id="addSectionModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content" style="padding: 50px;">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				{!! Form::open(['route' => ['resume.addNewSection',$resume->id]]) !!}
+				<div>
+					{!! Form::label('section_name','Section Name',['class' => 'section']) !!}
+					{!! Form::text('section_name','',['class' => 'form-control']) !!}
+				</div>
+				<div >
+					{!! Form::label('subsection_name','Subsection Name',['class' => 'section']) !!}
+					{!! Form::text('subsection_name','',['class' => 'form-control']) !!}
+				</div><br>
+				<div>
+					<button type="submit" class="btn add">Add</button>
+				</div>
+				{!! Form::close() !!}
+			</div>
+		</div>
+	</div>
+
 @stop
 
 @section('script')

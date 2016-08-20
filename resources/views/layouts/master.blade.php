@@ -1,55 +1,54 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="{{  asset('css/stylesheet.css') }}">
+<head>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
 
-        <script src="https://use.fontawesome.com/5cd91b09e0.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{  asset('css/stylesheet.css') }}">
+
+    <script src="https://use.fontawesome.com/5cd91b09e0.js"></script>
 
 
-        @yield('link')
-        <!--Let browser know website is optimized for mobile-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <nav class="navbar navbar-static" data-spy="affix" data-offset-top="650" id="navbar_top" role="navigation" style="margin-bottom: 0px;">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand white" href={{ url('/') }}>Resume Builder</a>
-            </div>
-            <div class="collapse navbar-collapse" id="mynavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    @if (Auth::guest())
-                     <li  data-toggle="modal" data-target="#login"><a class="white">Login</a></li>                   
-                    @else
-                        <li>
-                           <a class="white" href={{ route('user.dashboard') }}>
-                            {{ Auth::user()->name }}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="white" href={{ url('/logout') }}><span class="fa fa-btn fa-sign-out"></span>
-                               Logout</a>
-                        </li>                          
-                        
-                    @endif
-                </ul>
-            </div>
+@yield('link')
+<!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<nav class="navbar navbar-static" data-spy="affix" data-offset-top="650" id="navbar_top" role="navigation" style="margin-bottom: 0px;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand white" href={{ url('/') }}>Resume Builder</a>
         </div>
-    </nav>
+        <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="nav navbar-nav navbar-right">
+                @if (Auth::guest())
+                    <li  data-toggle="modal" data-target="#login"><a class="white">Login</a></li>
+                @else
+                    <li>
+                        <a class="white" href={{ route('user.dashboard') }}>
+                            {{ Auth::user()->name }}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white" href={{ url('/logout') }}><span class="fa fa-btn fa-sign-out"></span>
+                            Logout</a>
+                    </li>
+
+                @endif
+            </ul>
+        </div>
     </div>
-    <!-- Modal -->
+</nav>
+</div>
+<!-- Modal -->
 <div id="login" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
@@ -58,10 +57,10 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Login/Register</h4>
             </div>
-            <div class="modal-body">                              
+            <div class="modal-body">
                 <ul class="nav nav-tabs">
-                  <li class="active"><a data-toggle="tab" href="#loginform">Login</a></li>
-                  <li><a data-toggle="tab" href="#register">Register</a></li>
+                    <li class="active"><a data-toggle="tab" href="#loginform">Login</a></li>
+                    <li><a data-toggle="tab" href="#register">Register</a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="loginform" class="tab-pane fade in active">
@@ -199,49 +198,12 @@
     </div>
 </div>
 
- @yield('section')
+@yield('section')
 
-		<div id="previewModal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content" style="padding: 50px;">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-					{!! Form::open(['route' => ['resume.show',@$resume->id]]) !!}
-					<div class="form-group">
-						<select class="form-control" name="resume_design">
-							<option value="1">Simple</option>
-							<option value="2">Business</option>
-						</select>
-					</div>
-					<div class="form-group">
-						{!! Form::submit('Preview',['class' => 'btn preview']) !!}
-					</div>
-					{!! Form::close() !!}
-				</div>
-			</div>
-		</div>
 
-		<div id="downloadModal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content" style="padding: 50px;">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-					{!! Form::open(['route' => ['resume.download',@$resume->id]]) !!}                    
-					<div class="form-group">
-						<select class="form-control" name="resume_design">
-							<option value="1">Simple</option>
-							<option value="2">Business</option>
-						</select>
-					</div>
-					<div class="form-group">
-						{!! Form::submit('Download',['class' => 'btn download']) !!}
-					</div>
-					{!! Form::close() !!}
-				</div>
-			</div>
-		</div>
-
-		<script src={{ asset('js/laravel.js') }}></script>
-		@yield('script')
-    </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src={{ asset('js/laravel.js') }}></script>
+@yield('script')
+</body>
 </html>

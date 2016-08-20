@@ -9,8 +9,8 @@ Route::group(['middleware' => 'web'], function ()
     Route::post('resume/{id?}',['as' => 'resume.store','uses' => 'ResumeController@store']);
     Route::post('store_resume_name',['as' => 'resume.name','uses' => 'ResumeController@store_resume_name']);
     Route::delete('resume/{id?}/delete',['as' => 'resume.delete','uses' => 'ResumeController@delete']);
-    Route::post('resume/{id?}/show',['as' => 'resume.show','uses' => 'ResumeController@show']);
-    Route::post('resume/{id?}/download',['as' => 'resume.download','uses' => 'ResumeController@download']);
+    Route::get('resume/{id?}/show/{resume_design}',['as' => 'resume.show','uses' => 'ResumeController@show']);
+    Route::get('resume/{id?}/download/{resume_design}',['as' => 'resume.download','uses' => 'ResumeController@download']);
 
     Route::get('auth/github','ResumeController@redirectGithub');
     Route::get('auth/github/callback','ResumeController@githubCallback');

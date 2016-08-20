@@ -31,10 +31,10 @@
 												   data-token="{{csrf_token()}}" data-confirm="Are you sure?">
 													<span class="fa fa-trash"></span>
 												</a>
-												<a class="btn-floating btn-large waves-green waves-light blue" data-toggle="modal" data-target="#previewModal">
+												<a class="btn-floating btn-large waves-green waves-light blue" href="{{ route('resume.show',['id'=>$resume->id,'resume_design'=>1]) }}">
 													Show
 												</a>
-												<a class="btn-floating btn-large waves-green waves-light blue" data-toggle="modal" data-target="#downloadModal">
+												<a class="btn-floating btn-large waves-green waves-light blue" href="{{ route('resume.download',['id'=>$resume->id,'resume_design'=>1])}}">
 													<span class="glyphicon glyphicon-download-alt"></span>
 												</a>
 											</td>
