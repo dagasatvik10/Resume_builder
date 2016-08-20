@@ -49,8 +49,8 @@ return [
     ],
 
     'linkedin' => [
-        'client_id' => '75zsorr4lbhxs2',
-        'client_secret' => 'pe77syYTPcKUjcKk',
+        'client_id' => '75hnx9nod4di70',
+        'client_secret' => '85vqK3p03atdPdXi',
         'redirect' => 'http://localhost:8000/auth/ln/callback',
 
     ],

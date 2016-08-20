@@ -5,6 +5,7 @@ Homestead.json
 .env
 /.idea
 
+
 vendor/composer/autoload_static.php
 vendor/dompdf/dompdf/lib/php-font-lib/
 vendor/guzzlehttp/guzzle/build/

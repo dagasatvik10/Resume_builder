@@ -374,7 +374,7 @@ class ResumeController extends Controller
 
     public function LnCallback()
     {
-        $user = Socialite::driver('github')->user();
+        $user = Socialite::driver('linkedin')->user();
         dd($user);
 
     }
