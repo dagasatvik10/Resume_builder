@@ -268,13 +268,13 @@ label {
 .select_template {
 	padding: 15px;
 }
-#resume_download, #resume_preview, .add, .create, .preview{
+#resume_download, #resume_preview, .add, .create, .preview, .register,.loginfb{
 	color: #fff;
 	background-color: #0288D1;
 	letter-spacing: 1.5px;
 	padding: 10px;
 }
-#resume_download:hover, #resume_preview:hover, .add:hover,.create:hover{
+#resume_download:hover, #resume_preview:hover, .add:hover,.create:hover,.loginfb:hover,.register:hover{
 
 	background-color: #161616;
 	color: #737373;
