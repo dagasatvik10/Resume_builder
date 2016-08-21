@@ -32,4 +32,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Resume');
     }
 
+    public function linkedin()
+    {
+        return $this->hasOne('App\Linkedin_detail');
+    }
 }
