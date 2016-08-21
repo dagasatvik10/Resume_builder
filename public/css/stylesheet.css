@@ -254,6 +254,7 @@ label {
 	padding-left:0px;
 	background-color: #161616; 
 	padding-bottom: 15%;
+
 }
 
 .row{
@@ -268,13 +269,13 @@ label {
 .select_template {
 	padding: 15px;
 }
-#resume_download, #resume_preview, .add, .create, .preview, .register,.loginfb{
+#resume_download, #resume_preview, .add, .create, .preview, .register,.loginfb,.linkedin{
 	color: #fff;
 	background-color: #0288D1;
 	letter-spacing: 1.5px;
 	padding: 10px;
 }
-#resume_download:hover, #resume_preview:hover, .add:hover,.create:hover,.loginfb:hover,.register:hover{
+#resume_download:hover, #resume_preview:hover, .add:hover,.create:hover,.loginfb:hover,.register:hover, .linkedin:hover{
 
 	background-color: #161616;
 	color: #737373;
@@ -297,10 +298,9 @@ label {
 .blank_img{
 	width: 40%;
 	height: 40%;
-	border-radius: 60%;
-	display: block;
+	border-radius: 60%;	
+    display: block;
     margin: auto;
-    margin-top: 30%;
 }
 .side_right{
 	background-color: #ededed; 

@@ -51,8 +51,7 @@ class UserController extends Controller
         $linkedin_detail->email = $user->email;
         $linkedin_detail->profilePic = $user->avatar_original;
         $linkedin_detail->user()->associate(Auth::user());
-        $linkedin_detail->save();
-        
+        $linkedin_detail->save();        
         return redirect()->route('user.dashboard');
     }
 }
