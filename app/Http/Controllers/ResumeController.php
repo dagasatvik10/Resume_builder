@@ -362,22 +362,7 @@ class ResumeController extends Controller
         }
         return redirect()->route('resume.create',['id' => $resume->id]);
     }
-    public function preview()
-    {
-        
-    }
-
-    public function redirectLn()
-    {
-        return Socialite::driver('linkedin')->redirect();
-    }
-
-    public function LnCallback()
-    {
-        $user = Socialite::driver('linkedin')->user();
-        dd($user);
-
-    }
+    
 
     public function test($id)
     {

@@ -15,14 +15,12 @@
 	<link href='https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,900' rel='stylesheet' type='text/css'>
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/stylesheet.css') }}">
 
 
 </head>
 <body >
-	<div class="navbar_scroll" style="background-image: url(img/land-bg.jpg); background-size:cover;">
+	<div class="navbar_scroll" style="background-image: url({{ asset('img/land-bg.jpg') }}); background-size:cover;">
 		<div class="container">
 			<div class="row pull-right top-fix">
 				<div id="register" class="inline">
@@ -151,7 +149,7 @@
 			        <h4 class="modal-title">Register</h4>
 			     </div>
 			    <div class="modal-body">
-		    		<form class="form-horizontal" role="form" method="POST" action="{{ url('/		register') }}">
+		    		<form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                 		{!! csrf_field() !!}
 
 	                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
