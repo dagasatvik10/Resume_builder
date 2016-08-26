@@ -36,8 +36,8 @@
 					<div class="col-lg-8">
 						<ul style="list-style: none;">
 							<li style="display: inline;">
-								<a class="btn btn-primary resume_op" token='{{ csrf_token() }}' data-id="{{ $resume->id }}" data-op="download">Download</a>
-								<a class="btn btn-primary resume_op" token='{{ csrf_token() }}' data-id="{{ $resume->id }}" data-op="show">Preview</a>
+								<a class="btn resume_op" id="resume_download" token='{{ csrf_token() }}' data-id="{{ $resume->id }}" data-op="download">Download</a>
+								<a class="btn  resume_op" id="resume_preview" token='{{ csrf_token() }}' data-id="{{ $resume->id }}" data-op="show">Preview</a>
 							</li>
 						</ul>
 					</div>

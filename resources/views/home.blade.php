@@ -23,23 +23,27 @@
 	<div class="navbar_scroll" style="background-image: url({{ asset('img/land-bg.jpg') }}); background-size:cover;">
 		<div class="container">
 			<div class="row pull-right top-fix">
-				<div id="register" class="inline">
-					@if (Auth::guest())
-					<button data-toggle="modal" data-target="#registerform">
-						<span class="fa fa-pencil register-icon"></span><span class="register-text">Register</span>
-					</button>
-				</div>
-				<div id="login" class="inline">
-					<button data-toggle="modal" data-target="#loginform">
-						<span class="fa fa-user login-icon"></span><span class="login-text">Login</span>
-					</button>
-				</div>
+				@if (Auth::guest())
+					<div id="register" class="inline">					
+						<button data-toggle="modal" data-target="#registerform">
+							<span class="fa fa-pencil register-icon"></span><span class="register-text">Register</span>
+						</button>
+					</div>
+					<div id="login" class="inline">
+						<button data-toggle="modal" data-target="#loginform">
+							<span class="fa fa-user login-icon"></span><span class="login-text">Login</span>
+						</button>
+					</div>
 				@else
 					<div>
-	                   <span><a href={{ route('user.dashboard') }}>{{ Auth::user()->name }}</a></span> 
-	                  <span><a href={{ url('/logout') }}><span class="fa fa-btn fa-sign-out"></span>Logout</a></span>						
+	                   <span>
+	                   		<a href={{ route('user.dashboard') }}>{{ Auth::user()->name }}</a>
+	                   	</span> 
+	                  	<span>
+	                  		<a href={{ url('/logout') }}><span class="fa fa-btn fa-sign-out"></span>Logout</a>
+	                  	</span>						
 	                </div>
-	                @endif
+	             @endif
 			</div>
 		</div>
 		<div class="container-fluid" id="content-land" >

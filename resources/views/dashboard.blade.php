@@ -5,11 +5,12 @@
 			<div class="row">
 				<div class="col-lg-3 col-xs-2 section_form">
 					@if(!$linkedin)
-						<img src="/img/blank.png"  class="blank_img">
-						<center><a href="{{ url('auth/ln') }}" class="btn btn-primary">Fetch from LinkedIn</a></center>
+						<img src="/img/blank.png"  class="blank_img" style="margin-top:30%;">
+						<div style="margin-top:3%;"><a href="{{ url('auth/ln') }}" class="btn linkedin">Fetch from LinkedIn</a></div>
 					@else
-						<img src="{{ $linkedin->profilePic }}"  class="blank_img">
-						<center><span>{{ $linkedin->name }}</span></center>
+						<img src="{{ $linkedin->profilePic }}"  class="blank_img" style="margin-top:30%;">
+						<center><div style="margin-top:3%;">{{ $linkedin->name }}</div></center>
+
 					@endif
 				</div>
 				<div class="col-lg-9 col-xs-10 side_right" style="padding:7%;">
