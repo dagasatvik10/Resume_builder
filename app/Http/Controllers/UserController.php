@@ -19,7 +19,8 @@ class UserController extends Controller
 //     * Create a new controller instance.
 //     *
 //     * @return void
-//     */
+//     */ 
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -29,7 +30,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $resumes = $user->resumes;
-        $linkedin = $user->linkedin;
+        $linkedin = $user->linkedin;   
         return view('dashboard',compact(['user','resumes','linkedin']));
     }
 
@@ -51,7 +52,8 @@ class UserController extends Controller
         $linkedin_detail->email = $user->email;
         $linkedin_detail->profilePic = $user->avatar_original;
         $linkedin_detail->user()->associate(Auth::user());
-        $linkedin_detail->save();        
+        $linkedin_detail->save();
+        dd($linkedin_detail);        
         return redirect()->route('user.dashboard');
     }
 }

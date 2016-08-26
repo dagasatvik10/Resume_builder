@@ -254,7 +254,7 @@
 		<div class="col-sm-2"></div>				
 	</div>
 
-	<div class="container" id="how_itworks">
+	<!--<div class="container" id="how_itworks">
 		<h1 style="text-align: center; padding-bottom: 70px;">How It <span style="color: #15b8db">Works</span></h1>
 		<div class="row ">
 			<div class="col-sm-3">
@@ -278,7 +278,32 @@
 				<p>Save your resume for future reference. You can edit/ view your resume in future. By creating an account in Resume Builder.</p>				
 			</div>
 		</div>
-	</div>
+	</div>-->
+	<div class="container">
+		<div class="row">
+			<h1 style="text-align: center; padding-bottom: 70px;">HOW IT <span style="color: #15b8db">WORKS</h1>
+		</div>
+		<div class="row">
+			<div class="col-lg-4 process-block">
+				<h1 style="font-weight: bold"><span style="">0</span>1</h1>
+				<h1 style="margin-top: -15px;">Template</h1>
+				<img src="img/zTXo4eARc.png" width="200px" height="200px" class="img-responsive">
+				<p style="text-align:center;">Choose a template, of your choice.Make your resume of your choice.</p>
+			</div>
+			<div class="col-lg-4 process-block">
+				<h1 style="font-weight: bold"><span style="">0</span>2</h1>
+				<h1 style="margin-top: -15px;">Download</h1>
+				<img src="img/zTXo4eARc.png" width="200px" height="200px" class="img-responsive">
+				<p style="text-align:center;">Download Your resume in pdf or word document format.</p>
+			</div>
+			<div class="col-lg-4 process-block">
+				<h1 style="font-weight: bold"><span style="">0</span>3</h1>
+				<h1 style="margin-top: -15px;">Save Resume</h1>
+				<img src="img/zTXo4eARc.png" width="200px" height="200px" class="img-responsive">
+				<p style="text-align:center;">Save your resume for future reference. You can edit/ view your resume in future. By creating an account in Resume Builder.</p>	
+			</div>
+		</div>
+</div>
 
 	<div class="container-fluid " id="features">
 		<div class="container">

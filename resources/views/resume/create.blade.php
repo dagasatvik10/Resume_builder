@@ -14,7 +14,6 @@
 						@if(!in_array($section->id,$check))
 							<li class=" btn form_navigation" onclick="show({{ $section->id }})"
 								id={{ 'form_navigation_'.$section->id }}><span class="fa fa-sticky-note"></span>&nbsp; &nbsp;{{ $section->section_name }}
-
 							</li>					
 						<?php
 							$check[$i] = $section->id;
@@ -41,8 +40,6 @@
 							</li>
 						</ul>
 					</div>
-
-
 				</div>
 				<div  style="padding-top: 3%; padding-left:3%; padding-right:3%;">
 					<div class="row" style="margin-bottom: 5%;">
@@ -207,6 +204,9 @@
                 $("#form_{{ $section->id }}").hide();
 			@endforeach
             $("#form_"+obj).show();
+            var count=1;
+
+		  
 		}
 	</script>
 @stop
