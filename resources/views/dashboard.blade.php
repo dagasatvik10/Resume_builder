@@ -10,7 +10,6 @@
 					@else
 						<img src="{{ $linkedin->profilePic }}"  class="blank_img" style="margin-top:30%;">
 						<center><div style="margin-top:7%;">{{ $linkedin->name }}</div></center>
-						
 					@endif
 				</div>
 				<div class="col-lg-9 col-xs-10 side_right" style="padding:5% 10% 27% 6%; ">

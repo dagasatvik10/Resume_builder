@@ -53,7 +53,7 @@ class UserController extends Controller
         $linkedin_detail->profilePic = $user->avatar_original;
         $linkedin_detail->user()->associate(Auth::user());
         $linkedin_detail->save();
-        dd($linkedin_detail);        
+        
         return redirect()->route('user.dashboard');
     }
 }
