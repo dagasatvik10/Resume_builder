@@ -5,3 +5,5 @@ Homestead.json
 .env
 /.idea
 /vendor
+vendor
+node_module
