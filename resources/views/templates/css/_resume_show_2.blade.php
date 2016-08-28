@@ -22,7 +22,7 @@
 		padding-top: 20px;
 		padding-bottom: 20px;
 	}
-	.subsections{
+	.sub_sections{
 		margin-left: 20px;
 	}
 </style>

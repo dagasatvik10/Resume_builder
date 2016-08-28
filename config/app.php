@@ -150,7 +150,7 @@ return array(
         Illuminate\View\ViewServiceProvider::class,
 		Collective\Html\HtmlServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-
+        Nitmedia\Wkhtml2pdf\L5Wkhtml2pdfServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -159,7 +159,6 @@ return array(
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -196,8 +195,8 @@ return array(
         'Log'       => Illuminate\Support\Facades\Log::class,
         'Mail'      => Illuminate\Support\Facades\Mail::class,
         'Password'  => Illuminate\Support\Facades\Password::class,
-        'PDF'       => Barryvdh\DomPDF\Facade::class,
         'Queue'     => Illuminate\Support\Facades\Queue::class,
+        'PDF'       => Nitmedia\Wkhtml2pdf\Facades\Wkhtml2pdf::class,
         'Redirect'  => Illuminate\Support\Facades\Redirect::class,
         'Redis'     => Illuminate\Support\Facades\Redis::class,
         'Request'   => Illuminate\Support\Facades\Request::class,

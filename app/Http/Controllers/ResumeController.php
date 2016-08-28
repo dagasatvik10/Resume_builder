@@ -174,17 +174,15 @@ class ResumeController extends Controller
             }
         }
 
-        return PDF::loadView('resume.show',compact('resume','user','default_section','new_section','resume_design'));
-        //return $pdf->stream();
+        return PDF::html('resume.show',compact('resume','user','default_section','new_section','resume_design'));
 
-        //return $pdf->download('resume.pdf');
-        //return view('resume.show',compact('resume','user','default_section','new_section'));
+        //return view('resume.show',compact('resume','user','default_section','new_section','resume_design'));
     }
 
     public function show($id,$resume_design)
     {
         $pdf = $this->createShow($id,$resume_design);
-        return $pdf->stream();
+        return $pdf;
     }
 
     public function download($id,$resume_design)

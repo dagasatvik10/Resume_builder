@@ -12,7 +12,7 @@
         "laravel/socialite": "^2.0",
         "way/generators": "^3.0",
         "phpspec/phpspec": "^2.4",
-        "barryvdh/laravel-dompdf": "0.6.*"
+        "nitmedia/wkhtml2pdf": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

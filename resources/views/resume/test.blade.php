@@ -9,7 +9,8 @@
 				@foreach($resume->sections as $section)
 					@if(!in_array($section->id,$check))
 						<li class=" btn form_navigation" onclick="show({{ $section->id }})"
-							id={{ 'form_navigation_'.$section->id }}>{{ $section->section_name }}
+							id={{ 'form_navigation_'.$section->id }}><span class="fa fa-sticky-note"></span>&nbsp; &nbsp;{{ $section->section_name }}
+
 						</li>
 						<?php
 						$check[$i] = $section->id;
@@ -31,8 +32,8 @@
 				<div class="col-lg-8">
 					<ul style="list-style: none;">
 						<li style="display: inline;">
-							<a id="resume_download" data-toggle="modal" data-target="#downloadModal" class="btn ">Download</a>
-							<a id="resume_preview" data-toggle="modal" data-target="#previewModal" class="btn">Preview</a>
+							<a class="btn resume_op" id="resume_download" token='{{ csrf_token() }}' data-id="{{ $resume->id }}" data-op="download">Download</a>
+							<a class="btn  resume_op" id="resume_preview" token='{{ csrf_token() }}' data-id="{{ $resume->id }}" data-op="show">Preview</a>
 						</li>
 					</ul>
 				</div>
@@ -97,7 +98,6 @@
 													<?php $k++; ?>
 												@endforeach
 												@if($subsection->flag != 0)
-
 													<button class="btn section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
 															link='{{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}'>
 														<span class="fa fa-plus-circle"></span>
@@ -157,8 +157,8 @@
 			<p class="select_template">Select Template</p>
 			<ul style="list-style:none; padding:0px;">
 
-				<li class="thumbnail" value="1"><img src="/img/template1.JPG" class="img-responsive"></li>
-				<li class="thumbnail" value="2"><img src="/img/template2.JPG" class="img-responsive"></li>
+				<li class="thumbnail resume_templates" value="1"><img src="/img/template1.JPG" class="img-responsive"></li>
+				<li class="thumbnail resume_templates" value="2"><img src="/img/template2.JPG" class="img-responsive"></li>
 
 				<!--<li class="thumbnail"><img src="/img/template3.png" class="img-responsive"></li>
                 <li class="thumbnail"><img src="/img/template4 .png" class="img-responsive"></li>-->
