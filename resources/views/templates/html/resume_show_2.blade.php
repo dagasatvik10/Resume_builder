@@ -1,4 +1,4 @@
-<div class="container" class="body">
+<div class="container body">
     @if($default_section[1] != null and $default_section[6] != null)
         <div class="personal_details">
             <div style="float:left;">
@@ -168,9 +168,9 @@
                             </div>
                         </li>
                     </ul>
-                    @endif
-                    @endforeach
-                    </p>
+                @endif
+            @endforeach
+            </p>
         </div>
     @endif
 </div>

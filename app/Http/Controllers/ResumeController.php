@@ -174,9 +174,9 @@ class ResumeController extends Controller
             }
         }
 
-        //return PDF::html('resume.show',compact('resume','user','default_section','new_section','resume_design'));
-
-        return view('resume.show',compact('resume','user','default_section','new_section','resume_design'));
+        return PDF::html('resume.show',compact('resume','user','default_section','new_section','resume_design'));
+        //return PDF::url('file:///home/ekta/Downloads/resume.html');
+        //return view('resume.show',compact('resume','user','default_section','new_section','resume_design'));
     }
 
     public function show($id,$resume_design)

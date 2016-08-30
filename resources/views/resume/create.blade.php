@@ -156,13 +156,13 @@
 			</div>
 			<div class="col-lg-2">
 				<p class="select_template">Select Template</p>
-				<ul style="list-style:none; padding:0px;">
+				<ul style="list-style:none; padding:0px; overflow-y:scroll; height:500px;" >
 
 					<li class="thumbnail resume_templates" value="1"><img src="/img/template1.JPG" class="img-responsive"></li>
-					<li class="thumbnail resume_templates" value="2"><img src="/img/template2.JPG" class="img-responsive"></li>
-
-					<!--<li class="thumbnail"><img src="/img/template3.png" class="img-responsive"></li>
-					<li class="thumbnail"><img src="/img/template4 .png" class="img-responsive"></li>-->
+					<li class="thumbnail resume_templates" value="4"><img src="/img/template2.JPG" class="img-responsive"></li>
+					<li class="thumbnail"><img src="/img/template3.png" class="img-responsive"></li>
+					<li class="thumbnail"><img src="/img/template4 .png" class="img-responsive"></li>
+					<li class="thumbnail"><img src="/img/template5.png" class="img-responsive"></li>
 				</ul>
 
 			</div>
@@ -202,10 +202,11 @@
 			//console.log(obj);
 			@foreach($resume->sections as $section)
                 $("#form_{{ $section->id }}").hide();
+                $("#form_navigation_{{ $section->id }}").css({"background-color": "#161616","color":"#737373"});
 			@endforeach
             $("#form_"+obj).show();
             var count=1;
-
+            $("#form_navigation_"+obj).css({"background-color": "#0288D1", "color": "#fff"});
 		  
 		}
 	</script>

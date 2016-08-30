@@ -245,15 +245,9 @@ label {
 	display: block;
 	list-style: none;
 	text-align: left;
-	padding-top: 7%;
-}
-.form_navigation:checked{
-	display: block;
-	list-style: none;
-	text-align: left;
-	padding-top: 7%;
-	background-color: #0288D1;
-	color: #fff;
+	padding-top: 6%;
+	margin-top: 1%;
+	width: 200px;
 }
 .section_form{
 	

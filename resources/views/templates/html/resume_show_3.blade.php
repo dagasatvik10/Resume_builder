@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="background-color:#000;">
     @if($default_section[1] != null and $default_section[6] != null)
         <div class="personal_details">
             <div class="col-md-7">
