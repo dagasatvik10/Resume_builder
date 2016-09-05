@@ -3,7 +3,6 @@
 		@if(!empty($default_section[1][0]['Name'][0]))
 			<h1 id="name">{{ $default_section[1][0]['Name'][0] }}</h1>
 		@endif
-		</div>
 		
 		<div id="header">
 			@if($default_section[1][0]['Email'] != null) 
@@ -12,7 +11,7 @@
 						<span class="email">{{ $email }}</span>
 					@endif
 				@endforeach
-			@endif | 
+			@endif |
 			@if($default_section[6][0]['Contact No.'] != null)
 				@foreach($default_section[6][0]['Contact No.'] as $phone)
 					@if(!empty($phone))
@@ -72,7 +71,6 @@
 					</table>
 				@endif
 			@endforeach
-			</table>
 		</div>	
 		@endif	
 		<div class="table">
@@ -124,9 +122,8 @@
 							</li>
 						</ul>
 					@endif
-				@endforeach
-			</div>		
-		</div>	
+			@endforeach
+		</div>
 		@endif
 		@if($default_section[4] != null)
 		<div class="table">
@@ -159,7 +156,4 @@
 					</div>			
 				@endif
 			@endforeach			
-		@endif		
-			
-	</body>
-</html>	
+		@endif

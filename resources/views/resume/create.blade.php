@@ -159,10 +159,10 @@
 				<ul style="list-style:none; padding:0px; overflow-y:scroll; height:500px;" >
 
 					<li class="thumbnail resume_templates" value="1"><img src="/img/template1.JPG" class="img-responsive"></li>
-					<li class="thumbnail resume_templates" value="4"><img src="/img/template2.JPG" class="img-responsive"></li>
-					<li class="thumbnail"><img src="/img/template3.png" class="img-responsive"></li>
-					<li class="thumbnail"><img src="/img/template4 .png" class="img-responsive"></li>
-					<li class="thumbnail"><img src="/img/template5.png" class="img-responsive"></li>
+					<li class="thumbnail resume_templates" value="2"><img src="/img/template2.JPG" class="img-responsive"></li>
+					<li class="thumbnail resume_templates" value="3"><img src="/img/template3.png" class="img-responsive"></li>
+					<li class="thumbnail resume_templates" value="4"><img src="/img/template4.png" class="img-responsive"></li>
+					<li class="thumbnail resume_templates" value="5"><img src="/img/template5.png" class="img-responsive"></li>
 				</ul>
 
 			</div>

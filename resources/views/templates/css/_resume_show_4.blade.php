@@ -1,88 +1,88 @@
 <style type="text/css">
-	#main{
-	height:20%;
-	border-top:1px solid black;
-	border-bottom:1px solid black;
+    #main{
+        height:20%;
+        border-top:1px solid black;
+        border-bottom:1px solid black;
 
-	}
+    }
 
-#header{
-	margin-top:3%;
-	margin-bottom:-3%;
-}
+    #header{
+        margin-top:3%;
+        margin-bottom:-3%;
+    }
 
-.year{
-	width:10%;
-	
-}
+    .year{
+        width:10%;
 
-.institute{
-	width:40%;
-	
-}
+    }
 
-.course{
-	width:35%;
-	
-}
+    .institute{
+        width:40%;
 
-.percent{
-	width:30%;
-	
-}
+    }
 
-ul{
-	margin-left:5%;
-}
+    .course{
+        width:35%;
 
-.data{
-	float:left;
-}
+    }
 
-#disclaimer{
-	width:100%;
-	
-}
+    .percent{
+        width:30%;
 
-.table{
-	border:1px solid black;
-	margin-top:5%;
-}
+    }
 
-h2{
-	border:1px solid black;
-	margin-top:0%;
-}
+    ul{
+        margin-left:5%;
+    }
 
-#declaration{
-	border:none;
-	margin-top:5%;
-	
-	
-	
-}
+    .data{
+        float:left;
+    }
 
-th{
-	text-align:left;
+    #disclaimer{
+        width:100%;
 
-}
+    }
 
-th,td,table{
-	
-	padding:10px;
-}
+    .table{
+        border:1px solid black;
+        margin-top:5%;
+    }
 
-table{
-	margin-top:-1.5%;
-	width:100%;
-}
+    h2{
+        border:1px solid black;
+        margin-top:0%;
+    }
 
-#heading{
-	color:white;
-	background-color:#303030;
-}
+    #declaration{
+        border:none;
+        margin-top:5%;
 
-p{
-	padding-left:1%;
-}
+
+
+    }
+
+    th{
+        text-align:left;
+
+    }
+
+    th,td,table{
+
+        padding:10px;
+    }
+
+    table{
+        margin-top:-1.5%;
+        width:100%;
+    }
+
+    #heading{
+        color:white;
+        background-color:#303030;
+    }
+
+    p{
+        padding-left:1%;
+    }
 </style>
