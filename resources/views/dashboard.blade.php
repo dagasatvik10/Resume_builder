@@ -38,7 +38,7 @@
 													<span class="fa fa-trash"></span>
 												</a>
 												<a class="btn-floating btn-large waves-green waves-light blue" href="{{ route('resume.show',['id'=>$resume->id,'resume_design'=>1]) }}">
-													Show
+													<i class="fa fa-eye"></i>
 												</a>
 												<a class="btn-floating btn-large waves-green waves-light blue" href="{{ route('resume.download',['id'=>$resume->id,'resume_design'=>1])}}">
 													<span class="glyphicon glyphicon-download-alt"></span>
