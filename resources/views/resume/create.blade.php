@@ -137,6 +137,7 @@
 									</div>
 
 								@endif
+
 								@if($section->id == 3)
 									<div class="btn" id="github_button">
 										<a class="white" href={{ url('auth/github') }}>
@@ -144,6 +145,7 @@
 										</a>
 									</div>
 								@endif
+								
 							</div>
 							<?php
 							$check[$i] = $section->id;
