@@ -78,7 +78,7 @@
 														<?php
 														$content = $mapping_subsection->detail==null?null:$mapping_subsection->detail->content;
 														?>
-														@if($subsection->validation != 6)
+														@if($subsection->flag != 2)
 															<div class="col-lg-8">
 																{!! Form::text('detail'.$mapping_subsection->id,$content,['class' => 'form-control detail_resume']) !!}<br>
 															</div>
@@ -90,8 +90,8 @@
 														@endif
 														@if($subsection->flag != 0 and $k > 1)
 															<div class="col-sm-3">
-																<button class="btn section_subsection"  show_id='{{ $section->id }}' token='{{ csrf_token() }}'
-																		link={{ route('resume.deleteSubsection',['mapping_subsection_id' => $mapping_subsection->id,'resume_id' => $resume->id]) }}>
+																<button class="btn section_subsection"  data-show_id='{{ $section->id }}' data-token='{{ csrf_token() }}'
+																		data-link={{ route('resume.deleteSubsection',['mapping_subsection_id' => $mapping_subsection->id,'resume_id' => $resume->id]) }}>
 																	<span class="fa fa-minus-circle"></span>
 																</button>
 															</div>
@@ -99,8 +99,8 @@
 														<?php $k++; ?>
 													@endforeach
 													@if($subsection->flag != 0)
-														<button class="btn section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
-																link='{{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}'>
+														<button class="btn section_subsection" data-show_id='{{ $section->id }}' data-token='{{ csrf_token() }}'
+																data-link='{{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}'>
 															<span class="fa fa-plus-circle"></span>
 														</button>
 
@@ -118,8 +118,8 @@
 									@if($section->flag == 1 and $l > 1)
 
 										<div>
-											<button class="btn input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
-													link={{ route('resume.deleteSection',['mapping_section_id' => $mapping_section->id,'resume_id' => $resume->id]) }}>
+											<button class="btn input-field col-sm-2 section_subsection" data-show_id='{{ $section->id }}' data-token='{{ csrf_token() }}'
+													data-link={{ route('resume.deleteSection',['mapping_section_id' => $mapping_section->id,'resume_id' => $resume->id]) }}>
 												<span class="fa fa-minus-circle"></span>
 											</button>
 										</div>
@@ -130,8 +130,8 @@
 
 								@if($section->flag == 1)
 									<div>
-										<button class="btn input-field col-sm-2 section_subsection" show_id='{{ $section->id }}' token='{{ csrf_token() }}'
-												link={{ route('resume.addSection',['section_id' => $section->id,'resume_id' => $resume->id]) }}>
+										<button class="btn input-field col-sm-2 section_subsection" data-show_id='{{ $section->id }}' data-token='{{ csrf_token() }}'
+												data-link={{ route('resume.addSection',['section_id' => $section->id,'resume_id' => $resume->id]) }}>
 											<span class="fa fa-plus-circle"></span>
 										</button>
 									</div>
@@ -139,7 +139,7 @@
 								@endif
 								@if($section->id == 3)
 									<div class="btn" id="github_button">
-										<a class="white" href={{ url('auth/github') }}>
+										<a class="white" href="{{ url('auth/github') }}">
 											Fetch from GitHub
 										</a>
 									</div>
@@ -158,11 +158,11 @@
 				<p class="select_template">Select Template</p>
 				<ul style="list-style:none; padding:0px; overflow-y:scroll; height:500px;" >
 
-					<li class="thumbnail resume_templates" value="1"><img src="/img/template1.JPG" class="img-responsive"></li>
-					<li class="thumbnail resume_templates" value="2"><img src="/img/template2.JPG" class="img-responsive"></li>
-					<li class="thumbnail resume_templates" value="3"><img src="/img/template3.png" class="img-responsive"></li>
-					<li class="thumbnail resume_templates" value="4"><img src="/img/template4.png" class="img-responsive"></li>
-					<li class="thumbnail resume_templates" value="5"><img src="/img/template5.png" class="img-responsive"></li>
+					<li class="thumbnail resume_templates" value="1"><img src="{{ asset('img/template1.jpg') }}" class="img-responsive"></li>
+					<li class="thumbnail resume_templates" value="2"><img src="{{ asset('img/template1.jpg') }}" class="img-responsive"></li>
+					<li class="thumbnail resume_templates" value="3"><img src="{{ asset('img/template3.png') }}" class="img-responsive"></li>
+					<li class="thumbnail resume_templates" value="4"><img src="{{ asset('img/template4.png') }}" class="img-responsive"></li>
+					<li class="thumbnail resume_templates" value="5"><img src="{{ asset('img/template5.png') }}" class="img-responsive"></li>
 				</ul>
 
 			</div>
@@ -207,8 +207,7 @@
             $("#form_"+obj).show();
             var count=1;
             $("#form_navigation_"+obj).css({"background-color": "#0288D1", "color": "#fff"});
-		  
-		}
+			}
 	</script>
 @stop
 

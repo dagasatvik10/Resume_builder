@@ -59,18 +59,6 @@
 				</div>
 				<a class="btn white" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a>
 			</div>
-			<!-- <div class="col-md-6" style="margin-top: 5%;">
-				<div class="col-sm-4">
-					<img src="img/a.png" class="land_temp img-responsive">
-				</div >
-				<div  class="col-sm-4">
-					<img src="img/b.png" class="land_temp img-responsive">
-				</div>
-				<div  class="col-sm-4">
-					<img src="img/c.png" class="land_temp img-responsive center">
-				</div>
-				<img src="img/a1.png" class="img-responsive land-img">
-			</div> -->
 		</div>
 	</div>
 	<!-- Modal -->
@@ -89,7 +77,7 @@
 	            		<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 	                    	<label class="col-md-4 control-label">E-mail</label>
 	                        <div class="col-md-6">
-	                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+	                            <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
 	                            @if ($errors->has('email'))
 	                                <span class="help-block">
@@ -102,7 +90,7 @@
 	                        <label class="col-md-4 control-label">Password</label>
 
 	                        <div class="col-md-6">
-	                            <input type="password" class="form-control" name="password">
+	                            <input type="password" class="form-control" name="password" required>
 
 	                            @if ($errors->has('password'))
 	                                <span class="help-block">
@@ -140,6 +128,7 @@
 							</div>
 						</div>
 	        		</form>
+
 				</div>
 			</div>
 		</div>
@@ -160,7 +149,7 @@
 	                        <label class="col-md-4 control-label">Name</label>
 
 	                        <div class="col-md-6">
-	                            <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+	                            <input type="text" class="form-control" name="name" value="{{ old('name') }}" required>
 
 	                            @if ($errors->has('name'))
 	                                <span class="help-block">
@@ -173,7 +162,7 @@
 	                        <label class="col-md-4 control-label">E-Mail Address</label>
 
 	                        <div class="col-md-6">
-	                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+	                            <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
 	                            @if ($errors->has('email'))
 	                                <span class="help-block">
@@ -186,7 +175,7 @@
 	                        <label class="col-md-4 control-label">Password</label>
 
 	                        <div class="col-md-6">
-	                            <input type="password" class="form-control" name="password">
+	                            <input type="password" class="form-control" name="password" required>
 
 	                            @if ($errors->has('password'))
 	                                <span class="help-block">
@@ -199,7 +188,7 @@
 	                        <label class="col-md-4 control-label">Confirm Password</label>
 
 	                        <div class="col-md-6">
-	                            <input type="password" class="form-control" name="password_confirmation">
+	                            <input type="password" class="form-control" name="password_confirmation" required>
 
 	                            @if ($errors->has('password_confirmation'))
 	                                <span class="help-block">
@@ -229,7 +218,7 @@
 	</div>
 			
 	<div id="download">
-			{{--<span>Downloaded 0</span>--}} <strong>Resumes Created- <span class="count">500</span></strong>
+			{{--<span>Downloaded 0</span>--}} <strong>Resumes Created- <span class="count">{{ $resumes->count }}</span></strong>
 		<style type="text/css">
 		.count{
 		  color:inherit;

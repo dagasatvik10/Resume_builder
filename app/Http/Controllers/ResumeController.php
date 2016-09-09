@@ -174,8 +174,8 @@ class ResumeController extends Controller
             }
         }
 
+        //return view('resume.re');
         return PDF::html('resume.show',compact('resume','user','default_section','new_section','resume_design'));
-        //return PDF::url('http://localhost:8000');
         //return view('resume.show',compact('resume','user','default_section','new_section','resume_design'));
     }
 
@@ -333,40 +333,53 @@ class ResumeController extends Controller
 
         $resume = Session::get('user.resume');
 
+        $project = $resume->mapping_sections()
+            ->where('section_id', 3)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        // Delete the project present if its empty
+        if(empty($project->mapping_subsections()->first()->detail->content))
+        {
+            $project->delete();
+        }
+
+
         foreach ($result_array as $project) {
             $resume->sections()->attach(3);
             $section = $resume->sections->find(3);
 
-            $mapping_section = $section->mapping_sections()->where('resume_id', $resume->id)->orderBy('id', 'desc')->first();
+            $mapping_section = $section->mapping_sections()
+                ->where('resume_id', $resume->id)
+                ->orderBy('id', 'desc')
+                ->first();
 
             $subsections = $section->subsections;
             foreach ($subsections as $subsection)
             {
                 $subsection->mapping_sections()->attach($mapping_section->id);
+                // Add project name to the details table
                 if ($subsection->id === 8) {
-                    $s = $subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->orderBy('id', 'desc')->first();
+                    $s = $subsection->mapping_subsections()
+                        ->where('mapping_section_id', $mapping_section->id)
+                        ->orderBy('id', 'desc')->first();
                     $detail = new Detail;
                     $detail->content = $project['name'];
                     $s->detail()->save($detail);
                 }
+                // Add project description as null to details table
                 else
                 {
-                    $s = $subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->orderBy('id', 'desc')->first();
+                    $s = $subsection->mapping_subsections()
+                        ->where('mapping_section_id', $mapping_section->id)
+                        ->orderBy('id', 'desc')->first();
                     $detail = new Detail;
-                    $detail->content = 'undeployed';
+                    $detail->content = '';
                     $s->detail()->save($detail);
                 }
             }
         }
+
         return redirect()->route('resume.create',['id' => $resume->id]);
-    }
-    
-
-    public function test($id)
-    {
-        $user = Auth::user();
-        $resume = $user->resumes->find($id);
-
-        return view('resume.test',compact('user','resume'));
     }
 }

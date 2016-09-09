@@ -1,36 +1,31 @@
 <style type="text/css">
-	#personal_details
-	{
-		text-align: right;
-		font-size: 12px;
-		padding-bottom: 10px;
-	}
-	#name{
-		text-align: left;
-		background-color: #8b9dc3;
-		padding: 5px;
-		color: #fff;
-		font-size: 23px;
-	}
-	.sections{
-		font-size: 20px;
-		color: #8b9dc3;
-		float: left;
-	}
-	ul li {
-    /* Bullet color */
-    color: #8b9dc3;
-    list-style-type: disc;
-		}
-	.sub_sections{
-		float: right;
-		color: black;
-	}
-	#work_experience,#objective,#education,#new_section,#project,#skills{
-		border-bottom: 2px solid #8b9dc3;
-		padding-top: 20px;
-		padding-bottom: 20px;
-	}
-
-
+    .header{
+        background-color: #363636;
+        color: #fff;
+    }
+    h1{
+        padding: 20px 0px 15px 10px;
+        border:2px solid #fff;
+        text-align: center;
+        width: 400px;
+        margin: 20px auto;
+    }
+    .personal_details{
+        padding: 10px 0px 20px 20px;
+    }
+    h3{
+        border-top: 2px solid #363636;
+        border-bottom: 2px solid #363636;
+        padding: 5px 0px 0px 5px;
+    }
+    .fa{
+        font-size: 25px;
+        text-align: center;
+    }
+    .icon{
+        padding-top: 25px;
+    }
+    .footer{
+        background-color: #363636;
+    }
 </style>

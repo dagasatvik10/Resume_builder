@@ -64,13 +64,13 @@
                 </ul>
                 <div class="tab-content">
                     <div id="loginform" class="tab-pane fade in active">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login')    }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                             {!! csrf_field() !!}
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">E-mail</label>
                                 <div class="col-md-6">
-                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                    <input type="email" class="form-control" name="email" data-validation="email" value="{{ old('email') }}">
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -122,7 +122,7 @@
                         </form>
                     </div>
                     <div id="register" class="tab-pane fade">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/       register') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                             {!! csrf_field() !!}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -191,6 +191,13 @@
                                 </div>
                             </div>
                         </form>
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+                        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+                        <script>
+                            $.validate({
+                                lang: 'en'
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
@@ -202,6 +209,7 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="https://use.fontawesome.com/5cd91b09e0.js"></script>
 <script src={{ asset('js/laravel.js') }}></script>
