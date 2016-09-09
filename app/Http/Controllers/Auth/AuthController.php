@@ -85,7 +85,7 @@ class AuthController extends Controller
     protected function FbCallback()
     {
         $user = Socialite::driver('facebook')->user();
-        dd($user);
+        //dd($user);
 
         $authUser = $this->findOrCreateUser($user);
         Auth::login($authUser, true);

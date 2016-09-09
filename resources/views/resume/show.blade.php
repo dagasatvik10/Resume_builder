@@ -8,6 +8,6 @@
     @if($resume_design!=2)
         @include('templates.html.resume_show_4')
     @else
-        @include('templates.html.resume_show_2')
+        @include('templates.html.resume_show_1')
     @endif
 @stop

@@ -17,6 +17,7 @@ class CreateSubsectionsTable extends Migration
             $table->integer('section_id')->unsigned();
             $table->foreign('section_id')->references('id')->on('sections');
             $table->string('subsection_name');
+            $table->integer('flag');
         });
     }
 

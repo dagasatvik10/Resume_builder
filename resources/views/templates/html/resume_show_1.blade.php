@@ -24,7 +24,7 @@
 							</div>
 						@endif
 					</div>
-					
+
 					<div class="row">
 						@if($default_section[6][0]['Contact No.'] != null)
 						<div id="phone" class="col-sm-6 subsections">
@@ -152,7 +152,7 @@
 								{{ $section['Project Name'][0] }}
 							</div>
 							<div class="project_status">
-								{{ $section['Project Status'][0] }}
+								{{ $section['Project Description'][0] }}
 							</div>
 						</div>
 					@endif

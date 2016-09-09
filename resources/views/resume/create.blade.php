@@ -14,15 +14,15 @@
 						@if(!in_array($section->id,$check))
 							<li class=" btn form_navigation" onclick="show({{ $section->id }})"
 								id={{ 'form_navigation_'.$section->id }}><span class="fa fa-sticky-note"></span>&nbsp; &nbsp;{{ $section->section_name }}
-							</li>					
+							</li>
 						<?php
 							$check[$i] = $section->id;
 							$i++;
 							?>
 						@endif
 					@endforeach
-					<li class="btn" data-toggle="modal" data-target="#addSectionModal">
-						<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
+					<li class="btn">
+						<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"> Section</span>
 					</li>
 
 				</ul>
@@ -78,7 +78,7 @@
 														<?php
 														$content = $mapping_subsection->detail==null?null:$mapping_subsection->detail->content;
 														?>
-														@if($subsection->validation != 6)
+														@if($subsection->flag != 2)
 															<div class="col-lg-8">
 																{!! Form::text('detail'.$mapping_subsection->id,$content,['class' => 'form-control detail_resume']) !!}<br>
 															</div>
@@ -145,7 +145,7 @@
 										</a>
 									</div>
 								@endif
-								
+
 							</div>
 							<?php
 							$check[$i] = $section->id;
@@ -209,8 +209,7 @@
             $("#form_"+obj).show();
             var count=1;
             $("#form_navigation_"+obj).css({"background-color": "#0288D1", "color": "#fff"});
-		  
+
 		}
 	</script>
 @stop
-

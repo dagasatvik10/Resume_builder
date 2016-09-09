@@ -3,9 +3,9 @@
 		@if(!empty($default_section[1][0]['Name'][0]))
 			<h1 id="name">{{ $default_section[1][0]['Name'][0] }}</h1>
 		@endif
-		
+
 		<div id="header">
-			@if($default_section[1][0]['Email'] != null) 
+			@if($default_section[1][0]['Email'] != null)
 				@foreach($default_section[1][0]['Email'] as $email)
 					@if(!empty($email))
 						<span class="email">{{ $email }}</span>
@@ -18,14 +18,14 @@
 						<span class="phone">{{ $phone }}</span>
 					@endif
 				@endforeach
-			@endif | 
-			@if($default_section[1][0]['Websites'] != null)					
+			@endif |
+			@if($default_section[1][0]['Websites'] != null)
 				@foreach($default_section[1][0]['Websites'] as $website)
 					@if(!empty($website))
 						<span class="website">{{ $website }}</span>
 					@endif
-				@endforeach							
-			@endif | 
+				@endforeach
+			@endif |
 			@if(!empty($default_section[6][0]['Address'][0]))
 				<span id="address" class="col-sm-6 subsections">
 					Address:
@@ -36,7 +36,7 @@
 			<br>
 			<div class="table">
 				@if($default_section[5] != null)
-					<h2 id="heading">Objective</h2>			
+					<h2 id="heading">Objective</h2>
 					<p>{{ $default_section[5][0]['Objective'][0] }}</p>
 				@endif
 			</div>
@@ -44,7 +44,7 @@
 	@endif
 		@if($default_section[2] != null)
 		<div class="table" >
-			<h2 id="heading">Education</h2>	
+			<h2 id="heading">Education</h2>
 			@foreach($default_section[2] as $section)
 				@if($section != null)
 					<table>
@@ -71,8 +71,8 @@
 					</table>
 				@endif
 			@endforeach
-		</div>	
-		@endif	
+		</div>
+		@endif
 		<div class="table">
 			@if($default_section[3] != null)
 				<div id="project">
@@ -83,15 +83,15 @@
 								<li>
 									{{ $section['Project Name'][0] }}
 									<div class="project_status">
-										{{ $section['Project Status'][0] }}
+										{{ $section['Project Description'][0] }}
 									</div>
-								</li>							
+								</li>
 							</ul>
 						@endif
 					@endforeach
 				</div>
-			@endif		
-		</div>	
+			@endif
+		</div>
 		@if($default_section[7] != null)
 		<div class="table">
 		<h2 id="heading">Work Experience</h2>
@@ -131,11 +131,11 @@
 			@foreach($default_section[4] as $section)
 				@if(!empty($section['Skill'][0]))
 				<ul>
-					<li>		
+					<li>
 						{{ $section['Skill'][0] }}
-					</li>			
+					</li>
 				</ul>
-				@endif	
+				@endif
 			@endforeach
 		</div>
 		@endif
@@ -152,8 +152,8 @@
 								</li>
 							@endif
 						</ul>
-					@endforeach	
-					</div>			
+					@endforeach
+					</div>
 				@endif
-			@endforeach			
+			@endforeach
 		@endif
