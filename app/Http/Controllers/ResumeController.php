@@ -174,8 +174,10 @@ class ResumeController extends Controller
             }
         }
 
-        //return view('resume.re');
+        //return PDF::html('resume.re1');
+        //return view('resume.re1');
         return PDF::html('resume.show',compact('resume','user','default_section','new_section','resume_design'));
+        //return PDF::url('public/re1.html');
         //return view('resume.show',compact('resume','user','default_section','new_section','resume_design'));
     }
 
@@ -338,7 +340,7 @@ class ResumeController extends Controller
             ->orderBy('id', 'desc')
             ->first();
 
-        // Delete the project present if its empty
+        // Check whether the project present is empty and if true, delete the project
         if(empty($project->mapping_subsections()->first()->detail->content))
         {
             $project->delete();

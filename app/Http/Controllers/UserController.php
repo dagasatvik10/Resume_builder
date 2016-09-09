@@ -47,7 +47,6 @@ class UserController extends Controller
     public function LnCallback()
     {
         $user = Socialite::driver('linkedin')->user();
-        //dd($user);
         $linkedin_detail = new Linkedin_detail;
         $linkedin_detail->name = $user->name;
         $linkedin_detail->email = $user->email;
