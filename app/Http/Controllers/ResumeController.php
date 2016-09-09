@@ -175,8 +175,8 @@ class ResumeController extends Controller
         }
 
         //return PDF::html('resume.re1');
-        return view('resume.re1');
-        //return PDF::html('resume.show',compact('resume','user','default_section','new_section','resume_design'));
+        //return view('resume.re1');
+        return PDF::html('resume.show',compact('resume','user','default_section','new_section','resume_design'));
         //return PDF::url('public/re1.html');
         //return view('resume.show',compact('resume','user','default_section','new_section','resume_design'));
     }

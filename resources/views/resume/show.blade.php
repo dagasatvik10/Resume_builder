@@ -5,9 +5,5 @@
 @stop
 
 @section('section')
-    @if($resume_design!=2)
-        @include('templates.html.resume_show_4')
-    @else
-        @include('templates.html.resume_show_2')
-    @endif
+     @include('templates.html.resume_show_'.$resume_design)
 @stop

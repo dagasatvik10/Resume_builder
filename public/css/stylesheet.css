@@ -54,12 +54,63 @@ nav{
 	vertical-align: middle; 
 	color: #fff;
 }
+.register{
+	color: #fff;
+	background-color: #0288D1;
+	letter-spacing: 1.5px;
+	padding: 5px;
+	width: 150px;
+}
+.register:hover{
+	color: #fff;
+	background-color: #000;
+	letter-spacing: 1.5px;
+	padding: 5px;
+	width: 200px;
+}
 .login-icon{
 	font-size: 18px; 
 	background-color: #8e8e8e; 
 	vertical-align: middle; 
 	padding: 10px; 
 	color: #5a5a5a;
+}
+.fb , .google{
+	font-size: 25px;
+}
+.loginfb{
+	color: #fff;
+	background-color:#3b5998;
+	letter-spacing: 1.5px;
+	padding: 5px;
+	width: 200px;
+}
+.loginfb:hover{
+	color: #fff;
+	background-color: #000;
+	letter-spacing: 1.5px;
+	padding: 5px;
+	width: 200px;
+}
+.or{
+	font-size: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+}
+.logingoogle{
+	background-color: #d34836;
+	color: #fff;
+	letter-spacing: 1.5px;
+	padding: 5px;
+	width: 200px;
+}
+.logingoogle:hover{
+	background-color: #000;
+	color: #fff;
+	letter-spacing: 1.5px;
+	padding: 5px;
+	width: 200px;
 }
 .login-text{
 	font-size: 14px; 
@@ -271,13 +322,13 @@ label {
 .select_template {
 	padding: 15px;
 }
-#resume_download, #resume_preview, .add, .create, .preview, .register,.loginfb,.linkedin{
+#resume_download, #resume_preview, .add, .create, .preview,.linkedin{
 	color: #fff;
 	background-color: #0288D1;
 	letter-spacing: 1.5px;
 	padding: 10px;
 }
-#resume_download:hover, #resume_preview:hover, .add:hover,.create:hover,.loginfb:hover,.register:hover, .linkedin:hover{
+#resume_download:hover, #resume_preview:hover, .add:hover,.create:hover, .linkedin:hover{
 
 	background-color: #161616;
 	color: #737373;
