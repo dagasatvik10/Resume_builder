@@ -34,13 +34,14 @@ return [
         'key'    => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-
+    // FB client id and secret for login
     'facebook' => [
-        'client_id' => env('CLIENT_ID'),
-        'client_secret' => env('CLIENT_SECRET'),
+        'client_id' => '834283783368088',
+        'client_secret' => '20bfce91c29052799b20af2d6714cd57',
         'redirect' => 'http://localhost:8000/auth/fb/callback',
     ],
 
+    // Github client id and secret for projects
     'github' => [
         'client_id' => '2a70ddf1ac1915832b3b',
         'client_secret' => '3be38076d1239bbbf078cf5f0a6ae777eb62dce2',
@@ -48,6 +49,7 @@ return [
 
     ],
 
+    // Linkedin client id and secret for data
     'linkedin' => [
         'client_id' => '75hnx9nod4di70',
         'client_secret' => '85vqK3p03atdPdXi',

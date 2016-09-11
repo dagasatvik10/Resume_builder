@@ -31,13 +31,13 @@ function linkEvent(){
 
         e.preventDefault();
 
-        url = $(this).attr('link');
+        url = $(this).data('link');
 
         data = {
-            _token: $(this).attr('token')
+            _token: $(this).data('token')
         };
 
-        sectionId = $(this).attr('show_id');
+        sectionId = $(this).data('show_id');
 
         $.ajax({
             type: 'POST',
