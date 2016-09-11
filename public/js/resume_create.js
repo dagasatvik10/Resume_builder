@@ -31,13 +31,13 @@ function linkEvent(){
 
         e.preventDefault();
 
-        url = $(this).attr('link');
+        url = $(this).data('link');
 
         data = {
-            _token: $(this).attr('token')
+            _token: $(this).data('token')
         };
 
-        sectionId = $(this).attr('show_id');
+        sectionId = $(this).data('show_id');
 
         $.ajax({
             type: 'POST',
@@ -86,19 +86,21 @@ function linkEvent(){
     });
 
     // show form for adding new section
-    $('#add_new_section_btn').click(function () {
-      $('#add_new_section_form').toggle();
+    $('#add_new_section_btn').click(function (e) {
+      $(this).next().toggle();
+      //linkEvent();
     });
 
     // Show form for adding new subsection
     $('.add_new_subsection_btn').click(function (e) {
       e.preventDefault();
       $(this).next().toggle();
+      //linkEvent();
     });
 
 // Ajax request to add new section to the resume
     $('#add_new_section_submit').click(function (e) {
-      var url = '/resume/' + $(this).data('resume') + '/addNewSection',
+      var url = window.location.href + '/addNewSection',
         section_name,
         token = $(this).data('token');
 
@@ -112,7 +114,6 @@ function linkEvent(){
           _token: token
         }, function (data) {
           $('#resume_full_div').empty().html(data.html);
-          //$('#script_create').empty().html(data.script);
           show(data.sectionId);
           linkEvent();
         });
@@ -123,10 +124,11 @@ function linkEvent(){
 
 // Ajax request to add new subsections to the newly added section
     $('.add_new_subsection_submit').click(function (e) {
-      var url = '/resume/' + $(this).data('resume') + '/addNewSubsection',
+      var url = window.location.href + '/addNewSubsection',
         sectionId = $(this).data('section'),
         token = $(this).data('token'),
         subsection_name = $(this).prev().val();
+        console.log(sectionId);
 
         e.preventDefault();
 
@@ -136,7 +138,7 @@ function linkEvent(){
             _token: token,
             subsection_name: subsection_name
           }, function (data) {
-            //console.log(data);
+            console.log(data);
             $('#resume_full_div').empty().html(data.html);
             show(sectionId);
             linkEvent();

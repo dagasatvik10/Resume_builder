@@ -315,7 +315,6 @@ class ResumeController extends Controller
           $resume->sections()->attach($section->id);
 
           $html = view('resume.resume_create_ajax_data',compact('resume','user'))->render();
-          //$script = view('resume.resume_script',compact('resume'))->render();
           return response()->json(['success' => true,'html' => $html,'sectionId' => $section->id]);
         }
         else
@@ -345,13 +344,13 @@ class ResumeController extends Controller
     public function addNewSubsection($id,Request $request)
     {
         $user = Auth::user();
-        $resume = Session::get('user.resume');
+        $resume = $user->resumes->find($id);
         if(!empty($request->input('subsection_name')))
         {
           //$resume = $user->resumes->find($id);
           $section_id = $request->input('section_id');
           $section = $resume->sections->find($section_id);
-
+          //return response()->json(['d' => $section]);
           // Creating a new subsection and attaching it to given section
           $subsection = new Subsection;
           $subsection->subsection_name = $request->input('subsection_name');
@@ -365,7 +364,7 @@ class ResumeController extends Controller
 
           // Sending json back for showing changes
           $html = view('resume.resume_create_ajax_data',compact('resume','user'))->render();
-          return response()->json(['success' => true,'html' => $html,'sectionId' => $section->id]);
+          return response()->json(['success' => true,'html' => $html]);
         }
         else
         {
@@ -399,25 +398,46 @@ class ResumeController extends Controller
 
         $resume = Session::get('user.resume');
 
+        $project = $resume->mapping_sections()
+            ->where('section_id', 3)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        // Check whether the project present is empty and if true, delete the project
+        if(empty($project->mapping_subsections()->first()->detail->content))
+        {
+            $project->delete();
+        }
+
+
         foreach ($result_array as $project) {
             $resume->sections()->attach(3);
             $section = $resume->sections->find(3);
 
-            $mapping_section = $section->mapping_sections()->where('resume_id', $resume->id)->orderBy('id', 'desc')->first();
+            $mapping_section = $section->mapping_sections()
+                ->where('resume_id', $resume->id)
+                ->orderBy('id', 'desc')
+                ->first();
 
             $subsections = $section->subsections;
             foreach ($subsections as $subsection)
             {
                 $subsection->mapping_sections()->attach($mapping_section->id);
+                // Add project name to the details table
                 if ($subsection->id === 8) {
-                    $s = $subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->orderBy('id', 'desc')->first();
+                    $s = $subsection->mapping_subsections()
+                        ->where('mapping_section_id', $mapping_section->id)
+                        ->orderBy('id', 'desc')->first();
                     $detail = new Detail;
                     $detail->content = $project['name'];
                     $s->detail()->save($detail);
                 }
+                // Add project description as null to details table
                 else
                 {
-                    $s = $subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->orderBy('id', 'desc')->first();
+                    $s = $subsection->mapping_subsections()
+                        ->where('mapping_section_id', $mapping_section->id)
+                        ->orderBy('id', 'desc')->first();
                     $detail = new Detail;
                     $detail->content = '';
                     $s->detail()->save($detail);
