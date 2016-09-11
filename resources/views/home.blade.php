@@ -24,7 +24,7 @@
 		<div class="container">
 			<div class="row pull-right top-fix">
 				@if (Auth::guest())
-					<div id="register" class="inline">					
+					<div id="register" class="inline">
 						<button data-toggle="modal" data-target="#registerform">
 							<span class="fa fa-pencil register-icon"></span><span class="register-text">Register</span>
 						</button>
@@ -38,10 +38,10 @@
 					<div>
 	                   <span>
 	                   		<a href={{ route('user.dashboard') }}>{{ Auth::user()->name }}</a>
-	                   	</span> 
+	                   	</span>
 	                  	<span>
 	                  		<a href={{ url('/logout') }}>Logout</a>
-	                  	</span>						
+	                  	</span>
 	                </div>
 	             @endif
 			</div>
@@ -63,13 +63,13 @@
 	</div>
 
 	<div id="loginform" class="modal fade" role="dialog">
-		<div class="modal-dialog">	    	
+		<div class="modal-dialog">
 	    	<div class="modal-content">
 			    <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal">&times;</button>
 			        <h4 class="modal-title">Login</h4>
 			    </div>
-		      	<div class="modal-body row">	
+		      	<div class="modal-body row">
 		      		<div class="col-md-7" style="border-right:1px solid #808080;">
 		      			<form class="form-horizontal" role="form" method="POST" action="{{ url('/login') 	}}">
 	            			{!! csrf_field() !!}
@@ -112,8 +112,8 @@
 		                            <button type="submit" class="btn register" >
 		                                Login
 		                            </button>
-		                        </div>	
-		                        <div class="col-md-4"></div>														
+		                        </div>
+		                        <div class="col-md-4"></div>
 		                    </div>
 		                    <div class="row">
 								<div class="col-md-4 col-md-offset-4">
@@ -121,14 +121,17 @@
 								</div>
 							</div>
 		        		</form>
-		      		</div>					      
-		    		<div class="col-md-5" style="text-align:center; padding-top:8vh;">		    			
-						<div><a class="btn loginfb"  href='{{ url('auth/fb') }}'>
-							<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook
-						</a></div>	<p class="or">OR</p>
-						<div><a class="btn logingoogle"  href='{{ url('auth/fb') }}'>
-							<span class="fa fa-google-plus-square google"></span>&nbsp; &nbsp; Google +
-						</a></div>						
+		      		</div>
+		    		<div class="col-md-5" style="text-align:center; padding-top:8vh;">
+							<div>
+									<a class="btn loginfb"  href='{{ url('auth/fb') }}'>
+									<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook
+								</a>
+							</div>
+							<p class="or">OR</p>
+							<div><a class="btn logingoogle"  href='{{ url('auth/fb') }}'>
+								<span class="fa fa-google-plus-square google"></span>&nbsp; &nbsp; Google +</a>
+							</div>
 		    		</div>
 				</div>
 			</div>
@@ -143,7 +146,7 @@
 			        <h4 class="modal-title">Register</h4>
 			     </div>
 			    <div class="modal-body row">
-			    	<div class="col-md-7">
+			    	<div class="col-md-7" style="border-right:1px solid #808080;">
 			    		<form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                 		{!! csrf_field() !!}
 
@@ -199,27 +202,29 @@
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
-		                        <button type="submit" class="btn register" >
-		                                <i class="fa fa-btn fa-user"></i> &nbsp; &nbsp; Register
-		                        </button>	                 
-							</div>
+													<div class="col-md-3"></div>
+														<div class="col-md-4 ">
+																<button type="submit" class="btn register" >
+																		Register
+																</button>
+														</div>
+														<div class="col-md-4"></div>
+												</div>
 	            		</form>
 			    	</div>
-		    		<div class="col-md-5">
-		    			<div class="col-md-5" style="text-align:center; padding-top:8vh;">		    			
+		    		<div class="col-md-5" style="text-align:center; padding-top:8vh;">
 							<div><a class="btn loginfb"  href='{{ url('auth/fb') }}'>
-								<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook
-							</a></div>	<p class="or">OR</p>
+								<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook</a>
+							</div>
+							<p class="or">OR</p>
 							<div><a class="btn logingoogle"  href='{{ url('auth/fb') }}'>
-								<span class="fa fa-google-plus-square google"></span>&nbsp; &nbsp; Google +
-							</a></div>						
-			    		</div>
-		    		</div>
+								<span class="fa fa-google-plus-square google"></span>&nbsp; &nbsp; Google +</a>
+							</div>
+			    	</div>
+		    	</div>
 				</div>
-		    </div>					      
-		</div>				
-	</div>
-			
+		  </div>
+		</div>
 	<div id="download">
 			{{--<span>Downloaded 0</span>--}} <strong>Resumes Created- <span class="count">500</span></strong>
 		<style type="text/css">
@@ -240,9 +245,9 @@
 		<div class="col-sm-6">
 			<p>Resume Builder makes it fast and easy to create the powerful, professional resume hiring managers are looking for.<br>
 			Our Resume Builder lets you create a resume in minutes!<p>
-		</div>	
-		<div class="col-sm-2"></div>				
-	</div>	
+		</div>
+		<div class="col-sm-2"></div>
+	</div>
 	<div class="container">
 		<div class="row">
 			<h1 style="text-align: center; padding-bottom: 30px; padding-top:30px;">HOW IT <span style="color: #15b8db">WORKS</h1>
@@ -264,7 +269,7 @@
 				<h3 style="font-weight: bold"><span style="">0</span>3</h3>
 				<h1 style="margin-top: -15px;">Save Resume</h1>
 				<img src="img/save.png" width="150px" height="150px" style="margin:0 auto; display:block; padding-bottom:20px;" class="img-responsive">
-				<p style="text-align:center; padding-top:20px;">Save your resume for future reference. You can edit/ view your resume.</p>	
+				<p style="text-align:center; padding-top:20px;">Save your resume for future reference. You can edit/ view your resume.</p>
 			</div>
 		</div>
 </div>
@@ -277,7 +282,7 @@
 				<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-file-text social_icons"></i></span><br><br>Provides different design templates</div>
 				<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-cloud-download social_icons"></i></span><br><br>You can Save and download your resume for future.</div>
 				<div class="col-sm-3" style="text-align: center;"><span class="feature"><i class="fa fa-pencil-square social_icons"></i></span><br><br>You can Edit your resume. Change the templates</div>
-			</div>			
+			</div>
 		</div>
 	</div>
 	<div class="container" id="contact">

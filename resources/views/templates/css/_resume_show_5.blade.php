@@ -29,13 +29,14 @@ i{
 .content{
 	padding-left: 0px;
 	padding-right: 0px;
+	border-left: 200px solid #363636;
 }
 h1{
-	
+
 	padding:20px 0px 20px 55px;
 }
 .details{
-	padding-top: 15px; 
+	padding-top: 15px;
 }
 .fa{
 	padding-left: 15px;
