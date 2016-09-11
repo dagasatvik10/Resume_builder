@@ -15,9 +15,9 @@ class CreateMappingSubsectionsTable extends Migration
         Schema::create('mapping_subsections', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('mapping_section_id')->unsigned();
-            $table->foreign('mapping_section_id')->references('id')->on('mapping_sections');
+            $table->foreign('mapping_section_id')->references('id')->on('mapping_sections')->onDelete('cascade');
             $table->integer('subsection_id')->unsigned();
-            $table->foreign('subsection_id')->references('id')->on('subsections');
+            $table->foreign('subsection_id')->references('id')->on('subsections')->onDelete('cascade');
             $table->timestamps();
         });
     }

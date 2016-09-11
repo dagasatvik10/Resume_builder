@@ -3,18 +3,12 @@
 		height:20%;
 		border-top:1px solid black;
 		border-bottom:1px solid black;
-		background-color:#0066CC;
-		color:white;
-		padding-left:1%;
-		font-family:Calibri;
-		font-size:100%;
 
 	}
 
 	#header{
 		margin-top:3%;
 		margin-bottom:-3%;
-		color:#0066CC;
 	}
 
 	.year{
@@ -51,13 +45,12 @@
 	}
 
 	.table{
-		border-bottom:2px solid #0066CC;
+		border-bottom:2px solid black;
 		margin-top:5%;
-
 	}
 
 	h2{
-		color:#0066CC;
+
 		margin-top:0%;
 	}
 
@@ -92,6 +85,5 @@
 
 	span{
 		font-weight:bold;
-		color:#0066CC;
 	}
 </style>

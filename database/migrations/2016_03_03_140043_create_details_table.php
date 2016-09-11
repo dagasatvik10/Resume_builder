@@ -15,7 +15,7 @@ class CreateDetailsTable extends Migration
         Schema::create('details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('mapping_subsection_id')->unsigned();
-            $table->foreign('mapping_subsection_id')->references('id')->on('mapping_subsections');
+            $table->foreign('mapping_subsection_id')->references('id')->on('mapping_subsections')->onDelete('cascade');
             $table->string('content');
             $table->timestamps();
         });

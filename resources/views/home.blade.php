@@ -40,7 +40,7 @@
 	                   		<a href={{ route('user.dashboard') }}>{{ Auth::user()->name }}</a>
 	                   	</span> 
 	                  	<span>
-	                  		<a href={{ url('/logout') }}><span class="fa fa-btn fa-sign-out"></span>Logout</a>
+	                  		<a href={{ url('/logout') }}>Logout</a>
 	                  	</span>						
 	                </div>
 	             @endif
@@ -69,15 +69,14 @@
 			        <button type="button" class="close" data-dismiss="modal">&times;</button>
 			        <h4 class="modal-title">Login</h4>
 			    </div>
-		      	<div class="modal-body">	
-		      		<div class="col-md-7">
+		      	<div class="modal-body row">	
+		      		<div class="col-md-7" style="border-right:1px solid #808080;">
 		      			<form class="form-horizontal" role="form" method="POST" action="{{ url('/login') 	}}">
 	            			{!! csrf_field() !!}
 		            		<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 		                    	<label class="col-md-4 control-label">E-mail</label>
-		                        <div class="col-md-6">
+		                        <div class="col-md-8">
 		                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
 		                            @if ($errors->has('email'))
 		                                <span class="help-block">
 		                                    <strong>{{ $errors->first('email') }}</strong>
@@ -88,7 +87,7 @@
 		                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 		                        <label class="col-md-4 control-label">Password</label>
 
-		                        <div class="col-md-6">
+		                        <div class="col-md-8">
 		                            <input type="password" class="form-control" name="password">
 
 		                            @if ($errors->has('password'))
@@ -108,11 +107,13 @@
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
-		                        <div class="col-md-3 ">
+		                    	<div class="col-md-3"></div>
+		                        <div class="col-md-4 ">
 		                            <button type="submit" class="btn register" >
 		                                Login
 		                            </button>
-		                        </div>																
+		                        </div>	
+		                        <div class="col-md-4"></div>														
 		                    </div>
 		                    <div class="row">
 								<div class="col-md-4 col-md-offset-4">
@@ -121,10 +122,13 @@
 							</div>
 		        		</form>
 		      		</div>					      
-		    		<div class="col-md-5">		    			
-						<a class="btn loginfb"  href='{{ url('auth/fb') }}'>
-							Login with Facebook
-						</a>						
+		    		<div class="col-md-5" style="text-align:center; padding-top:8vh;">		    			
+						<div><a class="btn loginfb"  href='{{ url('auth/fb') }}'>
+							<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook
+						</a></div>	<p class="or">OR</p>
+						<div><a class="btn logingoogle"  href='{{ url('auth/fb') }}'>
+							<span class="fa fa-google-plus-square google"></span>&nbsp; &nbsp; Google +
+						</a></div>						
 		    		</div>
 				</div>
 			</div>
@@ -138,77 +142,79 @@
 			        <button type="button" class="close" data-dismiss="modal">&times;</button>
 			        <h4 class="modal-title">Register</h4>
 			     </div>
-			    <div class="modal-body">
-		    		<form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+			    <div class="modal-body row">
+			    	<div class="col-md-7">
+			    		<form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                 		{!! csrf_field() !!}
 
-	                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-	                        <label class="col-md-4 control-label">Name</label>
+		                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+		                        <label class="col-md-4 control-label">Name</label>
 
-	                        <div class="col-md-6">
-	                            <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+		                        <div class="col-md-8">
+		                            <input type="text" class="form-control" name="name" value="{{ old('name') }}">
 
-	                            @if ($errors->has('name'))
-	                                <span class="help-block">
-	                                    <strong>{{ $errors->first('name') }}</strong>
-	                                </span>
-	                            @endif
-	                        </div>
-	                    </div>
-	                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-	                        <label class="col-md-4 control-label">E-Mail Address</label>
+		                            @if ($errors->has('name'))
+		                                <span class="help-block">
+		                                    <strong>{{ $errors->first('name') }}</strong>
+		                                </span>
+		                            @endif
+		                        </div>
+		                    </div>
+		                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+		                        <label class="col-md-4 control-label">E-Mail Address</label>
 
-	                        <div class="col-md-6">
-	                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+		                        <div class="col-md-8">
+		                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
 
-	                            @if ($errors->has('email'))
-	                                <span class="help-block">
-	                                    <strong>{{ $errors->first('email') }}</strong>
-	                                </span>
-	                            @endif
-	                        </div>
-	                    </div>
-	                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-	                        <label class="col-md-4 control-label">Password</label>
+		                            @if ($errors->has('email'))
+		                                <span class="help-block">
+		                                    <strong>{{ $errors->first('email') }}</strong>
+		                                </span>
+		                            @endif
+		                        </div>
+		                    </div>
+		                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+		                        <label class="col-md-4 control-label">Password</label>
 
-	                        <div class="col-md-6">
-	                            <input type="password" class="form-control" name="password">
+		                        <div class="col-md-8">
+		                            <input type="password" class="form-control" name="password">
 
-	                            @if ($errors->has('password'))
-	                                <span class="help-block">
-	                                    <strong>{{ $errors->first('password') }}</strong>
-	                                </span>
-	                            @endif
-	                        </div>
-	                    </div>
-	                    <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-	                        <label class="col-md-4 control-label">Confirm Password</label>
+		                            @if ($errors->has('password'))
+		                                <span class="help-block">
+		                                    <strong>{{ $errors->first('password') }}</strong>
+		                                </span>
+		                            @endif
+		                        </div>
+		                    </div>
+		                    <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+		                        <label class="col-md-4 control-label">Confirm Password</label>
 
-	                        <div class="col-md-6">
-	                            <input type="password" class="form-control" name="password_confirmation">
-
-	                            @if ($errors->has('password_confirmation'))
-	                                <span class="help-block">
-	                                    <strong>{{ $errors->first('password_confirmation') }}</strong>
-	                                </span>
-	                            @endif
-	                        </div>
-	                    </div>
-	                    <div class="form-group">
-	                    	<div class="col-md-3"></div>
-	                        <div class="col-md-3">
-	                            <button type="submit" class="btn register" >
-	                                <i class="fa fa-btn fa-user"></i> &nbsp; &nbsp;Register
-	                            </button>
-	                        </div>
-							<div class="col-md-1">or</div>
-							<div class="col-md-5">
-								<a class="btn loginfb"  href='{{ url('auth/fb') }}'>
-									Login with Facebook
-								</a>
+		                        <div class="col-md-8">
+		                            <input type="password" class="form-control" name="password_confirmation">
+		                            @if ($errors->has('password_confirmation'))
+		                                <span class="help-block">
+		                                    <strong>{{ $errors->first('password_confirmation') }}</strong>
+		                                </span>
+		                            @endif
+		                        </div>
+		                    </div>
+		                    <div class="form-group">
+		                        <button type="submit" class="btn register" >
+		                                <i class="fa fa-btn fa-user"></i> &nbsp; &nbsp; Register
+		                        </button>	                 
 							</div>
-						</div>
-            		</form>
+	            		</form>
+			    	</div>
+		    		<div class="col-md-5">
+		    			<div class="col-md-5" style="text-align:center; padding-top:8vh;">		    			
+							<div><a class="btn loginfb"  href='{{ url('auth/fb') }}'>
+								<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook
+							</a></div>	<p class="or">OR</p>
+							<div><a class="btn logingoogle"  href='{{ url('auth/fb') }}'>
+								<span class="fa fa-google-plus-square google"></span>&nbsp; &nbsp; Google +
+							</a></div>						
+			    		</div>
+		    		</div>
 				</div>
 		    </div>					      
 		</div>				
@@ -239,26 +245,26 @@
 	</div>	
 	<div class="container">
 		<div class="row">
-			<h1 style="text-align: center; padding-bottom: 70px;">HOW IT <span style="color: #15b8db">WORKS</h1>
+			<h1 style="text-align: center; padding-bottom: 30px; padding-top:30px;">HOW IT <span style="color: #15b8db">WORKS</h1>
 		</div>
 		<div class="row">
 			<div class="col-lg-4" style="text-align:center;">
 				<h3 style="font-weight: bold"><span style="">0</span>1</h3>
 				<h1 style="margin-top: -15px;">Template</h1>
-				<img src="img/template.png" width="150px" height="150px" style="margin:0 auto; display:block;" class="img-responsive">
-				<p style="text-align:center;">Choose a template, of your choice.Make your resume of your choice.</p>
+				<img src="img/template.png" width="150px" height="150px" style="margin:0 auto; display:block; padding-bottom:20px;" class="img-responsive">
+				<p style="text-align:center; padding-top:20px;">Choose a template, of your choice.Make your resume of your choice.</p>
 			</div>
-			<div class="col-lg-4 ">
+			<div class="col-lg-4 " style="text-align:center;">
 				<h3 style="font-weight: bold;><span style="">0</span>2</h3>
 				<h1 style="margin-top: -15px;">Download</h1>
-				<img src="img/download.ico" width="150px" height="150px" style="margin:0 auto; display:block;" class="img-responsive">
-				<p style="text-align:center;">Download Your resume in pdf or word document format.</p>
+				<img src="img/download.ico" width="150px" height="150px" style="margin:0 auto; display:block; padding-bottom:20px;" class="img-responsive">
+				<p style="text-align:center; padding-top:20px;">Download Your resume in pdf or word document format.</p>
 			</div>
-			<div class="col-lg-4">
+			<div class="col-lg-4" style="text-align:center;">
 				<h3 style="font-weight: bold"><span style="">0</span>3</h3>
 				<h1 style="margin-top: -15px;">Save Resume</h1>
-				<img src="img/save.png" width="150px" height="150px" style="margin:0 auto; display:block;" class="img-responsive">
-				<p style="text-align:center;">Save your resume for future reference. You can edit/ view your resume in future. By creating an account in Resume Builder.</p>	
+				<img src="img/save.png" width="150px" height="150px" style="margin:0 auto; display:block; padding-bottom:20px;" class="img-responsive">
+				<p style="text-align:center; padding-top:20px;">Save your resume for future reference. You can edit/ view your resume.</p>	
 			</div>
 		</div>
 </div>

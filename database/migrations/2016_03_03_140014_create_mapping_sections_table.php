@@ -15,7 +15,7 @@ class CreateMappingSectionsTable extends Migration
         Schema::create('mapping_sections', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('resume_id')->unsigned();
-            $table->foreign('resume_id')->references('id')->on('resumes');
+            $table->foreign('resume_id')->references('id')->on('resumes')->onDelete('cascade');
             $table->integer('section_id')->unsigned();
             $table->foreign('section_id')->references('id')->on('sections');
             $table->timestamps();

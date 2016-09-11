@@ -25,6 +25,7 @@ Route::group(['middleware' => 'web'], function ()
     Route::post('resume/{mapping_subsection_id}/{resume_id}/deleteSubsection',['as' => 'resume.deleteSubsection','uses' => 'ResumeController@deleteSubsection']);
 
     Route::post('resume/{id}/addNewSection',['as' => 'resume.addNewSection','uses' => 'ResumeController@addNewSection']);
-    Route::get('test/{id}','ResumeController@test');
-
+    Route::post('resume/{id}/deleteNewSection',['as' => 'resume.deleteNewSection','uses' => 'ResumeController@deleteNewSection']);
+    Route::post('resume/{id}/addNewSubsection',['as' => 'resume.addNewSubsection','uses' => 'ResumeController@addNewSubsection']);
+    Route::post('resume/{id}/deleteNewSubsection',['as' => 'resume.deleteNewSubsection','uses' => 'ResumeController@deleteNewSubsection']);
 });

@@ -1,11 +1,12 @@
 $(document).ready(function(){
     show(1);
-
     linkEvent();
-
 });
 
 function linkEvent(){
+
+    $('#add_new_section_form').hide();
+    $('.add_new_subsection_form').hide();
 
     $('.detail_resume').change(function (e) {
         var resumeData, resumeId, myUrl;
@@ -65,7 +66,7 @@ function linkEvent(){
         $('.resume_templates').css('border', "solid 1px #ddd");
         $(this).css('border', "solid 1px red");
         resume_design = $(this).val();
-        console.log(resume_design);
+        //console.log(resume_design);
     });
 
     $('.resume_op').click(function (e) {
@@ -83,5 +84,66 @@ function linkEvent(){
             window.location.href = '/resume/' + id + '/' + op + '/' + resume_design;
         }
     });
-}
 
+    // show form for adding new section
+    $('#add_new_section_btn').click(function () {
+      $('#add_new_section_form').toggle();
+    });
+
+    // Show form for adding new subsection
+    $('.add_new_subsection_btn').click(function (e) {
+      e.preventDefault();
+      $(this).next().toggle();
+    });
+
+// Ajax request to add new section to the resume
+    $('#add_new_section_submit').click(function (e) {
+      var url = '/resume/' + $(this).data('resume') + '/addNewSection',
+        section_name,
+        token = $(this).data('token');
+
+      section_name = $('#add_new_section_input').val();
+
+      //e.preventDefault();
+
+      if (section_name) {
+;        $.post(url, {
+          section_name: section_name,
+          _token: token
+        }, function (data) {
+          $('#resume_full_div').empty().html(data.html);
+          //$('#script_create').empty().html(data.script);
+          show(data.sectionId);
+          linkEvent();
+        });
+      } else {
+        alert('Section Name cannot be empty');
+      }
+    });
+
+// Ajax request to add new subsections to the newly added section
+    $('.add_new_subsection_submit').click(function (e) {
+      var url = '/resume/' + $(this).data('resume') + '/addNewSubsection',
+        sectionId = $(this).data('section'),
+        token = $(this).data('token'),
+        subsection_name = $(this).prev().val();
+
+        e.preventDefault();
+
+        if(subsection_name) {
+          $.post(url, {
+            section_id: sectionId,
+            _token: token,
+            subsection_name: subsection_name
+          }, function (data) {
+            //console.log(data);
+            $('#resume_full_div').empty().html(data.html);
+            show(sectionId);
+            linkEvent();
+          });
+        } else {
+          alert('Subsection Name cannot be empty');
+        }
+    });
+
+}
