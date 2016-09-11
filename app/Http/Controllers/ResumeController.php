@@ -178,11 +178,6 @@ class ResumeController extends Controller
             }
         }
 
-        //dd($default_section);
-
-        //return PDF::html('resume.re1');
-        //return view('resume.re1');
-        //return PDF::url(route('home'));
         return PDF::html('resume.show',compact('resume','user','default_section','new_section','resume_design'));
         //return view('resume.show',compact('resume','user','default_section','new_section','resume_design'));
     }
@@ -233,6 +228,8 @@ class ResumeController extends Controller
             }
         }
 
+        Session::put('user.resume',$resume); // Add updated resume to Session
+
         $html = view('resume.resume_create_ajax_data',compact('resume','user'))->render();
         return response()->json(['success' => true,'html' => $html]);
     }
@@ -247,6 +244,8 @@ class ResumeController extends Controller
         {
             $mapping_section->delete();
         }
+
+        Session::put('user.resume',$resume); // Add updated resume to Session
 
         $html = view('resume.resume_create_ajax_data',compact('resume','user'))->render();
         return response()->json(['success' => true,'html' => $html]);
@@ -314,6 +313,8 @@ class ResumeController extends Controller
 
           $resume->sections()->attach($section->id);
 
+          Session::put('user.resume',$resume); // Add updated resume to Session
+
           $html = view('resume.resume_create_ajax_data',compact('resume','user'))->render();
           return response()->json(['success' => true,'html' => $html,'sectionId' => $section->id]);
         }
@@ -337,6 +338,8 @@ class ResumeController extends Controller
         $section = $resume->section->find($section_id);
         $section->delete();
 
+        Session::put('user.resume',$resume); // Add updated resume to Session
+
         return back();
     }
 
@@ -347,11 +350,9 @@ class ResumeController extends Controller
         $resume = $user->resumes->find($id);
         if(!empty($request->input('subsection_name')))
         {
-          //$resume = $user->resumes->find($id);
           $section_id = $request->input('section_id');
           $section = $resume->sections->find($section_id);
-          //return response()->json(['d' => $section]);
-          // Creating a new subsection and attaching it to given section
+          
           $subsection = new Subsection;
           $subsection->subsection_name = $request->input('subsection_name');
           $subsection->flag = 1;
