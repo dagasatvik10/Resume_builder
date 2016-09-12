@@ -1,4 +1,5 @@
-<div class="container">
+
+<div class="container pdf">
 		<div class="col-xs-10 content">
 			<h1>Ekta <span class="last_name">Tiwari</span></h1>
 			<div class="container-fluid personal_details">

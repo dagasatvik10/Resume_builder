@@ -28,6 +28,7 @@ class ResumeController extends Controller
       $this->middleware('auth');
   }
 
+// Store the name of the resume and also add all the default sections and subsections to the resume
   public function store_resume_name(Request $request)
     {
         $resume = new Resume;
@@ -53,6 +54,7 @@ class ResumeController extends Controller
         return redirect()->route('resume.create',[$resume]);
     }
 
+// redirects to the form for creating a resume
     public function create($id=null)
     {
         $user = Auth::user();
@@ -66,6 +68,7 @@ class ResumeController extends Controller
         return view('resume.create',compact(['user','resume']));
     }
 
+// Post request that stores the resume info in the db using ajax
     public function store($id,Request $request)
     {
         $user = Auth::user();
@@ -88,6 +91,7 @@ class ResumeController extends Controller
 
     }
 
+// Used to show the preview of the resume to the user
     public function createShow($id=null,$resume_design)
     {
         $user = Auth::user();
@@ -174,19 +178,18 @@ class ResumeController extends Controller
             }
         }
 
-        //return PDF::html('resume.re1');
-        //return view('resume.re1');
         return PDF::html('resume.show',compact('resume','user','default_section','new_section','resume_design'));
-        //return PDF::url('public/re1.html');
         //return view('resume.show',compact('resume','user','default_section','new_section','resume_design'));
     }
 
+// The show function that the routes actually call
     public function show($id,$resume_design)
     {
         $pdf = $this->createShow($id,$resume_design);
         return $pdf;
     }
 
+// the download function that the route actually call
     public function download($id,$resume_design)
     {
         $pdf = $this->createShow($id,$resume_design);
@@ -194,6 +197,7 @@ class ResumeController extends Controller
         return $pdf->download($resume->name.'.pdf');
     }
 
+// to delete the resume and all its mapping_sections and mapping_subsections
     public function delete($id=null)
     {
         $resume = Auth::user()->resumes->find($id);
@@ -206,6 +210,7 @@ class ResumeController extends Controller
         return redirect()->route('user.dashboard');
     }
 
+// add a section multiple times to the resume (eg. Like education or work)
     public function addSection($section_id,$resume_id)
     {
         $resume = Auth::user()->resumes->find($resume_id);
@@ -223,10 +228,13 @@ class ResumeController extends Controller
             }
         }
 
-        $html = view('resume.test',compact('resume','user'))->render();
+        Session::put('user.resume',$resume); // Add updated resume to Session
+
+        $html = view('resume.resume_create_ajax_data',compact('resume','user'))->render();
         return response()->json(['success' => true,'html' => $html]);
     }
 
+// Delete a section that was added
     public function deleteSection($mapping_section_id,$resume_id)
     {
         $resume = Auth::user()->resumes->find($resume_id);
@@ -237,10 +245,13 @@ class ResumeController extends Controller
             $mapping_section->delete();
         }
 
-        $html = view('resume.test',compact('resume','user'))->render();
+        Session::put('user.resume',$resume); // Add updated resume to Session
+
+        $html = view('resume.resume_create_ajax_data',compact('resume','user'))->render();
         return response()->json(['success' => true,'html' => $html]);
     }
 
+// Add a subsection multiple times to the resume
     public function addSubsection($mapping_section_id,$subsection_id)
     {
         $subsection = Subsection::find($subsection_id);
@@ -258,48 +269,67 @@ class ResumeController extends Controller
             $mapping_subsection->detail()->save($detail);
         }
 
-        $html = view('resume.test',compact('resume','user'))->render();
+        $html = view('resume.resume_create_ajax_data',compact('resume','user'))->render();
         return response()->json(['success' => true,'html' => $html]);
         //return back();
     }
 
+// delete the given subsection that was added
     public function deleteSubsection($mapping_subsection_id,$resume_id)
     {
         $resume = Auth::user()->resumes->find($resume_id);
         $mapping_subsection = $resume->mapping_subsections->find($mapping_subsection_id);
+
+        $user = Auth::user();
 
         if($mapping_subsection->subsection->flag != 0)
         {
             $mapping_subsection->delete();
         }
 
-        $html = view('resume.test',compact('resume','user'))->render();
+        $html = view('resume.resume_create_ajax_data',compact('resume','user'))->render();
         return response()->json(['success' => true,'html' => $html]);
     }
 
-
+// Add a new section with a subsection
     public function addNewSection($id,Request $request)
     {
-        $resume = Auth::user()->resumes->find($id);
-        $section = new Section;
-        $section->section_name = $request->input('section_name');
-        $section->flag = 2;
-        $section->save();
-        $subsection = new Subsection;
-        $subsection->subsection_name = $request->input('subsection_name');
-        $subsection->flag = 2;
-        $subsection->section()->associate($section);
-        $subsection->save();
-        $resume->sections()->attach($section->id);
-        $mapping_section = $section->mapping_sections()->where('resume_id',$resume->id)->first();
-        $subsection->mapping_sections()->attach($mapping_section);
-        return back();
+      $user = Auth::user();
+
+      if(!empty($request->input('section_name')))
+      {
+         //$resume = Session::get('user.resume');
+         $resume = $user->resumes->find($id);
+
+          if($resume==null)
+          {
+              return redirect()->route('user.dashboard');
+          }
+
+          $section = new Section;
+          $section->section_name = $request->input('section_name');
+          $section->flag = 2;
+          $section->save();
+
+          $resume->sections()->attach($section->id);
+
+          Session::put('user.resume',$resume); // Add updated resume to Session
+
+          $html = view('resume.resume_create_ajax_data',compact('resume','user'))->render();
+          return response()->json(['success' => true,'html' => $html,'sectionId' => $section->id]);
+        }
+        else
+        {
+          return response()->json(['success' => false]);
+        }
     }
 
-    public function deleteNewAddedSection($id,$section_id)
+// Delete the newly added section along with its subsections
+    public function deleteNewSection(Request $request)
     {
         $user = Auth::user();
-        $resume = $user->resumes->find($id);
+        $resume = Session::get('user.resume');
+        $section_id = $request->input('section_id');
 
         if($resume==null)
         {
@@ -308,14 +338,48 @@ class ResumeController extends Controller
         $section = $resume->section->find($section_id);
         $section->delete();
 
+        Session::put('user.resume',$resume); // Add updated resume to Session
+
         return back();
     }
 
+// add new subsection to the new section created
+    public function addNewSubsection($id,Request $request)
+    {
+        $user = Auth::user();
+        $resume = $user->resumes->find($id);
+        if(!empty($request->input('subsection_name')))
+        {
+          $section_id = $request->input('section_id');
+          $section = $resume->sections->find($section_id);
+          
+          $subsection = new Subsection;
+          $subsection->subsection_name = $request->input('subsection_name');
+          $subsection->flag = 1;
+          $subsection->section()->associate($section);
+          $subsection->save();
+
+          // Attaching the given subsection to the given resume via mapping subsections
+          $mapping_section = $section->mapping_sections()->where('resume_id',$resume->id)->orderBy('id','desc')->first();
+          $subsection->mapping_sections()->attach($mapping_section);
+
+          // Sending json back for showing changes
+          $html = view('resume.resume_create_ajax_data',compact('resume','user'))->render();
+          return response()->json(['success' => true,'html' => $html]);
+        }
+        else
+        {
+          return response()->json(['success' => false]);
+        }
+    }
+
+// redirect to github to get the projects
     public function redirectGithub()
     {
         return Socialite::driver('github')->redirect();
     }
 
+// get the data of projects from github and fill it in the project section
     public function githubCallback()
     {
         $user = Socialite::driver('github')->user();
@@ -335,40 +399,52 @@ class ResumeController extends Controller
 
         $resume = Session::get('user.resume');
 
+        $project = $resume->mapping_sections()
+            ->where('section_id', 3)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        // Check whether the project present is empty and if true, delete the project
+        if(empty($project->mapping_subsections()->first()->detail->content))
+        {
+            $project->delete();
+        }
+
+
         foreach ($result_array as $project) {
             $resume->sections()->attach(3);
             $section = $resume->sections->find(3);
 
-            $mapping_section = $section->mapping_sections()->where('resume_id', $resume->id)->orderBy('id', 'desc')->first();
+            $mapping_section = $section->mapping_sections()
+                ->where('resume_id', $resume->id)
+                ->orderBy('id', 'desc')
+                ->first();
 
             $subsections = $section->subsections;
             foreach ($subsections as $subsection)
             {
                 $subsection->mapping_sections()->attach($mapping_section->id);
+                // Add project name to the details table
                 if ($subsection->id === 8) {
-                    $s = $subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->orderBy('id', 'desc')->first();
+                    $s = $subsection->mapping_subsections()
+                        ->where('mapping_section_id', $mapping_section->id)
+                        ->orderBy('id', 'desc')->first();
                     $detail = new Detail;
                     $detail->content = $project['name'];
                     $s->detail()->save($detail);
                 }
+                // Add project description as null to details table
                 else
                 {
-                    $s = $subsection->mapping_subsections()->where('mapping_section_id', $mapping_section->id)->orderBy('id', 'desc')->first();
+                    $s = $subsection->mapping_subsections()
+                        ->where('mapping_section_id', $mapping_section->id)
+                        ->orderBy('id', 'desc')->first();
                     $detail = new Detail;
-                    $detail->content = 'undeployed';
+                    $detail->content = '';
                     $s->detail()->save($detail);
                 }
             }
         }
         return redirect()->route('resume.create',['id' => $resume->id]);
-    }
-    
-
-    public function test($id)
-    {
-        $user = Auth::user();
-        $resume = $user->resumes->find($id);
-
-        return view('resume.test',compact('user','resume'));
     }
 }

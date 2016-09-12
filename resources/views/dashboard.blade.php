@@ -6,10 +6,10 @@
 				<div class="col-lg-3 col-xs-2 section_form">
 					@if(!$linkedin)
 						<img src="/img/blank.png"  class="blank_img" style="margin-top:30%;">
-						<div style="margin-top:3%;"><a href="{{ url('auth/ln') }}" class="btn linkedin">Fetch from LinkedIn</a></div>
+						<div class="text-center" style="margin-top:3%;"><a href="{{ url('auth/ln') }}" class="btn linkedin">Fetch from LinkedIn</a></div>
 					@else
 						<img src="{{ $linkedin->profilePic }}"  class="blank_img" style="margin-top:30%;">
-						<center><div style="margin-top:7%;">{{ $linkedin->name }}</div></center>
+						<div class="text-center" style="margin-top:7%;">{{ $linkedin->name }}</div>
 					@endif
 				</div>
 				<div class="col-lg-9 col-xs-10 side_right" style="padding:5% 10% 27% 6%; ">
@@ -54,15 +54,15 @@
 							@endif
 						</div>
 						<div id="myModal" class="modal fade" role="dialog">
-						  <div class="modal-dialog">	
+						  <div class="modal-dialog">
 						    <!-- Modal content-->
 						    <div class="modal-content" style="padding: 50px;">
 						    		<button type="button" class="close" data-dismiss="modal">&times;</button>
 									{!! Form::open(['route' => 'resume.name'],'class', 'form-control') !!}
 									<div class="input-field">
 										{!! Form::label('name','Resume Name') !!}
-										<input type="text" name="name" placeholder="Resume name" class="validate form-control"> 
-										
+										<input type="text" name="name" placeholder="Resume name" class="validate form-control">
+
 									</div>
 							      <div class="modal-footer" style="border-top: none;">
 							      	<button type="submit" class="btn btn-info">Create</button>
@@ -73,7 +73,7 @@
 						</div>
 				</div>
 			</div>
-		</div>			
+		</div>
 @stop
 
 

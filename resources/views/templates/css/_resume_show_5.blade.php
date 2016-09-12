@@ -1,4 +1,8 @@
 <style type="text/css">
+.pdf{
+	border-left:100px solid #363636;
+	padding-left:0px;
+}
 	.last_name{
 	color: #468361;
 }
@@ -20,7 +24,7 @@ i{
 }
 .strip{
 	background-color: #363636;
-	height: 600px;
+	height: 40%;
 	padding-right: 0px;
 	padding-left: 0px;
 	margin-left: 0px;

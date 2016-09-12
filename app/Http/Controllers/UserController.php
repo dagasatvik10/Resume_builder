@@ -19,7 +19,7 @@ class UserController extends Controller
 //     * Create a new controller instance.
 //     *
 //     * @return void
-//     */ 
+//     */
 
     public function __construct()
     {
@@ -30,7 +30,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $resumes = $user->resumes;
-        $linkedin = $user->linkedin;   
+        $linkedin = $user->linkedin;
         return view('dashboard',compact(['user','resumes','linkedin']));
     }
 
@@ -47,14 +47,14 @@ class UserController extends Controller
     public function LnCallback()
     {
         $user = Socialite::driver('linkedin')->user();
-        dd($user);
+
         $linkedin_detail = new Linkedin_detail;
         $linkedin_detail->name = $user->name;
         $linkedin_detail->email = $user->email;
         $linkedin_detail->profilePic = $user->avatar_original;
         $linkedin_detail->user()->associate(Auth::user());
         $linkedin_detail->save();
-        
+
         return redirect()->route('user.dashboard');
     }
 }

@@ -1,5 +1,5 @@
 <div class="container">
-		<div class="container-fluid header">
+	<div class="container-fluid header">
 		<h1>EKTA TIWARI</h1>
 		<div class="row personal_details">
 			<div class="col-lg-4">
@@ -19,7 +19,7 @@
 		</div>
 		<div class="col-lg-11">
 			<h3>OBJECTIVE</h3>
-			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
 		</div>
 	</div>
 	<div class="container row">
@@ -28,7 +28,7 @@
 		</div>
 		<div class="col-lg-11">
 			<h3>EDUCATION</h3>
-			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
 		</div>
 	</div>
 	<div class="container row">
@@ -37,7 +37,7 @@
 		</div>
 		<div class="col-lg-11">
 			<h3>WORK EXPERIENCE</h3>
-			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
 		</div>
 	</div>
 	<div class="container row">
@@ -46,7 +46,7 @@
 		</div>
 		<div class="col-lg-11">
 			<h3>SKILLS</h3>
-			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
 		</div>
 	</div>
 	<div class="container row">
@@ -55,10 +55,10 @@
 		</div>
 		<div class="col-lg-11">
 			<h3>PROJECTS</h3>
-			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
 		</div>
 	</div>
 	<div class="container-fluid footer">
-		
+
 	</div>
-	</div>
+</div>

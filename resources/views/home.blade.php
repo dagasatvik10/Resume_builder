@@ -36,14 +36,14 @@
 					</div>
 				@else
 					<div>
-	                   <span>
-	                   		<a href={{ route('user.dashboard') }}>{{ Auth::user()->name }}</a>
-	                   	</span>
-	                  	<span>
-	                  		<a href={{ url('/logout') }}>Logout</a>
-	                  	</span>
-	                </div>
-	             @endif
+						<span>
+							<a href="{{ route('user.dashboard') }}">{{ Auth::user()->name }}</a>
+						</span>
+						<span>
+							<a href={{ url('/logout') }}>Logout</a>
+						</span>
+					</div>
+				@endif
 			</div>
 		</div>
 		<div class="container-fluid" id="content-land" >
@@ -57,7 +57,11 @@
 				<div style="font-size:16px; letter-spacing: 1.5px;">
 					Easily create professional resumes.
 				</div>
-				<a class="btn white" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a>
+				@if (Auth::guest())
+					<button class="btn white" data-toggle="modal" data-target="#loginform" id="create_button">Create Resume Now</button>
+				@else
+				  <a class="btn white" href={{ url('/dashboard') }} id="create_button">Create Resume Now</a>
+			  @endif
 			</div>
 		</div>
 	</div>
@@ -71,12 +75,12 @@
 			    </div>
 		      	<div class="modal-body row">
 		      		<div class="col-md-7" style="border-right:1px solid #808080;">
-		      			<form class="form-horizontal" role="form" method="POST" action="{{ url('/login') 	}}">
+		      			<form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
 	            			{!! csrf_field() !!}
 		            		<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 		                    	<label class="col-md-4 control-label">E-mail</label>
 		                        <div class="col-md-8">
-		                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+		                            <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 		                            @if ($errors->has('email'))
 		                                <span class="help-block">
 		                                    <strong>{{ $errors->first('email') }}</strong>
@@ -86,9 +90,8 @@
 		            		</div>
 		                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 		                        <label class="col-md-4 control-label">Password</label>
-
 		                        <div class="col-md-8">
-		                            <input type="password" class="form-control" name="password">
+		                            <input type="password" class="form-control" name="password" required>
 
 		                            @if ($errors->has('password'))
 		                                <span class="help-block">
@@ -152,10 +155,8 @@
 
 		                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 		                        <label class="col-md-4 control-label">Name</label>
-
 		                        <div class="col-md-8">
-		                            <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-
+		                            <input type="text" class="form-control" name="name" value="{{ old('name') }}" required>
 		                            @if ($errors->has('name'))
 		                                <span class="help-block">
 		                                    <strong>{{ $errors->first('name') }}</strong>
@@ -165,10 +166,8 @@
 		                    </div>
 		                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 		                        <label class="col-md-4 control-label">E-Mail Address</label>
-
 		                        <div class="col-md-8">
-		                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
+		                            <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 		                            @if ($errors->has('email'))
 		                                <span class="help-block">
 		                                    <strong>{{ $errors->first('email') }}</strong>
@@ -178,10 +177,8 @@
 		                    </div>
 		                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 		                        <label class="col-md-4 control-label">Password</label>
-
 		                        <div class="col-md-8">
-		                            <input type="password" class="form-control" name="password">
-
+		                            <input type="password" class="form-control" name="password" required>
 		                            @if ($errors->has('password'))
 		                                <span class="help-block">
 		                                    <strong>{{ $errors->first('password') }}</strong>
@@ -191,9 +188,8 @@
 		                    </div>
 		                    <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
 		                        <label class="col-md-4 control-label">Confirm Password</label>
-
 		                        <div class="col-md-8">
-		                            <input type="password" class="form-control" name="password_confirmation">
+		                            <input type="password" class="form-control" name="password_confirmation" required>
 		                            @if ($errors->has('password_confirmation'))
 		                                <span class="help-block">
 		                                    <strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -202,37 +198,34 @@
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
-													<div class="col-md-3"></div>
-														<div class="col-md-4 ">
-																<button type="submit" class="btn register" >
-																		Register
-																</button>
-														</div>
-														<div class="col-md-4"></div>
-												</div>
+		                        <button type="submit" class="btn register" >
+		                                <i class="fa fa-btn fa-user"></i> &nbsp; &nbsp; Register
+		                        </button>
+							</div>
 	            		</form>
 			    	</div>
-		    		<div class="col-md-5" style="text-align:center; padding-top:8vh;">
+		    		<div class="col-md-5">
+		    			<div class="col-md-5" style="text-align:center; padding-top:8vh;">
 							<div><a class="btn loginfb"  href='{{ url('auth/fb') }}'>
 								<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook</a>
 							</div>
 							<p class="or">OR</p>
 							<div><a class="btn logingoogle"  href='{{ url('auth/fb') }}'>
-								<span class="fa fa-google-plus-square google"></span>&nbsp; &nbsp; Google +</a>
-							</div>
-			    	</div>
-		    	</div>
+								<span class="fa fa-google-plus-square google"></span>&nbsp; &nbsp; Google +
+							</a></div>
+			    		</div>
+		    		</div>
 				</div>
-		  </div>
+		    </div>
 		</div>
+	</div>
 	<div id="download">
-			{{--<span>Downloaded 0</span>--}} <strong>Resumes Created- <span class="count">500</span></strong>
+		<strong>Resumes Created- <span class="count">{{ $resumes->count() }}</span></strong>
 		<style type="text/css">
 		.count{
 		  color:inherit;
 		  font-size:inherit;
 		}
-
 		</style>
 	</div>
 
@@ -250,7 +243,7 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<h1 style="text-align: center; padding-bottom: 30px; padding-top:30px;">HOW IT <span style="color: #15b8db">WORKS</h1>
+			<h1 style="text-align: center; padding-bottom: 30px; padding-top:30px;">HOW IT <span style="color: #15b8db">WORKS</span></h1>
 		</div>
 		<div class="row">
 			<div class="col-lg-4" style="text-align:center;">
@@ -260,7 +253,7 @@
 				<p style="text-align:center; padding-top:20px;">Choose a template, of your choice.Make your resume of your choice.</p>
 			</div>
 			<div class="col-lg-4 " style="text-align:center;">
-				<h3 style="font-weight: bold;><span style="">0</span>2</h3>
+				<h3 style="font-weight: bold;"><span style="">0</span>2</h3>
 				<h1 style="margin-top: -15px;">Download</h1>
 				<img src="img/download.ico" width="150px" height="150px" style="margin:0 auto; display:block; padding-bottom:20px;" class="img-responsive">
 				<p style="text-align:center; padding-top:20px;">Download Your resume in pdf or word document format.</p>
@@ -294,7 +287,7 @@
 				<p style="text-align:center;">Powered By - Software Incubator.</p>
 			</div>
 			<div class="col-md-4">
-				<a  style="text-decoration: none;" href={{ url('http://silive.in/') }}><span class="pull-right"><img src="img/si_logo.png" >Visit Us</span></a>
+				<a  style="text-decoration: none;" href={{ url('http://silive.in/') }}><span class="pull-right"><img src="{{ asset('img/si_logo.png') }}" >Visit Us</span></a>
 			</div>
 		</div>
 	</div>
