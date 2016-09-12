@@ -13,6 +13,10 @@
 						@if(!in_array($section->id,$check))
 							<li class="btn form_navigation" onclick="show({{ $section->id }})"
 								id="{{ 'form_navigation_'.$section->id }}"><span class="fa fa-sticky-note"></span>&nbsp; &nbsp;{{ $section->section_name }}
+								@if($section->flag == 2)
+									<button class="delete_new_section_subsection" data-link="{{ route('resume.deleteNewSection',['id' => $resume->id ]) }}"
+									 data-token='{{ csrf_token() }}' data-id="{{ $section->id }}"><span class="fa fa-trash"></span></button>
+								@endif
 							</li>
 						<?php
 							$check[$i] = $section->id;
@@ -26,7 +30,7 @@
 						</button>
 						<div class="form-group" id="add_new_section_form">
 							<input type="text" class="form-control" id="add_new_section_input" placeholder="Section Name">
-							<input class="btn form-control" type="button" id="add_new_section_submit" value="Add" data-token='{{ csrf_token() }}' data-resume="{{ $resume->id }}">
+							<input class="btn form-control" type="button" id="add_new_section_submit" value="Add" data-token='{{ csrf_token() }}'>
 						</div>
 					</li>
 
@@ -96,9 +100,15 @@
 										@foreach($mapping_section->subsections as $subsection)
 											@if(!in_array($subsection->id,$c))
 												<div class="row">
-													<div class="col-lg-12">
+													<div <?php if($section->flag!=2){ echo "class='col-lg-12'"; } else { echo "class='col-lg-10'"; } ?> >
 														{{ Form::label('detail'.$subsection->pivot->id,$subsection->subsection_name ,['class' => 'section'])}}
 													</div>
+													@if($section->flag==2)
+													<div class="col-lg-2">
+														<button class="delete_new_section_subsection" data-link="{{ route('resume.deleteNewSubsection',['id' => $resume->id ]) }}"
+														 data-token='{{ csrf_token() }}' data-id="{{ $subsection->id }}" data-section="{{ $section->id }}"><span class="fa fa-trash"></span></button>
+													</div>
+												@endif
 													<?php $k = 1; ?>
 													@foreach($subsection->mapping_subsections()->where('mapping_section_id',$mapping_section->id)->get()
 	                                                as $mapping_subsection)
@@ -127,10 +137,9 @@
 													@endforeach
 													@if($subsection->flag != 0)
 														<button class="btn section_subsection" data-show_id='{{ $section->id }}' data-token='{{ csrf_token() }}'
-																data-link='{{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}'>
+															data-link='{{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}'>
 															<span class="fa fa-plus-circle"></span>
 														</button>
-
 													@endif
 												</div>
 												<?php

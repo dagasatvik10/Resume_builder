@@ -100,7 +100,7 @@ function linkEvent(){
 
 // Ajax request to add new section to the resume
     $('#add_new_section_submit').click(function (e) {
-      var url = window.location.href + '/addNewSection',
+      var url = window.location.href + '/newSection',
         section_name,
         token = $(this).data('token');
 
@@ -124,11 +124,11 @@ function linkEvent(){
 
 // Ajax request to add new subsections to the newly added section
     $('.add_new_subsection_submit').click(function (e) {
-      var url = window.location.href + '/addNewSubsection',
+      var url = window.location.href + '/newSubsection',
         sectionId = $(this).data('section'),
         token = $(this).data('token'),
         subsection_name = $(this).prev().val();
-        console.log(sectionId);
+        //console.log(sectionId);
 
         e.preventDefault();
 
@@ -138,7 +138,7 @@ function linkEvent(){
             _token: token,
             subsection_name: subsection_name
           }, function (data) {
-            console.log(data);
+            //console.log(data);
             $('#resume_full_div').empty().html(data.html);
             show(sectionId);
             linkEvent();
@@ -146,6 +146,32 @@ function linkEvent(){
         } else {
           alert('Subsection Name cannot be empty');
         }
+    });
+
+    $('.delete_new_section_subsection').click(function (e) {
+      var url = $(this).data('link'),
+        token = $(this).data('token'),
+        id = $(this).data('id')
+        sectionId = $(this).data('section');
+
+        e.preventDefault();
+
+        $.ajax({
+          url: url,
+          data: { _token: token, id: id },
+          type: 'DELETE',
+          success: function (data) {
+            //console.log(data);
+            $('#resume_full_div').empty().html(data.html);
+
+            if(sectionId)
+              show(sectionId);
+            else
+              show(1);
+
+            linkEvent();
+          }
+        });
     });
 
 }
