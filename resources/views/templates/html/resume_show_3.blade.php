@@ -38,10 +38,9 @@
                     @endif
                     @if(!empty($default_section[6][0]['Address'][0]))
                         <li>
-						<span>
-							Address:
-                            {{ $default_section[6][0]['Address'][0] }}
-						</span>
+              						<span>
+              							Address:{{ $default_section[6][0]['Address'][0] }}
+              						</span>
                         </li>
                     @endif
                     @if(!empty($default_section[1][0]['Name'][0]))
