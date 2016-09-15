@@ -68,7 +68,7 @@ nav{
 	padding: 5px;
 	width: 120px;
 }
-.modal-content{
+#loginform .modal-content, #registerform .modal-content{
 	width: 800px;
 	height: 400px;
 }
@@ -302,7 +302,7 @@ label {
 	text-align: left;
 	padding-top: 6%;
 	margin-top: 1%;
-	width: 200px;
+	border-radius: 0px;
 }
 .section_form{
 
@@ -313,7 +313,38 @@ label {
 	padding-bottom: 25%;
 
 }
-
+.new_section
+{
+	border: 0px 0px 2px 0px !important;
+	border-radius: 0px !important;
+	background-color: transparent !important;
+	box-shadow: 0px !important;
+	border-top-width: 0px;
+  border-right-width: 0px;
+  border-left-width: 0px;
+	width: inherit;
+	display: inline;
+}
+.delete_new_section_subsection
+{
+	padding-left: 65%
+}
+.add_new_subsection_form
+{
+	padding-top: 3%;
+}
+.form
+{
+	border-right:1px solid #808080;
+	padding-top:7%;
+}
+#add_new_section_btn
+{
+	margin-top:3%;
+	margin-left:5%;
+	width:80%;
+	display: inline;
+}
 .row{
 	margin-right: 0px;
 	margin-left: 0px;
@@ -326,18 +357,22 @@ label {
 .select_template {
 	padding: 15px;
 }
-#resume_download, #resume_preview, .add, .create, .preview,.linkedin{
+#resume_download, #resume_preview, .add, .create, .preview,.linkedin,#add_new_section_submit,.createbuttonmodal,.add_new_subsection_btn,.add_new_subsection_submit{
 	color: #fff;
 	background-color: #0288D1;
 	letter-spacing: 1.5px;
 	padding: 10px;
 }
-#resume_download:hover, #resume_preview:hover, .add:hover,.create:hover, .linkedin:hover{
+#resume_download:hover, #resume_preview:hover, .add:hover,.create:hover,.createbuttonmodalnew:hover, .linkedin:hover,#add_new_section_submit:hover,.add_new_subsection_btn:hover,.add_new_subsection_submit:hover{
 
 	background-color: #161616;
 	color: #737373;
 	}
-
+.linkedin{
+	line-spacing: 0px;
+	padding: 6px;
+	font-size: 11px;
+}
 .section {
 	font-size: 15px;
 }
@@ -345,6 +380,7 @@ label {
 	color: #fff;
 	background-color: #0288D1;
 	margin-bottom: 1%;
+	margin-left: 2%;
 }
 .control-label{
 	font-size: 16px;

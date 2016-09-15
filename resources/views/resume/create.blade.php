@@ -4,7 +4,7 @@
 	<div class="container-fluid resumeform" id="resume_full_div">
 		<div class="row">
 			<div class="col-lg-3 col-xs-2 section_form">
-				<ul class="">
+				<ul style="padding-left:0px;">
 					<?php
 					$i = 0;
 					$check = [];
@@ -14,8 +14,9 @@
 							<li class="btn form_navigation" onclick="show({{ $section->id }})"
 								id="{{ 'form_navigation_'.$section->id }}"><span class="fa fa-sticky-note"></span>&nbsp; &nbsp;{{ $section->section_name }}
 								@if($section->flag == 2)
-									<button class="delete_new_section_subsection" data-link="{{ route('resume.deleteNewSection',['id' => $resume->id ]) }}"
-									 data-token='{{ csrf_token() }}' data-id="{{ $section->id }}"><span class="fa fa-trash"></span></button>
+									<span class="delete_new_section_subsection" data-link="{{ route('resume.deleteNewSection',['id' => $resume->id ]) }}"
+									 data-token='{{ csrf_token() }}' data-id="{{ $section->id }}"><span class="fa fa-trash"></span>
+								 </span>
 								@endif
 							</li>
 						<?php
@@ -25,15 +26,13 @@
 						@endif
 					@endforeach
 					<li class="form_navigation">
-						<button class="btn" id="add_new_section_btn">
-							<span class="glyphicon glyphicon-plus" style="margin-left: 20px;"></span>
-						</button>
-						<div class="form-group" id="add_new_section_form">
-							<input type="text" class="form-control" id="add_new_section_input" placeholder="Section Name">
-							<input class="btn form-control" type="button" id="add_new_section_submit" value="Add" data-token='{{ csrf_token() }}'>
-						</div>
+						<span class="glyphicon glyphicon-plus" id="add_new_section_btn"></span>
+						<span class="form-group" id="add_new_section_form">
+							<input type="text" class="form-control new_section" id="add_new_section_input" placeholder="Section Name">
+							<button class="btn form-control new_section"  id="add_new_section_submit"  data-token='{{ csrf_token() }}'>
+								<span class="fa fa-check-circle"></span></button>
+						</span>
 					</li>
-
 				</ul>
 			</div>
 			<div class="col-lg-7 col-xs-10 side_right">
@@ -75,10 +74,14 @@
 										<button class="btn white add_new_subsection_btn">
 											Add New subsection
 										</button>
-										<div class="add_new_subsection_form">
-											<input type="text" class="add_new_subsection_input">
+										<div class="add_new_subsection_form row">
+											<div class="col-lg-6">
+											<input type="text" class="add_new_subsection_input form-control">
+										</div>
+										<div class="col-lg-3">
 											<button class="add_new_subsection_submit btn" data-token='{{ csrf_token() }}' data-section="{{ $section->id }}" data-resume="{{ $resume->id }}">Add</button>
 										</div>
+									</div>
 									</div>
 								@endif
 
@@ -136,10 +139,12 @@
 														<?php $k++; ?>
 													@endforeach
 													@if($subsection->flag != 0)
+
 														<button class="btn section_subsection" data-show_id='{{ $section->id }}' data-token='{{ csrf_token() }}'
 															data-link='{{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}'>
 															<span class="fa fa-plus-circle"></span>
 														</button>
+
 													@endif
 												</div>
 												<?php
@@ -184,7 +189,7 @@
 					{!! Form::close() !!}
 				</div>
 			</div>
-			<div class="col-lg-2">
+			<div class="col-lg-2 col-md-2 col-sm-2">
 				<p class="select_template">Select Template</p>
 				<ul style="list-style:none; padding:0px; overflow-y:scroll; height:500px;" >
 					<li class="thumbnail resume_templates" value="1"><img src="{{ asset('img/template1.jpg') }}" class="img-responsive"></li>
