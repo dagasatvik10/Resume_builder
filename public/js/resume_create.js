@@ -5,7 +5,9 @@ $(document).ready(function(){
 
 function linkEvent(){
 
+    // hide add new section form
     $('#add_new_section_form').hide();
+    // hide the add new subsection form when new section is created
     $('.add_new_subsection_form').hide();
 
     $('.detail_resume').change(function (e) {
@@ -127,8 +129,8 @@ function linkEvent(){
       var url = window.location.href + '/newSubsection',
         sectionId = $(this).data('section'),
         token = $(this).data('token'),
-        subsection_name = $(this).prev().val();
-        //console.log(sectionId);
+        subsection_name = $(this).parent().prev().children().val();
+        //console.log(subsection_name);
 
         e.preventDefault();
 
