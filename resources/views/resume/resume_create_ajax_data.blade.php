@@ -72,12 +72,12 @@
 								</button>
 								<div class="add_new_subsection_form row">
 									<div class="col-lg-6">
-									<input type="text" class="add_new_subsection_input form-control">
+										<input type="text" class="add_new_subsection_input form-control">
+									</div>
+									<div class="col-lg-3">
+										<button class="add_new_subsection_submit btn" data-token='{{ csrf_token() }}' data-section="{{ $section->id }}" data-resume="{{ $resume->id }}">Add</button>
+									</div>
 								</div>
-								<div class="col-lg-3">
-									<button class="add_new_subsection_submit btn" data-token='{{ csrf_token() }}' data-section="{{ $section->id }}" data-resume="{{ $resume->id }}">Add</button>
-								</div>
-							</div>
 							</div>
 						@endif
 
@@ -104,8 +104,8 @@
 											</div>
 											@if($section->flag==2)
 											<div class="col-lg-2">
-												<button class="delete_new_section_subsection" data-link="{{ route('resume.deleteNewSubsection',['id' => $resume->id ]) }}"
-												 data-token='{{ csrf_token() }}' data-id="{{ $subsection->id }}" data-section="{{ $section->id }}"><span class="fa fa-trash"></span></button>
+												<a class="btn-floating red delete_new_section_subsection" data-link="{{ route('resume.deleteNewSubsection',['id' => $resume->id ]) }}"
+												 data-token='{{ csrf_token() }}' data-id="{{ $subsection->id }}" data-section="{{ $section->id }}"><span class="fa fa-trash"></span></a>
 											</div>
 										@endif
 											<?php $k = 1; ?>
@@ -185,7 +185,7 @@
 			{!! Form::close() !!}
 		</div>
 	</div>
-	<div class="col-lg-2">
+	<div class="col-lg-2 col-md-2 col-sm-2">
 		<p class="select_template">Select Template</p>
 		<ul style="list-style:none; padding:0px; overflow-y:scroll; height:500px;" >
 			<li class="thumbnail resume_templates" value="1"><img src="{{ asset('img/template1.jpg') }}" class="img-responsive"></li>

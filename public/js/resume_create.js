@@ -5,7 +5,9 @@ $(document).ready(function(){
 
 function linkEvent(){
 
+    // hide add new section form
     $('#add_new_section_form').hide();
+    // hide the add new subsection form when new section is created
     $('.add_new_subsection_form').hide();
 
     $('.detail_resume').change(function (e) {
@@ -88,6 +90,7 @@ function linkEvent(){
     // show form for adding new section
     $('#add_new_section_btn').click(function (e) {
       $(this).next().toggle();
+      $(this).next().children().first().focus();
       //linkEvent();
     });
 
@@ -95,6 +98,7 @@ function linkEvent(){
     $('.add_new_subsection_btn').click(function (e) {
       e.preventDefault();
       $(this).next().toggle();
+      $(this).next().find('.add_new_subsection_input').focus();
       //linkEvent();
     });
 
@@ -127,8 +131,8 @@ function linkEvent(){
       var url = window.location.href + '/newSubsection',
         sectionId = $(this).data('section'),
         token = $(this).data('token'),
-        subsection_name = $(this).prev().val();
-        //console.log(sectionId);
+        subsection_name = $(this).parent().prev().children().val();
+        //console.log(subsection_name);
 
         e.preventDefault();
 
