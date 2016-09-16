@@ -80,7 +80,7 @@
 								<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 									<label class="col-md-4 control-label">E-mail</label>
 									<div class="col-md-8">
-										<input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+										<input type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
 										@if ($errors->has('email'))
 											<span class="help-block">
 												<strong>{{ $errors->first('email') }}</strong>
@@ -153,7 +153,7 @@
 								<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 									<label class="col-md-4 control-label">Name</label>
 									<div class="col-md-8">
-										<input type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+										<input type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 										@if ($errors->has('name'))
 											<span class="help-block">
 												<strong>{{ $errors->first('name') }}</strong>
