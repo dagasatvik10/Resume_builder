@@ -92,9 +92,24 @@ class AuthController extends Controller
         return Redirect::to('/dashboard');
     }
 
-    private function findOrCreateUser($fbUser)
+    protected function redirectGoogle()
     {
-        $authUser = User::where('email', $fbUser->email)->first();
+        return Socialite::driver('google')->redirect();
+    }
+
+    protected function googleCallback()
+    {
+        $user = Socialite::driver('google')->user();
+        //dd($user);
+
+        $authUser = $this->findOrCreateUser($user);
+        Auth::login($authUser, true);
+        return Redirect::to('/dashboard');
+    }
+
+    private function findOrCreateUser($user)
+    {
+        $authUser = User::where('email', $user->email)->first();
 
         if ($authUser != null)
         {
@@ -102,9 +117,9 @@ class AuthController extends Controller
         }
 
         return User::create([
-            'name' => $fbUser->name,
-            'email' => $fbUser->email,
-            'password' => bcrypt($fbUser->token)
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => bcrypt($user->token)
         ]);
     }
 

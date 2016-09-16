@@ -26,6 +26,8 @@ Route::group(['middleware' => 'web'], function ()
     Route::get('auth/fb/callback','Auth\AuthController@FbCallback');
     Route::get('auth/ln','UserController@redirectLn');
     Route::get('auth/ln/callback','UserController@LnCallback');
+    Route::get('auth/google','Auth\AuthController@redirectGoogle');
+    Route::get('auth/google/callback','Auth\AuthController@googleCallback');
 
     // Section and subsection routes for resumes
     Route::post('resume/{section_id}/{resume_id}/addSection',['as' => 'resume.addSection','uses' => 'ResumeController@addSection']);
