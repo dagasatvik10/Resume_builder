@@ -22,6 +22,9 @@ h3{
 i{
 	padding-right: 5px;
 }
+ul{
+	list-style: none;
+}
 .strip{
 	background-color: #363636;
 	height: 40%;
@@ -33,6 +36,7 @@ i{
 .content{
 	padding-left: 0px;
 	padding-right: 0px;
+
 }
 h1{
 
@@ -43,5 +47,6 @@ h1{
 }
 .fa{
 	padding-left: 15px;
+	padding-right: 20px;
 }
 </style>

@@ -65,7 +65,7 @@
 
 									</div>
 							      <div class="modal-footer" style="border-top: none;">
-							      	<button type="submit" class="btn btn-info">Create</button>
+							      	<button type="submit" class="btn createbuttonmodal">Create</button>
 									  {!! Form::close() !!}
 							      </div>
 							    </div>
