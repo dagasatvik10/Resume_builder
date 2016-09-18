@@ -178,8 +178,8 @@ class ResumeController extends Controller
       }
     }
 
-    return PDF::html('resume.show',compact('resume','user','default_section','new_section','resume_design'));
-    //return view('resume.show',compact('resume','user','default_section','new_section','resume_design'));
+    //return PDF::html('resume.show',compact('resume','user','default_section','new_section','resume_design'));
+    return view('resume.show',compact('resume','user','default_section','new_section','resume_design'));
   }
 
   // The show function that the routes actually call

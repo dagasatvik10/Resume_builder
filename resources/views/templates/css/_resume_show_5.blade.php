@@ -15,15 +15,10 @@
 .fa{
 	color: #468361;
 	font-size: 25px;
+	padding-right: 5px;
 }
 h3{
 	display: inline;
-}
-i{
-	padding-right: 5px;
-}
-ul{
-	list-style: none;
 }
 .strip{
 	background-color: #363636;

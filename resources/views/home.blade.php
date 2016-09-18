@@ -125,14 +125,6 @@
 								</div>
 							</form>
 						</div>
-						<div class="col-md-5" style="text-align:center; padding-top:8vh;">
-							<div>
-								<a class="btn loginfb"  href='{{ url('auth/fb') }}'>
-									<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook
-								</a>
-							</div>
-		        		</form>
-		      		</div>
 		    		<div class="col-md-5" style="text-align:center; padding-top:8vh;">
 						<div><a class="btn loginfb"  href='{{ url('auth/fb') }}'>
 							<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook
@@ -144,6 +136,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 		<div id="registerform" class="modal fade" role="dialog">
 			<div class="modal-dialog">
 				<!-- Modal content-->
@@ -212,18 +205,6 @@
 								</div>
 							</form>
 						</div>
-						<div class="col-md-5">
-							<div class="col-md-5" style="text-align:center; padding-top:8vh;">
-								<div><a class="btn loginfb"  href='{{ url('auth/fb') }}'>
-									<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook</a>
-								</div>
-								<p class="or">OR</p>
-								<div><a class="btn logingoogle"  href='{{ url('auth/fb') }}'>
-									<span class="fa fa-google-plus-square google"></span>&nbsp; &nbsp; Google +
-								</a></div>
-							</div>
-	            		</form>
-			    	</div>
 		    		<div class="col-md-5">
 		    			<div class="col-md-5" style="text-align:center; padding-top:8vh;">
 							<div><a class="btn loginfb"  href='{{ url('auth/fb') }}'>
@@ -237,6 +218,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 		<div id="download">
 			<strong>Resumes Created- <span class="count">{{ $resumes->count() }}</span></strong>
 			<style type="text/css">

@@ -1,89 +1,31 @@
-<style>
-	#main{
-		height:20%;
-		border-top:1px solid black;
-		border-bottom:1px solid black;
-
+<style type="text/css">
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #363636;
+}
+.row{
+	color: #fff;
+}
+	.last_name{
+		color: #468361;
 	}
-
-	#header{
-		margin-top:3%;
-		margin-bottom:-3%;
+	.personal_details{
+		background-color: #fff;
+		color: #363636;
+		padding: 15px;
 	}
-
-	.year{
-		width:10%;
-
+	.fa{
+		color: #468361;
+		font-size: 25px;
 	}
-
-	.institute{
-		width:40%;
-
+	h3{
+		display: inline;
 	}
-
-	.course{
-		width:35%;
-
-	}
-
-	.percent{
-		width:30%;
-
-	}
-
-	ul{
-		margin-left:5%;
-	}
-
-	.data{
-		float:left;
-	}
-
-	#disclaimer{
-		width:100%;
-
-	}
-
-	.table{
-		border-bottom:2px solid black;
-		margin-top:5%;
-	}
-
 	h2{
-
-		margin-top:0%;
-	}
-
-	#declaration{
-		border:none;
-		margin-top:5%;
-
-
-	}
-
-	th{
-		text-align:left;
-
-	}
-
-	th,td,table{
-		border: 1px solid black;
-		border-collapse: collapse;
-		padding:10px;
-	}
-
-	table{
-
-		width:100%;
-		margin-bottom:2%;
-	}
-
-	#heading{
-
-		font-family:Calibri;
-	}
-
-	span{
-		font-weight:bold;
+		background-color:#363636;
+		padding: 10px;
+		color: #fff;
+		width: 500px;
 	}
 </style>
