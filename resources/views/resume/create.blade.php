@@ -68,7 +68,6 @@
 						@if(!in_array($section->id,$check))
 							<div class="section_form_div" id={{ 'form_'.$section->id}} >
 								<?php $l = 1; ?>
-
 								@if($section->flag == 2)
 									<div class="add_new_subsection">
 										<button class="btn white add_new_subsection_btn">
@@ -192,10 +191,9 @@
 			<div class="col-lg-2 col-md-2 col-sm-2">
 				<p class="select_template">Select Template</p>
 				<ul style="list-style:none; padding:0px; overflow-y:scroll; height:500px;" >
-					<li class="thumbnail resume_templates" value="1"><img src="{{ asset('img/template1.jpg') }}" class="img-responsive"></li>
-					<li class="thumbnail resume_templates" value="2"><img src="{{ asset('img/template1.jpg') }}" class="img-responsive"></li>
+					<li class="thumbnail resume_templates" value="1"><img src="{{ asset('img/template1.png') }}" class="img-responsive"></li>
 					<li class="thumbnail resume_templates" value="3"><img src="{{ asset('img/template3.png') }}" class="img-responsive"></li>
-					<li class="thumbnail resume_templates" value="4"><img src="{{ asset('img/template4.png') }}" class="img-responsive"></li>
+					<li class="thumbnail resume_templates" value="4"><img src="{{ asset('img/template4.jpg') }}" class="img-responsive"></li>
 					<li class="thumbnail resume_templates" value="5"><img src="{{ asset('img/template5.png') }}" class="img-responsive"></li>
 				</ul>
 			</div>

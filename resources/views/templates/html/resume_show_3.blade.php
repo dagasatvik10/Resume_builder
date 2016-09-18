@@ -1,17 +1,21 @@
-<div class="container" style="background-color:#000;">
+<div class="container-fluid">
     @if($default_section[1] != null and $default_section[6] != null)
-        <div class="personal_details">
-            <div class="col-md-7">
-                <h3>First Lastname</h3>
-                <p>Computer Science Enginner</p>
+        <div class="row personal_details">
+            <div class="col-xs-5">
+                <h3>@if(!empty($default_section[1][0]['Name'][0]))
+
+                        {{ $default_section[1][0]['Name'][0] }}
+
+                @endif</h3>
+
             </div>
-            <div class="col-md-5">
-                <ul>
+            <div class="col-xs-5">
+                <ul style="list-style:none;">
                     @if($default_section[1][0]['Email'] != null)
                         <li>Email:
                             @foreach($default_section[1][0]['Email'] as $email)
                                 @if(!empty($email))
-                                    <span>{{ $email }}</span><br>
+                                    {{ $email }}
                                 @endif
                             @endforeach
                         </li>
@@ -21,7 +25,7 @@
                             Websites:
                             @foreach($default_section[1][0]['Websites'] as $website)
                                 @if(!empty($website))
-                                    <span>{{ $website }}</span><br>
+                                    {{ $website }}
                                 @endif
                             @endforeach
                         </li>
@@ -31,48 +35,80 @@
                             Phone:
                             @foreach($default_section[6][0]['Contact No.'] as $phone)
                                 @if(!empty($phone))
-                                    <span>{{ $phone }}</span>
+                                  {{ $phone }}
                                 @endif
                             @endforeach
                         </li>
                     @endif
                     @if(!empty($default_section[6][0]['Address'][0]))
                         <li>
-              						<span>
+              						<p>
               							Address:{{ $default_section[6][0]['Address'][0] }}
-              						</span>
+              						</p>
                         </li>
                     @endif
-                    @if(!empty($default_section[1][0]['Name'][0]))
-                        <li>
-                            {{ $default_section[1][0]['Name'][0] }}
-                        </li>
-                    @endif
+
                 </ul>
             </div>
         </div>
     @endif
     <hr>
     @if($default_section[5] != null)
-        <div class="objective section">
+        <div class="row">
             <h2>Objective</h2>
-            <p class="section_details">{{ $default_section[5][0]['Objective'][0] }}</p>
+            <p >{{ $default_section[5][0]['Objective'][0] }}</p>
         </div>
     @endif
-    <div class="education section">
+    @if($default_section[2] != null)
+    <div class="row">
         <h2>Education</h2>
-        <p class="section_details">2014 : Army Public School, Merrut cantt.</p>
+        @foreach($default_section[2] as $section)
+  			@if($section != null)
+  			<div  class="row">
+  				<ul>
+
+  				<div class="col-xs-6">
+  						<li>@if(!empty($section['Course Name'][0]))
+  					<p>
+  					{{ $section['Course Name'][0] }}
+  				</p>
+  				@endif
+  				@if(!empty($section['Institution'][0]))
+  				<p>
+  					{{ $section['Institution'][0] }}
+  				</p>
+  				@endif
+  				</div>
+  			<div class="col-xs-6">
+  				@if(!empty($section['Passing Year'][0]))
+  				<p>
+  					Passing Year:
+  					{{ $section['Passing Year'][0] }}
+  				</p>
+  				@endif
+  				@if(!empty($section['Marks'][0]))
+  				<p>
+  					Marks: {{ $section['Marks'][0] }}
+  				</p>
+  				@endif
+  					</li>
+  			</div>
+
+  	</ul>
+  			@endif
+  			@endforeach
     </div>
-    <div class="work_experience section">
+    @endif
+    <div class="row">
         <h2>Education</h2>
-        <p class="section_details">2014 : Army Public School, Merrut cantt.</p>
+        <p>2014 : Army Public School, Merrut cantt.</p>
     </div>
-    <div class="projects section">
+    <div class="row">
         <h2>Education</h2>
-        <p class="section_details">2014 : Army Public School, Merrut cantt.</p>
+        <p>2014 : Army Public School, Merrut cantt.</p>
     </div>
-    <div class="skills section">
+    <div class="row">
         <h2>Education</h2>
-        <p class="section_details">2014 : Army Public School, Merrut cantt.</p>
+        <p>2014 : Army Public School, Merrut cantt.</p>
     </div>
 </div>
