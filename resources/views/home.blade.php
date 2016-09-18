@@ -16,8 +16,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/stylesheet.css') }}">
-
-
 </head>
 <body >
 	<div class="navbar_scroll" style="background-image: url({{ asset('img/land-bg.jpg') }}); background-size:cover;">

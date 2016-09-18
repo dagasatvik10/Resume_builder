@@ -179,7 +179,7 @@
 																	{{ $section['Project Name'][0] }}
 																</div>
 																<div class="project_status">
-																	{{ $section['Project Status'][0] }}
+																	{{ $section['Project Description'][0] }}
 																</div>
 															</div>
 														</li>
