@@ -78,7 +78,7 @@
 								<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 									<label class="col-md-4 control-label">E-mail</label>
 									<div class="col-md-8">
-										<input type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+										<input type="email" class="form-control" name="email" value="{{ old('email') }}" maxlength="40" required autofocus>
 										@if ($errors->has('email'))
 											<span class="help-block">
 												<strong>{{ $errors->first('email') }}</strong>
@@ -89,7 +89,7 @@
 								<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 									<label class="col-md-4 control-label">Password</label>
 									<div class="col-md-8">
-										<input type="password" class="form-control" name="password" required>
+										<input type="password" class="form-control" name="password" maxlength="40" required>
 
 										@if ($errors->has('password'))
 											<span class="help-block">
@@ -152,7 +152,7 @@
 								<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 									<label class="col-md-4 control-label">Name</label>
 									<div class="col-md-8">
-										<input type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+										<input type="text" class="form-control" name="name" value="{{ old('name') }}" maxlength="50" required autofocus>
 										@if ($errors->has('name'))
 											<span class="help-block">
 												<strong>{{ $errors->first('name') }}</strong>
@@ -163,7 +163,7 @@
 								<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 									<label class="col-md-4 control-label">E-Mail Address</label>
 									<div class="col-md-8">
-										<input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+										<input type="email" class="form-control" name="email" value="{{ old('email') }}" maxlength="40" required>
 										@if ($errors->has('email'))
 											<span class="help-block">
 												<strong>{{ $errors->first('email') }}</strong>
@@ -174,7 +174,7 @@
 								<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 									<label class="col-md-4 control-label">Password</label>
 									<div class="col-md-8">
-										<input type="password" class="form-control" name="password" required>
+										<input type="password" class="form-control" name="password" maxlength="40" required>
 										@if ($errors->has('password'))
 											<span class="help-block">
 												<strong>{{ $errors->first('password') }}</strong>
@@ -185,7 +185,7 @@
 								<div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
 									<label class="col-md-4 control-label">Confirm Password</label>
 									<div class="col-md-8">
-										<input type="password" class="form-control" name="password_confirmation" required>
+										<input type="password" class="form-control" name="password_confirmation" maxlength="40" required>
 										@if ($errors->has('password_confirmation'))
 											<span class="help-block">
 												<strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -214,7 +214,6 @@
 									<span class="fa fa-google-plus-square google"></span>&nbsp; &nbsp; Google +
 								</a></div>
 							</div>
-						</form>
 					</div>
 				</div>
 			</div>
