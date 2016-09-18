@@ -1,6 +1,6 @@
 <div class="container pdf">
 		<div class="col-xs-10 content">
-			<h1>
+			<h1 style="text-transform:uppercase;">
 				@if(!empty($default_section[1][0]['Name'][0]))
 								{{ $default_section[1][0]['Name'][0] }}
 				@endif
@@ -12,7 +12,7 @@
 						<i class="fi-address-book"></i> &nbsp; &nbsp;
 						@if(!empty($default_section[6][0]['Address'][0]))
 
-						{{ $default_section[6][0]['Address'][0] }}
+						<p>{{ $default_section[6][0]['Address'][0] }}</p>
 
 						@endif
 					</div>
@@ -21,7 +21,7 @@
 						@if($default_section[1][0]['Email'] != null)
 							@foreach($default_section[1][0]['Email'] as $email)
 								@if(!empty($email))
-								{{ $email }}
+								<p>{{ $email }}</p>
 								@endif
 							@endforeach
 						@endif
@@ -33,7 +33,7 @@
 						@if($default_section[6][0]['Contact No.'] != null)
 							@foreach($default_section[6][0]['Contact No.'] as $phone)
 								@if(!empty($phone))
-								{{ $phone }}
+								<p>{{ $phone }}</p>
 								@endif
 							@endforeach
 						@endif
@@ -42,7 +42,7 @@
 						@if($default_section[1][0]['Websites'] != null)
 							@foreach($default_section[1][0]['Websites'] as $website)
 								@if(!empty($website))
-								{{ $website }}
+								<p>{{ $website }}</p>
 								@endif
 							@endforeach
 						@endif
@@ -51,10 +51,10 @@
 			</div>
 			@if($default_section[4] != null)
 			<div class="row details">
-				<div class="col-xs-1">
+				<div class="col-xs-2">
 					<i class="fa fa-certificate"></i>
 				</div>
-				<div class="col-xs-11">
+				<div class="col-xs-10">
 					<h3>SKILLS</h3>
 					@foreach($default_section[4] as $section)
 						@if(!empty($section['Skill'][0]))
@@ -72,10 +72,10 @@
 			@endif
 			@if($default_section[5] != null)
 			<div class="row details">
-				<div class="col-xs-1">
+				<div class="col-xs-2">
 					<i class="fa fa-user"></i>
 				</div>
-				<div class="col-xs-11">
+				<div class="col-xs-10">
 	            <h3>Objective</h3>
 	            <p >{{ $default_section[5][0]['Objective'][0] }}</p>
 				</div>
@@ -83,92 +83,98 @@
 				@endif
 				@if($default_section[2] != null)
 				<div class="row details">
-					<div class="col-xs-1">
+					<div class="col-xs-2">
 						<i class="fa fa-graduation-cap"></i>
 					</div>
-					<div class="col-xs-11">
+					<div class="col-xs-10">
 						<h3>EDUCATION</h3>
-						<ul>
-							<li>
 								@foreach($default_section[2] as $section)
 								@if($section != null)
-								<div  class="sub_sections">
-									@if(!empty($section['Course Name'][0]))
-									<div class="course_name">
+								<div  class="row">
+									<ul>
+
+									<div class="col-xs-6">
+											<li>@if(!empty($section['Course Name'][0]))
+										<p>
 										{{ $section['Course Name'][0] }}
-									</div>
+									</p>
 									@endif
 									@if(!empty($section['Institution'][0]))
-									<div class="institution_name">
+									<p>
 										{{ $section['Institution'][0] }}
-									</div>
+									</p>
 									@endif
+									</div>
+								<div class="col-xs-6">
 									@if(!empty($section['Passing Year'][0]))
-									<div class="passing_year">
+									<p>
 										Passing Year:
 										{{ $section['Passing Year'][0] }}
-									</div>
+									</p>
 									@endif
 									@if(!empty($section['Marks'][0]))
-									<div class="other_info">
+									<p>
 										Marks: {{ $section['Marks'][0] }}
-									</div>
+									</p>
 									@endif
+										</li>
 								</div>
+
+						</ul>
 								@endif
 								@endforeach
-							</li>
-						</ul>
 					</div>
 				</div>
+			</div>
 				@endif
 				@if($default_section[7] != null)
 						<div class="row details">
-							<div class="col-xs-1">
+							<div class="col-xs-2">
 								<i class="fa fa-area-chart"></i>
 							</div>
-							<div class="col-xs-11">
+							<div class="col-xs-10">
 								<h3>WORK EXPERIENCE</h3>
-								<ul>
-									<li>
-										@foreach($default_section[7] as $section)
-											@if($section != null)
-												<div class="sub_sections">
-													@if(!empty($section['Company'][0]))
-														<div class="company_name">
-															{{ $section['Company'][0] }}
-														</div>
-													@endif
-													@if(!empty($section['Start Date'][0]) or $section['End Date'][0])
-														<span class="date">
-															{{ $section['Start Date'][0] }} &#45;{{ $section['End Date'][0] }}
-														</span>
-													@endif
-													@if(!empty($section['Job Title'][0]))
-														<div class="job_title">
-															{{ $section['Job Title'][0] }}
-														</div>
-													@endif
-													@if(!empty($section))
-														<div class="other_info">
-															{{ $section['Other Information'][0] }}
-														</div>
-													@endif
-												</div>
+								@foreach($default_section[7] as $section)
+									@if($section != null)
+										<div class="row">
+										<div class="col-xs-6">
+											<ul>
+											<li>@if(!empty($section['Job Title'][0]))
+												<p>
+													{{ $section['Job Title'][0] }}
+												</p>
 											@endif
-										@endforeach
-									</li>
-								</ul>
+											@if(!empty($section['Company'][0]))
+												<p>
+													{{ $section['Company'][0] }}
+												</p>
+											@endif
+											@if(!empty($section))
+												<p>
+													{{ $section['Other Information'][0] }}
+												</p>
+											@endif
+										</div>
+										<div class="col-xs-6">
+											@if(!empty($section['Start Date'][0]) or $section['End Date'][0])
+												<p>
+													{{ $section['Start Date'][0] }} &#45;{{ $section['End Date'][0] }}
+												</p>
+											@endif
+										</div>
+									</div></li></ul>
+									@endif
+								@endforeach
 							</div>
 						</div>
 					@endif
 					@if($default_section[3] != null)
 						<div class="row details">
 							<div class="row details">
-								<div class="col-xs-1">
+								<div class="col-xs-2">
 									<i class="fa fa-area-chart"></i>
 								</div>
-								<div class="col-xs-11">
+								<div class="col-xs-10">
 										<h3>Projects</h3>
 										@foreach($default_section[3] as $section)
 											@if($section != null)
@@ -178,8 +184,8 @@
 																<div class="project_name">
 																	{{ $section['Project Name'][0] }}
 																</div>
-																<div class="project_status">
-																	{{ $section['Project Description'][0] }}
+																<div class="project_description">
+
 																</div>
 															</div>
 														</li>
@@ -187,8 +193,9 @@
 											@endif
 										@endforeach
 									</div>
-							@endif
 						</div>
+					</div>
+						@endif
 						@if(!empty($new_section))
 							<div class="row details">
 								@foreach($new_section as $section_id => $section)

@@ -135,6 +135,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 		<div id="registerform" class="modal fade" role="dialog">
 			<div class="modal-dialog">
 				<!-- Modal content-->
@@ -228,7 +229,6 @@
 		}
 		</style>
 	</div>
-
 	<div class="container-fluid" id="why_rb">
 		<div class="col-sm-3" style="font-family: 'Lato', sans-serif; ">
 			<p style="font-size: 40px;"><strong>Why ??</strong> </p>
