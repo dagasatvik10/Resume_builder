@@ -311,14 +311,14 @@ label {
 	padding-left:0px;
 	background-color: #161616;
 	padding-bottom: 25%;
-
+	position: fixed;
 }
-.new_section
+.new_section,.add_new_subsection_input
 {
 	border: 0px 0px 2px 0px !important;
 	border-radius: 0px !important;
 	background-color: transparent !important;
-	box-shadow: 0px !important;
+	box-shadow: none !important;
 	border-top-width: 0px;
   border-right-width: 0px;
   border-left-width: 0px;
@@ -327,11 +327,7 @@ label {
 }
 .delete_new_section_subsection
 {
-	padding-left: 65%
-}
-.add_new_subsection_form
-{
-	padding-top: 3%;
+	padding-left: 10%;
 }
 .form
 {
@@ -352,18 +348,18 @@ label {
 .resumeform{
 	padding-left: 0px;
 	padding-right: 0px;
-
+	padding-top: 3.8%;
 }
 .select_template {
 	padding: 15px;
 }
-#resume_download, #resume_preview, .add, .create, .preview,.linkedin,#add_new_section_submit,.createbuttonmodal,.add_new_subsection_btn,.add_new_subsection_submit{
+#resume_download, #resume_preview, .add, .create, .preview,.linkedin,#add_new_section_submit,.createbuttonmodal{
 	color: #fff;
 	background-color: #0288D1;
 	letter-spacing: 1.5px;
 	padding: 10px;
 }
-#resume_download:hover, #resume_preview:hover, .add:hover,.create:hover,.createbuttonmodalnew:hover, .linkedin:hover,#add_new_section_submit:hover,.add_new_subsection_btn:hover,.add_new_subsection_submit:hover{
+#resume_download:hover, #resume_preview:hover, .add:hover,.create:hover,.createbuttonmodalnew:hover, .linkedin:hover,#add_new_section_submit:hover{
 
 	background-color: #161616;
 	color: #737373;

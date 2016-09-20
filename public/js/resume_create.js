@@ -97,8 +97,8 @@ function linkEvent(){
     // Show form for adding new subsection
     $('.add_new_subsection_btn').click(function (e) {
       e.preventDefault();
-      $(this).next().toggle();
-      $(this).next().find('.add_new_subsection_input').focus();
+      $(this).parent().next().toggle();
+      $(this).parent().next().find('.add_new_subsection_input').focus();
       //linkEvent();
     });
 

@@ -12,7 +12,7 @@
 						<div class="text-center" style="margin-top:7%;">{{ $linkedin->name }}</div>
 					@endif
 				</div>
-				<div class="col-lg-9 col-xs-10 side_right" style="padding:5% 10% 27% 6%; ">
+				<div class="col-lg-9 col-xs-10 side_right col-lg-offset-3" style="padding:5% 10% 27% 6%; ">
 					<button type="button" class="btn create" data-toggle="modal" data-target="#myModal">Create new resume
 					</button>
 						<div class="lead" style="">Your Resumes</div>

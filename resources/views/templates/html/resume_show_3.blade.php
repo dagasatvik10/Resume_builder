@@ -2,14 +2,13 @@
     @if($default_section[1] != null and $default_section[6] != null)
         <div class="row personal_details">
             <div class="col-xs-5">
-                <h3>@if(!empty($default_section[1][0]['Name'][0]))
-
-                        {{ $default_section[1][0]['Name'][0] }}
-
-                @endif</h3>
-
+                <h2>
+                  @if(!empty($default_section[1][0]['Name'][0]))
+                      {{ $default_section[1][0]['Name'][0] }}
+                  @endif
+              </h2>
             </div>
-            <div class="col-xs-5">
+            <div class="col-xs-7">
                 <ul style="list-style:none;">
                     @if($default_section[1][0]['Email'] != null)
                         <li>Email:
@@ -50,18 +49,34 @@
 
                 </ul>
             </div>
+            <hr>
         </div>
     @endif
-    <hr>
+    @if($default_section[4] != null)
+  	<div class="row">
+  			<h3>SKILLS</h3>
+  			@foreach($default_section[4] as $section)
+  				@if(!empty($section['Skill'][0]))
+  					<ul style="list-style:none;">
+  						<li>
+  							<div class="sub_sections">
+  								{{ $section['Skill'][0] }}
+  							</div>
+  						</li>
+  					</ul>
+  				@endif
+  			@endforeach
+  		</div>
+  		@endif
     @if($default_section[5] != null)
         <div class="row">
-            <h2>Objective</h2>
-            <p >{{ $default_section[5][0]['Objective'][0] }}</p>
+            <h3>Objective</h3>
+            <p id="objective">{{ $default_section[5][0]['Objective'][0] }}</p>
         </div>
     @endif
     @if($default_section[2] != null)
     <div class="row">
-        <h2>Education</h2>
+        <h3>Education</h3>
         @foreach($default_section[2] as $section)
   			@if($section != null)
   			<div  class="row">
@@ -99,16 +114,79 @@
   			@endforeach
     </div>
     @endif
-    <div class="row">
-        <h2>Education</h2>
-        <p>2014 : Army Public School, Merrut cantt.</p>
+    @if($default_section[7] != null)
+	<div class="row">
+			<h3>WORK EXPERIENCE</h3>
+			@foreach($default_section[7] as $section)
+				@if($section != null)
+					<div class="row">
+					<div class="col-xs-6">
+						<ul>
+						<li>@if(!empty($section['Job Title'][0]))
+							<p>
+								{{ $section['Job Title'][0] }}
+							</p>
+						@endif
+						@if(!empty($section['Company'][0]))
+							<p>
+								{{ $section['Company'][0] }}
+							</p>
+						@endif
+						@if(!empty($section))
+							<p>
+								{{ $section['Other Information'][0] }}
+							</p>
+						@endif
+					</div>
+					<div class="col-xs-6">
+						@if(!empty($section['Start Date'][0]) or $section['End Date'][0])
+							<p>
+								{{ $section['Start Date'][0] }} &#45;{{ $section['End Date'][0] }}
+							</p>
+						@endif
+					</div>
+				</div></li></ul>
+				@endif
+			@endforeach
+		</div>
+	@endif
+  @if($default_section[3] != null)
+  <div class="row">
+      <h3>PROJECTS</h3>
+      @foreach($default_section[3] as $section)
+        @if($section != null)
+            <ul style="list-style:none;">
+              <li class="projects">
+                <div class="sub_sections">
+                  <div class="project_name">
+                    {{ $section['Project Name'][0] }}
+                  </div>
+                  <div class="project_description">
+                      {{ $section['Project Description'][0] }}
+                  </div>
+                </div>
+              </li>
+            </ul>
+        @endif
+      @endforeach
     </div>
-    <div class="row">
-        <h2>Education</h2>
-        <p>2014 : Army Public School, Merrut cantt.</p>
-    </div>
-    <div class="row">
-        <h2>Education</h2>
-        <p>2014 : Army Public School, Merrut cantt.</p>
-    </div>
+  @endif
+  @if(!empty($new_section))
+    @foreach($new_section as $section_id => $section)
+      @if($section != null)
+        <div class="row">
+            <h3>{{ App\Section::find($section_id)->section_name }}</h3>
+          @foreach($section[0][App\Section::find($section_id)->subsections->first()->subsection_name] as $subsection)
+            <ul>
+              @if(!empty($subsection))
+                <li class="new_subsection_content">
+                  {{ $subsection }}
+                </li>
+              @endif
+            </ul>
+          @endforeach
+        </div>
+      @endif
+    @endforeach
+  @endif
 </div>
