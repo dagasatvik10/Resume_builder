@@ -68,9 +68,9 @@ nav{
 	padding: 5px;
 	width: 120px;
 }
-#loginform .modal-content, #registerform .modal-content{
-	width: 800px;
-	height: 400px;
+
+.modal-dialog {
+    width: 785px;
 }
 .login-icon{
 	font-size: 18px;

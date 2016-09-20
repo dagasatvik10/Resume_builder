@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Way\\Generators' => array($vendorDir . '/way/generators/src'),
-    'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'PhpSpec' => array($vendorDir . '/phpspec/phpspec/src'),
     'Nitmedia\\Wkhtml2pdf' => array($vendorDir . '/nitmedia/wkhtml2pdf/src'),
