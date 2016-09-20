@@ -8,7 +8,7 @@
 				@if($default_section[1][0]['Email'] != null)
 					@foreach($default_section[1][0]['Email'] as $email)
 						@if(!empty($email))
-					<p>	{{ $email }}</p>
+					  <p>{{ $email }}</p>
 						@endif
 					@endforeach
 				@endif
@@ -36,17 +36,15 @@
 		</div>
 		<div class="col-xs-11">
 			<h3>SKILLS</h3>
-			@foreach($default_section[4] as $section)
-				@if(!empty($section['Skill'][0]))
-					<ul style="list-style:none;">
+			<ul style="list-style:none;">
+			@foreach($default_section[4][0]['Skill'] as $skill)
 						<li>
-							<div class="sub_sections">
-								{{ $section['Skill'][0] }}
+							<div class="sub_sections col-xs-6">
+								{{ $skill }}
 							</div>
 						</li>
-					</ul>
-				@endif
 			@endforeach
+		  </ul>
 		</div>
 	</div>
 		@endif
@@ -129,7 +127,7 @@
 								{{ $section['Company'][0] }}
 							</p>
 						@endif
-						@if(!empty($section))
+						@if(!empty($section['Other Information'][0]))
 							<p>
 								{{ $section['Other Information'][0] }}
 							</p>
@@ -155,22 +153,26 @@
 		</div>
 		<div class="col-xs-11">
 			<h3>PROJECTS</h3>
+			<ul style="list-style:none;">
 			@foreach($default_section[3] as $section)
 				@if($section != null)
-						<ul style="list-style:none;">
-							<li class="projects">
-								<div class="sub_sections">
-									<div class="project_name">
-										{{ $section['Project Name'][0] }}
-									</div>
-									<div class="project_description">
-											{{ $section['Project Description'][0] }}
-									</div>
+					<li class="projects col-xs-6">
+						<div class="sub_sections">
+							@if(!empty($section['Project Name'][0]))
+								<div class="project_name">
+									{{ $section['Project Name'][0] }}
 								</div>
-							</li>
-						</ul>
+								@if(!empty($section['Project Description'][0]))
+									<div class="project_description">
+										{{ $section['Project Description'][0] }}
+									</div>
+								@endif
+							@endif
+						</div>
+					</li>
 				@endif
 			@endforeach
+			</ul>
 		</div>
 	</div>
 	@endif
@@ -197,3 +199,4 @@
 			@endif
 		@endforeach
 	@endif
+</div>

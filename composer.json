@@ -12,7 +12,8 @@
         "laravel/socialite": "^2.0",
         "way/generators": "^3.0",
         "phpspec/phpspec": "^2.4",
-        "nitmedia/wkhtml2pdf": "^2.0"
+        "nitmedia/wkhtml2pdf": "^2.0",
+        "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
