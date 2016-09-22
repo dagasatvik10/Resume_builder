@@ -1,5 +1,5 @@
-<div class="container">
-	<div class="container-fluid header">
+<div class="container-fluid">
+	<div class="container header">
 		<h1>@if(!empty($default_section[1][0]['Name'][0]))
 						{{ $default_section[1][0]['Name'][0] }}
 		@endif</h1>
@@ -175,5 +175,28 @@
 			</ul>
 		</div>
 	</div>
+	@endif
+	@if(!empty($new_section))
+		@foreach($new_section as $section_id => $section)
+			@if($section != null)
+				<div class="container row">
+					<div class="col-xs-1 icon">
+						<i class="fa fa-user"></i>
+					</div>
+					<div class="col-xs-11">
+						<h3>{{ App\Section::find($section_id)->section_name }}</h3>
+					@foreach($section[0][App\Section::find($section_id)->subsections->first()->subsection_name] as $subsection)
+						<ul>
+							@if(!empty($subsection))
+								<li class="new_subsection_content">
+									{{ $subsection }}
+								</li>
+							@endif
+						</ul>
+					@endforeach
+				</div>
+			</div>
+			@endif
+		@endforeach
 	@endif
 </div>

@@ -1,15 +1,22 @@
 <style type="text/css">
 body{
-	margin: 0;
-	padding: 0;
 	background-color: #363636;
+	margin: 40px;
+}
+.header{
+	color: #fff;
 }
 .row{
-	color: #fff;
+	margin-left:0px;
+	margin-right: 0px;
+	background-color: #fff;
 }
 	.last_name{
 		color: #468361;
 	}
+#objective{
+	padding: 15px;
+}
 	.personal_details{
 		background-color: #fff;
 		color: #363636;
@@ -19,10 +26,10 @@ body{
 		color: #468361;
 		font-size: 25px;
 	}
-	h3{
+	h2{
 		display: inline;
 	}
-	h2{
+	h3{
 		background-color:#363636;
 		padding: 10px;
 		color: #fff;

@@ -35,7 +35,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="col-lg-7 col-xs-10 side_right">
+			<div class="col-lg-7 col-xs-10 side_right col-lg-offset-3">
 				<div class="row" style="border-bottom: 1px solid #dcdcdc; padding:15px; background-color: #fff;">
 					<div class="col-lg-4">
 						<span class="fa fa-television" style="border: 2px solid #0288D1; border-radius: 80px; padding :10px;"></span> &nbsp; &nbsp;<a href={{ route('user.dashboard') }}>Dashboard</a>
@@ -69,19 +69,17 @@
 							<div class="section_form_div" id={{ 'form_'.$section->id}} >
 								<?php $l = 1; ?>
 								@if($section->flag == 2)
-									<div class="add_new_subsection">
-										<button class="btn white add_new_subsection_btn">
-											Add New subsection
+									<div class="add_new_subsection row">
+										<div class="col-lg-1">
+										<button class="btn add_new_subsection_btn">
+											<span class="glyphicon glyphicon-plus"></span>
 										</button>
-										<div class="add_new_subsection_form row">
-											<div class="col-lg-6">
-											  <input type="text" class="add_new_subsection_input form-control">
-										  </div>
-										  <div class="col-lg-3">
-											  <button class="add_new_subsection_submit btn" data-token='{{ csrf_token() }}' data-section="{{ $section->id }}" data-resume="{{ $resume->id }}">Add</button>
+										</div>
+										<div class="add_new_subsection_form col-lg-8">
+											<input type="text" class="add_new_subsection_input form-control">
+										  <button class="add_new_subsection_submit btn" data-token='{{ csrf_token() }}' data-section="{{ $section->id }}" data-resume="{{ $resume->id }}"><span class="fa fa-check-circle"></span></button>
 										  </div>
 									  </div>
-									</div>
 								@endif
 
 								@if($section->id == 3)
@@ -192,7 +190,7 @@
 				<p class="select_template">Select Template</p>
 				<ul style="list-style:none; padding:0px; overflow-y:scroll; height:500px;" >
 					<li class="thumbnail resume_templates" value="1"><img src="{{ asset('img/template1.png') }}" class="img-responsive"></li>
-					<li class="thumbnail resume_templates" value="3"><img src="{{ asset('img/template3.png') }}" class="img-responsive"></li>
+					<li class="thumbnail resume_templates" value="3"><img src="{{ asset('img/template3.jpg') }}" class="img-responsive"></li>
 					<li class="thumbnail resume_templates" value="4"><img src="{{ asset('img/template4.jpg') }}" class="img-responsive"></li>
 					<li class="thumbnail resume_templates" value="5"><img src="{{ asset('img/template5.png') }}" class="img-responsive"></li>
 				</ul>
