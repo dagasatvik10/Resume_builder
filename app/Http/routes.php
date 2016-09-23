@@ -5,6 +5,17 @@ Route::group(['middleware' => 'web'], function ()
     // Authentication routes
     Route::auth();
 
+    Route::get('/login',function() {
+      return redirect()->route('home');
+    });
+    Route::get('/register',function() {
+      return redirect()->route('home');
+    });
+    
+    Route::get('/home',function() {
+      return redirect()->route('home');
+    });
+
     // Home page route
     Route::get('/',['as' => 'home','uses' => 'HomeController@home']);
 
