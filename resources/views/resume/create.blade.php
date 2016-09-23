@@ -77,8 +77,8 @@
 										</div>
 										<div class="add_new_subsection_form col-lg-8">
 											<input type="text" class="add_new_subsection_input form-control">
-										  <button class="add_new_subsection_submit btn" data-token='{{ csrf_token() }}' data-section="{{ $section->id }}" data-resume="{{ $resume->id }}"><span class="fa fa-check-circle"></span></button>
-										  </div>
+										  <button class="add_new_subsection_submit btn" data-token='{{ csrf_token() }}' data-section="{{ $section->id }}"><span class="fa fa-check-circle"></span></button>
+										</div>
 									  </div>
 								@endif
 

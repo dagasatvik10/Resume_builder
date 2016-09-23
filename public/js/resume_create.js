@@ -131,7 +131,7 @@ function linkEvent(){
       var url = window.location.href + '/newSubsection',
         sectionId = $(this).data('section'),
         token = $(this).data('token'),
-        subsection_name = $(this).parent().prev().children().val();
+        subsection_name = $(this).prev().val();
         //console.log(subsection_name);
 
         e.preventDefault();
