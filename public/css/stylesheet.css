@@ -420,3 +420,6 @@ td{
 	.process-block img{
 		display: inline-block;
 	}
+.arrow{
+	margin-top: 15vh;
+}
