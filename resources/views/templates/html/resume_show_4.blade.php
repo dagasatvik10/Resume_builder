@@ -128,15 +128,17 @@
 @if($default_section[4] != null)
 	<div class="table">
 		<h2 id="heading">Skill Set</h2>
-		@foreach($default_section[4] as $section)
 			@if(!empty($section['Skill'][0]))
 				<ul>
-					<li>
-						{{ $section['Skill'][0] }}
-					</li>
+					@foreach($default_section[4][0]['Skill'] as $skill)
+								<li>
+									<div class="col-xs-6">
+										{{ $skill }}
+									</div>
+								</li>
+					@endforeach
 				</ul>
 			@endif
-		@endforeach
 	</div>
 @endif
 @if(!empty($new_section))

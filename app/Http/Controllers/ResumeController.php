@@ -178,6 +178,7 @@ class ResumeController extends Controller
       }
     }
 
+    //return PDF::url('http://www.google.com');
     return PDF::html('resume.show',compact('resume','user','default_section','new_section','resume_design'));
     //return view('resume.show',compact('resume','user','default_section','new_section','resume_design'));
   }

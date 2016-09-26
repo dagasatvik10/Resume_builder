@@ -56,17 +56,17 @@
 				</div>
 				<div class="col-xs-10">
 					<h3>SKILLS</h3>
-					@foreach($default_section[4] as $section)
 						@if(!empty($section['Skill'][0]))
 							<ul>
-								<li>
-									<div class="sub_sections">
-										{{ $section['Skill'][0] }}
-									</div>
-								</li>
+								@foreach($default_section[4][0]['Skill'] as $skill)
+											<li>
+												<div class="sub_sections col-xs-6">
+													{{ $skill }}
+												</div>
+											</li>
+								@endforeach
 							</ul>
 						@endif
-					@endforeach
 				</div>
 			</div>
 			@endif

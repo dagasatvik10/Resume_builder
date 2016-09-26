@@ -245,17 +245,24 @@
 					<h1 style="text-align: center; padding-bottom: 30px; padding-top:30px;">HOW IT <span style="color: #15b8db">WORKS</span></h1>
 				</div>
 				<div class="row">
-					<div class="col-lg-4" style="text-align:center;">
+					<div class="col-lg-3" style="text-align:center;">
 						<h3 style="font-weight: bold"><span style="">0</span>1</h3>
 						<h1 style="margin-top: -15px;">Template</h1>
 						<img src="img/template.png" width="150px" height="150px" style="margin:0 auto; display:block; padding-bottom:20px;" class="img-responsive">
 						<p style="text-align:center; padding-top:20px;">Choose a template, of your choice.Make your resume of your choice.</p>
+						
 					</div>
-					<div class="col-lg-4 " style="text-align:center;">
+					<div class="col-lg-1 arrow">
+						<img src="img/right_arrow.png">
+					</div>
+					<div class="col-lg-3 " style="text-align:center;">
 						<h3 style="font-weight: bold;"><span style="">0</span>2</h3>
 						<h1 style="margin-top: -15px;">Download</h1>
 						<img src="img/download.ico" width="150px" height="150px" style="margin:0 auto; display:block; padding-bottom:20px;" class="img-responsive">
 						<p style="text-align:center; padding-top:20px;">Download Your resume in pdf or word document format.</p>
+					</div>
+					<div class="col-lg-1 arrow">
+						<img src="img/right_arrow.png">
 					</div>
 					<div class="col-lg-4" style="text-align:center;">
 						<h3 style="font-weight: bold"><span style="">0</span>3</h3>

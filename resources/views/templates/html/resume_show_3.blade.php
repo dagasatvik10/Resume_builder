@@ -55,19 +55,19 @@
     @if($default_section[4] != null)
   	<div class="row">
   			<h3>SKILLS</h3>
-  			@foreach($default_section[4] as $section)
   				@if(!empty($section['Skill'][0]))
   					<ul style="list-style:none;">
-  						<li>
-  							<div class="sub_sections">
-  								{{ $section['Skill'][0] }}
-  							</div>
-  						</li>
+              @foreach($default_section[4][0]['Skill'] as $skill)
+        						<li>
+        							<div class="sub_sections col-xs-6">
+        								{{ $skill }}
+        							</div>
+        						</li>
+        			@endforeach
   					</ul>
   				@endif
-  			@endforeach
-  		</div>
-  		@endif
+  	</div>
+  	@endif
     @if($default_section[5] != null)
         <div class="row">
             <h3>Objective</h3>
