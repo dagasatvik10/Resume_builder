@@ -122,7 +122,7 @@
 													</div>
 												@endif
 												@if($subsection->flag != 0 and $k > 1)
-													<div class="col-sm-3">
+													<div class="col-sm-3 delete">
 														<button class="btn section_subsection"  data-show_id='{{ $section->id }}' data-token='{{ csrf_token() }}'
 																data-link={{ route('resume.deleteSubsection',['mapping_subsection_id' => $mapping_subsection->id,'resume_id' => $resume->id]) }}>
 															<span class="fa fa-minus-circle"></span>

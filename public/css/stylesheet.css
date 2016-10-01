@@ -61,6 +61,9 @@ nav{
 	padding: 5px;
 	width: 120px;
 }
+.delete{
+	padding-left: 0px;
+}
 .register:hover{
 	color: #fff;
 	background-color: #000;
