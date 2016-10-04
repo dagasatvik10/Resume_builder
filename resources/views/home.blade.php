@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Resume Builder | HomePage</title>
+	<title> Resume Builder | HomePage </title>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<!-- Optional theme -->
@@ -14,7 +14,6 @@
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,900' rel='stylesheet' type='text/css'>
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/stylesheet.css') }}">
 </head>
 <body >
@@ -46,7 +45,7 @@
 		</div>
 		<div class="container-fluid" id="content-land" >
 			<div class="col-md-12 landing">
-				<h1 class="head-name">RESUME BUILDER
+				<h1 class="head-name"> RESUME BUILDER
 					<p id="subhead-name">Powered by Software Incubator</p></h1>
 
 					<div style="font-size:20px;letter-spacing: 1.5px; padding-top:20px;">
@@ -108,8 +107,8 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="col-md-3"></div>
-									<div class="col-md-4 ">
+									<div class="col-md-4"></div>
+									<div class="col-md-3 ">
 										<button type="submit" class="btn register" >
 											Login
 										</button>
@@ -117,13 +116,13 @@
 									<div class="col-md-4"></div>
 								</div>
 								<div class="row">
-									<div class="col-md-4 col-md-offset-4">
+									<div class="col-md-4 col-md-offset-4 forget">
 										<a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
 									</div>
 								</div>
 							</form>
 						</div>
-					<div class="col-md-5" style="text-align:center; padding-top:8vh;">
+					<div class="col-md-5" style="text-align:center; padding-top:12vh;">
 						<div><a class="btn loginfb"  href='{{ url('auth/fb') }}'>
 							<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook
 						</a></div>	<p class="or">OR</p>
@@ -183,7 +182,7 @@
 									</div>
 								</div>
 								<div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-									<label class="col-md-4 control-label">Confirm Password</label>
+									<label class="col-md-4 control-label confirm_pw">Confirm Password</label>
 									<div class="col-md-8">
 										<input type="password" class="form-control" name="password_confirmation" maxlength="40" required>
 										@if ($errors->has('password_confirmation'))
@@ -194,8 +193,8 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="col-md-3"></div>
-									<div class="col-md-4 ">
+									<div class="col-md-4"></div>
+									<div class="col-md-3 ">
 										<button type="submit" class="btn register" >
 											Register
 										</button>
@@ -204,8 +203,8 @@
 								</div>
 							</form>
 						</div>
-						<div class="col-md-5">
-							<div class="col-md-5" style="text-align:center; padding-top:8vh;">
+						
+							<div class="col-md-5" style=" padding-top:12vh; text-align:center;">
 								<div><a class="btn loginfb"  href='{{ url('auth/fb') }}'>
 									<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook</a>
 								</div>
@@ -214,7 +213,7 @@
 									<span class="fa fa-google-plus-square google"></span>&nbsp; &nbsp; Google +
 								</a></div>
 							</div>
-					</div>
+					
 				</div>
 			</div>
 		</div>

@@ -37,10 +37,10 @@
 			</div>
 			<div class="col-lg-7 col-xs-10 side_right col-lg-offset-3">
 				<div class="row" style="border-bottom: 1px solid #dcdcdc; padding:15px; background-color: #fff;">
-					<div class="col-lg-4">
+					<div class="col-lg-7">
 						<span class="fa fa-television" style="border: 2px solid #0288D1; border-radius: 80px; padding :10px;"></span> &nbsp; &nbsp;<a href={{ route('user.dashboard') }}>Dashboard</a>
 					</div>
-					<div class="col-lg-8">
+					<div class="col-lg-5">
 						<ul style="list-style: none;">
 							<li style="display: inline;">
 								<a class="btn resume_op" id="resume_download" token='{{ csrf_token() }}' data-id="{{ $resume->id }}" data-op="download">Download</a>
@@ -58,7 +58,7 @@
 
 						</div>
 					</div>
-					{!! Form::open(['id' => 'resume_form','name' => 'resume']) !!}
+					{!! Form::open(['id' => 'resume_form','name' => 'resume','class' => 'sections']) !!}
 					<?php
 					$i = 0;
 					$check = array();
@@ -101,7 +101,7 @@
 											@if(!in_array($subsection->id,$c))
 												<div class="row">
 													<div <?php if($section->flag!=2){ echo "class='col-lg-12'"; } else { echo "class='col-lg-10'"; } ?> >
-														{{ Form::label('detail'.$subsection->pivot->id,$subsection->subsection_name ,['class' => 'section'])}}
+														{{-- Form::label('detail'.$subsection->pivot->id,$subsection->subsection_name ,['class' => 'section'])--}}
 													</div>
 													@if($section->flag==2)
 													<div class="col-lg-2">
@@ -117,7 +117,7 @@
 														?>
 														@if($subsection->flag != 2)
 															<div class="col-lg-8">
-																{!! Form::text('detail'.$mapping_subsection->id,$content,['class' => 'form-control detail_resume']) !!}<br>
+																{!! Form::text('detail'.$mapping_subsection->id,$content,['class' => 'form-control detail_resume', 'placeholder' => $subsection->subsection_name]) !!}<br>
 															</div>
 														@else
 															<div class="col-lg-8">
