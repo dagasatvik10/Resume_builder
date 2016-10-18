@@ -7,7 +7,7 @@
 					?>
 					@foreach($resume->sections as $section)
 						@if(!in_array($section->id,$check))
-							<li class="btn form_navigation" onclick="show({{ $section->id }})"
+							<li class="btn form_navigation text-capitalize" onclick="show({{ $section->id }})"
 								id="{{ 'form_navigation_'.$section->id }}"><span class="fa fa-sticky-note"></span>&nbsp; &nbsp;{{ $section->section_name }}
 								@if($section->flag == 2)
 									<span class="delete_new_section_subsection" data-link="{{ route('resume.deleteNewSection',['id' => $resume->id ]) }}"
@@ -92,7 +92,15 @@
 										$j = 0;
 										$c = array();
 										?>
-
+										@if($section->flag == 1 and $l > 1)
+											<div class="row">
+												<div class="col-sm-10"></div>
+												<button class="btn input-field col-sm-2 section_subsection" data-show_id='{{ $section->id }}' data-token='{{ csrf_token() }}'
+														data-link={{ route('resume.deleteSection',['mapping_section_id' => $mapping_section->id,'resume_id' => $resume->id]) }}>
+													<span class="fa fa-times"></span>
+												</button>
+											</div>
+										@endif
 										@foreach($mapping_section->subsections as $subsection)
 											@if(!in_array($subsection->id,$c))
 												<div class="row">
@@ -112,12 +120,12 @@
 														$content = $mapping_subsection->detail==null?null:$mapping_subsection->detail->content;
 														?>
 														@if($subsection->flag != 2)
-															<div class="col-lg-8">
-																{!! Form::text('detail'.$mapping_subsection->id,$content,['class' => 'form-control detail_resume', 'placeholder' => $subsection->subsection_name]) !!}<br>
+															<div class="col-lg-8 ">
+																{!! Form::text('detail'.$mapping_subsection->id,$content,['class' => 'form-control detail_resume text-capitalize', 'placeholder' => $subsection->subsection_name]) !!}<br>
 															</div>
 														@else
 															<div class="col-lg-8">
-															<textarea name="{{ 'detail'.$mapping_subsection->id }}"
+															<textarea class="text-capitalize" name="{{ 'detail'.$mapping_subsection->id }}"
 																	  class="form-control detail_resume" rows="5">{{ $content }}</textarea><br>
 															</div>
 														@endif
@@ -149,16 +157,7 @@
 
 									</div>
 
-									@if($section->flag == 1 and $l > 1)
-
-										<div>
-											<button class="btn input-field col-sm-2 section_subsection" data-show_id='{{ $section->id }}' data-token='{{ csrf_token() }}'
-													data-link={{ route('resume.deleteSection',['mapping_section_id' => $mapping_section->id,'resume_id' => $resume->id]) }}>
-												<span class="fa fa-minus-circle"></span>
-											</button>
-										</div>
-
-									@endif
+									
 									<?php $l++; ?>
 								@endforeach
 
@@ -186,6 +185,7 @@
 				<p class="select_template">Select Template</p>
 				<ul style="list-style:none; padding:0px; overflow-y:scroll; height:500px;" >
 					<li class="thumbnail resume_templates" value="1"><img src="{{ asset('img/template1.png') }}" class="img-responsive"></li>
+					<li class="thumbnail resume_templates" value="2"><img src="{{ asset('img/template2.png') }}" class="img-responsive"></li>
 					<li class="thumbnail resume_templates" value="3"><img src="{{ asset('img/template3.jpg') }}" class="img-responsive"></li>
 					<li class="thumbnail resume_templates" value="4"><img src="{{ asset('img/template4.jpg') }}" class="img-responsive"></li>
 					<li class="thumbnail resume_templates" value="5"><img src="{{ asset('img/template5.png') }}" class="img-responsive"></li>

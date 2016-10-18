@@ -339,7 +339,12 @@ label {
 }
 .delete_new_section_subsection
 {
-	padding-left: 10%;
+	position: absolute;
+	right:10px;
+}
+.section_subsection{
+	background-color: #f1f1f1;
+	margin-top: 1%;
 }
 .form
 {
@@ -347,7 +352,7 @@ label {
 	padding-top:7%;
 }
 .mapping_section{
-	background-color: #ddd;
+	background-color: #f1f1f1;
 	margin-top: 1%;
 	padding: 3%;
 }
@@ -356,8 +361,8 @@ label {
 	padding-left: 0px;
 	padding-right: 0px;
 }
-.section_subsection{
-	margin-top: 10px;
+.btn:focus {
+    outline: none;
 }
 #add_new_section_btn
 {
@@ -417,7 +422,7 @@ label {
     margin: auto;
 }
 .side_right{
-	background-color: #ededed;
+	background-color: #f9f9f9;
 	padding-top:1%;
 	padding-left: 0px;
 	padding-right:0px;

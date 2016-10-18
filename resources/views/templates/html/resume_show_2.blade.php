@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container ">
 
 	<div id="sidebar"> 
 
@@ -10,21 +10,21 @@
 			</span>
 			<span id="profession">Web Designer</span>
 			<span id="contact">Contact
-				<p id="email"><img src="./images/email.png" height="15vmin" width="15vmin"> @if($default_section[1][0]['Email'] != null)
+				<p id="email"><img src="{{ asset('img/email.png') }}" height="15vmin" width="15vmin"> @if($default_section[1][0]['Email'] != null)
 					@foreach($default_section[1][0]['Email'] as $email)
 						@if(!empty($email))
 					  <p>{{ $email }}</p>
 						@endif
 					@endforeach
 				@endif</p>
-				<p id="phone"><img src="./images/phone.png" height="15vmin" width="15vmin"> @if($default_section[6][0]['Contact No.'] != null)
+				<p id="phone"><img src="{{ asset('img/phone.png') }}" height="15vmin" width="15vmin"> @if($default_section[6][0]['Contact No.'] != null)
 					@foreach($default_section[6][0]['Contact No.'] as $phone)
 						@if(!empty($phone))
 						<p>{{ $phone }}</p>
 						@endif
 					@endforeach
 				@endif</p>
-				<p id="website"><img src="./images/website.png" height="15vmin" width="15vmin">  forum.xda-developers.com</p>
+				<p id="website"><img src="{{ asset('img/website.png') }}" height="15vmin" width="15vmin">  forum.xda-developers.com</p>
 			</span>
 			<span id="brief">Objective
 				@if($default_section[5] != null)
@@ -39,7 +39,7 @@
 <div id="description"> 
 	@if($default_section[7] != null)
 	<span id="experience">
-		<p id="title"><img src="./images/work.png" height="30vmin" width="30vmin" style="margin-right: 3vmin;">WORK EXPERIENCE</p>
+		<p id="title"><img src="{{ asset('img/work.png') }}" height="30vmin" width="30vmin" style="margin-right: 3vmin;">WORK EXPERIENCE</p>
 		<p id="text">@foreach($default_section[7] as $section)
 				@if($section != null)
 					<div class="row">
@@ -75,7 +75,7 @@
 		@endif
 		@if($default_section[2] != null)
 	<span id="education">
-		<p id="title"><img src="./images/edu.png" height="30vmin" width="30vmin" style="margin-right: 3vmin;">EDUCATION</p>
+		<p id="title"><img src="{{ asset('img/edu.png') }}" height="30vmin" width="30vmin" style="margin-right: 3vmin;">EDUCATION</p>
 		<p id="text">
 		@foreach($default_section[2] as $section)
 			@if($section != null)
@@ -115,7 +115,7 @@
 	</span>
 		@endif
 	<span id="skills">
-		<p id="title"><img src="./images/skill.png" height="30vmin" width="30vmin" style="margin-right: 3vmin;">SKILLS</p>
+		<p id="title"><img src="{{ asset('img/skill.png') }}" height="30vmin" width="30vmin" style="margin-right: 3vmin;">SKILLS</p>
 		<p id="text"><ul style="list-style:none;">
 			@foreach($default_section[4][0]['Skill'] as $skill)
 						<li>
@@ -128,7 +128,7 @@
 	</span>
 	@if($default_section[3] != null)
 	<span id="awards">
-		<p id="title"><img src="./images/award.png" height="30vmin" width="30vmin" style="margin-right: 3vmin;">AWARDS</p>
+		<p id="title"><img src="{{ asset('img/award.png') }}" height="30vmin" width="30vmin" style="margin-right: 3vmin;">PROJECTS</p>
 		<p id="text"><ul style="list-style:none;">
 			@foreach($default_section[3] as $section)
 				@if($section != null)

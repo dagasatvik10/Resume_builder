@@ -407,7 +407,7 @@ class ResumeController extends Controller
   public function githubCallback()
   {
     $user = Socialite::driver('github')->user();
-    // dd($user);
+    dd($user);
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
