@@ -123,12 +123,22 @@
 							</form>
 						</div>
 					<div class="col-md-5" style="text-align:center; padding-top:12vh;">
-						<div><a class="btn loginfb"  href='{{ url('auth/fb') }}'>
+						<div>
+							{{-- <a class="btn loginfb"  href='{{ url('auth/fb') }}'>
 							<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook
-						</a></div>	<p class="or">OR</p>
-						<div><a class="btn logingoogle"  href='{{ url('auth/google') }}'>
+							</a> --}}
+							<a class="btn loginfb"  href=''
+							onclick="window.open('{{ url("auth/fb") }}', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">
+							<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook
+							</a>
+						</div>
+							<p class="or">OR</p>
+						<div>
+							<a class="btn logingoogle"  href=''
+							onclick="window.open('{{ url("auth/google") }}', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">
 							<span class="fa fa-google-plus-square google"></span>&nbsp; &nbsp; Google +
-						</a></div>
+							</a>
+						</div>
 					</div>
 				</div>
 				</div>
@@ -203,17 +213,23 @@
 								</div>
 							</form>
 						</div>
-						
+
 							<div class="col-md-5" style=" padding-top:12vh; text-align:center;">
-								<div><a class="btn loginfb"  href='{{ url('auth/fb') }}'>
-									<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook</a>
+								<div>
+									<a class="btn loginfb"  href=''
+									onclick="window.open('{{ url("auth/fb") }}', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">
+									<span class="fa fa-facebook-square fb"></span>&nbsp; &nbsp; Facebook
+									</a>
 								</div>
 								<p class="or">OR</p>
-								<div><a class="btn logingoogle"  href='{{ url('auth/google') }}'>
+								<div>
+									<a class="btn logingoogle"  href=''
+									onclick="window.open('{{ url("auth/google") }}', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">
 									<span class="fa fa-google-plus-square google"></span>&nbsp; &nbsp; Google +
-								</a></div>
+									</a>
+								</div>
 							</div>
-					
+
 				</div>
 			</div>
 		</div>
@@ -249,7 +265,7 @@
 						<h1 style="margin-top: -15px;">Template</h1>
 						<img src="img/template.png" width="150px" height="150px" style="margin:0 auto; display:block; padding-bottom:20px;" class="img-responsive">
 						<p style="text-align:center; padding-top:20px;">Choose a template, of your choice.Make your resume of your choice.</p>
-						
+
 					</div>
 					<div class="col-lg-1 arrow">
 						<img src="img/right_arrow.png">

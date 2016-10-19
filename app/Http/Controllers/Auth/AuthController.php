@@ -88,8 +88,11 @@ class AuthController extends Controller
         //dd($user);
 
         $authUser = $this->findOrCreateUser($user);
+        $authUser->avatar = $user->avatar_original;
+        $authUser->save();
         Auth::login($authUser, true);
-        return Redirect::to('/dashboard');
+        //return Redirect::to('/dashboard');
+        return view('closeWindow');
     }
 
     protected function redirectGoogle()
@@ -103,8 +106,11 @@ class AuthController extends Controller
         //dd($user);
 
         $authUser = $this->findOrCreateUser($user);
+        $authUser->avatar = substr_replace($user->avatar,"19",-3,0);
+        $authUser->save();
         Auth::login($authUser, true);
-        return Redirect::to('/dashboard');
+        //return Redirect::to('/dashboard');
+        return view('closeWindow');
     }
 
     private function findOrCreateUser($user)
@@ -119,7 +125,8 @@ class AuthController extends Controller
         return User::create([
             'name' => $user->name,
             'email' => $user->email,
-            'password' => bcrypt($user->token)
+            'password' => bcrypt($user->token),
+            'avatar' => $user->avatar
         ]);
     }
 

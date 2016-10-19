@@ -63,6 +63,20 @@ class ResumeController extends Controller
     {
       return redirect()->route('user.dashboard');
     }
+
+    // Setting the default email of fb or google
+    $mapping_subsection = $resume->mapping_subsections()->whereHas('subsection', function($q){
+      $q->where('subsection_name','Email');
+    })->get()[0];
+    //dd($mapping_subsection);
+    if(empty($mapping_subsection->detail))
+    {
+      $detail = new Detail;
+      $detail->content = $user->email;
+      $mapping_subsection->detail()->save($detail);
+    }
+
+    $resume = $user->resumes->find($id);
     Session::put('user.resume',$resume);
     //dd($resume);
     return view('resume.create',compact(['user','resume']));

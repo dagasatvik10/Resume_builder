@@ -141,7 +141,8 @@
 																</button>
 															</div>
 														@endif
-														<?php $k++; ?>
+														<?php $k++;
+														 ?>
 													@endforeach
 													@if($subsection->flag == 1 || $subsection->flag == 2)
 
@@ -172,7 +173,6 @@
 											<span class="fa fa-plus-circle"></span>
 										</button>
 									</div>
-
 								@endif
 
 							</div>

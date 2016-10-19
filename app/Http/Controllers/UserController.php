@@ -30,31 +30,26 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $resumes = $user->resumes;
-        $linkedin = $user->linkedin;
-        return view('dashboard',compact(['user','resumes','linkedin']));
+        //$fb = $user->fb;
+        return view('dashboard',compact(['user','resumes']));
     }
 
-    public function homepage()
-    {
-        return view('vendor.homepage');
-    }
-
-    public function redirectLn()
-    {
-        return Socialite::driver('linkedin')->redirect();
-    }
-
-    public function LnCallback()
-    {
-        $user = Socialite::driver('linkedin')->user();
-
-        $linkedin_detail = new Linkedin_detail;
-        $linkedin_detail->name = $user->name;
-        $linkedin_detail->email = $user->email;
-        $linkedin_detail->profilePic = $user->avatar_original;
-        $linkedin_detail->user()->associate(Auth::user());
-        $linkedin_detail->save();
-
-        return redirect()->route('user.dashboard');
-    }
+    // public function redirectLn()
+    // {
+    //     return Socialite::driver('linkedin')->redirect();
+    // }
+    //
+    // public function LnCallback()
+    // {
+    //     $user = Socialite::driver('linkedin')->user();
+    //
+    //     $linkedin_detail = new Linkedin_detail;
+    //     $linkedin_detail->name = $user->name;
+    //     $linkedin_detail->email = $user->email;
+    //     $linkedin_detail->profilePic = $user->avatar_original;
+    //     $linkedin_detail->user()->associate(Auth::user());
+    //     $linkedin_detail->save();
+    //
+    //     return redirect()->route('user.dashboard');
+    // }
 }

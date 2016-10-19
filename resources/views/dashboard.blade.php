@@ -4,13 +4,8 @@
 		<div class="container-fluid resumeform">
 			<div class="row">
 				<div class="col-lg-3 col-xs-2 section_form">
-					@if(!$linkedin)
-						<img src="/img/blank.png"  class="blank_img" style="margin-top:30%;">
-						<div class="text-center" style="margin-top:3%;"><a href="{{ url('auth/ln') }}" class="btn linkedin">Fetch from LinkedIn</a></div>
-					@else
-						<img src="{{ $linkedin->profilePic }}"  class="blank_img" style="margin-top:30%;">
-						<div class="text-center" style="margin-top:7%;">{{ $linkedin->name }}</div>
-					@endif
+						<img src="{{ $user->avatar }}"  class="blank_img" style="margin-top:30%;">
+						<div class="text-center" style="margin-top:7%;">{{ $user->name }}</div>
 				</div>
 				<div class="col-lg-9 col-xs-10 side_right col-lg-offset-3" style="padding:5% 10% 27% 6%; ">
 					<button type="button" class="btn create" data-toggle="modal" data-target="#myModal">Create new resume
