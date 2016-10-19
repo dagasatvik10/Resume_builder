@@ -185,15 +185,15 @@
 					</div>
 					<div class="col-xs-11">
 						<h3>{{ App\Section::find($section_id)->section_name }}</h3>
-					@foreach($section[0][App\Section::find($section_id)->subsections->first()->subsection_name] as $subsection)
 						<ul>
+					@foreach($section[0][App\Section::find($section_id)->subsections->first()->subsection_name] as $subsection)
 							@if(!empty($subsection))
 								<li class="new_subsection_content">
 									{{ $subsection }}
 								</li>
 							@endif
-						</ul>
 					@endforeach
+				</ul>
 				</div>
 			</div>
 			@endif

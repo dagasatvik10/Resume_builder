@@ -72,7 +72,7 @@ function linkEvent(){
     });
 
     $('.resume_op').click(function (e) {
-        var id, op;
+        var id, op, url = window.location.href;
 
         e.preventDefault();
 
@@ -82,8 +82,8 @@ function linkEvent(){
 
             id = $(this).data('id');
             op = $(this).data('op');
-
-            window.location.href = '/resume/' + id + '/' + op + '/' + resume_design;
+            console.log(url);
+            window.location.href = url + '/' + op + '/' + resume_design;
         }
     });
 
