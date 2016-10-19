@@ -123,14 +123,14 @@
 														<?php
 														$content = $mapping_subsection->detail==null?null:$mapping_subsection->detail->content;
 														?>
-														@if($subsection->flag != 2)
+														@if($subsection->flag != 3)
 															<div class="col-lg-8 ">
 																{!! Form::text('detail'.$mapping_subsection->id,$content,['class' => 'form-control detail_resume text-capitalize', 'placeholder' => $subsection->subsection_name]) !!}<br>
 															</div>
 														@else
 															<div class="col-lg-8">
 															<textarea class="text-capitalize" name="{{ 'detail'.$mapping_subsection->id }}"
-																	  class="form-control detail_resume" rows="5">{{ $content }}</textarea><br>
+																	  class="form-control detail_resume" rows="5" cols="50" placeholder="{{ $subsection->subsection_name }}">{{ $content }}</textarea><br>
 															</div>
 														@endif
 														@if($subsection->flag != 0 and $k > 1)
@@ -143,7 +143,7 @@
 														@endif
 														<?php $k++; ?>
 													@endforeach
-													@if($subsection->flag != 0)
+													@if($subsection->flag == 1 || $subsection->flag == 2)
 
 														<button class="btn section_subsection" data-show_id='{{ $section->id }}' data-token='{{ csrf_token() }}'
 															data-link='{{ route('resume.addSubsection',['mapping_section_id' => $mapping_section->id,'subsection_id' => $subsection->id]) }}'>
@@ -161,7 +161,7 @@
 
 									</div>
 
-									
+
 									<?php $l++; ?>
 								@endforeach
 

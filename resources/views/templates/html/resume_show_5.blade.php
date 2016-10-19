@@ -206,7 +206,7 @@
 										<ul>
 										<li>
 											<div class="sub_sections">
-												@foreach($section[0][App\Section::find($section_id)->sub_sections->first()->subsection_name] as $subsection)
+												@foreach($section[0][App\Section::find($section_id)->subsections->first()->subsection_name] as $subsection)
 													@if(!empty($subsection))
 														<div class="new_subsection_content">
 															{{ $subsection }}

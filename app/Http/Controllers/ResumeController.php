@@ -194,8 +194,8 @@ class ResumeController extends Controller
   public function download($id,$resume_design)
   {
     $pdf = $this->createShow($id,$resume_design);
-    $resume = Session::get('user.resume');
-    return $pdf->download($resume->name.'.pdf');
+    //$resume = Session::get('user.resume');
+    return $pdf;
   }
 
   // to delete the resume and all its mapping_sections and mapping_subsections

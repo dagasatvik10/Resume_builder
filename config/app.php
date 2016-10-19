@@ -39,7 +39,7 @@ return array(
     |
     */
 
-    'url' => 'http://localhost',
+    'url' => env('APP_URL','http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -196,7 +196,7 @@ return array(
         'Mail'      => Illuminate\Support\Facades\Mail::class,
         'Password'  => Illuminate\Support\Facades\Password::class,
         'Queue'     => Illuminate\Support\Facades\Queue::class,
-        'PDF'       => Nitmedia\Wkhtml2pdf\Facades\Wkhtml2pdf::class,
+        'PDF'    => Nitmedia\Wkhtml2pdf\Facades\Wkhtml2pdf::class,
         'Redirect'  => Illuminate\Support\Facades\Redirect::class,
         'Redis'     => Illuminate\Support\Facades\Redis::class,
         'Request'   => Illuminate\Support\Facades\Request::class,
