@@ -84,7 +84,8 @@
 
 								@if($section->id == 3)
 									<div class="btn" id="github_button">
-										<a class="white" href={{ url('auth/github') }}>
+										<a class="white" href=''
+										onclick="window.open('{{ url("auth/github") }}', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes')">
 											Fetch from GitHub
 										</a>
 									</div>

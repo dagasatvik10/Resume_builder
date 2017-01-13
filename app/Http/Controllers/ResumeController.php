@@ -76,6 +76,17 @@ class ResumeController extends Controller
       $mapping_subsection->detail()->save($detail);
     }
 
+    $mapping_subsection = $resume->mapping_subsections()->whereHas('subsection', function($q){
+      $q->where('subsection_name','Name');
+    })->get()[0];
+    //dd($mapping_subsection);
+    if(empty($mapping_subsection->detail))
+    {
+      $detail = new Detail;
+      $detail->content = $user->name;
+      $mapping_subsection->detail()->save($detail);
+    }
+
     $resume = $user->resumes->find($id);
     Session::put('user.resume',$resume);
     //dd($resume);
@@ -421,7 +432,7 @@ class ResumeController extends Controller
   public function githubCallback()
   {
     $user = Socialite::driver('github')->user();
-    dd($user);
+    //dd($user);
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
@@ -478,11 +489,12 @@ class ResumeController extends Controller
           ->where('mapping_section_id', $mapping_section->id)
           ->orderBy('id', 'desc')->first();
           $detail = new Detail;
-          $detail->content = '';
+          $detail->content = $project['description']==null?'':$project['description'];
           $s->detail()->save($detail);
         }
       }
     }
-    return redirect()->route('resume.create',['id' => $resume->id]);
+    //return redirect()->route('resume.create',['id' => $resume->id]);
+    return view('closeWindow');
   }
 }

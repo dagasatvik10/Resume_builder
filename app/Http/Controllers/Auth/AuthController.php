@@ -103,10 +103,10 @@ class AuthController extends Controller
     protected function googleCallback()
     {
         $user = Socialite::driver('google')->user();
-        //dd($user);
+        //dd(substr_replace($user->avatar,"19",-2,0));
 
         $authUser = $this->findOrCreateUser($user);
-        $authUser->avatar = substr_replace($user->avatar,"19",-3,0);
+        $authUser->avatar = substr_replace($user->avatar,"19",-2,0);
         $authUser->save();
         Auth::login($authUser, true);
         //return Redirect::to('/dashboard');
